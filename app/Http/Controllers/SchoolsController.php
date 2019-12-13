@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use DB;
-use App\Reports;
+use App\School;
 use Illuminate\Http\Request;
-use Carbon\Carbon;
-class analysisController extends Controller
+
+class SchoolsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,9 @@ class analysisController extends Controller
      */
     public function index()
     {
-        //
+        $data = [
+            'schools' => School::get(),
+        ];
     }
 
     /**
@@ -42,36 +44,26 @@ class analysisController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Reports  $reports
+     * @param  \App\School  $school
      * @return \Illuminate\Http\Response
      */
     public function show($school)
     {
-        if ($school == 'Mereside') {
-            $school = ['school' => $school];
-            return view('analysis.mereside', $school);
-        }
-        $schoolname = ['school' => $school];
-
-        $enddate = Carbon::yesterday()->toDateString();
-
+        $enddate = date_add('day',-1,today());
         $data = [
-            'attgroups' => DB::select(" exec sp_att_fcatGroups19 @enddate = '$enddate', @school = '$school' "),
             'pastudents' => DB::select(" exec sp_AttendancePAStudents19 @enddate = '$enddate', @school = '$school' "),
             'pagroups' => DB::select(" exec sp_att_paGroupsFCAT19 @enddate = '$enddate', @school = '$school' "),
-            'school' => $school,
         ];
-        // dd($data);
-        return view('analysis.index', $data);
+        dd($data);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Reports  $reports
+     * @param  \App\School  $school
      * @return \Illuminate\Http\Response
      */
-    public function edit(Reports $reports)
+    public function edit(School $school)
     {
         //
     }
@@ -80,10 +72,10 @@ class analysisController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Reports  $reports
+     * @param  \App\School  $school
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Reports $reports)
+    public function update(Request $request, School $school)
     {
         //
     }
@@ -91,10 +83,10 @@ class analysisController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Reports  $reports
+     * @param  \App\School  $school
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Reports $reports)
+    public function destroy(School $school)
     {
         //
     }

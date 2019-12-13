@@ -20,22 +20,11 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8.14.0/dist/sweetalert2.all.min.js"></script>
     <script src="{{URL::asset('js/swal.js')}}"></script>
     <div id="app">
-        @include('layouts.nav')
+        {{-- @include('layouts.nav') --}}
         <main class="py-4">
             @yield('content')
         </main>
     </div>
-
-    <footer class="footer mt-auto bg-info shadow-sm footer justify-content-between">
-    {{-- <footer class="navbar navbar-dark navbar-expand-md bg-primary shadow-sm footer justify-content-between"> --}}
-    <div class="col-3">
-            {{-- {{ HTML::image('img/whitemonkey64.png', 'alt text', array('style' => 'height: 46px')) }} --}}
-            <img class="" src="{{URL::asset('/img/whitemonkey64.png')}}" alt="" style="height: 46px;">
-            <a href="http://petem46.info" target="_blank">thedatamonkeys.co.uk</a>
-        </div>
-        <div class="col-3 text-center">Data Protection Toolkit</div>
-        <div class="col-3 text-right">© 2018 <a href="mailto:petem46@gmail.com" target="_blank">petem46.info</a></div>
-    </footer>
 
 </body>
 <script src="{{URL::asset('js/goback.js')}}"></script>
