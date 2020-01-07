@@ -20,7 +20,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8.14.0/dist/sweetalert2.all.min.js"></script>
     <script src="{{URL::asset('js/swal.js')}}"></script>
     <div id="app">
-        {{-- @include('layouts.nav') --}}
+        @include('layouts.nav')
         <main class="py-4">
             @yield('content')
         </main>
@@ -28,16 +28,4 @@
 
 </body>
 <script src="{{URL::asset('js/goback.js')}}"></script>
-@if (Request::is('processors/*'))
-    <script src="{{URL::asset('js/fileUploadProcessor.js')}}"></script>
-@endif
-@if (Request::is('breachresponses/*'))
-    <script src="{{URL::asset('js/fileUploadResponse.js')}}"></script>
-@endif
-@if (Request::is('foirequests/*'))
-    <script src="{{URL::asset('js/fileUploadResponse.js')}}"></script>
-@endif
-@if (Request::is('foiresponses/*'))
-    <script src="{{URL::asset('js/fileUploadResponse.js')}}"></script>
-@endif
 </html>

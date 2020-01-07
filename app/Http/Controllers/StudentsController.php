@@ -15,7 +15,8 @@ class StudentsController extends Controller
     public function index()
     {
         $data = [
-            'students' => Student::get(),
+            // 'students' => Student::where('school', 'armfield')->get(),
+            'students' => Student::orderBy('lsurname')->get(),
         ];
         // dd($data);
         return view('students.index', $data);
@@ -53,7 +54,8 @@ class StudentsController extends Controller
         $upn = Student::select('upn')->find($id);
         $aupn = $upn->upn;
         $data = [
-            'student' => Student::where('upn', $upn->upn)->get(),
+            'student' => Student::where('upn', $upn->upn)->first(),
+            // 'student' => Student::with('Attendance')->where('upn', $upn->upn)->first(),
             'attendance' => DB::select(" exec sp_AttendancePAStudents19 @enddate = '2019-12-08', @upn = '$aupn' "),
         ];
         dd($data);
