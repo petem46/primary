@@ -16,7 +16,7 @@ class StudentsController extends Controller
     {
         $data = [
             // 'students' => Student::where('school', 'armfield')->get(),
-            'students' => Student::orderBy('lsurname')->get(),
+            'students' => Student::where('isLeaver', NULL)->orderBy('lsurname')->get(),
         ];
         // dd($data);
         return view('students.index', $data);

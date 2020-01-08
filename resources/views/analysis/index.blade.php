@@ -46,7 +46,7 @@
         </a>
     </div>
     {{-- @include('attendancereporting') --}}
-    <div class="content pa d-none  ">
+    <div class="content pa   ">
         <h1 class="display-3">Attendance</h1>
         <h1 class="text-muted">Groups Summary</h1>
         <div class="table-responsive">
@@ -70,7 +70,7 @@
             </table>
         </div>
     </div>
-    <div class="content pa d-none  ">
+    <div class="content pa   ">
         <h1 class="display-3">Attendance</h1>
         <h1 class="text-muted">Groups Summary: At Risk of PA</h1>
         <div class="table-responsive">
@@ -94,7 +94,7 @@
             </table>
         </div>
     </div>
-    <div class="content pa d-none  mt-3 ">
+    <div class="content pa   mt-3 ">
         <h1 class="display-3">Attendance</h1>
         <h1 class="text-muted">Students: At Risk of PA</h1>
         <div class="table-responsive">

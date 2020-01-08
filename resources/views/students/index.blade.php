@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <div class="container">
-    <table id="studentTable" class="display">
+    <table id="studentTable" class="table">
         <thead>
             <tr>
                 <th>Name</th>
@@ -11,26 +11,39 @@
                 <th>Actions</th>
             </tr>
         </thead>
-        <tbody>
-            @foreach ($students as $student)
-            <tr>
-                <td>{{$student->pforename}} </td>
-                <td>{{$student->psurname}} </td>
-                <td>{{$student->year}} </td>
-                <td>{{ucwords(strtolower($student->school))}} </td>
-                <td><a href="{{action('StudentsController@show', $student->id)}}" class="btn btn-primary">View  </a></td>
-            </tr>
-            @endforeach
-        </tbody>
     </table>
 </div><!-- end containing of content -->
+
+<script>
+var data = [
+    @foreach ($students as $student)
+        [
+            "{{$student->pforename}}",
+            "{{$student->psurname}}",
+            "{{$student->year}}",
+            "{{ucwords(strtolower($student->school))}}",
+            "<a href='{{action('StudentsController@show', $student->id)}}' class='btn btn-primary'>View Pupil </a>"
+        ],
+    @endforeach
+]
+</script>
+
 <script>
 $(document).ready(function() {
-    $('#studentTable').DataTable( {
-        columnDefs: [
-            {
-                targets: [0],
-                orderData: [1,0] },
+    $('#studentTable')
+    .DataTable( {
+        data: data,
+        processing : true,
+        language: {
+            loadingRecords: '&nbsp;',
+            processing: '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span> ',
+        },
+        //  "serverSide": true,
+            columnDefs: [
+                {
+                    targets: [0],
+                    orderData: [1,0]
+                },
         ]
     });
 });
