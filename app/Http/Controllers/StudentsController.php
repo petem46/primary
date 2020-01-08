@@ -58,7 +58,7 @@ class StudentsController extends Controller
             // 'student' => Student::with('Attendance')->where('upn', $upn->upn)->first(),
             'attendance' => DB::select(" exec sp_AttendancePAStudents19 @enddate = '2019-12-08', @upn = '$aupn' "),
         ];
-        dd($data);
+        // dd($data);
         return view('students.view', $data);
     }
 

@@ -2,7 +2,6 @@
 @section('content')
 
             <div class="content">
-                <a href="/"><img class="img-fluid mb-5 d-block mx-auto" style="height: 145px;" src="FCAT-LOGO.jpg" alt=""></a>
                 <div class="title m-b-md">
                     Primary Reporting
                 </div>

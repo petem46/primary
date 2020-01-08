@@ -1,4 +1,4 @@
-<nav class="navbar navbar-dark navbar-expand-lg bg-secondary shadow-sm p-0">
+<nav class="navbar navbar-dark navbar-expand-lg bg-primary shadow-sm p-0">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
             <i class="fab fa-lg fa-expeditedssl"></i>  FCAT Primary
