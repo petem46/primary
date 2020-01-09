@@ -1,13 +1,8 @@
 @extends('layouts.app')
 @section('content')
-<style>
-body {
-    font-weight: 200 !important;
-}
-</style>
 <div class="containter text-center">
     {{-- <a href="/"><img class="img-fluid mb-5 d-block mx-auto" style="height: 145px;" src="../FCAT-LOGO.jpg" alt=""></a> --}}
-    <div class="school-title">
+    <div class="school-title font-weight-light">
         {{$school}} Reporting
     </div>
     <hr>

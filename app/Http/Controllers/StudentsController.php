@@ -1,12 +1,17 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use DB;
 use App\Student;
 use Illuminate\Http\Request;
+use Socialite;
+use App\Services\SocialGoogleAccountService;
+use Auth;
 
 class StudentsController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -14,9 +19,15 @@ class StudentsController extends Controller
      */
     public function index()
     {
+        $domain = explode("@", Auth::user()->email);
+        $school = explode(".", $domain[1]);
+        $school = $school[0];
+        if($school === 'fcat') {$school = '%';}
         $data = [
             // 'students' => Student::where('school', 'armfield')->get(),
-            'students' => Student::where('isLeaver', NULL)->orderBy('lsurname')->get(),
+            'schoolname' => $school,
+            'students' => Student::where('school', 'LIKE', $school)->where('isLeaver', NULL)->orderBy('lsurname')->get(),
+
         ];
         // dd($data);
         return view('students.index', $data);
@@ -51,15 +62,23 @@ class StudentsController extends Controller
      */
     public function show($id)
     {
-        $upn = Student::select('upn')->find($id);
-        $aupn = $upn->upn;
-        $data = [
-            'student' => Student::where('upn', $upn->upn)->first(),
-            // 'student' => Student::with('Attendance')->where('upn', $upn->upn)->first(),
-            'attendance' => DB::select(" exec sp_AttendancePAStudents19 @enddate = '2019-12-08', @upn = '$aupn' "),
-        ];
-        // dd($data);
-        return view('students.view', $data);
+        $upn = Student::select('upn', 'school')->find($id);
+        $domain = explode("@", Auth::user()->email);
+        $school = explode(".", $domain[1]);
+        $school = $school[0];
+        if($school === 'fcat') {$school = 'Aspire';}
+        if($school === $upn->school || $school = 'fcat') {
+        // if($school === $upn->school) {
+            $aupn = $upn->upn;
+            $data = [
+                'student' => Student::where('upn', $upn->upn)->first(),
+                // 'student' => Student::with('Attendance')->where('upn', $upn->upn)->first(),
+                'attendance' => DB::select(" exec sp_AttendancePAStudents19 @enddate = '2019-12-08', @upn = '$aupn' "),
+            ];
+            // dd($data);
+            return view('students.view', $data);
+        }
+        return redirect('students/');
     }
 
     /**

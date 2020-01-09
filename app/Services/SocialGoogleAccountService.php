@@ -14,7 +14,7 @@ class SocialGoogleAccountService
         if ($account) {
             return $account->user;
         }
-        $domain = explode("@", $user->email)[1];
+        $domain = explode("@", $account->email)[1];
 
         if( $domain != 'abc.edu.pk'){
             dd('NOPE!');

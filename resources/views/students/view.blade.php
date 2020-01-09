@@ -28,8 +28,8 @@ if ($student->year === '1') {
 
     </div>
     <div class="name">
-        <h4 class="text-muted">{{ucwords(strtolower($student->school))}}&nbsp;&nbsp;&nbsp;&nbsp;<small>Year {{$student->year}} </small> </h4>
-        <h1 class="display-3">{{ucwords(strtolower($student->pforename))}} {{ucwords(strtolower($student->psurname))}}</h1>
+        <h4 class="text-muted font-weight-light">{{ucwords(strtolower($student->school))}}&nbsp;&nbsp;&nbsp;&nbsp;<small>Year {{$student->year}} </small> </h4>
+        <h1 class="display-3">{{$student->pforename}} {{$student->psurname}}</h1>
     </div>
 </section>
 <hr>
