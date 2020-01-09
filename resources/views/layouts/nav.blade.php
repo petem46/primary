@@ -19,10 +19,17 @@
                     <a class="nav-link text-center" href="{{url('/')}}"><i class="fas fa-th fa-2x fa-fw"></i><br><span class="d-lg-none_">Dashboard</a>
                 </li>
                 <li class="nav-item mr-3">
-                    <a class="nav-link text-center" href="{{url('/students')}}"><i class="fas fa-cogs fa-2x fa-fw"></i><br><span class="d-lg-none_">{{ __('Students') }}</a>
+                    <a class="nav-link text-center" href="{{url('/students')}}"><i class="fas fa-users fa-2x fa-fw"></i><br><span class="d-lg-none_">{{ __('Students') }}</a>
                 </li>
                 <li class="nav-item mr-3">
-                    <a class="nav-link text-center" href="{{url('/logout')}}"><i class="fas fa-user-circle fa-2x fa-fw"></i><br><span class="d-lg-none_">{{ __('Log Out') }}</a>
+                    {{-- <a class="nav-link text-center" href="{{url('/logout')}}"><i class="fas fa-cogs fa-2x fa-fw"></i><br><span class="d-lg-none_">{{ __('Log Out') }}</a> --}}
+                    <a class="nav-link text-center" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        <i class="fas fa-user-circle fa-2x fa-fw"></i><br><span class="d-lg-none_">{{ __('Log Out') }}
+                        {{-- ({{ Auth::user()->name }}) --}}
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                    </form>
                 </li>
         </ul>
     </div>

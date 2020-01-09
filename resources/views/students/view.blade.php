@@ -45,38 +45,38 @@ if ($student->year === '1') {
         @endif --}}
         @if ($student->genderlabel === 'Girls')
             <div class="col-6 col-md-2 mb-2 mb-md-0">
-                <div class="btn btn-sm btn-block btn-pink"><i class="fas fa-female"></i>&nbsp;&nbsp;{{$student->genderlabel}} </div>
+                <div class="badge p-2 badge-pink"><i class="fas fa-female"></i>&nbsp;&nbsp;{{$student->genderlabel}} </div>
             </div>
         @endif
         @if ($student->genderlabel === 'Boys')
             <div class="col-6 col-md-2 mb-2 mb-md-0">
-                <div class="btn btn-sm btn-block btn-blue"><i class="fas fa-male"></i>&nbsp;&nbsp;{{$student->genderlabel}} </div>
+                <div class="badge p-2 badge-blue"><i class="fas fa-male"></i>&nbsp;&nbsp;{{$student->genderlabel}} </div>
             </div>
         @endif
         @if ($student->pplabel === 'PP')
             <div class="col-6 col-md-2 mb-2 mb-md-0">
-                <div class="btn btn-sm btn-block btn-purple">{{$student->pplabel}} </div>
+                <div class="badge p-2 badge-purple"><i class="fas fa-user-plus"></i>&nbsp;&nbsp;{{$student->pplabel}} </div>
             </div>
         @endif
         @if ($student->sendlabel != 'SEND N')
             <div class="col-6 col-md-2 mb-2 mb-md-0">
-                <div class="btn btn-sm btn-block btn-indigo">{{$student->sendlabel}} </div>
+                <div class="badge p-2 badge-indigo"><i class="far fa-address-card"></i>&nbsp;&nbsp;{{$student->sendlabel}} </div>
             </div>
         @endif
         @if ($stable)
             <div class="col-6 col-md-2 mb-2 mb-md-0">
-                <div class="btn btn-sm btn-block btn-green"><i class="far fa-check-square"></i>&nbsp;&nbsp;Stable </div>
+                <div class="badge p-2 badge-green"><i class="far fa-check-square"></i>&nbsp;&nbsp;Stable </div>
             </div>
         @endif
         @if (!$stable)
             <div class="col-6 col-md-2 mb-2 mb-md-0">
-                <div class="btn btn-sm btn-block btn-warning"><i class="fas fa-exclamation-triangle"></i>&nbsp;&nbsp;Non Stable </div>
+                <div class="badge p-2 badge-warning"><i class="fas fa-exclamation-triangle"></i>&nbsp;&nbsp;Non Stable </div>
             </div>
         @endif
         @if (!empty($attendance[0]->PA))
             @if ($attendance[0]->PA = 1)
             <div class="col-6 col-md-2 mb-2 mb-md-0">
-                <div class="btn btn-sm btn-block btn-danger"><i class="fas fa-exclamation-circle"></i></i>&nbsp;&nbsp;PA </div>
+                <div class="badge p-2 badge-danger"><i class="fas fa-exclamation-circle"></i></i>&nbsp;&nbsp;PA </div>
             </div>
             @endif
         @endif
@@ -103,7 +103,7 @@ if ($student->year === '1') {
 
 <section id="attainment" class="mb-3">
     <div>
-        <h1 class="text-primary py-3"><i class="fas fa-star fa-fw fa-lg"></i>&nbsp;&nbsp;Attainment</h1>
+        <h1 class="text-primary py-3"><i class="far fa-star fa-fw fa-lg text-cyan"></i>&nbsp;&nbsp;Attainment</h1>
     </div>
     <h6>EYFS</h6>
     <div class="row text-center mb-3">

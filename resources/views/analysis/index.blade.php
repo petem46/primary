@@ -1,52 +1,82 @@
 @extends('layouts.app')
 @section('content')
-<div class="content containter">
-    <a href="/"><img class="img-fluid mb-5 d-block mx-auto" style="height: 145px;" src="../FCAT-LOGO.jpg" alt=""></a>
-    <div class="title m-b-md">
+<style>
+body {
+    font-weight: 200 !important;
+}
+</style>
+<div class="containter text-center">
+    {{-- <a href="/"><img class="img-fluid mb-5 d-block mx-auto" style="height: 145px;" src="../FCAT-LOGO.jpg" alt=""></a> --}}
+    <div class="school-title">
         {{$school}} Reporting
     </div>
+    <hr>
     <div class="links">
-        <a href="http://fcatdata/rs/Pages/ReportViewer.aspx?%2fFCAT+Primary+SSRS%2fCoreSubjectSummaryByYear&school={{$school}}&rs:Command=Render" onclick="return !window.open(this.href, 'Subject Summary Grid', 'width=1024,height=768')">
-            Core Subject Summary by Year
-        </a><p style="margin-bottom: 5px;"></p>
-        <a href="http://fcatdata/rs/Pages/ReportViewer.aspx?%2fFCAT+Primary+SSRS%2fSubjectSummaryByYear&school={{$school}}&rs:Command=Render" onclick="return !window.open(this.href, 'Subject Summary Grid', 'width=1024,height=768')">
-            Subject Summary by Year
-        </a><p style="margin-bottom: 5px;"></p>
+        <div class="col-12 mb-3">
+            <a href="http://fcatdata/rs/Pages/ReportViewer.aspx?%2fFCAT+Primary+SSRS%2fCoreSubjectSummaryByYear&school={{$school}}&rs:Command=Render" onclick="return !window.open(this.href, 'Subject Summary Grid', 'width=1024,height=768')">
+                Core Subject Summary by Year
+            </a>
+        </div>
+        <div class="col-12 mb-3">
+            <a href="http://fcatdata/rs/Pages/ReportViewer.aspx?%2fFCAT+Primary+SSRS%2fSubjectSummaryByYear&school={{$school}}&rs:Command=Render" onclick="return !window.open(this.href, 'Subject Summary Grid', 'width=1024,height=768')">
+                Subject Summary by Year
+            </a>
+        </div>
         <hr>
-        <a href="http://fcatdata/rs/Pages/ReportViewer.aspx?%2fFCAT+Primary+SSRS%2fSubjectSummaryBySchool&school={{$school}}&rs:Command=Render" onclick="return !window.open(this.href, 'Subject Summary Grid', 'width=1024,height=768')">
-            Whole School Overview
-        </a><p style="margin-bottom: 5px;"></p>
-        <a href="http://fcatdata/rs/Pages/ReportViewer.aspx?%2fFCAT+Primary+SSRS%2fSchoolSubjectSummaryGender&school={{$school}}&rs:Command=Render" onclick="return !window.open(this.href, 'Subject Summary Grid', 'width=1024,height=768')">
-            Whole School Overview (Girl/Boy)
-        </a><p style="margin-bottom: 5px;"></p>
-        <a href="http://fcatdata/rs/Pages/ReportViewer.aspx?%2fFCAT+Primary+SSRS%2fSchoolSubjectSummaryPP&school={{$school}}&rs:Command=Render" onclick="return !window.open(this.href, 'Subject Summary Grid', 'width=1024,height=768')">
-            Whole School Overview (PP)
-        </a><p style="margin-bottom: 5px;"></p>
-        <a href="http://fcatdata/rs/Pages/ReportViewer.aspx?%2fFCAT+Primary+SSRS%2fSchoolSubjectSummarySEND&school={{$school}}&rs:Command=Render" onclick="return !window.open(this.href, 'Subject Summary Grid', 'width=1024,height=768')">
-            Whole School Overview (SEND)
-        </a><p style="margin-bottom: 5px;"></p>
-        <a href="http://fcatdata/rs/Pages/ReportViewer.aspx?%2fFCAT+Primary+SSRS%2fSchoolSubjectSummaryEAL&school={{$school}}&rs:Command=Render" onclick="return !window.open(this.href, 'Subject Summary Grid', 'width=1024,height=768')">
-            Whole School Overview (EAL)
-        </a><p style="margin-bottom: 5px;"></p>
+        <div class="col-12 mb-3">
+            <a href="http://fcatdata/rs/Pages/ReportViewer.aspx?%2fFCAT+Primary+SSRS%2fSubjectSummaryBySchool&school={{$school}}&rs:Command=Render" onclick="return !window.open(this.href, 'Subject Summary Grid', 'width=1024,height=768')">
+                Whole School Overview
+            </a>
+        </div>
+        <div class="col-12 mb-3">
+            <a href="http://fcatdata/rs/Pages/ReportViewer.aspx?%2fFCAT+Primary+SSRS%2fSchoolSubjectSummaryGender&school={{$school}}&rs:Command=Render" onclick="return !window.open(this.href, 'Subject Summary Grid', 'width=1024,height=768')">
+                Whole School Overview (Girl/Boy)
+            </a>
+        </div>
+        <div class="col-12 mb-3">
+            <a href="http://fcatdata/rs/Pages/ReportViewer.aspx?%2fFCAT+Primary+SSRS%2fSchoolSubjectSummaryPP&school={{$school}}&rs:Command=Render" onclick="return !window.open(this.href, 'Subject Summary Grid', 'width=1024,height=768')">
+                Whole School Overview (PP)
+            </a>
+        </div>
+        <div class="col-12 mb-3">
+            <a href="http://fcatdata/rs/Pages/ReportViewer.aspx?%2fFCAT+Primary+SSRS%2fSchoolSubjectSummarySEND&school={{$school}}&rs:Command=Render" onclick="return !window.open(this.href, 'Subject Summary Grid', 'width=1024,height=768')">
+                Whole School Overview (SEND)
+            </a>
+        </div>
+        <div class="col-12 mb-3">
+            <a href="http://fcatdata/rs/Pages/ReportViewer.aspx?%2fFCAT+Primary+SSRS%2fSchoolSubjectSummaryEAL&school={{$school}}&rs:Command=Render" onclick="return !window.open(this.href, 'Subject Summary Grid', 'width=1024,height=768')">
+                Whole School Overview (EAL)
+            </a>
+        </div>
         <hr>
-        <a href="http://fcatdata/rs/Pages/ReportViewer.aspx?%2fFCAT+Primary+SSRS%2fYearSubjectSummary&school={{$school}}&rs:Command=Render" onclick="return !window.open(this.href, 'Subject Summary Grid', 'width=1024,height=768')">
-            Subject Overview by Year
-        </a><p style="margin-bottom: 5px;"></p>
-        <a href="http://fcatdata/rs/Pages/ReportViewer.aspx?%2fFCAT+Primary+SSRS%2fYearSubjectSummaryGender&school={{$school}}&rs:Command=Render" onclick="return !window.open(this.href, 'Subject Summary Grid', 'width=1024,height=768')">
-            Subject Overview by Year (Girl/Boy)
-        </a><p style="margin-bottom: 5px;"></p>
-        <a href="http://fcatdata/rs/Pages/ReportViewer.aspx?%2fFCAT+Primary+SSRS%2fYearSubjectSummaryPP&school={{$school}}&rs:Command=Render" onclick="return !window.open(this.href, 'Subject Summary Grid', 'width=1024,height=768')">
-            Subject Overview by Year (PP)
-        </a><p style="margin-bottom: 5px;"></p>
-        <a href="http://fcatdata/rs/Pages/ReportViewer.aspx?%2fFCAT+Primary+SSRS%2fYearSubjectSummarySEND&school={{$school}}&rs:Command=Render" onclick="return !window.open(this.href, 'Subject Summary Grid', 'width=1024,height=768')">
-            Subject Overview by Year (SEND)
-        </a><p style="margin-bottom: 5px;"></p>
-        <a href="http://fcatdata/rs/Pages/ReportViewer.aspx?%2fFCAT+Primary+SSRS%2fYearSubjectSummaryEAL&school={{$school}}&rs:Command=Render" onclick="return !window.open(this.href, 'Subject Summary Grid', 'width=1024,height=768')">
-            Subject Overview by Year (EAL)
-        </a>
+        <div class="col-12 mb-3">
+            <a href="http://fcatdata/rs/Pages/ReportViewer.aspx?%2fFCAT+Primary+SSRS%2fYearSubjectSummary&school={{$school}}&rs:Command=Render" onclick="return !window.open(this.href, 'Subject Summary Grid', 'width=1024,height=768')">
+                Subject Overview by Year
+            </a>
+        </div>
+        <div class="col-12 mb-3">
+            <a href="http://fcatdata/rs/Pages/ReportViewer.aspx?%2fFCAT+Primary+SSRS%2fYearSubjectSummaryGender&school={{$school}}&rs:Command=Render" onclick="return !window.open(this.href, 'Subject Summary Grid', 'width=1024,height=768')">
+                Subject Overview by Year (Girl/Boy)
+            </a>
+        </div>
+        <div class="col-12 mb-3">
+            <a href="http://fcatdata/rs/Pages/ReportViewer.aspx?%2fFCAT+Primary+SSRS%2fYearSubjectSummaryPP&school={{$school}}&rs:Command=Render" onclick="return !window.open(this.href, 'Subject Summary Grid', 'width=1024,height=768')">
+                Subject Overview by Year (PP)
+            </a>
+        </div>
+        <div class="col-12 mb-3">
+            <a href="http://fcatdata/rs/Pages/ReportViewer.aspx?%2fFCAT+Primary+SSRS%2fYearSubjectSummarySEND&school={{$school}}&rs:Command=Render" onclick="return !window.open(this.href, 'Subject Summary Grid', 'width=1024,height=768')">
+                Subject Overview by Year (SEND)
+            </a>
+        </div>
+        <div class="col-12 mb-3">
+            <a href="http://fcatdata/rs/Pages/ReportViewer.aspx?%2fFCAT+Primary+SSRS%2fYearSubjectSummaryEAL&school={{$school}}&rs:Command=Render" onclick="return !window.open(this.href, 'Subject Summary Grid', 'width=1024,height=768')">
+                Subject Overview by Year (EAL)
+            </a>
+        </div>
     </div>
     {{-- @include('attendancereporting') --}}
-    <div class="content pa   ">
+    {{-- <div class="content pa   ">
         <h1 class="display-3">Attendance</h1>
         <h1 class="text-muted">Groups Summary</h1>
         <div class="table-responsive">
@@ -103,6 +133,7 @@
                     <th>Name</th>
                     <th>Reg</th>
                     <th>Attendance</th>
+                    <th></th>
                 </thead>
                 <tbody>
                     @foreach ($pastudents as $student)
@@ -111,13 +142,14 @@
                         <td>{{$student->forename}} {{$student->surname}} </td>
                         <td>{{$student->reg}} </td>
                         <td>{{ round($student->percentage,1) }} % </td>
+                        <td><a href='{{action('StudentsController@show', $student->id)}}' class='btn btn-primary'>View Pupil </a></td>
                     </tr>
                     @endif
                     @endforeach
                 </tbody>
             </table>
         </div>
-    </div>
+    </div> --}}
     {{-- @include('conductreporting') --}}
 
 </div>

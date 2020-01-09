@@ -29,5 +29,10 @@ return [
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
+    'google' => [
+        'client_id' => '395925343817-ckeng33uhugp9477iiqi8ss8e56t3o4r.apps.googleusercontent.com',
+        'client_secret' => 'cnMHcpSpo0VVgWTma925mdz7',
+        'redirect' => 'http://primary.mydatadash.co.uk/callback',
+      ],
 
 ];

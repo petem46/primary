@@ -56,9 +56,12 @@ class analysisController extends Controller
         $enddate = Carbon::yesterday()->toDateString();
 
         $data = [
-            'attgroups' => DB::select(" exec sp_att_fcatGroups19 @enddate = '$enddate', @school = '$school' "),
-            'pastudents' => DB::select(" exec sp_AttendancePAStudents19 @enddate = '$enddate', @school = '$school' "),
-            'pagroups' => DB::select(" exec sp_att_paGroupsFCAT19 @enddate = '$enddate', @school = '$school' "),
+            // 'attgroups' => DB::select(" exec sp_att_fcatGroups19 @enddate = '$enddate', @school = '$school' "),
+            // 'pastudents' => DB::select(" exec sp_AttendancePAStudents19 @enddate = '$enddate', @school = '$school' "),
+            // 'pagroups' => DB::select(" exec sp_att_paGroupsFCAT19 @enddate = '$enddate', @school = '$school' "),
+            'attgroups' => '',
+            'pastudents' => '',
+            'pagroups' => '',
             'school' => $school,
         ];
         // dd($data);
