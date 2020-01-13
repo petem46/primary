@@ -11,14 +11,15 @@ class SocialGoogleAccountService
                     ->whereProviderUserId($providerUser->getId())
                     ->first();
 
+        // dd($providerUser->getAvatar());
+
         if ($account) {
             return $account->user;
         }
-        $domain = explode("@", $account->email)[1];
 
-        if( $domain != 'abc.edu.pk'){
-            dd('NOPE!');
-        } else {
+        $domain = explode("@", $providerUser->getEmail())[1];
+        // dd($domain);
+        if( $domain === 'fcat.org.uk'){
             $account = new SocialGoogleAccount([
                 'provider_user_id' => $providerUser->getId(),
                 'provider' => 'google'
@@ -29,11 +30,14 @@ class SocialGoogleAccountService
                     'email' => $providerUser->getEmail(),
                     'name' => $providerUser->getName(),
                     'password' => md5(rand(1,10000)),
+                    'avatar' => $providerUser->getAvatar(),
                 ]);
             }
             $account->user()->associate($user);
             $account->save();
             return $user;
+        } else {
+            redirect('/login');
         }
     }
 }

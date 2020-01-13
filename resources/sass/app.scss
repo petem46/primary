@@ -12,6 +12,10 @@
 @import '~@fortawesome/fontawesome-free/scss/solid';
 @import '~@fortawesome/fontawesome-free/scss/brands';
 
+.information {
+    font-size: 0.75rem;
+}
+
 .btn-group-xs > .btn, .btn-xs {
     padding: .25rem .4rem;
     font-size: .875rem;
@@ -31,8 +35,15 @@
 
 .school-title {
     font-size: 84px;
-    color: #636b6f;
+    color: black;
     // font-family: 'Roboto', sans-serif;
+    // background: url(https://educationendowmentfoundation.org.uk/assets/images/fosv3-KS4.png);
+    // background-size: cover;
+    // background-position: 50% 100%;
+    // margin-top: -1.6rem;
+    .btn {
+        // font-size: 2rem !important;
+    }
 }
 
 .links a {

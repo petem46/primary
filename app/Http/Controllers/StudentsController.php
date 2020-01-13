@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use DB;
 use App\Student;
+use App\User;
 use Illuminate\Http\Request;
 use Socialite;
 use App\Services\SocialGoogleAccountService;
@@ -19,9 +20,7 @@ class StudentsController extends Controller
      */
     public function index()
     {
-        $domain = explode("@", Auth::user()->email);
-        $school = explode(".", $domain[1]);
-        $school = $school[0];
+        $school = User::first()->getSchool();
         if($school === 'fcat') {$school = '%';}
         $data = [
             // 'students' => Student::where('school', 'armfield')->get(),
@@ -63,9 +62,7 @@ class StudentsController extends Controller
     public function show($id)
     {
         $upn = Student::select('upn', 'school')->find($id);
-        $domain = explode("@", Auth::user()->email);
-        $school = explode(".", $domain[1]);
-        $school = $school[0];
+        $school = User::first()->getSchool();
         if($school === 'fcat') {$school = 'Aspire';}
         if($school === $upn->school || $school = 'fcat') {
         // if($school === $upn->school) {
@@ -76,6 +73,7 @@ class StudentsController extends Controller
                 'attendance' => DB::select(" exec sp_AttendancePAStudents19 @enddate = '2019-12-08', @upn = '$aupn' "),
             ];
             // dd($data);
+            // dd(Auth::user());
             return view('students.view', $data);
         }
         return redirect('students/');

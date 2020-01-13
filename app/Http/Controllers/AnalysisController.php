@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use DB;
 use App\Reports;
+use App\User;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 class analysisController extends Controller
@@ -59,13 +60,41 @@ class analysisController extends Controller
             // 'attgroups' => DB::select(" exec sp_att_fcatGroups19 @enddate = '$enddate', @school = '$school' "),
             // 'pastudents' => DB::select(" exec sp_AttendancePAStudents19 @enddate = '$enddate', @school = '$school' "),
             // 'pagroups' => DB::select(" exec sp_att_paGroupsFCAT19 @enddate = '$enddate', @school = '$school' "),
-            'attgroups' => '',
+            // 'attgroups' => '',
             'pastudents' => '',
             'pagroups' => '',
-            'school' => $school,
+            'school' => $school = User::first()->getSchool(),
+            'enddate' => $enddate,
         ];
         // dd($data);
         return view('analysis.index', $data);
+    }
+
+    public function dev($school)
+    {
+        if ($school == 'Mereside') {
+            $school = ['school' => $school];
+            return view('analysis.mereside', $school);
+        }
+        $schoolname = ['school' => $school];
+
+        $enddate = Carbon::yesterday()->toDateString();
+
+        if ($school === 'fcat') {
+            $school = '%';
+        }
+
+        $data = [
+            'studentCounts19' => DB::select(" exec sp_studentGroupCount19 @school = '$school' "),
+            'studentYearCounts19' => DB::select(" exec sp_studentYearCount19 @school = '$school' "),
+            'attgroups' => DB::select(" exec sp_att_fcatGroups19 @enddate = '$enddate', @school = '$school' "),
+            'pagroups' => DB::select(" exec sp_att_paGroups19 @enddate = '$enddate', @school = '$school' "),
+            // 'pastudents' => DB::select(" exec sp_AttendancePAStudents19 @enddate = '$enddate', @school = '$school' "),
+            'school' => $school,
+            'enddate' => $enddate,
+        ];
+        // dd($data);
+        return view('analysis.dev', $data);
     }
 
     /**

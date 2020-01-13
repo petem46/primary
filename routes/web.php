@@ -25,6 +25,9 @@ Route::get('/', function () {
 
 Route::group(['middleware' => ['auth']], function () {
 
+
+    Route::get('/dev/{school}', 'AnalysisController@dev');
+
     Route::get('/conductreporting', function () {
         return view('conductreporting');
     });

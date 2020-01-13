@@ -1,5 +1,5 @@
-{{-- @extends('layouts.app') --}}
-{{-- @section('content') --}}
+@extends('layouts.app')
+@section('content')
 <div class="container marketing">
 
 
@@ -219,4 +219,4 @@
         </div>
     </div>
 </div>
-{{-- @endsection --}}
+@endsection

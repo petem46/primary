@@ -3,11 +3,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <meta name="google-signin-client_id" content="395925343817-rl1c5101ak70lctt9gakrqb7ap3j69o3.apps.googleusercontent.com">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>FCAT Primary Reporting</title>
+    <title>FCAT Focus</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
@@ -18,6 +18,7 @@
 
     {{-- ChartJS --}}
     <script type="text/javascript" charset="utf8" src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/0.5.5/chartjs-plugin-annotation.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
 
     <!-- Styles -->
@@ -30,7 +31,7 @@
     <div id="app">
 
         @include('layouts.nav')
-        <main class="py-4">
+        <main class="my-4">
 
             @yield('content')
         </main>
