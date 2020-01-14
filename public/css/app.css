@@ -19353,6 +19353,46 @@ readers do not read off random characters that represent icons */
   font-family: "Font Awesome 5 Brands";
 }
 
+.chart-area {
+  position: relative;
+  height: 10rem;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .chart-area {
+    height: 20rem;
+  }
+}
+
+.chart-bar {
+  position: relative;
+  height: 10rem;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .chart-bar {
+    height: 20rem;
+  }
+}
+
+.chart-pie {
+  position: relative;
+  height: 20rem;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .chart-pie {
+    height: calc(20rem) !important;
+  }
+}
+
+.dash-overflow {
+  overflow: auto !important;
+}
+
 .information {
   font-size: 0.75rem;
 }
@@ -19375,11 +19415,6 @@ readers do not read off random characters that represent icons */
   font-size: 0.875rem !important;
   font-weight: normal !important;
   width: 100% !important;
-}
-
-.school-title {
-  font-size: 84px;
-  color: black;
 }
 
 .links a {

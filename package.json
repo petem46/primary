@@ -26,6 +26,7 @@
     },
     "dependencies": {
         "bootstrap": "^4.4.1",
+        "jquery-easing": "0.0.1",
         "serialize-javascript": "^2.1.2"
     }
 }

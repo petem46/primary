@@ -6,11 +6,37 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+
 // Font Awesome
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 @import '~@fortawesome/fontawesome-free/scss/regular';
 @import '~@fortawesome/fontawesome-free/scss/solid';
 @import '~@fortawesome/fontawesome-free/scss/brands';
+
+// Dashboard Side Nav
+// body {
+//     padding-top: 54px;
+// }
+
+// @media (min-width: 992px) {
+//     body {
+//       padding-top: 0;
+//       padding-left: 10rem;
+//     }
+// }
+
+// $sidebar-base-width: 10rem;
+
+// @import 'nav';
+
+
+// Dashboard Charts
+@import 'charts';
+
+.dash-overflow {
+    overflow: auto !important;
+}
+
 
 .information {
     font-size: 0.75rem;
@@ -31,19 +57,6 @@
     font-size: .875rem !important;
     font-weight: normal !important;
     width: 100% !important;
-}
-
-.school-title {
-    font-size: 84px;
-    color: black;
-    // font-family: 'Roboto', sans-serif;
-    // background: url(https://educationendowmentfoundation.org.uk/assets/images/fosv3-KS4.png);
-    // background-size: cover;
-    // background-position: 50% 100%;
-    // margin-top: -1.6rem;
-    .btn {
-        // font-size: 2rem !important;
-    }
 }
 
 .links a {

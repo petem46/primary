@@ -2,8 +2,8 @@
 @section('content')
 
 <div class="container text-center">
-    <div class="school-title font-weight-light">
-        FCAT Reporting
+    <div class="font-weight-light mb-3">
+        <h1 class="display-2">FCAT Reporting</h1>
     </div>
     <div class="links">
         <div class="col-12 mb-3">

@@ -5,6 +5,8 @@
  */
 
 require('./bootstrap');
+// require('./plugins/resume.min');
+// require('jquery-easing')
 
 window.Vue = require('vue');
 

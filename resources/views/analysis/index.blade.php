@@ -2,8 +2,8 @@
 @section('content')
 <div class="container text-center wallpaper">
     {{-- <a href="/"><img class="img-fluid mb-5 d-block mx-auto" style="height: 145px;" src="../FCAT-LOGO.jpg" alt=""></a> --}}
-    <div class="school-title font-weight-light">
-        {{$school}} Reporting
+    <div class="font-weight-light mb-3">
+        <h1 class="display-2">{{$school}} Reporting</h1>
     </div>
     <div class="links">
         <div class="col-12 mb-3">

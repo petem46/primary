@@ -21,7 +21,7 @@ class StudentsController extends Controller
     public function index()
     {
         $school = User::first()->getSchool();
-        if($school === 'fcat') {$school = '%';}
+        if($school === 'fcat') {$school = 'Westminster';}
         $data = [
             // 'students' => Student::where('school', 'armfield')->get(),
             'schoolname' => $school,
@@ -63,17 +63,14 @@ class StudentsController extends Controller
     {
         $upn = Student::select('upn', 'school')->find($id);
         $school = User::first()->getSchool();
-        if($school === 'fcat') {$school = 'Aspire';}
-        if($school === $upn->school || $school = 'fcat') {
-        // if($school === $upn->school) {
+        // if($school === 'fcat') {$school = 'Aspire';}
+        if($school === $upn->school || $school === 'fcat') {
             $aupn = $upn->upn;
             $data = [
                 'student' => Student::where('upn', $upn->upn)->first(),
                 // 'student' => Student::with('Attendance')->where('upn', $upn->upn)->first(),
                 'attendance' => DB::select(" exec sp_AttendancePAStudents19 @enddate = '2019-12-08', @upn = '$aupn' "),
             ];
-            // dd($data);
-            // dd(Auth::user());
             return view('students.view', $data);
         }
         return redirect('students/');
