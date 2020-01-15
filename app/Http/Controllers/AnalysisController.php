@@ -67,8 +67,8 @@ class analysisController extends Controller
             // 'attgroups' => '',
             'pastudents' => '',
             'pagroups' => '',
-            'school' => $school = User::first()->getSchool(),
-            // 'school' => $school,
+            // 'school' => $school = User::first()->getSchool(),
+            'school' => $school,
             'enddate' => $enddate,
         ];
         // dd($data);
@@ -77,23 +77,26 @@ class analysisController extends Controller
 
     public function dev($school)
     {
+        if(!isset($school)) {$school = User::first()->getSchool();}
         if ($school == 'Mereside') {
             $school = ['school' => $school];
             return view('analysis.mereside', $school);
         }
+
+        if ($school === 'fcat') {
+            $school = 'Unity';
+        }
         $schoolname = $school;
 
         $enddate = Carbon::yesterday()->toDateString();
-
-        if ($school === 'fcat') {
-            $school = 'Westminster';
-        }
-
+        $lastFriday = Carbon::parse($enddate)->modify("last friday")->toDateString();
+        // dd($lastFriday);
         $data = [
             'studentCounts19' => DB::select(" exec sp_studentGroupCount19 @school = '$school' "),
             'studentYearCounts19' => DB::select(" exec sp_studentYearCount19 @school = '$school' "),
-            'attgroups' => DB::select(" exec sp_att_fcatGroups19 @enddate = '$enddate', @school = '$school' "),
-            'pagroups' => DB::select(" exec sp_att_paGroups19 @enddate = '$enddate', @school = '$school' "),
+            'attgroups' => DB::select(" exec sp_att_fcatGroups19 @enddate = '$lastFriday', @school = '$school' "),
+            'pagroups' => DB::select(" exec sp_att_paGroups19 @enddate = '$lastFriday', @school = '$school' "),
+            'attrunningweekly' => DB::select(" exec sp_att_schoolRunningWeek19 @enddate = '$lastFriday', @school = '$school' "),
             // 'pastudents' => DB::select(" exec sp_AttendancePAStudents19 @enddate = '$enddate', @school = '$school' "),
             'school' => $school,
             'schoolname' => $schoolname,

@@ -24,7 +24,7 @@
                         <div class="chart-area dash-overflow">
                             <div class="information table-responsive">
                                 <table class="table table-hover mb-0">
-                                    <thead class="">
+                                    <thead class="bg-dark text-white">
                                         <th>Group</th>
                                         <th>Count</th>
                                         <th>%</th>
@@ -34,7 +34,7 @@
                                         <tr>
                                             <td>{{$group->Group}} </td>
                                             <td>{{$group->Count}} </td>
-                                            <td>{{round($group->percent,1) ?? ''}}% </td>
+                                            <td>{{round($group->percent,1) . '%' ?? ''}} </td>
                                         </tr>
                                         @endforeach
                                     </tbody>
@@ -69,7 +69,7 @@
                         <div class="chart-area dash-overflow">
                             <div class="information table-responsive">
                                 <table class="table table-hover mb-0">
-                                    <thead class="">
+                                    <thead class="bg-dark text-white">
                                         <th>Year</th>
                                         <th>Count</th>
                                         <th>% PP</th>
@@ -80,7 +80,7 @@
                                         <tr>
                                             <td>{{$group->group}} </td>
                                             <td>{{$group->count}} </td>
-                                            <td>{{round(($group->pppercent)*100,1) ?? ''}}% </td>
+                                            <td>{{round(($group->pppercent)*100,1) . '%' ?? ''}} </td>
                                         </tr>
                                         @endif
                                         @endforeach
@@ -96,7 +96,7 @@
                 <div class="card shadow mb-4">
                     <!-- Card Header - Dropdown -->
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0 font-weight-bold text-primary">Empty Card</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">Non-Routine Adminssions & Leavers</h6>
                         <div class="dropdown no-arrow">
                             <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
@@ -112,8 +112,46 @@
                     </div>
                     <!-- Card Body -->
                     <div class="card-body">
-                        <div class="chart-pie pt-4 pb-2">
-                            <canvas id=""></canvas>
+                        <div class="chart-area dash-overflow">
+                            <table class="table small mb-0">
+                                <thead class="bg-dark text-white">
+                                    <th>Year</th>
+                                    <th>Non-Routine Adminssions</th>
+                                    <th>Mid Year Leavers</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Year {{rand(1,11)}}</td>
+                                        <td>{{rand(3,11)}}</td>
+                                        <td>{{rand(3,11)}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Year {{rand(1,11)}}</td>
+                                        <td>{{rand(3,11)}}</td>
+                                        <td>{{rand(3,11)}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Year {{rand(1,11)}}</td>
+                                        <td>{{rand(3,11)}}</td>
+                                        <td>{{rand(3,11)}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Year {{rand(1,11)}}</td>
+                                        <td>{{rand(3,11)}}</td>
+                                        <td>{{rand(3,11)}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Year {{rand(1,11)}}</td>
+                                        <td>{{rand(3,11)}}</td>
+                                        <td>{{rand(3,11)}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Year {{rand(1,11)}}</td>
+                                        <td>{{rand(3,11)}}</td>
+                                        <td>{{rand(3,11)}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>

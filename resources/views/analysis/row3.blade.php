@@ -24,7 +24,7 @@
                         <div class="chart-area dash-overflow">
                             <div class="information table-responsive">
                                 <table class="table table-hover">
-                                    <thead class="">
+                                    <thead class="bg-dark text-white">
                                         <th>Group</th>
                                         {{-- <th>Size</th> --}}
                                         <th>Count<br>At Risk</th>
@@ -36,7 +36,7 @@
                                             <td>{{$group->cohort}} </td>
                                             {{-- <td>{{$group->Size}} </td> --}}
                                             <td>{{$group->PA_Count}} </td>
-                                            <td>{{round($group->pAt_Risk,1)}} % </td>
+                                            <td>{{round($group->pAt_Risk,1) . '%' ?? '' }} </td>
                                         </tr>
                                         @endforeach
                                     </tbody>

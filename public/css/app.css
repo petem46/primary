@@ -24,6 +24,11 @@
   --darkorange: darkorange;
   --light: lightslategrey;
   --linen: linen;
+  --Pass: #009D92;
+  --GDS: steelblue;
+  --EXS: #009D92;
+  --WTS: darkorange;
+  --PKG: crimson;
   --primary: #00615A;
   --secondary: #6c757d;
   --success: #009D92;
@@ -44,6 +49,11 @@
   --cyan: #6cb2eb;
   --darkorange: darkorange;
   --linen: linen;
+  --Pass: #009D92;
+  --GDS: steelblue;
+  --EXS: #009D92;
+  --WTS: darkorange;
+  --PKG: crimson;
   --breakpoint-xs: 0;
   --breakpoint-sm: 576px;
   --breakpoint-md: 768px;
@@ -2488,6 +2498,116 @@ pre code {
   background-color: #fbeee2;
 }
 
+.table-Pass,
+.table-Pass > th,
+.table-Pass > td {
+  background-color: #b8e4e0;
+}
+
+.table-Pass th,
+.table-Pass td,
+.table-Pass thead th,
+.table-Pass tbody + tbody {
+  border-color: #7accc6;
+}
+
+.table-hover .table-Pass:hover {
+  background-color: #a6ddd8;
+}
+
+.table-hover .table-Pass:hover > td,
+.table-hover .table-Pass:hover > th {
+  background-color: #a6ddd8;
+}
+
+.table-GDS,
+.table-GDS > th,
+.table-GDS > td {
+  background-color: #cbdcea;
+}
+
+.table-GDS th,
+.table-GDS td,
+.table-GDS thead th,
+.table-GDS tbody + tbody {
+  border-color: #9fbed8;
+}
+
+.table-hover .table-GDS:hover {
+  background-color: #b9d0e3;
+}
+
+.table-hover .table-GDS:hover > td,
+.table-hover .table-GDS:hover > th {
+  background-color: #b9d0e3;
+}
+
+.table-EXS,
+.table-EXS > th,
+.table-EXS > td {
+  background-color: #b8e4e0;
+}
+
+.table-EXS th,
+.table-EXS td,
+.table-EXS thead th,
+.table-EXS tbody + tbody {
+  border-color: #7accc6;
+}
+
+.table-hover .table-EXS:hover {
+  background-color: #a6ddd8;
+}
+
+.table-hover .table-EXS:hover > td,
+.table-hover .table-EXS:hover > th {
+  background-color: #a6ddd8;
+}
+
+.table-WTS,
+.table-WTS > th,
+.table-WTS > td {
+  background-color: #ffdfb8;
+}
+
+.table-WTS th,
+.table-WTS td,
+.table-WTS thead th,
+.table-WTS tbody + tbody {
+  border-color: #ffc37a;
+}
+
+.table-hover .table-WTS:hover {
+  background-color: #ffd49f;
+}
+
+.table-hover .table-WTS:hover > td,
+.table-hover .table-WTS:hover > th {
+  background-color: #ffd49f;
+}
+
+.table-PKG,
+.table-PKG > th,
+.table-PKG > td {
+  background-color: #f5bdc8;
+}
+
+.table-PKG th,
+.table-PKG td,
+.table-PKG thead th,
+.table-PKG tbody + tbody {
+  border-color: #ed859a;
+}
+
+.table-hover .table-PKG:hover {
+  background-color: #f2a7b6;
+}
+
+.table-hover .table-PKG:hover > td,
+.table-hover .table-PKG:hover > th {
+  background-color: #f2a7b6;
+}
+
 .table-active,
 .table-active > th,
 .table-active > td {
@@ -3993,6 +4113,211 @@ fieldset:disabled a.btn {
   box-shadow: 0 0 0 0.2rem rgba(217, 210, 202, 0.5);
 }
 
+.btn-Pass {
+  color: white;
+  background-color: #009D92;
+  border-color: #009D92;
+}
+
+.btn-Pass:hover {
+  color: white;
+  background-color: #00776e;
+  border-color: #006a63;
+}
+
+.btn-Pass:focus,
+.btn-Pass.focus {
+  color: white;
+  background-color: #00776e;
+  border-color: #006a63;
+  box-shadow: 0 0 0 0.2rem rgba(38, 172, 162, 0.5);
+}
+
+.btn-Pass.disabled,
+.btn-Pass:disabled {
+  color: white;
+  background-color: #009D92;
+  border-color: #009D92;
+}
+
+.btn-Pass:not(:disabled):not(.disabled):active,
+.btn-Pass:not(:disabled):not(.disabled).active,
+.show > .btn-Pass.dropdown-toggle {
+  color: white;
+  background-color: #006a63;
+  border-color: #005d57;
+}
+
+.btn-Pass:not(:disabled):not(.disabled):active:focus,
+.btn-Pass:not(:disabled):not(.disabled).active:focus,
+.show > .btn-Pass.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(38, 172, 162, 0.5);
+}
+
+.btn-GDS {
+  color: white;
+  background-color: steelblue;
+  border-color: steelblue;
+}
+
+.btn-GDS:hover {
+  color: white;
+  background-color: #3b6e98;
+  border-color: #38678f;
+}
+
+.btn-GDS:focus,
+.btn-GDS.focus {
+  color: white;
+  background-color: #3b6e98;
+  border-color: #38678f;
+  box-shadow: 0 0 0 0.2rem rgba(98, 149, 191, 0.5);
+}
+
+.btn-GDS.disabled,
+.btn-GDS:disabled {
+  color: white;
+  background-color: steelblue;
+  border-color: steelblue;
+}
+
+.btn-GDS:not(:disabled):not(.disabled):active,
+.btn-GDS:not(:disabled):not(.disabled).active,
+.show > .btn-GDS.dropdown-toggle {
+  color: white;
+  background-color: #38678f;
+  border-color: #346186;
+}
+
+.btn-GDS:not(:disabled):not(.disabled):active:focus,
+.btn-GDS:not(:disabled):not(.disabled).active:focus,
+.show > .btn-GDS.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(98, 149, 191, 0.5);
+}
+
+.btn-EXS {
+  color: white;
+  background-color: #009D92;
+  border-color: #009D92;
+}
+
+.btn-EXS:hover {
+  color: white;
+  background-color: #00776e;
+  border-color: #006a63;
+}
+
+.btn-EXS:focus,
+.btn-EXS.focus {
+  color: white;
+  background-color: #00776e;
+  border-color: #006a63;
+  box-shadow: 0 0 0 0.2rem rgba(38, 172, 162, 0.5);
+}
+
+.btn-EXS.disabled,
+.btn-EXS:disabled {
+  color: white;
+  background-color: #009D92;
+  border-color: #009D92;
+}
+
+.btn-EXS:not(:disabled):not(.disabled):active,
+.btn-EXS:not(:disabled):not(.disabled).active,
+.show > .btn-EXS.dropdown-toggle {
+  color: white;
+  background-color: #006a63;
+  border-color: #005d57;
+}
+
+.btn-EXS:not(:disabled):not(.disabled):active:focus,
+.btn-EXS:not(:disabled):not(.disabled).active:focus,
+.show > .btn-EXS.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(38, 172, 162, 0.5);
+}
+
+.btn-WTS {
+  color: #212529;
+  background-color: darkorange;
+  border-color: darkorange;
+}
+
+.btn-WTS:hover {
+  color: white;
+  background-color: #d97700;
+  border-color: #cc7000;
+}
+
+.btn-WTS:focus,
+.btn-WTS.focus {
+  color: white;
+  background-color: #d97700;
+  border-color: #cc7000;
+  box-shadow: 0 0 0 0.2rem rgba(222, 125, 6, 0.5);
+}
+
+.btn-WTS.disabled,
+.btn-WTS:disabled {
+  color: #212529;
+  background-color: darkorange;
+  border-color: darkorange;
+}
+
+.btn-WTS:not(:disabled):not(.disabled):active,
+.btn-WTS:not(:disabled):not(.disabled).active,
+.show > .btn-WTS.dropdown-toggle {
+  color: white;
+  background-color: #cc7000;
+  border-color: #bf6900;
+}
+
+.btn-WTS:not(:disabled):not(.disabled):active:focus,
+.btn-WTS:not(:disabled):not(.disabled).active:focus,
+.show > .btn-WTS.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(222, 125, 6, 0.5);
+}
+
+.btn-PKG {
+  color: white;
+  background-color: crimson;
+  border-color: crimson;
+}
+
+.btn-PKG:hover {
+  color: white;
+  background-color: #b91132;
+  border-color: #ad102f;
+}
+
+.btn-PKG:focus,
+.btn-PKG.focus {
+  color: white;
+  background-color: #b91132;
+  border-color: #ad102f;
+  box-shadow: 0 0 0 0.2rem rgba(225, 55, 89, 0.5);
+}
+
+.btn-PKG.disabled,
+.btn-PKG:disabled {
+  color: white;
+  background-color: crimson;
+  border-color: crimson;
+}
+
+.btn-PKG:not(:disabled):not(.disabled):active,
+.btn-PKG:not(:disabled):not(.disabled).active,
+.show > .btn-PKG.dropdown-toggle {
+  color: white;
+  background-color: #ad102f;
+  border-color: #a20f2c;
+}
+
+.btn-PKG:not(:disabled):not(.disabled):active:focus,
+.btn-PKG:not(:disabled):not(.disabled).active:focus,
+.show > .btn-PKG.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(225, 55, 89, 0.5);
+}
+
 .btn-outline-primary {
   color: #00615A;
   border-color: #00615A;
@@ -4711,6 +5036,186 @@ fieldset:disabled a.btn {
 .btn-outline-linen:not(:disabled):not(.disabled).active:focus,
 .show > .btn-outline-linen.dropdown-toggle:focus {
   box-shadow: 0 0 0 0.2rem rgba(250, 240, 230, 0.5);
+}
+
+.btn-outline-Pass {
+  color: #009D92;
+  border-color: #009D92;
+}
+
+.btn-outline-Pass:hover {
+  color: white;
+  background-color: #009D92;
+  border-color: #009D92;
+}
+
+.btn-outline-Pass:focus,
+.btn-outline-Pass.focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 157, 146, 0.5);
+}
+
+.btn-outline-Pass.disabled,
+.btn-outline-Pass:disabled {
+  color: #009D92;
+  background-color: transparent;
+}
+
+.btn-outline-Pass:not(:disabled):not(.disabled):active,
+.btn-outline-Pass:not(:disabled):not(.disabled).active,
+.show > .btn-outline-Pass.dropdown-toggle {
+  color: white;
+  background-color: #009D92;
+  border-color: #009D92;
+}
+
+.btn-outline-Pass:not(:disabled):not(.disabled):active:focus,
+.btn-outline-Pass:not(:disabled):not(.disabled).active:focus,
+.show > .btn-outline-Pass.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 157, 146, 0.5);
+}
+
+.btn-outline-GDS {
+  color: steelblue;
+  border-color: steelblue;
+}
+
+.btn-outline-GDS:hover {
+  color: white;
+  background-color: steelblue;
+  border-color: steelblue;
+}
+
+.btn-outline-GDS:focus,
+.btn-outline-GDS.focus {
+  box-shadow: 0 0 0 0.2rem rgba(70, 130, 180, 0.5);
+}
+
+.btn-outline-GDS.disabled,
+.btn-outline-GDS:disabled {
+  color: steelblue;
+  background-color: transparent;
+}
+
+.btn-outline-GDS:not(:disabled):not(.disabled):active,
+.btn-outline-GDS:not(:disabled):not(.disabled).active,
+.show > .btn-outline-GDS.dropdown-toggle {
+  color: white;
+  background-color: steelblue;
+  border-color: steelblue;
+}
+
+.btn-outline-GDS:not(:disabled):not(.disabled):active:focus,
+.btn-outline-GDS:not(:disabled):not(.disabled).active:focus,
+.show > .btn-outline-GDS.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(70, 130, 180, 0.5);
+}
+
+.btn-outline-EXS {
+  color: #009D92;
+  border-color: #009D92;
+}
+
+.btn-outline-EXS:hover {
+  color: white;
+  background-color: #009D92;
+  border-color: #009D92;
+}
+
+.btn-outline-EXS:focus,
+.btn-outline-EXS.focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 157, 146, 0.5);
+}
+
+.btn-outline-EXS.disabled,
+.btn-outline-EXS:disabled {
+  color: #009D92;
+  background-color: transparent;
+}
+
+.btn-outline-EXS:not(:disabled):not(.disabled):active,
+.btn-outline-EXS:not(:disabled):not(.disabled).active,
+.show > .btn-outline-EXS.dropdown-toggle {
+  color: white;
+  background-color: #009D92;
+  border-color: #009D92;
+}
+
+.btn-outline-EXS:not(:disabled):not(.disabled):active:focus,
+.btn-outline-EXS:not(:disabled):not(.disabled).active:focus,
+.show > .btn-outline-EXS.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 157, 146, 0.5);
+}
+
+.btn-outline-WTS {
+  color: darkorange;
+  border-color: darkorange;
+}
+
+.btn-outline-WTS:hover {
+  color: #212529;
+  background-color: darkorange;
+  border-color: darkorange;
+}
+
+.btn-outline-WTS:focus,
+.btn-outline-WTS.focus {
+  box-shadow: 0 0 0 0.2rem rgba(255, 140, 0, 0.5);
+}
+
+.btn-outline-WTS.disabled,
+.btn-outline-WTS:disabled {
+  color: darkorange;
+  background-color: transparent;
+}
+
+.btn-outline-WTS:not(:disabled):not(.disabled):active,
+.btn-outline-WTS:not(:disabled):not(.disabled).active,
+.show > .btn-outline-WTS.dropdown-toggle {
+  color: #212529;
+  background-color: darkorange;
+  border-color: darkorange;
+}
+
+.btn-outline-WTS:not(:disabled):not(.disabled):active:focus,
+.btn-outline-WTS:not(:disabled):not(.disabled).active:focus,
+.show > .btn-outline-WTS.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(255, 140, 0, 0.5);
+}
+
+.btn-outline-PKG {
+  color: crimson;
+  border-color: crimson;
+}
+
+.btn-outline-PKG:hover {
+  color: white;
+  background-color: crimson;
+  border-color: crimson;
+}
+
+.btn-outline-PKG:focus,
+.btn-outline-PKG.focus {
+  box-shadow: 0 0 0 0.2rem rgba(220, 20, 60, 0.5);
+}
+
+.btn-outline-PKG.disabled,
+.btn-outline-PKG:disabled {
+  color: crimson;
+  background-color: transparent;
+}
+
+.btn-outline-PKG:not(:disabled):not(.disabled):active,
+.btn-outline-PKG:not(:disabled):not(.disabled).active,
+.show > .btn-outline-PKG.dropdown-toggle {
+  color: white;
+  background-color: crimson;
+  border-color: crimson;
+}
+
+.btn-outline-PKG:not(:disabled):not(.disabled):active:focus,
+.btn-outline-PKG:not(:disabled):not(.disabled).active:focus,
+.show > .btn-outline-PKG.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(220, 20, 60, 0.5);
 }
 
 .btn-link {
@@ -7181,6 +7686,91 @@ a.badge-linen.focus {
   box-shadow: 0 0 0 0.2rem rgba(250, 240, 230, 0.5);
 }
 
+.badge-Pass {
+  color: white;
+  background-color: #009D92;
+}
+
+a.badge-Pass:hover,
+a.badge-Pass:focus {
+  color: white;
+  background-color: #006a63;
+}
+
+a.badge-Pass:focus,
+a.badge-Pass.focus {
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 157, 146, 0.5);
+}
+
+.badge-GDS {
+  color: white;
+  background-color: steelblue;
+}
+
+a.badge-GDS:hover,
+a.badge-GDS:focus {
+  color: white;
+  background-color: #38678f;
+}
+
+a.badge-GDS:focus,
+a.badge-GDS.focus {
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(70, 130, 180, 0.5);
+}
+
+.badge-EXS {
+  color: white;
+  background-color: #009D92;
+}
+
+a.badge-EXS:hover,
+a.badge-EXS:focus {
+  color: white;
+  background-color: #006a63;
+}
+
+a.badge-EXS:focus,
+a.badge-EXS.focus {
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 157, 146, 0.5);
+}
+
+.badge-WTS {
+  color: #212529;
+  background-color: darkorange;
+}
+
+a.badge-WTS:hover,
+a.badge-WTS:focus {
+  color: #212529;
+  background-color: #cc7000;
+}
+
+a.badge-WTS:focus,
+a.badge-WTS.focus {
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(255, 140, 0, 0.5);
+}
+
+.badge-PKG {
+  color: white;
+  background-color: crimson;
+}
+
+a.badge-PKG:hover,
+a.badge-PKG:focus {
+  color: white;
+  background-color: #ad102f;
+}
+
+a.badge-PKG:focus,
+a.badge-PKG.focus {
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(220, 20, 60, 0.5);
+}
+
 .jumbotron {
   padding: 2rem 1rem;
   margin-bottom: 2rem;
@@ -7506,6 +8096,76 @@ a.badge-linen.focus {
 
 .alert-linen .alert-link {
   color: #676460;
+}
+
+.alert-Pass {
+  color: #00524c;
+  background-color: #ccebe9;
+  border-color: #b8e4e0;
+}
+
+.alert-Pass hr {
+  border-top-color: #a6ddd8;
+}
+
+.alert-Pass .alert-link {
+  color: #001f1d;
+}
+
+.alert-GDS {
+  color: #24445e;
+  background-color: #dae6f0;
+  border-color: #cbdcea;
+}
+
+.alert-GDS hr {
+  border-top-color: #b9d0e3;
+}
+
+.alert-GDS .alert-link {
+  color: #162939;
+}
+
+.alert-EXS {
+  color: #00524c;
+  background-color: #ccebe9;
+  border-color: #b8e4e0;
+}
+
+.alert-EXS hr {
+  border-top-color: #a6ddd8;
+}
+
+.alert-EXS .alert-link {
+  color: #001f1d;
+}
+
+.alert-WTS {
+  color: #854900;
+  background-color: #ffe8cc;
+  border-color: #ffdfb8;
+}
+
+.alert-WTS hr {
+  border-top-color: #ffd49f;
+}
+
+.alert-WTS .alert-link {
+  color: #522d00;
+}
+
+.alert-PKG {
+  color: #720a1f;
+  background-color: #f8d0d8;
+  border-color: #f5bdc8;
+}
+
+.alert-PKG hr {
+  border-top-color: #f2a7b6;
+}
+
+.alert-PKG .alert-link {
+  color: #430612;
 }
 
 @-webkit-keyframes progress-bar-stripes {
@@ -8171,6 +8831,91 @@ a.badge-linen.focus {
   color: white;
   background-color: #827d78;
   border-color: #827d78;
+}
+
+.list-group-item-Pass {
+  color: #00524c;
+  background-color: #b8e4e0;
+}
+
+.list-group-item-Pass.list-group-item-action:hover,
+.list-group-item-Pass.list-group-item-action:focus {
+  color: #00524c;
+  background-color: #a6ddd8;
+}
+
+.list-group-item-Pass.list-group-item-action.active {
+  color: white;
+  background-color: #00524c;
+  border-color: #00524c;
+}
+
+.list-group-item-GDS {
+  color: #24445e;
+  background-color: #cbdcea;
+}
+
+.list-group-item-GDS.list-group-item-action:hover,
+.list-group-item-GDS.list-group-item-action:focus {
+  color: #24445e;
+  background-color: #b9d0e3;
+}
+
+.list-group-item-GDS.list-group-item-action.active {
+  color: white;
+  background-color: #24445e;
+  border-color: #24445e;
+}
+
+.list-group-item-EXS {
+  color: #00524c;
+  background-color: #b8e4e0;
+}
+
+.list-group-item-EXS.list-group-item-action:hover,
+.list-group-item-EXS.list-group-item-action:focus {
+  color: #00524c;
+  background-color: #a6ddd8;
+}
+
+.list-group-item-EXS.list-group-item-action.active {
+  color: white;
+  background-color: #00524c;
+  border-color: #00524c;
+}
+
+.list-group-item-WTS {
+  color: #854900;
+  background-color: #ffdfb8;
+}
+
+.list-group-item-WTS.list-group-item-action:hover,
+.list-group-item-WTS.list-group-item-action:focus {
+  color: #854900;
+  background-color: #ffd49f;
+}
+
+.list-group-item-WTS.list-group-item-action.active {
+  color: white;
+  background-color: #854900;
+  border-color: #854900;
+}
+
+.list-group-item-PKG {
+  color: #720a1f;
+  background-color: #f5bdc8;
+}
+
+.list-group-item-PKG.list-group-item-action:hover,
+.list-group-item-PKG.list-group-item-action:focus {
+  color: #720a1f;
+  background-color: #f2a7b6;
+}
+
+.list-group-item-PKG.list-group-item-action.active {
+  color: white;
+  background-color: #720a1f;
+  border-color: #720a1f;
 }
 
 .close {
@@ -9315,6 +10060,61 @@ button.bg-linen:focus {
   background-color: #f2d7bc !important;
 }
 
+.bg-Pass {
+  background-color: #009D92 !important;
+}
+
+a.bg-Pass:hover,
+a.bg-Pass:focus,
+button.bg-Pass:hover,
+button.bg-Pass:focus {
+  background-color: #006a63 !important;
+}
+
+.bg-GDS {
+  background-color: steelblue !important;
+}
+
+a.bg-GDS:hover,
+a.bg-GDS:focus,
+button.bg-GDS:hover,
+button.bg-GDS:focus {
+  background-color: #38678f !important;
+}
+
+.bg-EXS {
+  background-color: #009D92 !important;
+}
+
+a.bg-EXS:hover,
+a.bg-EXS:focus,
+button.bg-EXS:hover,
+button.bg-EXS:focus {
+  background-color: #006a63 !important;
+}
+
+.bg-WTS {
+  background-color: darkorange !important;
+}
+
+a.bg-WTS:hover,
+a.bg-WTS:focus,
+button.bg-WTS:hover,
+button.bg-WTS:focus {
+  background-color: #cc7000 !important;
+}
+
+.bg-PKG {
+  background-color: crimson !important;
+}
+
+a.bg-PKG:hover,
+a.bg-PKG:focus,
+button.bg-PKG:hover,
+button.bg-PKG:focus {
+  background-color: #ad102f !important;
+}
+
 .bg-white {
   background-color: white !important;
 }
@@ -9441,6 +10241,26 @@ button.bg-linen:focus {
 
 .border-linen {
   border-color: linen !important;
+}
+
+.border-Pass {
+  border-color: #009D92 !important;
+}
+
+.border-GDS {
+  border-color: steelblue !important;
+}
+
+.border-EXS {
+  border-color: #009D92 !important;
+}
+
+.border-WTS {
+  border-color: darkorange !important;
+}
+
+.border-PKG {
+  border-color: crimson !important;
 }
 
 .border-white {
@@ -13278,6 +14098,51 @@ a.text-darkorange:focus {
 a.text-linen:hover,
 a.text-linen:focus {
   color: #edcaa6 !important;
+}
+
+.text-Pass {
+  color: #009D92 !important;
+}
+
+a.text-Pass:hover,
+a.text-Pass:focus {
+  color: #00514b !important;
+}
+
+.text-GDS {
+  color: steelblue !important;
+}
+
+a.text-GDS:hover,
+a.text-GDS:focus {
+  color: #315a7d !important;
+}
+
+.text-EXS {
+  color: #009D92 !important;
+}
+
+a.text-EXS:hover,
+a.text-EXS:focus {
+  color: #00514b !important;
+}
+
+.text-WTS {
+  color: darkorange !important;
+}
+
+a.text-WTS:hover,
+a.text-WTS:focus {
+  color: #b36200 !important;
+}
+
+.text-PKG {
+  color: crimson !important;
+}
+
+a.text-PKG:hover,
+a.text-PKG:focus {
+  color: #960e29 !important;
 }
 
 .text-body {
@@ -19353,6 +20218,20 @@ readers do not read off random characters that represent icons */
   font-family: "Font Awesome 5 Brands";
 }
 
+#groups .badge,
+#attainment .badge {
+  font-size: 0.875rem !important;
+  font-weight: normal !important;
+  width: 100% !important;
+}
+
+#attainment .badge,
+#attainment .badge {
+  font-size: 0.875rem !important;
+  font-weight: normal !important;
+  width: 100% !important;
+}
+
 .chart-area {
   position: relative;
   height: 10rem;
@@ -19403,18 +20282,6 @@ readers do not read off random characters that represent icons */
   font-size: 0.875rem;
   line-height: 0.5;
   border-radius: 0.2rem;
-}
-
-#groups .btn:hover,
-#attainment .btn:hover {
-  cursor: default !important;
-}
-
-#groups .badge,
-#attainment .badge {
-  font-size: 0.875rem !important;
-  font-weight: normal !important;
-  width: 100% !important;
 }
 
 .links a {

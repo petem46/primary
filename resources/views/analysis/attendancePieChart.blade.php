@@ -1,7 +1,7 @@
 <script>
 
-    var ctx = document.getElementById('groupAttChart').getContext('2d');
-    var myChart = new Chart(ctx, {
+    var ctxPie = document.getElementById('groupAttChart').getContext('2d');
+    var myChart = new Chart(ctxPie, {
         type: 'doughnut',
         data: {
             labels: ['Present', 'Absence', 'Unauthorised Abs'],
@@ -13,9 +13,9 @@
                 3,
                 ],
                 backgroundColor: [
-                '#00615A',
-                'darkorange',
-                'red',
+                'teal',
+                'rgba(255, 140, 0, 0.8)',
+                'crimson',
                 ],
                 borderColor: [
                 'white',
@@ -36,8 +36,8 @@
             },
             plugins: {
                 datalabels: {
-                    formatter: (value, ctx) => {
-                        let sum = ctx.dataset._meta[0].total;
+                    formatter: (value, ctxPie) => {
+                        let sum = ctxPie.dataset._meta[0].total;
                         let percentage = (value * 100 / sum).toFixed(1) + "%";
                         if (value/sum < 0.1) {
                             let percentage = '';

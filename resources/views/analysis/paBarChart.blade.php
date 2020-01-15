@@ -23,7 +23,7 @@
                 ],
                 borderColor: [
                     @foreach ($pagroups as $group)
-                        'black',
+                        'grey',
                     @endforeach
                 ],
                 borderWidth: 0.5,

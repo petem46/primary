@@ -14,13 +14,13 @@
                                 <span class="float-left text-teal"><i class="fas fa-users fa-fw fa-3x"></i></span>
                             </div>
                             <div class="col-sm-7 my-auto text-right">
-                                <small class="text-muted">Number of Pupils</small>
+                                <small class="text-muted">pupils</small>
                                 <br>
                                 <h2 class="">{{$studentCounts19[0]->Count}}</h2>
                             </div>
                             <div class="col-12">
                                 <hr class="m-1">
-                                <small class="text-teal float-right">On Roll at {{$school}} Academy</small>
+                                <small class="text-teal float-right">Number On Roll</small>
                             </div>
                         </div>
                     </div>
@@ -40,7 +40,7 @@
                             </div>
                             <div class="col-12">
                                 <hr class="m-1">
-                                <small class="text-blue float-right">Pupil Premium Students</small>
+                                <small class="text-blue float-right">Pupil Premium Status</small>
                             </div>
                         </div>
                     </div>
@@ -102,7 +102,4 @@
 
     </div>
 
-
-    <script>new Chart(document.getElementById("chartjs-0"),{"type":"line","data":{"labels":["January","February","March","April","May","June","July"],"datasets":[{"label":"My First Dataset","data":[65,59,80,81,56,55,40],"fill":false,"borderColor":"rgb(75, 192, 192)","lineTension":0.1}]},"options":{maintainAspectRatio: false,}});</script>
-
-    @endsection
+@endsection

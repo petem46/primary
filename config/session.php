@@ -153,7 +153,7 @@ return [
     |
     */
 
-    'domain' => 'primary.mydatadash.co.uk',
+    'domain' => 'fcat.mydatadash.co.uk',
 
     /*
     |--------------------------------------------------------------------------

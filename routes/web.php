@@ -16,15 +16,18 @@ Auth::routes();
 Route::get('/redirect', 'SocialAuthGoogleController@redirect');
 Route::get('/callback', 'SocialAuthGoogleController@callback');
 
+Route::get('/analysis/{school}', 'AnalysisController@show');
 
 Route::group(['middleware' => ['auth']], function () {
-    Route::get('/analysis/{school}', 'AnalysisController@show');
-    Route::get('/home', 'HomeController@index')->name('home');
+    // Route::get('/home', 'HomeController@index')->name('home');
 
     Route::get('/', function () {
-        return view('welcome');
-    });
+        return redirect('/dev/' . App\User::first()->getSchool());
+    })->name('dashboard');
 
+    Route::get('/home', function () {
+        return redirect('/dev/' . App\User::first()->getSchool());
+    })->name('dashboard');
 
     Route::get('/dev/{school}', 'AnalysisController@dev');
 

@@ -22,7 +22,7 @@
                     <!-- Card Body -->
                     <div class="card-body">
                         <div class="chart-area dash-overflow">
-                            <canvas id="chartjs-0"></canvas>
+                            <canvas id="schoolWeeklyAttendanceChart"></canvas>
                         </div>
                     </div>
                 </div>
@@ -69,3 +69,4 @@
         </div>
         {{-- END ROW ONE --}}
         @include('analysis.attendancePieChart')
+        @include('analysis.schoolWeeklyAttendanceChart')
