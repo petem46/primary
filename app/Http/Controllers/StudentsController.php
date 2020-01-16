@@ -21,7 +21,7 @@ class StudentsController extends Controller
     public function index()
     {
         $school = User::first()->getSchool();
-        if($school === 'fcat') {$school = '%';}
+        if($school === 'FCAT' || $school === 'fcat') {$school = '%';}
         $data = [
             // 'students' => Student::where('school', 'armfield')->get(),
             'schoolname' => $school,
@@ -71,8 +71,8 @@ class StudentsController extends Controller
         /** CHECK USER SCHOOL MATCHES STUDENT SCHOOL OR FCAT
         *   IF FAIL RETURN TO STUDENT INDEX
         */
-        // if($school === 'fcat') {$school = 'Aspire';}
-        if($school === $upn->school || $school === 'fcat') {
+        // if($school === 'FCAT' || $school === 'fcat') {$school = 'Aspire';}
+        if($school === $upn->school || $school === 'FCAT' || $school === 'fcat') {
             $aupn = $upn->upn;
             $data = [
                 'student' => Student::where('upn', $upn->upn)->first(),
@@ -81,7 +81,8 @@ class StudentsController extends Controller
                 'weekdayattendance' => DB::select(" exec sp_att_studentWeekDay19 @enddate = '$enddate', @upn = '$aupn' "),
                 'weeklyrunningattendance' => DB::select(" exec sp_att_studentRunningWeek @enddate = '$enddate', @upn = '$aupn' "),
                 'ppa' => collect(DB::select(" exec sp_pupilPriorAttainment @upn = '$aupn' "))->first(),
-                'dcdata' => DB::select(" exec sp_pupilPrimaryDCData @upn = '$aupn' "),
+                'primarydcdata' => DB::select(" exec sp_pupilPrimaryDCData @upn = '$aupn' "),
+                'secondarydcdata' => DB::select(" exec sp_pupilSecondaryDCData @upn = '$aupn' "),
             ];
             // dd($data);
             return view('students.view', $data);

@@ -41,12 +41,19 @@ class User extends Authenticatable
         $domain = explode("@", Auth::user()->email);
         $school = explode(".", $domain[1]);
         // dd($school);
+        $checker = $school;
         $school = $school[0];
-        if($school === 'fcat') {
-            strtoupper($school);
+        if($school === 'FCAT' || $school === 'fcat') {
+            $school = strtoupper($school);
         } else {
-            ucfirst($school);
+            $school = ucfirst($school);
         }
+        // $data = [
+        //     'email' => $domain,
+        //     'domain' => $checker,
+        //     'school' => $school,
+        // ];
+        // dd($data);
 
         return $school;
     }

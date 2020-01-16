@@ -42,10 +42,12 @@ $colors: map-merge(
     "light":      $light,
     "linen":      $linen,
     "Pass":       $success,
+    "Below":      crimson,
     "GDS":        steelblue,
     "EXS":        $success,
     "WTS":        $darkorange,
     "PKG":        crimson,
+    "PKF":        crimson,
   ),
   $colors
 );
@@ -73,11 +75,12 @@ $theme-colors: map-merge(
     "darkorange": $darkorange,
     "linen":      $linen,
     "Pass":       $success,
+    "Below":      crimson,
     "GDS":        steelblue,
     "EXS":        $success,
     "WTS":        $darkorange,
     "PKG":        crimson,
-
+    "PKF":        crimson,
   ),
   $theme-colors
 );

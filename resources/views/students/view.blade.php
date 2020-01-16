@@ -23,13 +23,14 @@ if ($student->year === '1') {
 @endphp
 
 <div class="container">
-<section id="pupildetails" class="mb-3">
+<section id="pupildetails" class="mb-0">
     <div class="photo">
 
     </div>
     <div class="name">
         <h4 class="text-muted font-weight-light">{{ucwords(strtolower($student->school))}}&nbsp;&nbsp;&nbsp;&nbsp;<small>Year {{$student->year}} </small> </h4>
         <h1 class="display-3">{{$student->pforename}} {{$student->psurname}}</h1>
+        <p class="small text-muted m-0 font-weight-light">{{$student->upn}} </p>
     </div>
 </section>
 <hr>
@@ -247,26 +248,38 @@ if ($student->year === '1') {
         </div>
         @endif
     </div>
-    <section id="ks2badges" class="d-none">
-    <h6>Key Stage 2</h6>
+
+    {{-- DISPLAY KEY STAGE 2 PRIOR ATTAINMENT IF YEAR 7 OR ABOVE --}}
+    @if($student->year >= 7 )
+    {{-- START OF KEY STAGE 2 PRIOR ATTAINMENT SECTION --}}
+    <section id="ks2badges" class="">
+    {{-- <h6>Key Stage 2</h6> --}}
     <div class="row text-center mb-3">
+        @if(isset($ppa->KS2Reading))
         <div class="col-6 col-lg-2 mb-2">
-            <div class="badge badge-{{$ppa->KS2Reading ?? ' border-light'}} p-2">
+            <div class="badge badge-{{$ppa->KS2Reading ?? ' border-light'}}  @if($ppa->KS2Reading >= 110) badge-GDS @elseif ($ppa->KS2Reading >= 100) badge-EXS @elseif ($ppa->KS2Reading >= 95) badge-WTS @elseif ($ppa->KS2Reading > 75) badge-danger @endif p-2">
                 KS2 Reading {{$ppa->KS2Reading  ?? '' }}
             </div>
         </div>
+        @endif
+        @if(isset($ppa->KS2Maths))
         <div class="col-6 col-lg-2 mb-2">
-            <div class="badge badge-{{$ppa->KS2Maths  ?? ' border-light'}} p-2">
+            <div class="badge badge-{{$ppa->KS2Maths  ?? ' border-light'}} @if($ppa->KS2Maths >= 110) badge-GDS @elseif ($ppa->KS2Maths >= 100) badge-EXS @elseif ($ppa->KS2Maths >= 95) badge-WTS @elseif ($ppa->KS2Maths > 75) badge-danger @endif p-2">
                 KS2 Maths {{$ppa->KS2Maths  ?? '' }}
             </div>
         </div>
+        @endif
+        @if(isset($ppa->KS2Writing))
         <div class="col-6 col-lg-2 mb-2">
-            <div class="badge badge-{{$ppa->KS2Writing  ?? ' border-light'}} p-2">
+            <div class="badge badge-{{$ppa->KS2Writing  ?? ' border-light'}}  @if($ppa->KS2Writing >= 110) badge-GDS @elseif ($ppa->KS2Writing >= 100) badge-EXS @elseif ($ppa->KS2Writing >= 95) badge-WTS @elseif ($ppa->KS2Writing > 75) badge-danger @endif p-2">
                 KS2 Writing {{$ppa->KS2Writing  ?? '' }}
             </div>
         </div>
+        @endif
     </div>
     </section>
+    {{-- END OF KEY STAGE 2 PRIOR ATTAINMENT SECTION --}}
+    @endif
     <section id="ks1-dcdata-table" class="d-none">
     <h4 class="font-weight-light text-primary"><i class="fas fa-chart-line fa-fw"></i></i>&nbsp;&nbsp;Tracking Data</h4>
     <table class="table text-center table-bordered table-striped table-hover table-sm small">
@@ -282,7 +295,7 @@ if ($student->year === '1') {
             <th>Y2 DC4</th>
         </thead>
         <tbody>
-            @foreach ($dcdata as $subject)
+            @foreach ($primarydcdata as $subject)
             <tr>
                 <td class="text-left">{{$subject->subject}}</td>
                 <td class="text-{{$subject->Y1DC1}}">{{$subject->Y1DC1}}</td>
@@ -298,6 +311,9 @@ if ($student->year === '1') {
         </tbody>
     </table>
     </section>
+    {{-- DISPLAY KEY STAGE 2 TRACKING DATA IF CURRENTLY IN YEAR 3 - 6 --}}
+    @if($student->year >= 3 && $student->year <= 6)
+    {{-- START OF KEY STAGE 2 TRACKING DATA --}}
     <section id="ks2-dcdata-table">
         <h4 class="font-weight-light text-primary"><i class="fas fa-chart-line fa-fw"></i></i>&nbsp;&nbsp;Tracking Data</h4>
         <table class="table text-center table-bordered table-striped table-hover table-sm small">
@@ -320,32 +336,77 @@ if ($student->year === '1') {
             <th>Y6 DC3</th>
         </thead>
         <tbody>
-            @foreach ($dcdata as $subject)
+            @foreach ($primarydcdata as $subject)
             <tr>
                 <td class="text-left">{{$subject->subject}}</td>
-                <td class="bg-@if($subject->Y3DC1 >= 7)yellow @elseif ($subject->Y3DC1 >= 4)success text-white @elseif ($subject->Y3DC1 > 1)warning text-white @endif ">{{$subject->Y3DC1}}</td>
-                <td class="bg-@if($subject->Y3DC2 >= 7)yellow @elseif ($subject->Y3DC2 >= 4)success text-white @elseif ($subject->Y3DC2 > 1)warning text-white @endif ">{{$subject->Y3DC2}}</td>
-                <td class="bg-@if($subject->Y3DC3 >= 7)yellow @elseif ($subject->Y3DC3 >= 4)success text-white @elseif ($subject->Y3DC3 > 1)warning text-white @endif ">{{$subject->Y3DC3}}</td>
-                <td class="bg-@if($subject->Y3DC4 >= 7)yellow @elseif ($subject->Y3DC4 >= 4)success text-white @elseif ($subject->Y3DC4 > 1)warning text-white @endif ">{{$subject->Y3DC4}}</td>
-                <td class="bg-@if($subject->Y4DC1 >= 7)yellow @elseif ($subject->Y4DC1 >= 4)success text-white @elseif ($subject->Y4DC1 > 1)warning text-white @endif ">{{$subject->Y4DC1}}</td>
-                <td class="bg-@if($subject->Y4DC2 >= 7)yellow @elseif ($subject->Y4DC2 >= 4)success text-white @elseif ($subject->Y4DC2 > 1)warning text-white @endif ">{{$subject->Y4DC2}}</td>
-                <td class="bg-@if($subject->Y4DC3 >= 7)yellow @elseif ($subject->Y4DC3 >= 4)success text-white @elseif ($subject->Y4DC3 > 1)warning text-white @endif ">{{$subject->Y4DC3}}</td>
-                <td class="bg-@if($subject->Y4DC4 >= 7)yellow @elseif ($subject->Y4DC4 >= 4)success text-white @elseif ($subject->Y4DC4 > 1)warning text-white @endif ">{{$subject->Y4DC4}}</td>
-                <td class="bg-@if($subject->Y5DC1 >= 7)yellow @elseif ($subject->Y5DC1 >= 4)success text-white @elseif ($subject->Y5DC1 > 1)warning text-white @endif ">{{$subject->Y5DC1}}</td>
-                <td class="bg-@if($subject->Y5DC2 >= 7)yellow @elseif ($subject->Y5DC2 >= 4)success text-white @elseif ($subject->Y5DC2 > 1)warning text-white @endif ">{{$subject->Y5DC2}}</td>
-                <td class="bg-@if($subject->Y5DC3 >= 7)yellow @elseif ($subject->Y5DC3 >= 4)success text-white @elseif ($subject->Y5DC3 > 1)warning text-white @endif ">{{$subject->Y5DC3}}</td>
-                <td class="bg-@if($subject->Y5DC4 >= 7)yellow @elseif ($subject->Y5DC4 >= 4)success text-white @elseif ($subject->Y5DC4 > 1)warning text-white @endif ">{{$subject->Y5DC4}}</td>
-                <td class="bg-@if($subject->Y6DC1 >= 7)yellow @elseif ($subject->Y6DC1 >= 4)success text-white @elseif ($subject->Y6DC1 > 1)warning text-white @endif ">{{$subject->Y6DC1}}</td>
-                <td class="bg-@if($subject->Y6DC2 >= 7)yellow @elseif ($subject->Y6DC2 >= 4)success text-white @elseif ($subject->Y6DC2 > 1)warning text-white @endif ">{{$subject->Y6DC2}}</td>
-                <td class="bg-@if($subject->Y6DC3 >= 7)yellow @elseif ($subject->Y6DC3 >= 4)success text-white @elseif ($subject->Y6DC3 > 1)warning text-white @endif ">{{$subject->Y6DC3}}</td>
+                <td class="bg-@if($subject->Y3DC1 >= 7)yellow @elseif ($subject->Y3DC1 >= 4)success text-white @elseif ($subject->Y3DC1 > 1)warning text-white @elseif ($subject->Y3DC1 === "1")danger text-white @endif ">{{$subject->Y3DC1}}</td>
+                <td class="bg-@if($subject->Y3DC2 >= 7)yellow @elseif ($subject->Y3DC2 >= 4)success text-white @elseif ($subject->Y3DC2 > 1)warning text-white @elseif ($subject->Y3DC2 === "1")danger text-white @endif ">{{$subject->Y3DC2}}</td>
+                <td class="bg-@if($subject->Y3DC3 >= 7)yellow @elseif ($subject->Y3DC3 >= 4)success text-white @elseif ($subject->Y3DC3 > 1)warning text-white @elseif ($subject->Y3DC3 === "1")danger text-white @endif ">{{$subject->Y3DC3}}</td>
+                <td class="bg-@if($subject->Y3DC4 >= 7)yellow @elseif ($subject->Y3DC4 >= 4)success text-white @elseif ($subject->Y3DC4 > 1)warning text-white @elseif ($subject->Y3DC4 === "1")danger text-white @endif ">{{$subject->Y3DC4}}</td>
+                <td class="bg-@if($subject->Y4DC1 >= 7)yellow @elseif ($subject->Y4DC1 >= 4)success text-white @elseif ($subject->Y4DC1 > 1)warning text-white @elseif ($subject->Y4DC1 === "1")danger text-white @endif ">{{$subject->Y4DC1}}</td>
+                <td class="bg-@if($subject->Y4DC2 >= 7)yellow @elseif ($subject->Y4DC2 >= 4)success text-white @elseif ($subject->Y4DC2 > 1)warning text-white @elseif ($subject->Y4DC2 === "1")danger text-white @endif ">{{$subject->Y4DC2}}</td>
+                <td class="bg-@if($subject->Y4DC3 >= 7)yellow @elseif ($subject->Y4DC3 >= 4)success text-white @elseif ($subject->Y4DC3 > 1)warning text-white @elseif ($subject->Y4DC3 === "1")danger text-white @endif ">{{$subject->Y4DC3}}</td>
+                <td class="bg-@if($subject->Y4DC4 >= 7)yellow @elseif ($subject->Y4DC4 >= 4)success text-white @elseif ($subject->Y4DC4 > 1)warning text-white @elseif ($subject->Y4DC4 === "1")danger text-white @endif ">{{$subject->Y4DC4}}</td>
+                <td class="bg-@if($subject->Y5DC1 >= 7)yellow @elseif ($subject->Y5DC1 >= 4)success text-white @elseif ($subject->Y5DC1 > 1)warning text-white @elseif ($subject->Y5DC1 === "1")danger text-white @endif ">{{$subject->Y5DC1}}</td>
+                <td class="bg-@if($subject->Y5DC2 >= 7)yellow @elseif ($subject->Y5DC2 >= 4)success text-white @elseif ($subject->Y5DC2 > 1)warning text-white @elseif ($subject->Y5DC2 === "1")danger text-white @endif ">{{$subject->Y5DC2}}</td>
+                <td class="bg-@if($subject->Y5DC3 >= 7)yellow @elseif ($subject->Y5DC3 >= 4)success text-white @elseif ($subject->Y5DC3 > 1)warning text-white @elseif ($subject->Y5DC3 === "1")danger text-white @endif ">{{$subject->Y5DC3}}</td>
+                <td class="bg-@if($subject->Y5DC4 >= 7)yellow @elseif ($subject->Y5DC4 >= 4)success text-white @elseif ($subject->Y5DC4 > 1)warning text-white @elseif ($subject->Y5DC4 === "1")danger text-white @endif ">{{$subject->Y5DC4}}</td>
+                <td class="bg-@if($subject->Y6DC1 >= 7)yellow @elseif ($subject->Y6DC1 >= 4)success text-white @elseif ($subject->Y6DC1 > 1)warning text-white @elseif ($subject->Y6DC1 === "1")danger text-white @endif ">{{$subject->Y6DC1}}</td>
+                <td class="bg-@if($subject->Y6DC2 >= 7)yellow @elseif ($subject->Y6DC2 >= 4)success text-white @elseif ($subject->Y6DC2 > 1)warning text-white @elseif ($subject->Y6DC2 === "1")danger text-white @endif ">{{$subject->Y6DC2}}</td>
+                <td class="bg-@if($subject->Y6DC3 >= 7)yellow @elseif ($subject->Y6DC3 >= 4)success text-white @elseif ($subject->Y6DC3 > 1)warning text-white @elseif ($subject->Y6DC3 === "1")danger text-white @endif ">{{$subject->Y6DC3}}</td>
             </tr>
             @endforeach
         </tbody>
     </table>
     </section>
-</section>
-<hr>
-
+    {{-- END KEY STAGE 2 TRACKING DATA --}}
+    @endif
+    {{-- DISPLAY KEY STAGE 3 TRACKING DATA --}}
+    <section id="ks3-dcdata-table">
+        {{-- START OF KEY STAGE 3 TRACKING DATA --}}
+        @if($student->year >= 7)
+        <h4 class="font-weight-light text-primary"><i class="fas fa-chart-line fa-fw"></i></i>&nbsp;&nbsp;KS3 Tracking Data</h4>
+        <div class="table-responsive">
+            <table class="table text-center table-bordered table-striped table-hover table-sm small">
+                <thead class="bg-dark text-white">
+                    <th class="text-left">Subject</th>
+                    <th>Y7 DC1</th>
+                    <th>Y7 DC2</th>
+                    <th>Y7 DC3</th>
+                    <th>Y7 DC4</th>
+                    <th>Y8 DC1</th>
+                    <th>Y8 DC2</th>
+                    <th>Y8 DC3</th>
+                    <th>Y8 DC4</th>
+                    <th>Y9 DC1</th>
+                    <th>Y9 DC2</th>
+                    <th>Y9 DC3</th>
+                    <th>Y9 DC4</th>
+                </thead>
+                <tbody>
+                    @foreach ($secondarydcdata as $subject)
+                    <tr>
+                        <td class="text-left">{{$subject->subject}}</td>
+                        <td class="bg-@if($subject->Y7DC1 === "A")yellow @elseif ($subject->Y7DC1 === "O")success text-white @elseif ($subject->Y7DC1 === "B")warning text-white @elseif ($subject->Y7DC1 === "C")danger text-white @endif ">{{$subject->Y7DC1}}</td>
+                        <td class="bg-@if($subject->Y7DC2 === "A")yellow @elseif ($subject->Y7DC2 === "O")success text-white @elseif ($subject->Y7DC2 === "B")warning text-white @elseif ($subject->Y7DC2 === "C")danger text-white @endif ">{{$subject->Y7DC2}}</td>
+                        <td class="bg-@if($subject->Y7DC3 === "A")yellow @elseif ($subject->Y7DC3 === "O")success text-white @elseif ($subject->Y7DC3 === "B")warning text-white @elseif ($subject->Y7DC3 === "C")danger text-white @endif ">{{$subject->Y7DC3}}</td>
+                        <td class="bg-@if($subject->Y7DC4 === "A")yellow @elseif ($subject->Y7DC4 === "O")success text-white @elseif ($subject->Y7DC4 === "B")warning text-white @elseif ($subject->Y7DC4 === "C")danger text-white @endif ">{{$subject->Y7DC4}}</td>
+                        <td class="bg-@if($subject->Y8DC1 === "A")yellow @elseif ($subject->Y8DC1 === "O")success text-white @elseif ($subject->Y8DC1 === "B")warning text-white @elseif ($subject->Y8DC1 === "C")danger text-white @endif ">{{$subject->Y8DC1}}</td>
+                        <td class="bg-@if($subject->Y8DC2 === "A")yellow @elseif ($subject->Y8DC2 === "O")success text-white @elseif ($subject->Y8DC2 === "B")warning text-white @elseif ($subject->Y8DC2 === "C")danger text-white @endif ">{{$subject->Y8DC2}}</td>
+                        <td class="bg-@if($subject->Y8DC3 === "A")yellow @elseif ($subject->Y8DC3 === "O")success text-white @elseif ($subject->Y8DC3 === "B")warning text-white @elseif ($subject->Y8DC3 === "C")danger text-white @endif ">{{$subject->Y8DC3}}</td>
+                        <td class="bg-@if($subject->Y8DC4 === "A")yellow @elseif ($subject->Y8DC4 === "O")success text-white @elseif ($subject->Y8DC4 === "B")warning text-white @elseif ($subject->Y8DC4 === "C")danger text-white @endif ">{{$subject->Y8DC4}}</td>
+                        <td class="bg-@if($subject->Y9DC1 === "A")yellow @elseif ($subject->Y9DC1 === "O")success text-white @elseif ($subject->Y9DC1 === "B")warning text-white @elseif ($subject->Y9DC1 === "C")danger text-white @endif ">{{$subject->Y9DC1}}</td>
+                        <td class="bg-@if($subject->Y9DC2 === "A")yellow @elseif ($subject->Y9DC2 === "O")success text-white @elseif ($subject->Y9DC2 === "B")warning text-white @elseif ($subject->Y9DC2 === "C")danger text-white @endif ">{{$subject->Y9DC2}}</td>
+                        <td class="bg-@if($subject->Y9DC3 === "A")yellow @elseif ($subject->Y9DC3 === "O")success text-white @elseif ($subject->Y9DC3 === "B")warning text-white @elseif ($subject->Y9DC3 === "C")danger text-white @endif ">{{$subject->Y9DC3}}</td>
+                        <td class="bg-@if($subject->Y9DC4 === "A")yellow @elseif ($subject->Y9DC4 === "O")success text-white @elseif ($subject->Y9DC4 === "B")warning text-white @elseif ($subject->Y9DC4 === "C")danger text-white @endif ">{{$subject->Y9DC4}}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+        @endif
+    </section>
+    <hr>
 </div>
 
 <script>

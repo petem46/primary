@@ -19,7 +19,7 @@ class SocialGoogleAccountService
 
         $domain = explode("@", $providerUser->getEmail())[1];
         // dd($domain);
-        if( $domain === 'fcat.org.uk'){
+        // if( $domain === 'fcat.org.uk'){
             $account = new SocialGoogleAccount([
                 'provider_user_id' => $providerUser->getId(),
                 'provider' => 'google'
@@ -36,8 +36,8 @@ class SocialGoogleAccountService
             $account->user()->associate($user);
             $account->save();
             return $user;
-        } else {
-            redirect('/login');
-        }
+        // } else {
+            // redirect('/login');
+        // }
     }
 }

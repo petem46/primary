@@ -27,3 +27,12 @@
     height: calc(20rem) !important;
   }
 }
+
+.schooldashboard .table th,
+.schooldashboard .table td {
+    padding: 0.6rem;
+}
+
+.no-arrow .dropdown-toggle::after {
+    display: none;
+}

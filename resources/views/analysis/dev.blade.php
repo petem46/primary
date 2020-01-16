@@ -2,7 +2,7 @@
 @extends('layouts.app')
 @section('content')
 {{-- <a href="/"><img class="img-fluid mb-5 d-block mx-auto" style="height: 145px;" src="../FCAT-LOGO.jpg" alt=""></a> --}}
-<div class="container1 text-center wallpaper mx-5">
+<div class="container1 text-center wallpaper mx-5 schooldashboard">
     <div class="my-5">
         <h1 class="display-2 mb-3">{{ucfirst($schoolname)}} Dashboard</h1>
         <div class="row">

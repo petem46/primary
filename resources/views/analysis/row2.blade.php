@@ -5,8 +5,8 @@
                 <div class="card shadow mb-4">
                     <!-- Card Header - Dropdown -->
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0 font-weight-bold text-primary">Cohort Summary</h6>
-                        <div class="dropdown no-arrow">
+                        <h6 class="m-0 font-weight-bold text-black">Cohort Summary</h6>
+                        <div class="dropdown no-arrow d-none">
                             <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
                             </a>
@@ -50,8 +50,8 @@
                 <div class="card shadow mb-4">
                     <!-- Card Header - Dropdown -->
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0 font-weight-bold text-primary">Year Group Summary</h6>
-                        <div class="dropdown no-arrow">
+                        <h6 class="m-0 font-weight-bold text-black">Year Group Summary</h6>
+                        <div class="dropdown no-arrow d-none">
                             <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
                             </a>
@@ -72,7 +72,10 @@
                                     <thead class="bg-dark text-white">
                                         <th>Year</th>
                                         <th>Count</th>
+                                        <th>% Girls</th>
                                         <th>% PP</th>
+                                        <th>% SEND</th>
+                                        <th>% EAL</th>
                                     </thead>
                                     <tbody>
                                         @foreach ($studentYearCounts19 as $group)
@@ -80,7 +83,10 @@
                                         <tr>
                                             <td>{{$group->group}} </td>
                                             <td>{{$group->count}} </td>
+                                            <td>{{round(($group->girlpercent)*100,1) . '%' ?? ''}} </td>
                                             <td>{{round(($group->pppercent)*100,1) . '%' ?? ''}} </td>
+                                            <td>{{round(($group->sendpercent)*100,1) . '%' ?? ''}} </td>
+                                            <td>{{round(($group->ealpercent)*100,1) . '%' ?? ''}} </td>
                                         </tr>
                                         @endif
                                         @endforeach
@@ -96,8 +102,8 @@
                 <div class="card shadow mb-4">
                     <!-- Card Header - Dropdown -->
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0 font-weight-bold text-primary">Non-Routine Adminssions & Leavers</h6>
-                        <div class="dropdown no-arrow">
+                        <h6 class="m-0 font-weight-bold text-black">Non-Routine Adminssions & Leavers</h6>
+                        <div class="dropdown no-arrow d-none">
                             <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
                             </a>
@@ -113,45 +119,24 @@
                     <!-- Card Body -->
                     <div class="card-body">
                         <div class="chart-area dash-overflow">
-                            <table class="table small mb-0">
-                                <thead class="bg-dark text-white">
-                                    <th>Year</th>
-                                    <th>Non-Routine Adminssions</th>
-                                    <th>Mid Year Leavers</th>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Year {{rand(1,11)}}</td>
-                                        <td>{{rand(3,11)}}</td>
-                                        <td>{{rand(3,11)}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Year {{rand(1,11)}}</td>
-                                        <td>{{rand(3,11)}}</td>
-                                        <td>{{rand(3,11)}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Year {{rand(1,11)}}</td>
-                                        <td>{{rand(3,11)}}</td>
-                                        <td>{{rand(3,11)}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Year {{rand(1,11)}}</td>
-                                        <td>{{rand(3,11)}}</td>
-                                        <td>{{rand(3,11)}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Year {{rand(1,11)}}</td>
-                                        <td>{{rand(3,11)}}</td>
-                                        <td>{{rand(3,11)}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Year {{rand(1,11)}}</td>
-                                        <td>{{rand(3,11)}}</td>
-                                        <td>{{rand(3,11)}}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <div class="information table-responsive">
+                                <table class="table table-hover mb-0">
+                                    <thead class="bg-dark text-white">
+                                        <th>Year</th>
+                                        <th>Adminssions</th>
+                                        <th>Leavers</th>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($nonroutine as $sl)
+                                        <tr>
+                                            <td>Year {{$sl->year}}</td>
+                                            <td>{{$sl->starters}} </td>
+                                            <td>{{$sl->leavers}} </td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>

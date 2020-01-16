@@ -56,8 +56,8 @@ class analysisController extends Controller
 
         $enddate = Carbon::yesterday()->toDateString();
 
-        if ($school === 'fcat') {
-            $school = 'Westminster';
+        if ($school === 'FCAT' || $school === 'fcat') {
+            $school = '%';
         }
 
         $data = [
@@ -83,8 +83,8 @@ class analysisController extends Controller
             return view('analysis.mereside', $school);
         }
 
-        if ($school === 'fcat') {
-            $school = 'Unity';
+        if ($school === 'FCAT' || $school === 'fcat') {
+            $school = '%';
         }
         $schoolname = $school;
 
@@ -98,6 +98,7 @@ class analysisController extends Controller
             'pagroups' => DB::select(" exec sp_att_paGroups19 @enddate = '$lastFriday', @school = '$school' "),
             'attrunningweekly' => DB::select(" exec sp_att_schoolRunningWeek19 @enddate = '$lastFriday', @school = '$school' "),
             // 'pastudents' => DB::select(" exec sp_AttendancePAStudents19 @enddate = '$enddate', @school = '$school' "),
+            'nonroutine' => DB::select(" exec sp_startersLeaverer19 @enddate = '$lastFriday', @school = '$school' "),
             'school' => $school,
             'schoolname' => $schoolname,
             'enddate' => $enddate,

@@ -50,6 +50,8 @@
                     },
                 },
                 maintainAspectRatio: false,
+                responsive: true,
+                responsiveAnimationDuration: 1000,
                 scales: {
                     yAxes: [{
                         ticks: {

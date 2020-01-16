@@ -19,17 +19,17 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('login') }}"><i class="fas fa-user-circle fa-2x fa-fw"></i><br>{{ __('Login') }}</a>
                 </li>
-                <li class="nav-item mr-3">
+                <li class="nav-item mr-3 d-none">
                     <a class="nav-link text-center" href="{{url('/')}}"><i class="fas fa-th fa-2x fa-fw"></i><br><span class="d-lg-none_">Dashboard</a>
                 </li>
             @else
                 <li class="nav-item mr-3">
                     <a class="nav-link text-center" href="{{url('/dev/' . App\User::first()->getSchool()) }}"><i class="fas fa-th fa-2x fa-fw"></i><br><span class="d-lg-none_">Dashboard</a>
                 </li>
-                <li class="nav-item mr-3">
+                <li class="nav-item mr-3 d-none">
                     <a class="nav-link text-center" href="{{url('/attendancereporting') }}"><i class="fas fa-th fa-2x fa-fw"></i><br><span class="d-lg-none_">Attendance</a>
                 </li>
-                <li class="nav-item mr-3">
+                <li class="nav-item mr-3 d-none">
                     <a class="nav-link text-center" href="{{url('/conductreporting') }}"><i class="fas fa-th fa-2x fa-fw"></i><br><span class="d-lg-none_">Conduct</a>
                 </li>
                 <li class="nav-item mr-3">
