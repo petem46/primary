@@ -1,6 +1,11 @@
 @extends('layouts.app')
 @section('content')
 <div class="container">
+@if(session()->has('message-fail'))
+    <div id="alert-danger" class="alert alert-danger">
+        {!! session()->get('message-fail') !!}
+    </div>
+@endif
     <table id="studentTable" class="table mx-0">
         <thead>
             <tr>
@@ -45,6 +50,14 @@ $(document).ready(function() {
                     orderData: [1,0]
                 },
         ]
+    });
+});
+</script>
+
+<script>
+$(document).ready(function() {
+  $("#alert-danger").delay(1500).fadeTo(2000, 500).slideUp(500, function() {
+      $("#alert-danger").slideUp(500);
     });
 });
 </script>

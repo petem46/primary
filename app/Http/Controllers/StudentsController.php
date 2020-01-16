@@ -64,6 +64,13 @@ class StudentsController extends Controller
         $upn = Student::select('upn', 'school')->find($id);
         $school = User::first()->getSchool();
 
+        /** CHECK FOR MISSING UPN
+         *  REDIRECT TO INDEX IF MISSING UPN
+         */
+        // dd($upn);
+        if(strlen($upn->upn) < 3) {
+            return redirect()->back()->with('message-fail','<i class="fas fa-exclamation-triangle"></i>&nbsp;&nbsp;Pupil missing UPN');
+        }
         /** SET $enddate to YESTERDAY'S DATE
         */
         $enddate = Carbon::yesterday()->toDateString();
@@ -75,7 +82,7 @@ class StudentsController extends Controller
         if($school === $upn->school || $school === 'FCAT' || $school === 'fcat') {
             $aupn = $upn->upn;
             $data = [
-                'student' => Student::where('upn', $upn->upn)->first(),
+                'student' => Student::where('upn', $upn->upn)->where('id', $id)->first(),
                 // 'student' => Student::with('Attendance')->where('upn', $upn->upn)->first(),
                 'attendance' => DB::select(" exec sp_AttendancePAStudents19 @enddate = '$enddate', @upn = '$aupn' "),
                 'weekdayattendance' => DB::select(" exec sp_att_studentWeekDay19 @enddate = '$enddate', @upn = '$aupn' "),

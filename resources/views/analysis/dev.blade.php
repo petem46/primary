@@ -4,7 +4,7 @@
 {{-- <a href="/"><img class="img-fluid mb-5 d-block mx-auto" style="height: 145px;" src="../FCAT-LOGO.jpg" alt=""></a> --}}
 <div class="container1 text-center wallpaper mx-5 schooldashboard">
     <div class="my-5">
-        <h1 class="display-2 mb-3">{{ucfirst($schoolname)}} Dashboard</h1>
+        <h1 class="display-2 mb-3">{{ucfirst($school)}} Dashboard</h1>
         <div class="row">
             <div class="col-lg-3 col-md-6 mb-4">
                 <div class="card border-left-teal shadow h-100 py-2">

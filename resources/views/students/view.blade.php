@@ -90,13 +90,13 @@ if ($student->year === '1') {
     </div>
     <div class="row">
         <div class="col-12 col-lg-3">
-            Status: <strong>{{$student->status}}</strong>
-        </div>
-        <div class="col-12 col-lg-3">
             Start Date: <strong>{{$student->startdate}}</strong>
         </div>
         <div class="col-12 col-lg-3">
             Time on roll: <strong>{{$timeOnRoll}}</strong>
+        </div>
+        <div class="col-12 col-lg-4">
+            Status: <strong>{{$student->status}}</strong>
         </div>
     </div>
 </section>

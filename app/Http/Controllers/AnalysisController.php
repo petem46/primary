@@ -57,7 +57,7 @@ class analysisController extends Controller
         $enddate = Carbon::yesterday()->toDateString();
 
         if ($school === 'FCAT' || $school === 'fcat') {
-            $school = '%';
+            $school = 'Westcliff';
         }
 
         $data = [
@@ -77,34 +77,34 @@ class analysisController extends Controller
 
     public function dev($school)
     {
-        if(!isset($school)) {$school = User::first()->getSchool();}
-        if ($school == 'Mereside') {
-            $school = ['school' => $school];
-            return view('analysis.mereside', $school);
-        }
-
-        if ($school === 'FCAT' || $school === 'fcat') {
-            $school = '%';
-        }
+        $userschool = User::first()->getSchool();
         $schoolname = $school;
-
+        if($userschool === 'FCAT' && $schoolname === 'FCAT') {
+             $schoolname = '%';
+        }
+        // dd($schoolname);
         $enddate = Carbon::yesterday()->toDateString();
         $lastFriday = Carbon::parse($enddate)->modify("last friday")->toDateString();
         // dd($lastFriday);
-        $data = [
-            'studentCounts19' => DB::select(" exec sp_studentGroupCount19 @school = '$school' "),
-            'studentYearCounts19' => DB::select(" exec sp_studentYearCount19 @school = '$school' "),
-            'attgroups' => DB::select(" exec sp_att_fcatGroups19 @enddate = '$lastFriday', @school = '$school' "),
-            'pagroups' => DB::select(" exec sp_att_paGroups19 @enddate = '$lastFriday', @school = '$school' "),
-            'attrunningweekly' => DB::select(" exec sp_att_schoolRunningWeek19 @enddate = '$lastFriday', @school = '$school' "),
-            // 'pastudents' => DB::select(" exec sp_AttendancePAStudents19 @enddate = '$enddate', @school = '$school' "),
-            'nonroutine' => DB::select(" exec sp_startersLeaverer19 @enddate = '$lastFriday', @school = '$school' "),
-            'school' => $school,
-            'schoolname' => $schoolname,
-            'enddate' => $enddate,
-        ];
-        // dd($data);
-        return view('analysis.dev', $data);
+
+        if($schoolname === $userschool || $userschool === 'FCAT' || $userschool === 'fcat') {
+            $data = [
+                'studentCounts19' => DB::select(" exec sp_studentGroupCount19 @school = '$schoolname' "),
+                'studentYearCounts19' => DB::select(" exec sp_studentYearCount19 @school = '$schoolname' "),
+                'attgroups' => DB::select(" exec sp_att_fcatGroups19 @enddate = '$lastFriday', @school = '$schoolname' "),
+                'pagroups' => DB::select(" exec sp_att_paGroups19 @enddate = '$lastFriday', @school = '$schoolname' "),
+                'attrunningweekly' => DB::select(" exec sp_att_schoolRunningWeek19 @enddate = '$lastFriday', @school = '$schoolname' "),
+                // 'pastudents' => DB::select(" exec sp_AttendancePAStudents19 @enddate = '$enddate', @school = '$schoolname' "),
+                'nonroutine' => DB::select(" exec sp_startersLeaverer19 @enddate = '$lastFriday', @school = '$schoolname' "),
+                'school' => $school,
+                'userschool' => $userschool,
+                'schoolname' => $schoolname,
+                'enddate' => $enddate,
+            ];
+            // dd($data);
+            return view('analysis.dev', $data);
+        }
+        return redirect('/');
     }
 
     /**

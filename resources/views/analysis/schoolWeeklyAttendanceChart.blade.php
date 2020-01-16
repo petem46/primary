@@ -5,7 +5,7 @@
             "data": {
                 "labels":[
                     @foreach($attrunningweekly as $week)
-                        "{{"Wk " . $week->wk }}",
+                        "{{$week->wkdate}} ({{"Wk" . $week->wk }})",
                     @endforeach
                 ],
                 "datasets":[ {
