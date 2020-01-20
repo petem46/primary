@@ -97,10 +97,6 @@
 
     <div class="container1 text-center wallpaper mx-5">
 
-        {{-- @include('analysis/oldcontext') --}}
-        {{-- @include('analysis/oldattendance') --}}
-        {{-- @include('analysis/oldpa') --}}
-
     </div>
 
 @endsection

@@ -19,6 +19,27 @@ class analysisController extends Controller
         //
     }
 
+    public function assessment($school)
+    {
+        $userschool = User::first()->getSchool();
+        $schoolname = $school;
+        if($userschool === 'FCAT' && $schoolname === 'FCAT') {
+             $schoolname = '%';
+        }
+
+        if($schoolname === $userschool || $userschool === 'FCAT' || $userschool === 'fcat') {
+            $data = [
+                'school' => $school,
+                'userschool' => $userschool,
+                'schoolname' => $schoolname,
+            ];
+            // dd($data);
+
+            return view('analysis.assessment', $data);
+        }
+        return redirect('/');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -48,31 +69,36 @@ class analysisController extends Controller
      */
     public function show($school)
     {
-        if ($school == 'Mereside') {
-            $school = ['school' => $school];
-            return view('analysis.mereside', $school);
+        $userschool = User::first()->getSchool();
+        $schoolname = $school;
+        if($userschool === 'FCAT' && $schoolname === 'FCAT') {
+             $schoolname = '%';
         }
-        $schoolname = ['school' => $school];
-
+        // dd($schoolname);
         $enddate = Carbon::yesterday()->toDateString();
+        $lastFriday = Carbon::parse($enddate)->modify("last friday")->toDateString();
+        // dd($lastFriday);
 
-        if ($school === 'FCAT' || $school === 'fcat') {
-            $school = 'Westcliff';
+        if($schoolname === $userschool || $userschool === 'FCAT' || $userschool === 'fcat') {
+            $data = [
+                'studentCounts19' => DB::select(" exec sp_studentGroupCount19 @school = '$schoolname' "),
+                'studentYearCounts19' => DB::select(" exec sp_studentYearCount19 @school = '$schoolname' "),
+                'attgroups' => DB::select(" exec sp_att_fcatGroups19 @enddate = '$lastFriday', @school = '$schoolname' "),
+                'pagroups' => DB::select(" exec sp_att_paGroups19 @enddate = '$lastFriday', @school = '$schoolname' "),
+                'attrunningweekly' => DB::select(" exec sp_att_schoolRunningWeek19 @enddate = '$lastFriday', @school = '$schoolname' "),
+                // 'pastudents' => DB::select(" exec sp_AttendancePAStudents19 @enddate = '$enddate', @school = '$schoolname' "),
+                'nonroutine' => DB::select(" exec sp_startersLeaverer19 @enddate = '$lastFriday', @school = '$schoolname' "),
+                'vov' => collect(DB::select(" exec sp_vov @enddate = '$lastFriday', @school = '$schoolname' "))->first(),
+                'school' => $school,
+                'userschool' => $userschool,
+                'schoolname' => $schoolname,
+                'enddate' => $enddate,
+            ];
+            // dd($data);
+            return view('analysis.view', $data);
         }
+        return redirect('/');
 
-        $data = [
-            // 'attgroups' => DB::select(" exec sp_att_fcatGroups19 @enddate = '$enddate', @school = '$school' "),
-            // 'pastudents' => DB::select(" exec sp_AttendancePAStudents19 @enddate = '$enddate', @school = '$school' "),
-            // 'pagroups' => DB::select(" exec sp_att_paGroupsFCAT19 @enddate = '$enddate', @school = '$school' "),
-            // 'attgroups' => '',
-            'pastudents' => '',
-            'pagroups' => '',
-            // 'school' => $school = User::first()->getSchool(),
-            'school' => $school,
-            'enddate' => $enddate,
-        ];
-        // dd($data);
-        return view('analysis.index', $data);
     }
 
     public function dev($school)
@@ -96,6 +122,7 @@ class analysisController extends Controller
                 'attrunningweekly' => DB::select(" exec sp_att_schoolRunningWeek19 @enddate = '$lastFriday', @school = '$schoolname' "),
                 // 'pastudents' => DB::select(" exec sp_AttendancePAStudents19 @enddate = '$enddate', @school = '$schoolname' "),
                 'nonroutine' => DB::select(" exec sp_startersLeaverer19 @enddate = '$lastFriday', @school = '$schoolname' "),
+                'vov' => collect(DB::select(" exec sp_vov @enddate = '$lastFriday', @school = '$schoolname' "))->first(),
                 'school' => $school,
                 'userschool' => $userschool,
                 'schoolname' => $schoolname,

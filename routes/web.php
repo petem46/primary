@@ -22,14 +22,16 @@ Route::group(['middleware' => ['auth']], function () {
     // Route::get('/home', 'HomeController@index')->name('home');
 
     Route::get('/', function () {
-        return redirect('/dev/' . App\User::first()->getSchool());
+        return redirect('/analysis/' . App\User::first()->getSchool());
     })->name('dashboard');
 
     Route::get('/home', function () {
-        return redirect('/dev/' . App\User::first()->getSchool());
+        return redirect('/analysis/' . App\User::first()->getSchool());
     })->name('dashboard');
 
     Route::get('/dev/{school}', 'AnalysisController@dev');
+
+    Route::get('/analysis/assessment/{school}', 'AnalysisController@assessment');
 
     Route::get('/conductreporting', function () {
         return view('conductreporting');

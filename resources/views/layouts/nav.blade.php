@@ -24,7 +24,10 @@
                 </li>
             @else
                 <li class="nav-item mr-3">
-                    <a class="nav-link text-center" href="{{url('/dev/' . App\User::first()->getSchool()) }}"><i class="fas fa-th fa-2x fa-fw"></i><br><span class="d-lg-none_">Dashboard</a>
+                    <a class="nav-link text-center" href="{{url('/dev/' . App\User::first()->getSchool()) }}"><i class="fas fa-th fa-2x fa-fw"></i><br><span class="d-lg-none_">Dev</a>
+                </li>
+                <li class="nav-item mr-3">
+                    <a class="nav-link text-center" href="{{url('/analysis/' . App\User::first()->getSchool()) }}"><i class="fas fa-th fa-2x fa-fw"></i><br><span class="d-lg-none_">Dashboard</a>
                 </li>
                 <li class="nav-item mr-3 d-none">
                     <a class="nav-link text-center" href="{{url('/attendancereporting') }}"><i class="fas fa-th fa-2x fa-fw"></i><br><span class="d-lg-none_">Attendance</a>
@@ -33,7 +36,7 @@
                     <a class="nav-link text-center" href="{{url('/conductreporting') }}"><i class="fas fa-th fa-2x fa-fw"></i><br><span class="d-lg-none_">Conduct</a>
                 </li>
                 <li class="nav-item mr-3">
-                    <a class="nav-link text-center" href="{{url('/analysis/' . App\User::first()->getSchool()) }}"><i class="fas fa-th fa-2x fa-fw"></i><br><span class="d-lg-none_">Assessment</a>
+                    <a class="nav-link text-center" href="{{url('/analysis/assessment/' . App\User::first()->getSchool()) }}"><i class="fas fa-th fa-2x fa-fw"></i><br><span class="d-lg-none_">Assessment</a>
                 </li>
                 <li class="nav-item mr-3">
                     <a class="nav-link text-center" href="{{url('/students')}}"><i class="fas fa-users fa-2x fa-fw"></i><br><span class="d-lg-none_">{{ __('Students') }}</a>

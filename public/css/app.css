@@ -20623,6 +20623,202 @@ readers do not read off random characters that represent icons */
   display: none;
 }
 
+#venn {
+  height: 20rem;
+}
+
+#venn div {
+  width: 13rem;
+  height: 13rem;
+  border-radius: 50%;
+  /* pointer-events: none; */
+  position: absolute;
+  color: white;
+}
+
+#venn .innerw {
+  left: 0px;
+  top: 0px;
+  overflow: hidden;
+  position: absolute;
+  /* border: solid; */
+  z-index: 20;
+  /* transform: translateZ(10px); */
+  pointer-events: none;
+}
+
+#venn .innerw2 {
+  margin-left: 0px;
+  top: 0px;
+  overflow: hidden;
+  position: static;
+  /* border: solid; */
+  /* z-index: 20; */
+  pointer-events: none;
+}
+
+#venn .innerw3 {
+  margin-left: 70%;
+  top: 0px;
+  overflow: hidden;
+  position: static;
+  /* border: solid; */
+  /* z-index: 20; */
+  pointer-events: none;
+}
+
+#venn .inner {
+  margin-left: -35%;
+  margin-top: 55%;
+  background-color: rgba(255, 0, 0, 0.8);
+  z-index: 20;
+  position: static;
+  pointer-events: auto;
+  padding-top: 20px;
+}
+
+#venn .inner:hover {
+  cursor: pointer;
+  background-color: darkturquoise;
+}
+
+#venn .mwrap {
+  position: absolute;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 10;
+}
+
+#venn .mwrap2 {
+  position: static;
+  margin-left: 0px;
+  margin-top: 0px;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+#venn .mid {
+  position: static;
+  pointer-events: auto;
+}
+
+#venn #midaw1 {
+  left: 0px;
+  top: 0px;
+}
+
+#venn #mida {
+  margin-left: 70%;
+  margin-top: 0px;
+  background-color: steelblue;
+}
+
+#venn #mida:hover {
+  cursor: pointer;
+  background-color: darkturquoise;
+}
+
+#venn #mida div {
+  padding-right: 70%;
+  padding-top: 37.5%;
+}
+
+#venn #midbw1 {
+  left: 70%;
+  top: 0px;
+}
+
+#venn #midb {
+  margin-left: -35%;
+  margin-top: 55%;
+  background-color: darkorange;
+}
+
+#venn #midb:hover {
+  cursor: pointer;
+  background-color: darkturquoise;
+}
+
+#venn #midb div {
+  padding-left: 50%;
+  padding-top: 20%;
+}
+
+#venn #midcw1 {
+  left: 35%;
+  top: 55%;
+}
+
+#venn #midc {
+  margin-left: -35%;
+  margin-top: -55%;
+  background-color: rgba(75, 0, 130, 0.6);
+}
+
+#venn #midc:hover {
+  cursor: pointer;
+  background-color: darkturquoise;
+}
+
+#venn #midc div {
+  padding-left: 20%;
+  padding-top: 75%;
+}
+
+#venn .mid {
+  background-color: lightblue;
+  z-index: 15;
+}
+
+#venn .mid:hover {
+  cursor: pointer;
+  background-color: darkturquoise;
+}
+
+#venn #outer1 {
+  left: 0px;
+  top: 0px;
+  padding-top: 80px;
+  padding-right: 60px;
+  background-color: rgba(0, 128, 128, 0.8);
+}
+
+#venn #outer1:hover {
+  cursor: pointer;
+  background-color: darkturquoise;
+}
+
+#venn #outer2 {
+  left: 70%;
+  top: 0px;
+  padding-top: 80px;
+  padding-left: 60px;
+  background-color: rgba(255, 163, 51, 0.8);
+}
+
+#venn #outer2:hover {
+  cursor: pointer;
+  background-color: darkturquoise;
+}
+
+#venn #outer3 {
+  left: 35%;
+  top: 55%;
+  padding-top: 140px;
+  background-color: rgba(220, 20, 60, 0.8);
+}
+
+#venn #outer3:hover {
+  cursor: pointer;
+  background-color: darkturquoise;
+}
+
+#venn .outer {
+  background-color: lightcoral;
+  z-index: 1;
+  pointer-events: auto;
+}
+
 .dash-overflow {
   overflow: auto !important;
 }

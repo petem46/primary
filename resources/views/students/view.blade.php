@@ -207,7 +207,7 @@ if ($student->year === '1') {
     <div class="row text-center mb-3">
         @if(isset($ppa->GLD))
         <div class="col-6 col-lg-2 mb-2">
-            <div class="badge badge-{{$ppa->GLD ?? ' border-light'}} p-2">
+            <div class="badge @if($ppa->GLD === 'Y') badge-success @elseif ($ppa->GLD === 'N') badge-danger @else border-light @endif p-2">
                 GLD {{$ppa->GLD  ?? '' }}
             </div>
         </div>
@@ -280,7 +280,8 @@ if ($student->year === '1') {
     </section>
     {{-- END OF KEY STAGE 2 PRIOR ATTAINMENT SECTION --}}
     @endif
-    <section id="ks1-dcdata-table" class="d-none">
+    @if($student->year >= 0 && $student->year <= 2)
+    <section id="ks1-dcdata-table">
     <h4 class="font-weight-light text-primary"><i class="fas fa-chart-line fa-fw"></i></i>&nbsp;&nbsp;Tracking Data</h4>
     <table class="table text-center table-bordered table-striped table-hover table-sm small">
         <thead class="bg-dark text-white">
@@ -298,19 +299,20 @@ if ($student->year === '1') {
             @foreach ($primarydcdata as $subject)
             <tr>
                 <td class="text-left">{{$subject->subject}}</td>
-                <td class="text-{{$subject->Y1DC1}}">{{$subject->Y1DC1}}</td>
-                <td class="text-{{$subject->Y1DC2}}">{{$subject->Y1DC2}}</td>
-                <td class="text-{{$subject->Y1DC3}}">{{$subject->Y1DC3}}</td>
-                <td class="text-{{$subject->Y1DC4}}">{{$subject->Y1DC4}}</td>
-                <td class="text-{{$subject->Y2DC1}}">{{$subject->Y2DC1}}</td>
-                <td class="text-{{$subject->Y2DC2}}">{{$subject->Y2DC2}}</td>
-                <td class="text-{{$subject->Y2DC3}}">{{$subject->Y2DC3}}</td>
-                <td class="text-{{$subject->Y2DC4}}">{{$subject->Y2DC4}}</td>
+                <td class="text-{{$subject->Y1DC1}} bg-@if($subject->Y1DC1 >= 7)yellow @elseif ($subject->Y1DC1 >= 4)success text-white @elseif ($subject->Y1DC1 > 1)warning text-white @elseif ($subject->Y1DC1 === "1")danger text-white @endif ">{{$subject->Y1DC1}}</td>
+                <td class="text-{{$subject->Y1DC2}} bg-@if($subject->Y1DC2 >= 7)yellow @elseif ($subject->Y1DC2 >= 4)success text-white @elseif ($subject->Y1DC2 > 1)warning text-white @elseif ($subject->Y1DC2 === "1")danger text-white @endif ">{{$subject->Y1DC2}}</td>
+                <td class="text-{{$subject->Y1DC3}} bg-@if($subject->Y1DC3 >= 7)yellow @elseif ($subject->Y1DC3 >= 4)success text-white @elseif ($subject->Y1DC3 > 1)warning text-white @elseif ($subject->Y1DC3 === "1")danger text-white @endif ">{{$subject->Y1DC3}}</td>
+                <td class="text-{{$subject->Y1DC4}} bg-@if($subject->Y1DC4 >= 7)yellow @elseif ($subject->Y1DC4 >= 4)success text-white @elseif ($subject->Y1DC4 > 1)warning text-white @elseif ($subject->Y1DC4 === "1")danger text-white @endif ">{{$subject->Y1DC4}}</td>
+                <td class="text-{{$subject->Y2DC1}} bg-@if($subject->Y2DC1 >= 7)yellow @elseif ($subject->Y2DC1 >= 4)success text-white @elseif ($subject->Y2DC1 > 1)warning text-white @elseif ($subject->Y2DC1 === "1")danger text-white @endif ">{{$subject->Y2DC1}}</td>
+                <td class="text-{{$subject->Y2DC2}} bg-@if($subject->Y2DC2 >= 7)yellow @elseif ($subject->Y2DC2 >= 4)success text-white @elseif ($subject->Y2DC2 > 1)warning text-white @elseif ($subject->Y2DC2 === "1")danger text-white @endif ">{{$subject->Y2DC2}}</td>
+                <td class="text-{{$subject->Y2DC3}} bg-@if($subject->Y2DC3 >= 7)yellow @elseif ($subject->Y2DC3 >= 4)success text-white @elseif ($subject->Y2DC3 > 1)warning text-white @elseif ($subject->Y2DC3 === "1")danger text-white @endif ">{{$subject->Y2DC3}}</td>
+                <td class="text-{{$subject->Y2DC4}} bg-@if($subject->Y2DC4 >= 7)yellow @elseif ($subject->Y2DC4 >= 4)success text-white @elseif ($subject->Y2DC4 > 1)warning text-white @elseif ($subject->Y2DC4 === "1")danger text-white @endif ">{{$subject->Y2DC4}}</td>
             </tr>
             @endforeach
         </tbody>
     </table>
     </section>
+    @endif
     {{-- DISPLAY KEY STAGE 2 TRACKING DATA IF CURRENTLY IN YEAR 3 - 6 --}}
     @if($student->year >= 3 && $student->year <= 6)
     {{-- START OF KEY STAGE 2 TRACKING DATA --}}
