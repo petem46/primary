@@ -83,7 +83,7 @@ class analysisController extends Controller
             $data = [
                 'studentCounts19' => DB::select(" exec sp_studentGroupCount19 @school = '$schoolname' "),
                 'studentYearCounts19' => DB::select(" exec sp_studentYearCount19 @school = '$schoolname' "),
-                'attgroups' => DB::select(" exec sp_att_fcatGroups19 @enddate = '$lastFriday', @school = '$schoolname' "),
+                'schoolattendance' => collect(DB::select(" exec sp_AttendanceSchool19 @enddate = '$lastFriday', @school = '$schoolname' "))->first(),
                 'pagroups' => DB::select(" exec sp_att_paGroups19 @enddate = '$lastFriday', @school = '$schoolname' "),
                 'attrunningweekly' => DB::select(" exec sp_att_schoolRunningWeek19 @enddate = '$lastFriday', @school = '$schoolname' "),
                 // 'pastudents' => DB::select(" exec sp_AttendancePAStudents19 @enddate = '$enddate', @school = '$schoolname' "),
@@ -117,7 +117,7 @@ class analysisController extends Controller
             $data = [
                 'studentCounts19' => DB::select(" exec sp_studentGroupCount19 @school = '$schoolname' "),
                 'studentYearCounts19' => DB::select(" exec sp_studentYearCount19 @school = '$schoolname' "),
-                'attgroups' => DB::select(" exec sp_att_fcatGroups19 @enddate = '$lastFriday', @school = '$schoolname' "),
+                'schoolattendance' => collect(DB::select(" exec sp_AttendanceSchool19 @enddate = '$lastFriday', @school = '$schoolname' "))->first(),
                 'pagroups' => DB::select(" exec sp_att_paGroups19 @enddate = '$lastFriday', @school = '$schoolname' "),
                 'attrunningweekly' => DB::select(" exec sp_att_schoolRunningWeek19 @enddate = '$lastFriday', @school = '$schoolname' "),
                 // 'pastudents' => DB::select(" exec sp_AttendancePAStudents19 @enddate = '$enddate', @school = '$schoolname' "),

@@ -6,7 +6,7 @@
                     <!-- Card Header - Dropdown -->
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                         <h6 class="m-0 font-weight-bold text-black">Venn of Vulnerability</h6>
-                        <div class="dropdown no-arrow">
+                        <div class="dropdown no-arrow d-none">
                             <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
                             </a>
@@ -19,7 +19,7 @@
                     <!-- Card Body -->
                     <div class="card-body row">
                         <div id="venn" class="col-8">
-                            @include('analysis/venn')
+                            @include('analysis/VoVvenn')
                         </div>
                         <div class="col-4 text-left">
                             <p></p>
@@ -39,8 +39,8 @@
                 <div class="card shadow mb-4">
                     <!-- Card Header - Dropdown -->
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0 font-weight-bold text-black">Blank col-md-6 Card</h6>
-                        <div class="dropdown no-arrow">
+                        <h6 class="m-0 font-weight-bold text-black">Exclusion Data</h6>
+                        <div class="dropdown no-arrow d-none">
                             <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
                             </a>
@@ -53,7 +53,7 @@
                     <!-- Card Body -->
                     <div class="card-body">
                         <div class="chart-pie pb-2">
-                            This is empty
+                            Fixed Term and Permanent Exclusion Data Here
                             {{-- <canvas id="paBarChart" ></canvas> --}}
                         </div>
                     </div>

@@ -10,34 +10,40 @@ class SocialGoogleAccountService
         $account = SocialGoogleAccount::whereProvider('google')
                     ->whereProviderUserId($providerUser->getId())
                     ->first();
+        // console.log($account);
+        $user = User::whereEmail($providerUser->getEmail())->first();
 
-        // dd($providerUser->getAvatar());
+        // if ($account) {
+        //     return $account->user;
+        // }
 
-        if ($account) {
-            return $account->user;
-        }
-
-        $domain = explode("@", $providerUser->getEmail())[1];
-        // dd($domain);
-        // if( $domain === 'fcat.org.uk'){
+        if (!$account) {
             $account = new SocialGoogleAccount([
                 'provider_user_id' => $providerUser->getId(),
                 'provider' => 'google'
             ]);
-            $user = User::whereEmail($providerUser->getEmail())->first();
-            if (!$user) {
-                $user = User::create([
-                    'email' => $providerUser->getEmail(),
-                    'name' => $providerUser->getName(),
-                    'password' => md5(rand(1,10000)),
-                    'avatar' => $providerUser->getAvatar(),
-                ]);
-            }
+            // $account->save();
+        }
+
+        $user = User::whereEmail($providerUser->getEmail())->first();
+        if ($user) {
+            $user->name = $providerUser->getName();
+            $user->avatar = $providerUser->getAvatar();
+            $user->password = md5(rand(1,10000));
+            $user->touch();
+            $user->save();
             $account->user()->associate($user);
             $account->save();
             return $user;
-        // } else {
-            // redirect('/login');
-        // }
+            // $user = User::create([
+                //     'email' => $providerUser->getEmail(),
+                //     'name' => $providerUser->getName(),
+                //     'password' => md5(rand(1,10000)),
+                //     'avatar' => $providerUser->getAvatar(),
+                // ]);
+        } else {
+            $user = 'DENIED';
+            return $user;
+        }
     }
 }

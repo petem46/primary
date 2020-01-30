@@ -26,9 +26,37 @@
                 <li class="nav-item mr-3">
                     <a class="nav-link text-center" href="{{url('/dev/' . App\User::first()->getSchool()) }}"><i class="fas fa-th fa-2x fa-fw"></i><br><span class="d-lg-none_">Dev</a>
                 </li>
+                @if (App\User::first()->getSchool() === 'FCAT')
+                <li class="nav-item dropdown">
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle text-center" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        <i class="fas fa-th fa-2x fa-fw"></i><br><span class="d-lg-none_">Dashboards <span class="caret"></span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right1 shadow animated--fade-in" aria-labelledby="navbarDropdown">
+                        <div class="dropdown-header text-upper">Trust</div>
+                        <a class="dropdown-item" href="{{url('/analysis/' . App\User::first()->getSchool()) }}">FCAT</a>
+                        <div class="dropdown-divider"></div>
+                        <div class="dropdown-header text-upper">All Through</div>
+                        <a class="dropdown-item" href="{{url('/analysis/Armfield') }}">Armfield</a>
+                        <a class="dropdown-item" href="{{url('/analysis/Unity') }}">Unity</a>
+                        <div class="dropdown-divider"></div>
+                        <div class="dropdown-header text-upper">Secondary</div>
+                        <a class="dropdown-item" href="{{url('/analysis/Aspire') }}">Aspire</a>
+                        <a class="dropdown-item" href="{{url('/analysis/Garstang') }}">Garstang</a>
+                        <a class="dropdown-item" href="{{url('/analysis/Montgomery') }}">Montgomery</a>
+                        <div class="dropdown-divider"></div>
+                        <div class="dropdown-header text-upper">Primary</div>
+                        <a class="dropdown-item" href="{{url('/analysis/Gateway') }}">Gateway</a>
+                        <a class="dropdown-item" href="{{url('/analysis/Hambleton') }}">Hambleton</a>
+                        <a class="dropdown-item" href="{{url('/analysis/Mereside') }}">Mereside</a>
+                        <a class="dropdown-item" href="{{url('/analysis/Westcliff') }}">Westcliff</a>
+                        <a class="dropdown-item" href="{{url('/analysis/Westminster') }}">Westminster</a>
+                    </div>
+                </li>
+                @else
                 <li class="nav-item mr-3">
                     <a class="nav-link text-center" href="{{url('/analysis/' . App\User::first()->getSchool()) }}"><i class="fas fa-th fa-2x fa-fw"></i><br><span class="d-lg-none_">Dashboard</a>
                 </li>
+                @endif
                 <li class="nav-item mr-3 d-none">
                     <a class="nav-link text-center" href="{{url('/attendancereporting') }}"><i class="fas fa-th fa-2x fa-fw"></i><br><span class="d-lg-none_">Attendance</a>
                 </li>

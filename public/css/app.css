@@ -20861,3 +20861,10 @@ readers do not read off random characters that represent icons */
   height: 25vh;
 }
 
+.dropdown-item:hover,
+.dropdown-item:focus {
+  color: white !important;
+  text-decoration: none !important;
+  background-color: crimson !important;
+}
+

@@ -5,6 +5,7 @@
  */
 
 require('./bootstrap');
+require('./plugins/swal');
 // require('./plugins/resume.min');
 // require('jquery-easing')
 

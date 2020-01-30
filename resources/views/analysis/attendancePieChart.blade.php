@@ -8,9 +8,9 @@
             datasets: [{
                 // label: 'Sessions',
                 data: [
-                {{$attgroups[0]->pAttendance ?? ''}},
-                97 - {{$attgroups[0]->pAttendance ?? ''}},
-                3,
+                {{$schoolattendance->ppresent ?? ''}},
+                {{$schoolattendance->pabsent ?? ''}},
+                {{$schoolattendance->punauth ?? ''}},
                 ],
                 backgroundColor: [
                 'teal',
@@ -37,18 +37,19 @@
             plugins: {
                 datalabels: {
                     formatter: (value, ctxPie) => {
-                        let sum = ctxPie.dataset._meta[0].total;
-                        let percentage = (value * 100 / sum).toFixed(1) + "%";
-                        if (value/sum < 0.1) {
-                            let percentage = '';
-                            return percentage;
+                        // ** to work out percentage for the data label from counts and numbers etc **
+                        // let sum = ctxPie.dataset._meta[0].total;
+                        // let label = (value * 100 / sum).toFixed(1) + "%";
+                        let label = value + "%";
+                        if (value < 10) {
+                            let label = '';
+                            return label;
                         }
-                        if (value/sum >= 0.1) {
-                            return percentage;
+                        if (value > 10) {
+                            return label;
                         }
                     },
                     color: [
-                    'white',
                     'white',
                     'white',
                     'white',

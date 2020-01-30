@@ -56,7 +56,7 @@
                             <div class="col-sm-7 my-auto text-right">
                                 <small class="text-muted">% present</small>
                                 <br>
-                                <h2 class="">{{round($attgroups[0]->pAttendance,1) ?? ''}}</h2>
+                                <h2 class="">{{round($schoolattendance->ppresent,1) ?? ''}}</h2>
                             </div>
                             <div class="col-12">
                                 <hr class="m-1">
@@ -96,6 +96,10 @@
     </div>
 
     <div class="container1 text-center wallpaper mx-5">
+
+        {{-- @include('analysis/oldcontext') --}}
+        {{-- @include('analysis/oldattendance') --}}
+        {{-- @include('analysis/oldpa') --}}
 
     </div>
 

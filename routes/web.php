@@ -11,6 +11,11 @@
 |
 */
 
+Route::get('/notapproved', function () {
+    return view('notapproved');
+});
+
+
 Auth::routes();
 
 Route::get('/redirect', 'SocialAuthGoogleController@redirect');

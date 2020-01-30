@@ -22,7 +22,12 @@ class SocialAuthGoogleController extends Controller
     public function callback(SocialGoogleAccountService $service)
     {
         $user = $service->createOrGetUser(Socialite::driver('google')->user());
-        auth()->login($user);
-        return redirect()->to('/home');
+        if($user != 'DENIED') {
+            auth()->login($user);
+            return redirect()->to('/home');
+        } else {
+            return redirect('/notapproved')->with('warning', 'You are not an approved user');
+        }
+
     }
 }

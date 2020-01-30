@@ -56,3 +56,9 @@ height: 50vh;
 .vh-25 {
 height: 25vh;
 }
+
+.dropdown-item:hover, .dropdown-item:focus {
+    color: white !important;
+    text-decoration: none !important;
+    background-color: crimson !important;
+}
