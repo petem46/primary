@@ -162,7 +162,15 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
+        /*
+        * Socialite Google Auth Provider
+        */
         Laravel\Socialite\SocialiteServiceProvider::class,
+
+        /*
+        * Laravel Passport for API Auth/ Tokens
+        */
+        Laravel\Passport\PassportServiceProvider::class,
 
         /*
          * Package Service Providers...

@@ -7,7 +7,10 @@ use App\Reports;
 use App\User;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
-class analysisController extends Controller
+use Illuminate\Http\Resources\Json\Resource;
+
+
+class AnalysisController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -129,7 +132,7 @@ class analysisController extends Controller
                 'enddate' => $enddate,
             ];
             // dd($data);
-            return view('analysis.dev', $data);
+            return Resource::toArray($data);
         }
         return redirect('/');
     }

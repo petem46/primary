@@ -4,7 +4,7 @@
       v-model="drawer"
       :clipped="$vuetify.breakpoint.lgAndUp"
       :expand-on-hover= true
-      :mini-variant= true
+      :mini-variant= false
       app
     >
       <v-list dense>
