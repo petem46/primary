@@ -7,13 +7,13 @@
                 </v-col>
             <v-col cols="8" class="text-right py-0">
                 <div class="overline">% pupils</div>
-                <h3 v-if="! loaded" class="pa-0 text-right display-1"><i class="fas fa-spinner fa-spin"></i></h3>
+                <v-progress-circular v-if="! loaded" indeterminate color="red"></v-progress-circular>
                 <h3 v-if="loaded" class="pa-0 text-right display-1">
                     {{ roundOff(pAtRisk,1) }}
                 </h3>
             </v-col>
             <v-col cols="12" class="py-0">
-                <hr class="ma-1 grey--text text--lighten-4">
+                <v-divider></v-divider>
                 <div class="text-right red--text text--darken-2"><small>At risk of Persistent Absence</small></div>
             </v-col>
             </v-row>
@@ -23,13 +23,14 @@
 <script>
     import axios from 'axios';
     export default {
-        props: ['atRisk'],
+        props: ['schoolname', 'atRisk'],
         data() {
             return {
                 message: null,
                 loaded: false,
                 school: null,
-                endpoint: 'api/dev/pakpi',
+                endpoint: 'api/dev/pakpi/' + this.schoolname,
+                school: this.schoolname,
                 pAtRisk: this.atRisk,
             };
         },

@@ -7,13 +7,13 @@
                 </v-col>
             <v-col cols="8" class="text-right py-0">
                 <div class="overline">pupils</div>
-                <h3 v-if="! loaded" class="pa-0 text-right display-1"><i class="fas fa-spinner fa-spin"></i></h3>
+                <v-progress-circular v-if="! loaded" indeterminate color="teal"></v-progress-circular>
                 <h3 v-if="loaded" class="pa-0 text-right display-1">
                     {{ norcount }}
                 </h3>
             </v-col>
             <v-col cols="12" class="py-0">
-                <hr class="ma-1 grey--text text--lighten-4">
+                <v-divider></v-divider>
                 <div class="text-right teal--text text--lighten-2"><small>{{ school }} number on roll</small></div>
             </v-col>
             </v-row>
@@ -28,9 +28,9 @@
             return {
                 message: null,
                 loaded: false,
-                endpoint: 'api/dev/norkpi',
-                norcount: this.count,
+                endpoint: 'api/dev/norkpi/' + this.schoolname,
                 school: this.schoolname,
+                norcount: this.count,
             };
         },
         created() {
@@ -38,17 +38,14 @@
         },
         mounted() {
             console.log('Number On Roll Mounted.')
-            console.log(this.schoolName);
         },
         methods: {
             fetch() {
                 axios.get(this.endpoint)
                 .then(({data}) => {
                     this.norcount = data.data[0].Count;
-                    // setTimeout(() => this.loaded = true, 1500);
-                    this.loaded = true;
-                    console.log(data.data);
-                    console.log(this.schoolname);
+                    setTimeout(() => this.loaded = true, Math.floor(Math.random() * 1500) + 750);
+                    // this.loaded = true;
                 });
             }
         }

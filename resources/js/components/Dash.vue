@@ -10,6 +10,18 @@
                     <attendance-kpi-card :schoolname="this.schoolname"></attendance-kpi-card>
                     <percent-pa-kpi-card :schoolname="this.schoolname"></percent-pa-kpi-card>
                 </v-row>
+                <v-row>
+                    <cohort-summary :schoolname="this.schoolname"></cohort-summary>
+                    <year-group-summary :schoolname="this.schoolname"></year-group-summary>
+                    <starters-leavers-summary :schoolname="this.schoolname"></starters-leavers-summary>
+                </v-row>
+                <v-row>
+                    <attendance-overview :schoolname="this.schoolname"></attendance-overview>
+                    <attendance-pie :schoolname="this.schoolname"></attendance-pie>
+                </v-row>
+                <v-row>
+                    <at-risk-pa-overview :schoolname="this.schoolname"></at-risk-pa-overview>
+                </v-row>
             </v-container>
 
         </div>
@@ -22,17 +34,17 @@
         data() {
             return {
                 message: null,
-                loaded: false,
+                loaded: true,
                 endpoint: 'api/dev',
-                schoolname: 'Montgomery',
+                schoolname: 'Westcliff',
             };
         },
         created() {
-            this.fetch();
+            // this.fetch();
         },
         mounted() {
-            console.log('Home Page Loaded.')
-        },
+            console.log('Dashboard Mounted.')
+            },
         methods: {
             fetch() {
                 axios.get(this.endpoint)

@@ -1,0 +1,67 @@
+<template>
+  <v-col cols="12" lg="4">
+    <v-card class="pa-2" outlined raised tile>
+      <v-progress-linear v-if="! loaded" indeterminate color="teal"></v-progress-linear>
+      <v-card-title class="py-2">Cohort Summary</v-card-title>
+      <v-skeleton-loader
+        v-if="! loaded"
+        type="list-item-avatar, list-item-three-line, card-heading, actions"
+       >
+    </v-skeleton-loader>
+    <v-simple-table v-if="loaded" fixed-header height="345px">
+        <template v-slot:default>
+        <thead class="">
+            <tr>
+            <th class="grey darken-3 white--text">Group</th>
+            <th class="grey darken-3 white--text">Count</th>
+            <th class="grey darken-3 white--text">%</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="group in groups" :key="group.sortorder">
+            <td>{{ group.Group }}</td>
+            <td>{{ group.Count }}</td>
+            <td>{{ roundOff(group.percent, 1) }}</td>
+            </tr>
+        </tbody>
+        </template>
+    </v-simple-table>
+
+    </v-card>
+  </v-col>
+</template>
+<script>
+    import axios from "axios";
+export default {
+  props: ['schoolname', "percentpresent"],
+  data() {
+    return {
+      message: null,
+      loaded: false,
+      school: null,
+      endpoint: 'api/dev/cohortsummary/' + this.schoolname,
+      school: this.schoolname,
+      groups: [],
+    };
+  },
+  created() {
+    this.fetch();
+  },
+  mounted() {
+    console.log("Cohort Summary Mounted.");
+  },
+  methods: {
+    fetch() {
+      axios.get(this.endpoint).then(({ data }) => {
+        this.groups = data.data;
+        setTimeout(() => this.loaded = true, Math.floor(Math.random() * 1500) + 750);
+        // this.loaded = true;
+      });
+    },
+    roundOff(value, decimals) {
+      return Number(Math.round(value + "e" + decimals) + "e-" + decimals);
+    }
+  }
+};
+</script>
+

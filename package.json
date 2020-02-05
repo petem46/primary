@@ -25,8 +25,11 @@
     },
     "dependencies": {
         "bootstrap": "^4.4.1",
+        "chart.js": "^2.9.3",
         "jquery-easing": "0.0.1",
         "serialize-javascript": "^2.1.2",
+        "vue-chartjs": "^3.5.0",
+        "vue-google-charts": "^0.3.2",
         "vue-router": "^3.1.5",
         "vuetify": "^2.2.8"
     }

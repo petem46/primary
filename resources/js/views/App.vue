@@ -111,9 +111,15 @@
           /></v-avatar>
       </v-btn>
     </v-app-bar>
+
+    <!-- ***************************** -->
+    <!-- MAIN CONTENT - VUE ROUTER SPA -->
+    <!-- ***************************** -->
+
     <v-content>
         <router-view></router-view>
     </v-content>
+
     <v-btn
       bottom
       color="pink"
