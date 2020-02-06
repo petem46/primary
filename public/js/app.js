@@ -1957,18 +1957,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
+ // import subDays from 'date-fns/sub_days'
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['schoolname', 'enddate1'],
+  props: ['schoolname', 'end'],
   data: function data() {
     return {
       message: null,
+      enddatemenu: false,
       loaded: true,
       endpoint: 'api/dev',
-      // schoolname: this.schoolname,
-      enddate: null
+      enddate: this.end
     };
   },
   created: function created() {// this.fetch();
@@ -1976,20 +1983,26 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     console.log('Dashboard Mounted.');
     console.log(this.schoolname);
+    console.log(this.enddate);
   },
   methods: {
-    fetch: function fetch(schoolname) {
+    fetch: function fetch() {
       var _this = this;
 
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(this.endpoint).then(function (_ref) {
         var data = _ref.data;
         _this.loaded = true;
       });
+    },
+    newDate: function newDate() {
+      console.log('New End Date has been set');
+      this.loaded = false;
+      this.fetch();
     }
   },
   computed: {
     formattedDate: function formattedDate() {
-      return this.enddate ? Object(date_fns_format__WEBPACK_IMPORTED_MODULE_1__["default"])(Object(date_fns_parseISO__WEBPACK_IMPORTED_MODULE_2__["default"])(this.enddate), 'do MMM yyyy') : '';
+      return this.enddate ? Object(date_fns_format__WEBPACK_IMPORTED_MODULE_1__["default"])(Object(date_fns_parseISO__WEBPACK_IMPORTED_MODULE_2__["default"])(this.enddate), 'iiii, do MMM yyyy') : '';
     }
   }
 });
@@ -2327,8 +2340,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 //
 //
 //
@@ -2363,29 +2374,35 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['schoolname', "percentpresent"],
+  props: ['schoolname', 'enddate'],
+  watch: {
+    'enddate': function enddate() {
+      this.endpoint = 'api/dev/startersleaverssummary/' + this.schoolname + '/' + this.enddate;
+      console.log(this.endpoint);
+      this.callMe();
+    }
+  },
   data: function data() {
-    var _ref;
-
-    return _ref = {
+    return {
       message: null,
       loaded: false,
-      school: null,
-      endpoint: 'api/dev/startersleaverssummary/' + this.schoolname
-    }, _defineProperty(_ref, "school", this.schoolname), _defineProperty(_ref, "years", []), _ref;
+      endpoint: 'api/dev/startersleaverssummary/' + this.schoolname + '/' + this.enddate,
+      years: []
+    };
   },
   created: function created() {
     this.fetch();
   },
   mounted: function mounted() {
-    console.log("Non-Routine Adminssions & Leavers 19/20 Mounted.");
+    console.log("Starters & Leavers 19/20 Mounted.");
+    console.log(this.end); // this.endpoint = 'api/dev/startersleaverssummary/' + this.schoolname + '/' + localenddate
   },
   methods: {
     fetch: function fetch() {
       var _this = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(this.endpoint).then(function (_ref2) {
-        var data = _ref2.data;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(this.endpoint).then(function (_ref) {
+        var data = _ref.data;
         _this.years = data.data;
         setTimeout(function () {
           return _this.loaded = true;
@@ -2394,6 +2411,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     roundOff: function roundOff(value, decimals) {
       return Number(Math.round(value + "e" + decimals) + "e-" + decimals);
+    },
+    callMe: function callMe() {
+      // alert('A NEW END DATE HAS BEEN SET.  YOU SHOULD FETCH NEW DATA');
+      this.loaded = false;
+      this.fetch();
     }
   }
 });
@@ -3581,6 +3603,8 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var date_fns_format__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! date-fns/format */ "./node_modules/date-fns/esm/format/index.js");
+/* harmony import */ var date_fns_parseISO__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! date-fns/parseISO */ "./node_modules/date-fns/esm/parseISO/index.js");
 //
 //
 //
@@ -3814,35 +3838,42 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+ // import subDays from 'date-fns/sub_days'
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    source: String
+    source: String //   end: Date,
+
   },
   data: function data() {
     return {
       schoolname: null,
       fab: false,
+      end: '2020-02-02',
       dialog: false,
       drawer: null,
       items: [{
         icon: 'mdi-contacts',
-        text: 'Students'
+        name: 'Students'
       }, {
         icon: 'mdi-history',
-        text: 'Summary'
+        name: 'Summary'
       }, {
         icon: 'mdi-calendar-multiselect',
-        text: 'Attendance'
+        name: 'Attendance'
       }, {
         icon: 'mdi-history',
-        text: 'Behaviours'
+        name: 'Behaviours'
       }, {
         icon: 'mdi-star-box-multiple-outline',
-        text: 'Assessments'
+        name: 'Assessments'
       }, {
         icon: 'mdi-content-copy',
-        text: 'FCAT',
-        link: '?school=FCAT'
+        name: 'FCAT',
+        schoollink: '?school=FCAT'
       }, {
         icon: 'mdi-chevron-up',
         'icon-alt': 'mdi-chevron-down',
@@ -3850,12 +3881,12 @@ __webpack_require__.r(__webpack_exports__);
         model: false,
         children: [{
           icon: 'mdi-home-export-outline',
-          text: 'Armfield',
-          link: '?school=Armfield'
+          name: 'Armfield',
+          schoollink: 'school='
         }, {
           icon: 'mdi-home-export-outline',
-          text: 'Unity',
-          link: '?school=Unity'
+          name: 'Unity',
+          schoollink: 'school='
         }]
       }, {
         icon: 'mdi-chevron-up',
@@ -3864,16 +3895,19 @@ __webpack_require__.r(__webpack_exports__);
         model: false,
         children: [{
           icon: 'mdi-home-export-outline',
-          text: 'Aspire',
-          link: '?school=Aspire'
+          name: 'Aspire',
+          schoollink: 'school=',
+          datelink: 'end='
         }, {
           icon: 'mdi-home-export-outline',
-          text: 'Garstang',
-          link: '?school=Garstang'
+          name: 'Garstang',
+          schoollink: 'school=',
+          datelink: 'end='
         }, {
           icon: 'mdi-home-export-outline',
-          text: 'Montomery',
-          link: '?school=Montgomery'
+          name: 'Montgomery',
+          schoollink: 'school=',
+          datelink: 'end='
         }]
       }, {
         icon: 'mdi-chevron-up',
@@ -3882,27 +3916,30 @@ __webpack_require__.r(__webpack_exports__);
         model: false,
         children: [{
           icon: 'mdi-home-export-outline',
-          text: 'Gateway',
-          link: '?school=Gateway'
+          name: 'Gateway',
+          schoollink: 'school='
         }, {
           icon: 'mdi-home-export-outline',
-          text: 'Hambleton',
-          link: '?school=Hambleton'
+          name: 'Hambleton',
+          schoollink: 'school='
         }, {
           icon: 'mdi-home-export-outline',
-          text: 'Mereside',
-          link: '?school=Mereside'
+          name: 'Mereside',
+          schoollink: 'school='
         }, {
           icon: 'mdi-home-export-outline',
-          text: 'Westcliff',
-          link: '?school=Westcliff'
+          name: 'Westcliff',
+          schoollink: 'school='
         }, {
           icon: 'mdi-home-export-outline',
-          text: 'Westminster',
-          link: '?school=Westminster'
+          name: 'Westminster',
+          schoollink: 'school='
         }]
       }]
     };
+  },
+  created: function created() {
+    this.end = '2020-02-02';
   },
   methods: {
     onScroll: function onScroll(e) {
@@ -3912,6 +3949,11 @@ __webpack_require__.r(__webpack_exports__);
     },
     toTop: function toTop() {
       this.$vuetify.goTo(0);
+    }
+  },
+  computed: {
+    enddate: function enddate() {
+      return Object(date_fns_format__WEBPACK_IMPORTED_MODULE_0__["default"])(new Date(), 'yyyy-MM-dd');
     }
   }
 });
@@ -25481,6 +25523,13 @@ var render = function() {
                         _c(
                           "v-menu",
                           {
+                            attrs: {
+                              "close-on-content-click": false,
+                              "nudge-right": 40,
+                              transition: "scale-transition",
+                              "offset-y": "",
+                              "min-width": "290px"
+                            },
                             scopedSlots: _vm._u(
                               [
                                 {
@@ -25493,6 +25542,7 @@ var render = function() {
                                         _vm._g(
                                           {
                                             attrs: {
+                                              readonly: "",
                                               value: _vm.formattedDate,
                                               label: "End Date",
                                               "prepend-icon":
@@ -25508,20 +25558,37 @@ var render = function() {
                               ],
                               null,
                               false,
-                              2565130346
-                            )
+                              1095967994
+                            ),
+                            model: {
+                              value: _vm.enddatemenu,
+                              callback: function($$v) {
+                                _vm.enddatemenu = $$v
+                              },
+                              expression: "enddatemenu"
+                            }
                           },
                           [
                             _vm._v(" "),
-                            _c("v-date-picker", {
-                              model: {
-                                value: _vm.enddate,
-                                callback: function($$v) {
-                                  _vm.enddate = $$v
+                            _c(
+                              "v-date-picker",
+                              {
+                                attrs: { scrollable: "", "show-current": "" },
+                                on: {
+                                  input: function($event) {
+                                    _vm.enddatemenu = false
+                                  }
                                 },
-                                expression: "enddate"
-                              }
-                            })
+                                model: {
+                                  value: _vm.enddate,
+                                  callback: function($$v) {
+                                    _vm.enddate = $$v
+                                  },
+                                  expression: "enddate"
+                                }
+                              },
+                              [_vm._v(">\n                      ")]
+                            )
                           ],
                           1
                         )
@@ -25534,19 +25601,31 @@ var render = function() {
                     "v-row",
                     [
                       _c("number-on-roll-kpi-card", {
-                        attrs: { schoolname: this.schoolname }
+                        attrs: {
+                          schoolname: this.schoolname,
+                          enddate: this.enddate
+                        }
                       }),
                       _vm._v(" "),
                       _c("percent-pp-kpi-card", {
-                        attrs: { schoolname: this.schoolname }
+                        attrs: {
+                          schoolname: this.schoolname,
+                          enddate: this.enddate
+                        }
                       }),
                       _vm._v(" "),
                       _c("attendance-kpi-card", {
-                        attrs: { schoolname: this.schoolname }
+                        attrs: {
+                          schoolname: this.schoolname,
+                          enddate: this.enddate
+                        }
                       }),
                       _vm._v(" "),
                       _c("percent-pa-kpi-card", {
-                        attrs: { schoolname: this.schoolname }
+                        attrs: {
+                          schoolname: this.schoolname,
+                          enddate: this.enddate
+                        }
                       })
                     ],
                     1
@@ -25556,15 +25635,24 @@ var render = function() {
                     "v-row",
                     [
                       _c("cohort-summary", {
-                        attrs: { schoolname: this.schoolname }
+                        attrs: {
+                          schoolname: this.schoolname,
+                          enddate: this.enddate
+                        }
                       }),
                       _vm._v(" "),
                       _c("year-group-summary", {
-                        attrs: { schoolname: this.schoolname }
+                        attrs: {
+                          schoolname: this.schoolname,
+                          enddate: this.enddate
+                        }
                       }),
                       _vm._v(" "),
                       _c("starters-leavers-summary", {
-                        attrs: { schoolname: this.schoolname }
+                        attrs: {
+                          schoolname: this.schoolname,
+                          enddate: this.enddate
+                        }
                       })
                     ],
                     1
@@ -25574,11 +25662,17 @@ var render = function() {
                     "v-row",
                     [
                       _c("attendance-overview", {
-                        attrs: { schoolname: this.schoolname }
+                        attrs: {
+                          schoolname: this.schoolname,
+                          enddate: this.enddate
+                        }
                       }),
                       _vm._v(" "),
                       _c("attendance-pie", {
-                        attrs: { schoolname: this.schoolname }
+                        attrs: {
+                          schoolname: this.schoolname,
+                          enddate: this.enddate
+                        }
                       })
                     ],
                     1
@@ -25588,7 +25682,10 @@ var render = function() {
                     "v-row",
                     [
                       _c("at-risk-pa-overview", {
-                        attrs: { schoolname: this.schoolname }
+                        attrs: {
+                          schoolname: this.schoolname,
+                          enddate: this.enddate
+                        }
                       })
                     ],
                     1
@@ -26040,7 +26137,7 @@ var render = function() {
             : _vm._e(),
           _vm._v(" "),
           _c("v-card-title", { staticClass: "py-2" }, [
-            _vm._v("Non-Routine Adminssions & Leavers 19/20")
+            _vm._v(_vm._s(_vm.endpoint))
           ]),
           _vm._v(" "),
           !_vm.loaded
@@ -27895,7 +27992,7 @@ var render = function() {
                     ? _c(
                         "v-list-group",
                         {
-                          key: item.text,
+                          key: item.name,
                           attrs: {
                             "prepend-icon": item.model
                               ? item.icon
@@ -27960,9 +28057,27 @@ var render = function() {
                                   "v-list-item-content",
                                   [
                                     _c("v-list-item-title", [
-                                      _c("a", { attrs: { href: child.link } }, [
-                                        _vm._v(_vm._s(child.text))
-                                      ])
+                                      _c(
+                                        "a",
+                                        {
+                                          attrs: {
+                                            href:
+                                              "?" +
+                                              child.schoollink +
+                                              child.name +
+                                              "&" +
+                                              child.datelink +
+                                              _vm.enddate
+                                          }
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                    " +
+                                              _vm._s(child.name) +
+                                              "\n                  "
+                                          )
+                                        ]
+                                      )
                                     ])
                                   ],
                                   1
@@ -27976,7 +28091,7 @@ var render = function() {
                       )
                     : _c(
                         "v-list-item",
-                        { key: item.text, attrs: { link: "" } },
+                        { key: item.name, attrs: { link: "" } },
                         [
                           _c(
                             "v-list-item-action",
@@ -27988,9 +28103,21 @@ var render = function() {
                             "v-list-item-content",
                             [
                               _c("v-list-item-title", [
-                                _c("a", { attrs: { href: item.link } }, [
-                                  _vm._v(_vm._s(item.text))
-                                ])
+                                _c(
+                                  "a",
+                                  {
+                                    attrs: {
+                                      href:
+                                        "?" +
+                                        item.schoollink +
+                                        item.name +
+                                        "&" +
+                                        item.datelink +
+                                        _vm.enddate
+                                    }
+                                  },
+                                  [_vm._v(_vm._s(item.name))]
+                                )
                               ])
                             ],
                             1
@@ -84626,7 +84753,8 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     component: _components_Dash__WEBPACK_IMPORTED_MODULE_4__["default"],
     props: function props(route) {
       return {
-        schoolname: route.query.school
+        schoolname: route.query.school,
+        end: route.query.end
       };
     }
   }]

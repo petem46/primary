@@ -92,10 +92,10 @@ class AnalysisController extends Controller
         return new Analysis($data);
     }
 
-    public function startersleaverssummary($schoolname) {
+    public function startersleaverssummary($schoolname, $enddate) {
         // $school = 'Montgomery';
         // $schoolname = $school;
-        $enddate = Carbon::yesterday()->toDateString();
+        // $enddate = Carbon::parse($enddate)->toDateString();
         $lastFriday = Carbon::parse($enddate)->modify("last friday")->toDateString();
         $data = DB::select(" exec sp_startersLeaverer19 @enddate = '$lastFriday', @school = '$schoolname' ");
 

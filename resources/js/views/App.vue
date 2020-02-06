@@ -31,7 +31,7 @@
           </v-row>
           <v-list-group
             v-else-if="item.children"
-            :key="item.text"
+            :key="item.name"
             v-model="item.model"
             :prepend-icon="item.model ? item.icon : item['icon-alt']"
             append-icon=""
@@ -53,14 +53,16 @@
               </v-list-item-action>
               <v-list-item-content>
                 <v-list-item-title>
-                  <a :href="child.link">{{ child.text }}</a>
+                  <a :href="'?' + child.schoollink + child.name + '&' + child.datelink + enddate">
+                      {{ child.name }}
+                    </a>
                 </v-list-item-title>
               </v-list-item-content>
             </v-list-item>
           </v-list-group>
           <v-list-item
             v-else
-            :key="item.text"
+            :key="item.name"
             link
           >
             <v-list-item-action>
@@ -68,7 +70,7 @@
             </v-list-item-action>
             <v-list-item-content>
               <v-list-item-title>
-                <a :href="item.link">{{ item.text }}</a>
+                <a :href="'?' + item.schoollink + item.name + '&' + item.datelink + enddate">{{ item.name }}</a>
               </v-list-item-title>
             </v-list-item-content>
           </v-list-item>
@@ -232,30 +234,35 @@
 </template>
 
 <script>
+    import format from 'date-fns/format'
+    // import subDays from 'date-fns/sub_days'
+    import parseISO from 'date-fns/parseISO'
   export default {
     props: {
       source: String,
+    //   end: Date,
     },
     data: () => ({
       schoolname: null,
       fab: false,
+      end: '2020-02-02',
       dialog: false,
       drawer: null,
       items: [
-        { icon: 'mdi-contacts', text: 'Students' },
-        { icon: 'mdi-history', text: 'Summary' },
-        { icon: 'mdi-calendar-multiselect', text: 'Attendance' },
-        { icon: 'mdi-history', text: 'Behaviours' },
-        { icon: 'mdi-star-box-multiple-outline', text: 'Assessments' },
-        { icon: 'mdi-content-copy', text: 'FCAT', link: '?school=FCAT' },
+        { icon: 'mdi-contacts', name: 'Students' },
+        { icon: 'mdi-history', name: 'Summary' },
+        { icon: 'mdi-calendar-multiselect', name: 'Attendance' },
+        { icon: 'mdi-history', name: 'Behaviours' },
+        { icon: 'mdi-star-box-multiple-outline', name: 'Assessments' },
+        { icon: 'mdi-content-copy', name: 'FCAT', schoollink: '?school=FCAT' },
         {
           icon: 'mdi-chevron-up',
           'icon-alt': 'mdi-chevron-down',
           text: 'All Through',
           model: false,
           children: [
-            { icon: 'mdi-home-export-outline', text: 'Armfield', link: '?school=Armfield' },
-            { icon: 'mdi-home-export-outline', text: 'Unity', link: '?school=Unity' },
+            { icon: 'mdi-home-export-outline', name: 'Armfield', schoollink: 'school=' },
+            { icon: 'mdi-home-export-outline', name: 'Unity', schoollink: 'school=' },
           ],
         },
         {
@@ -264,9 +271,9 @@
           text: 'Secondary',
           model: false,
           children: [
-            { icon: 'mdi-home-export-outline', text: 'Aspire', link: '?school=Aspire' },
-            { icon: 'mdi-home-export-outline', text: 'Garstang', link: '?school=Garstang' },
-            { icon: 'mdi-home-export-outline', text: 'Montomery', link: '?school=Montgomery' },
+            { icon: 'mdi-home-export-outline', name: 'Aspire', schoollink: 'school=', datelink: 'end=' },
+            { icon: 'mdi-home-export-outline', name: 'Garstang', schoollink: 'school=', datelink: 'end=' },
+            { icon: 'mdi-home-export-outline', name: 'Montgomery', schoollink: 'school=', datelink: 'end=' },
           ],
         },
         {
@@ -275,15 +282,18 @@
           text: 'Primary',
           model: false,
           children: [
-            { icon: 'mdi-home-export-outline', text: 'Gateway', link: '?school=Gateway' },
-            { icon: 'mdi-home-export-outline', text: 'Hambleton', link: '?school=Hambleton' },
-            { icon: 'mdi-home-export-outline', text: 'Mereside', link: '?school=Mereside' },
-            { icon: 'mdi-home-export-outline', text: 'Westcliff', link: '?school=Westcliff' },
-            { icon: 'mdi-home-export-outline', text: 'Westminster', link: '?school=Westminster' },
+            { icon: 'mdi-home-export-outline', name: 'Gateway', schoollink: 'school=' },
+            { icon: 'mdi-home-export-outline', name: 'Hambleton', schoollink: 'school=' },
+            { icon: 'mdi-home-export-outline', name: 'Mereside', schoollink: 'school=' },
+            { icon: 'mdi-home-export-outline', name: 'Westcliff', schoollink: 'school=' },
+            { icon: 'mdi-home-export-outline', name: 'Westminster', schoollink: 'school=' },
           ],
         },
       ],
     }),
+    created() {
+        this.end = '2020-02-02'
+    },
     methods: {
         onScroll (e) {
             if (typeof window === 'undefined') return
@@ -294,5 +304,11 @@
             this.$vuetify.goTo(0)
         },
     },
+    computed: {
+        enddate() {
+            return format(new Date(), 'yyyy-MM-dd')
+        }
+
+    }
   }
 </script>

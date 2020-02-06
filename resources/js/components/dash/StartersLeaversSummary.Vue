@@ -2,7 +2,7 @@
   <v-col cols="12" lg="4">
     <v-card class="pa-2" outlined raised tile>
       <v-progress-linear v-if="! loaded" indeterminate color="teal"></v-progress-linear>
-      <v-card-title class="py-2">Non-Routine Adminssions & Leavers 19/20</v-card-title>
+      <v-card-title class="py-2">{{ endpoint }}</v-card-title>
       <v-skeleton-loader
         v-if="! loaded"
         type="list-item-avatar, list-item-three-line, card-heading, actions"
@@ -33,14 +33,19 @@
 <script>
     import axios from "axios";
 export default {
-  props: ['schoolname', "percentpresent"],
+  props: ['schoolname', 'enddate'],
+  watch: {
+      'enddate': function () {
+          this.endpoint = 'api/dev/startersleaverssummary/' + this.schoolname + '/' + this.enddate
+          console.log(this.endpoint)
+          this.callMe();
+      },
+  },
   data() {
     return {
       message: null,
       loaded: false,
-      school: null,
-      endpoint: 'api/dev/startersleaverssummary/' + this.schoolname,
-      school: this.schoolname,
+      endpoint: 'api/dev/startersleaverssummary/' + this.schoolname + '/' + this.enddate,
       years: [],
     };
   },
@@ -48,7 +53,9 @@ export default {
     this.fetch();
   },
   mounted() {
-    console.log("Non-Routine Adminssions & Leavers 19/20 Mounted.");
+    console.log("Starters & Leavers 19/20 Mounted.");
+    console.log(this.end)
+    // this.endpoint = 'api/dev/startersleaverssummary/' + this.schoolname + '/' + localenddate
   },
   methods: {
     fetch() {
@@ -60,8 +67,13 @@ export default {
     },
     roundOff(value, decimals) {
       return Number(Math.round(value + "e" + decimals) + "e-" + decimals);
-    }
-  }
+    },
+    callMe() {
+        // alert('A NEW END DATE HAS BEEN SET.  YOU SHOULD FETCH NEW DATA');
+        this.loaded = false;
+        this.fetch();
+    },
+  },
 };
 </script>
 
