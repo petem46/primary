@@ -5,6 +5,21 @@
         <div class="">
             <v-container fluid>
                 <v-row>
+                    <div class="col-12">
+                        <h1 class="display-3 mx-auto my-2">{{ schoolname }} Data Dashboard {{ formattedDate }} </h1>
+                    </div>
+                    <div class="col-3">
+                    <v-menu>
+                    <template v-slot:activator="{ on }">
+                        <v-text-field :value="formattedDate" label="End Date" prepend-icon="mdi-calendar-multiselect" v-on="on"></v-text-field>
+                    </template>
+                        <v-date-picker v-model="enddate"></v-date-picker>
+                    </v-menu>
+                    </div>
+
+
+                </v-row>
+                <v-row>
                     <number-on-roll-kpi-card :schoolname="this.schoolname"></number-on-roll-kpi-card>
                     <percent-pp-kpi-card :schoolname="this.schoolname"></percent-pp-kpi-card>
                     <attendance-kpi-card :schoolname="this.schoolname"></attendance-kpi-card>
@@ -30,13 +45,17 @@
 </template>
 <script>
     import axios from 'axios';
+    import format from 'date-fns/format'
+    import parseISO from 'date-fns/parseISO'
     export default {
+        props: ['schoolname', 'enddate1'],
         data() {
             return {
                 message: null,
                 loaded: true,
                 endpoint: 'api/dev',
-                schoolname: 'Westcliff',
+                // schoolname: this.schoolname,
+                enddate: null,
             };
         },
         created() {
@@ -44,14 +63,20 @@
         },
         mounted() {
             console.log('Dashboard Mounted.')
+            console.log(this.schoolname)
             },
         methods: {
-            fetch() {
+            fetch(schoolname) {
                 axios.get(this.endpoint)
                 .then(({data}) => {
                     this.loaded = true;
                 });
             }
-        }
+        },
+        computed: {
+            formattedDate() {
+                return this.enddate ? format(parseISO(this.enddate), 'do MMM yyyy') : ''
+            }
+        },
     }
 </script>

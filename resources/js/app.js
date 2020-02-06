@@ -57,8 +57,9 @@ const router = new VueRouter({
     routes: [
         {
             path: '/dev',
-            name: 'das',
-            component: Dash
+            name: 'dash',
+            component: Dash,
+            props: (route) => ({ schoolname: route.query.school }),
         },
     ],
 });

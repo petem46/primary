@@ -35,6 +35,10 @@
     border-radius: .2rem;
 }
 
+.v-list-item--link a {
+    color: rgba(0,0,0,.87)!important;
+    text-decoration: none !important;
+}
 .links a {
     color: #009B90;
     padding: 0 25px;

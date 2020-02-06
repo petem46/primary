@@ -53,7 +53,7 @@
               </v-list-item-action>
               <v-list-item-content>
                 <v-list-item-title>
-                  {{ child.text }}
+                  <a :href="child.link">{{ child.text }}</a>
                 </v-list-item-title>
               </v-list-item-content>
             </v-list-item>
@@ -68,7 +68,7 @@
             </v-list-item-action>
             <v-list-item-content>
               <v-list-item-title>
-                {{ item.text }}
+                <a :href="item.link">{{ item.text }}</a>
               </v-list-item-title>
             </v-list-item-content>
           </v-list-item>
@@ -120,7 +120,7 @@
         <router-view></router-view>
     </v-content>
 
-    <v-btn
+    <!-- <v-btn
       bottom
       color="pink"
       dark
@@ -130,7 +130,22 @@
       @click="dialog = !dialog"
     >
       <v-icon>mdi-home-export-outline</v-icon>
+    </v-btn> -->
+    <v-fab-transition>
+    <v-btn
+        v-scroll="onScroll"
+        v-show="fab"
+        fab
+        dark
+        fixed
+        bottom
+        right
+        color="teal"
+        @click="toTop"
+    >
+        <v-icon>mdi-chevron-up</v-icon>
     </v-btn>
+    </v-fab-transition>
     <v-dialog
       v-model="dialog"
       width="800px"
@@ -222,6 +237,8 @@
       source: String,
     },
     data: () => ({
+      schoolname: null,
+      fab: false,
       dialog: false,
       drawer: null,
       items: [
@@ -230,15 +247,15 @@
         { icon: 'mdi-calendar-multiselect', text: 'Attendance' },
         { icon: 'mdi-history', text: 'Behaviours' },
         { icon: 'mdi-star-box-multiple-outline', text: 'Assessments' },
-        { icon: 'mdi-content-copy', text: 'FCAT' },
+        { icon: 'mdi-content-copy', text: 'FCAT', link: '?school=FCAT' },
         {
           icon: 'mdi-chevron-up',
           'icon-alt': 'mdi-chevron-down',
           text: 'All Through',
           model: false,
           children: [
-            { icon: 'mdi-home-export-outline', text: 'Armfield' },
-            { icon: 'mdi-home-export-outline', text: 'Unity' },
+            { icon: 'mdi-home-export-outline', text: 'Armfield', link: '?school=Armfield' },
+            { icon: 'mdi-home-export-outline', text: 'Unity', link: '?school=Unity' },
           ],
         },
         {
@@ -247,9 +264,9 @@
           text: 'Secondary',
           model: false,
           children: [
-            { icon: 'mdi-home-export-outline', text: 'Aspire' },
-            { icon: 'mdi-home-export-outline', text: 'Garstang' },
-            { icon: 'mdi-home-export-outline', text: 'Montomery' },
+            { icon: 'mdi-home-export-outline', text: 'Aspire', link: '?school=Aspire' },
+            { icon: 'mdi-home-export-outline', text: 'Garstang', link: '?school=Garstang' },
+            { icon: 'mdi-home-export-outline', text: 'Montomery', link: '?school=Montgomery' },
           ],
         },
         {
@@ -258,14 +275,24 @@
           text: 'Primary',
           model: false,
           children: [
-            { icon: 'mdi-home-export-outline', text: 'Gateway' },
-            { icon: 'mdi-home-export-outline', text: 'Hambleton' },
-            { icon: 'mdi-home-export-outline', text: 'Mereside' },
-            { icon: 'mdi-home-export-outline', text: 'Westcliff' },
-            { icon: 'mdi-home-export-outline', text: 'Westminster' },
+            { icon: 'mdi-home-export-outline', text: 'Gateway', link: '?school=Gateway' },
+            { icon: 'mdi-home-export-outline', text: 'Hambleton', link: '?school=Hambleton' },
+            { icon: 'mdi-home-export-outline', text: 'Mereside', link: '?school=Mereside' },
+            { icon: 'mdi-home-export-outline', text: 'Westcliff', link: '?school=Westcliff' },
+            { icon: 'mdi-home-export-outline', text: 'Westminster', link: '?school=Westminster' },
           ],
         },
       ],
     }),
+    methods: {
+        onScroll (e) {
+            if (typeof window === 'undefined') return
+            const top = window.pageYOffset ||   e.target.scrollTop || 0
+            this.fab = top > 20
+        },
+        toTop () {
+            this.$vuetify.goTo(0)
+        },
+    },
   }
 </script>

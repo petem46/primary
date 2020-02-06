@@ -51,6 +51,7 @@ export default {
             axios.get(this.endpoint).then(({ data }) => {
                 setTimeout(() => this.loaded = true, Math.floor(Math.random() * 1500) + 750);
                 // this.loaded = true;
+                console.log(data.data);
             });
         },
         roundOff(value, decimals) {
