@@ -48,6 +48,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('students', 'StudentsController');
     Route::resource('schools', 'SchoolsController');
 
-    Route::get('/{any}', 'SpaController@index')->where('any', '.*');
 
 });
+
+Route::get('/{any}', 'SpaController@index')->where('any', '.*');

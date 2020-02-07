@@ -59,7 +59,7 @@ const router = new VueRouter({
             path: '/dev',
             name: 'dash',
             component: Dash,
-            props: (route) => ({ schoolname: route.query.school, end: route.query.end }),
+            props: (route) => ({ schoolname: route.query.school, start: route.query.start, end: route.query.end }),
         },
     ],
 });

@@ -25,29 +25,33 @@
 <script>
 import axios from "axios";
 export default {
-    props: ['schoolname', 'percentpresent'],
+  props: ['schoolname', 'enddate'],
+  watch: {
+      'enddate': function () {
+          this.endpoint = 'api/dev/attendanceweekly/' + this.schoolname + '/' + this.enddate
+          console.log(this.endpoint)
+          this.callMe();
+      },
+  },
     data() {
         return {
             message: null,
             loaded: false,
-            school: null,
-            endpoint: 'api/dev/attendancekpi/' + this.schoolname,
-            school: this.schoolname,
-            ppresent: this.percentpresent
+            endpoint: 'api/dev/attendanceweekly/' + this.schoolname + '/' + this.enddate,
         };
     },
     created() {
         this.fetch();
     },
     mounted() {
-        console.log("At Risk Row Mounted.");
+        console.log("Attendance KPI Mounted.");
     },
     methods: {
         fetch() {
             axios.get(this.endpoint).then(({ data }) => {
-                this.ppresent = data.data[0].ppresent;
-                // setTimeout(() => this.loaded = true, 1500);
-                this.loaded = true;
+                setTimeout(() => this.loaded = true, Math.floor(Math.random() * 1500) + 750);
+                // this.loaded = true;
+                console.log(data.data);
             });
         },
         roundOff(value, decimals) {

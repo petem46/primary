@@ -20,12 +20,15 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/dev/{schoolname}', 'AnalysisController@index');
 Route::get('/dev/norkpi/{schoolname}', 'Api\AnalysisController@norkpi');
 Route::get('/dev/ppkpi/{schoolname}', 'Api\AnalysisController@ppkpi');
-Route::get('/dev/attendancekpi/{schoolname}', 'Api\AnalysisController@attendancekpi');
-Route::get('/dev/pakpi/{schoolname}', 'Api\AnalysisController@pakpi');
+Route::get('/dev/attendancekpi/{schoolname}/{enddate}', 'Api\AnalysisController@attendancekpi');
+Route::get('/dev/pakpi/{schoolname}/{enddate}', 'Api\AnalysisController@pakpi');
+
 Route::get('/dev/cohortsummary/{schoolname}', 'Api\AnalysisController@cohortsummary');
 Route::get('/dev/yeargroupsummary/{schoolname}', 'Api\AnalysisController@yeargroupsummary');
 Route::get('/dev/startersleaverssummary/{schoolname}/{enddate}', 'Api\AnalysisController@startersleaverssummary');
-Route::get('/dev/attendanceweekly/{schoolname}', 'Api\AnalysisController@attendanceweekly');
+
+Route::get('/dev/attendanceweekly/{schoolname}/{enddate}', 'Api\AnalysisController@attendanceweekly');
+Route::get('/dev/attendancepie/{schoolname}/{enddate}', 'Api\AnalysisController@attendancepie');
 
 
 

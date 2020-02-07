@@ -56,20 +56,16 @@ class AnalysisController extends Controller
         return new Analysis($data);
     }
 
-    public function attendancekpi($schoolname) {
-        // $school = 'Montgomery';
-        // $schoolname = $school;
-        $enddate = Carbon::yesterday()->toDateString();
+    public function attendancekpi($schoolname, $enddate) {
+        // $enddate = Carbon::yesterday()->toDateString();
         $lastFriday = Carbon::parse($enddate)->modify("last friday")->toDateString();
         $data = DB::select(" exec sp_AttendanceSchool19 @enddate = '$lastFriday', @school = '$schoolname' ");
 
         return new Analysis($data);
     }
 
-    public function pakpi($schoolname) {
-        // $school = 'Montgomery';
-        // $schoolname = $school;
-        $enddate = Carbon::yesterday()->toDateString();
+    public function pakpi($schoolname, $enddate) {
+        // $enddate = Carbon::yesterday()->toDateString();
         $lastFriday = Carbon::parse($enddate)->modify("last friday")->toDateString();
         $data = DB::select(" exec sp_att_paGroups19 @enddate = '$lastFriday', @school = '$schoolname' ");
 
@@ -77,24 +73,18 @@ class AnalysisController extends Controller
     }
 
     public function cohortsummary($schoolname) {
-        // $school = 'Montgomery';
-        // $schoolname = $school;
         $data = DB::select(" exec sp_studentGroupCount19 @school = '$schoolname' ");
 
         return new Analysis($data);
     }
 
     public function yeargroupsummary($schoolname) {
-        // $school = 'Montgomery';
-        // $schoolname = $school;
         $data = DB::select(" exec sp_studentYearCount19 @school = '$schoolname' ");
 
         return new Analysis($data);
     }
 
     public function startersleaverssummary($schoolname, $enddate) {
-        // $school = 'Montgomery';
-        // $schoolname = $school;
         // $enddate = Carbon::parse($enddate)->toDateString();
         $lastFriday = Carbon::parse($enddate)->modify("last friday")->toDateString();
         $data = DB::select(" exec sp_startersLeaverer19 @enddate = '$lastFriday', @school = '$schoolname' ");
@@ -102,12 +92,18 @@ class AnalysisController extends Controller
         return new Analysis($data);
     }
 
-    public function attendanceweekly($schoolname) {
-        // $school = 'Montgomery';
-        // $schoolname = $school;
-        $enddate = Carbon::yesterday()->toDateString();
+    public function attendanceweekly($schoolname, $enddate) {
+        // $enddate = Carbon::yesterday()->toDateString();
         $lastFriday = Carbon::parse($enddate)->modify("last friday")->toDateString();
         $data = DB::select(" exec sp_att_schoolRunningWeek19 @enddate = '$lastFriday', @school = '$schoolname' ");
+
+        return new Analysis($data);
+    }
+
+    public function attendancepie($schoolname, $enddate) {
+        // $enddate = Carbon::yesterday()->toDateString();
+        $lastFriday = Carbon::parse($enddate)->modify("last friday")->toDateString();
+        $data = DB::select(" exec sp_AttendanceSchool19 @enddate = '$lastFriday', @school = '$schoolname' ");
 
         return new Analysis($data);
     }

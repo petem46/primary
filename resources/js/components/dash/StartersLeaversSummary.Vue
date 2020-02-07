@@ -2,7 +2,8 @@
   <v-col cols="12" lg="4">
     <v-card class="pa-2" outlined raised tile>
       <v-progress-linear v-if="! loaded" indeterminate color="teal"></v-progress-linear>
-      <v-card-title class="py-2">{{ endpoint }}</v-card-title>
+      <!-- <v-card-title class="py-2">{{ endpoint }}</v-card-title> -->
+      <v-card-title class="py-2">Starters & Leavers 19/20</v-card-title>
       <v-skeleton-loader
         v-if="! loaded"
         type="list-item-avatar, list-item-three-line, card-heading, actions"
@@ -54,8 +55,6 @@ export default {
   },
   mounted() {
     console.log("Starters & Leavers 19/20 Mounted.");
-    console.log(this.end)
-    // this.endpoint = 'api/dev/startersleaverssummary/' + this.schoolname + '/' + localenddate
   },
   methods: {
     fetch() {

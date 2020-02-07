@@ -53,9 +53,9 @@
               </v-list-item-action>
               <v-list-item-content>
                 <v-list-item-title>
-                  <a :href="'?' + child.schoollink + child.name + '&' + child.datelink + enddate">
-                      {{ child.name }}
-                    </a>
+                  <a :href="'?' + child.schoollink + child.name + '&' + child.startdatelink + startdate + '&' + child.enddatelink + enddate">
+                    {{ child.name }}
+                  </a>
                 </v-list-item-title>
               </v-list-item-content>
             </v-list-item>
@@ -70,7 +70,9 @@
             </v-list-item-action>
             <v-list-item-content>
               <v-list-item-title>
-                <a :href="'?' + item.schoollink + item.name + '&' + item.datelink + enddate">{{ item.name }}</a>
+                <a :href="'?' + item.schoollink + item.name + '&' + item.startdatelink + startdate + '&' + item.enddatelink + enddate">
+                    {{ item.name }}
+                </a>
               </v-list-item-title>
             </v-list-item-content>
           </v-list-item>
@@ -122,17 +124,6 @@
         <router-view></router-view>
     </v-content>
 
-    <!-- <v-btn
-      bottom
-      color="pink"
-      dark
-      fab
-      fixed
-      right
-      @click="dialog = !dialog"
-    >
-      <v-icon>mdi-home-export-outline</v-icon>
-    </v-btn> -->
     <v-fab-transition>
     <v-btn
         v-scroll="onScroll"
@@ -148,88 +139,6 @@
         <v-icon>mdi-chevron-up</v-icon>
     </v-btn>
     </v-fab-transition>
-    <v-dialog
-      v-model="dialog"
-      width="800px"
-    >
-      <v-card>
-        <v-card-title class="grey darken-2">
-          Create contact
-        </v-card-title>
-        <v-container>
-          <v-row class="mx-2">
-            <v-col
-              class="align-center justify-space-between"
-              cols="12"
-            >
-              <v-row
-                align="center"
-                class="mr-0"
-              >
-                <v-avatar
-                  size="40px"
-                  class="mx-3"
-                >
-                  <img
-                    src="//ssl.gstatic.com/s2/oz/images/sge/grey_silhouette.png"
-                    alt=""
-                  >
-                </v-avatar>
-                <v-text-field
-                  placeholder="Name"
-                />
-              </v-row>
-            </v-col>
-            <v-col cols="6">
-              <v-text-field
-                prepend-icon="mdi-account-card-details-outline"
-                placeholder="Company"
-              />
-            </v-col>
-            <v-col cols="6">
-              <v-text-field
-                placeholder="Job title"
-              />
-            </v-col>
-            <v-col cols="12">
-              <v-text-field
-                prepend-icon="mdi-mail"
-                placeholder="Email"
-              />
-            </v-col>
-            <v-col cols="12">
-              <v-text-field
-                type="tel"
-                prepend-icon="mdi-phone"
-                placeholder="(000) 000 - 0000"
-              />
-            </v-col>
-            <v-col cols="12">
-              <v-text-field
-                prepend-icon="mdi-text"
-                placeholder="Notes"
-              />
-            </v-col>
-          </v-row>
-        </v-container>
-        <v-card-actions>
-          <v-btn
-            text
-            color="primary"
-          >More</v-btn>
-          <v-spacer />
-          <v-btn
-            text
-            color="primary"
-            @click="dialog = false"
-          >Cancel</v-btn>
-          <v-btn
-            text
-            @click="dialog = false"
-          >Save</v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
   </v-app>
 </template>
 
@@ -245,6 +154,7 @@
     data: () => ({
       schoolname: null,
       fab: false,
+      start: '2019-08-26',
       end: '2020-02-02',
       dialog: false,
       drawer: null,
@@ -261,8 +171,8 @@
           text: 'All Through',
           model: false,
           children: [
-            { icon: 'mdi-home-export-outline', name: 'Armfield', schoollink: 'school=' },
-            { icon: 'mdi-home-export-outline', name: 'Unity', schoollink: 'school=' },
+            { icon: 'mdi-home-export-outline', name: 'Armfield', schoollink: 'school=', startdatelink: 'start=', enddatelink: 'end=' },
+            { icon: 'mdi-home-export-outline', name: 'Unity', schoollink: 'school=', startdatelink: 'start=', enddatelink: 'end=' },
           ],
         },
         {
@@ -271,9 +181,9 @@
           text: 'Secondary',
           model: false,
           children: [
-            { icon: 'mdi-home-export-outline', name: 'Aspire', schoollink: 'school=', datelink: 'end=' },
-            { icon: 'mdi-home-export-outline', name: 'Garstang', schoollink: 'school=', datelink: 'end=' },
-            { icon: 'mdi-home-export-outline', name: 'Montgomery', schoollink: 'school=', datelink: 'end=' },
+            { icon: 'mdi-home-export-outline', name: 'Aspire', schoollink: 'school=', startdatelink: 'start=', enddatelink: 'end=' },
+            { icon: 'mdi-home-export-outline', name: 'Garstang', schoollink: 'school=', startdatelink: 'start=', enddatelink: 'end=' },
+            { icon: 'mdi-home-export-outline', name: 'Montgomery', schoollink: 'school=', startdatelink: 'start=', enddatelink: 'end=' },
           ],
         },
         {
@@ -282,17 +192,17 @@
           text: 'Primary',
           model: false,
           children: [
-            { icon: 'mdi-home-export-outline', name: 'Gateway', schoollink: 'school=' },
-            { icon: 'mdi-home-export-outline', name: 'Hambleton', schoollink: 'school=' },
-            { icon: 'mdi-home-export-outline', name: 'Mereside', schoollink: 'school=' },
-            { icon: 'mdi-home-export-outline', name: 'Westcliff', schoollink: 'school=' },
-            { icon: 'mdi-home-export-outline', name: 'Westminster', schoollink: 'school=' },
+            { icon: 'mdi-home-export-outline', name: 'Gateway', schoollink: 'school=', startdatelink: 'start=', enddatelink: 'end='  },
+            { icon: 'mdi-home-export-outline', name: 'Hambleton', schoollink: 'school=', startdatelink: 'start=', enddatelink: 'end='  },
+            { icon: 'mdi-home-export-outline', name: 'Mereside', schoollink: 'school=', startdatelink: 'start=', enddatelink: 'end='  },
+            { icon: 'mdi-home-export-outline', name: 'Westcliff', schoollink: 'school=', startdatelink: 'start=', enddatelink: 'end='  },
+            { icon: 'mdi-home-export-outline', name: 'Westminster', schoollink: 'school=', startdatelink: 'start=', enddatelink: 'end='  },
           ],
         },
       ],
     }),
     created() {
-        this.end = '2020-02-02'
+        // this.end = '2020-02-02'
     },
     methods: {
         onScroll (e) {
@@ -305,10 +215,12 @@
         },
     },
     computed: {
+        startdate() {
+            return '2019-08-26'
+        },
         enddate() {
             return format(new Date(), 'yyyy-MM-dd')
-        }
-
+        },
     }
   }
 </script>
