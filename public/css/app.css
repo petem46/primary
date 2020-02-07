@@ -5954,12 +5954,8 @@ readers do not read off random characters that represent icons */
   font-weight: 400;
 }
 
-.dash-overflow {
-  overflow: auto !important;
-}
-
-.information {
-  font-size: 0.75rem;
+.v-card__title {
+  padding: 0.5rem !important;
 }
 
 .btn-group-xs > .btn,
@@ -5973,16 +5969,6 @@ readers do not read off random characters that represent icons */
 .v-list-item--link a {
   color: rgba(0, 0, 0, 0.87) !important;
   text-decoration: none !important;
-}
-
-.links a {
-  color: #009B90;
-  padding: 0 25px;
-  font-size: 15px;
-  font-weight: 1000;
-  letter-spacing: 0.1rem;
-  text-decoration: none;
-  text-transform: uppercase;
 }
 
 .vh-100 {
@@ -5999,12 +5985,5 @@ readers do not read off random characters that represent icons */
 
 .vh-25 {
   height: 25vh;
-}
-
-.dropdown-item:hover,
-.dropdown-item:focus {
-  color: white !important;
-  text-decoration: none !important;
-  background-color: crimson !important;
 }
 

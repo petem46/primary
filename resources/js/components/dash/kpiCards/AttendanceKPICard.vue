@@ -51,11 +51,11 @@ export default {
     fetch() {
       axios.get(this.endpoint).then(({ data }) => {
         this.ppresent = data.data[0].ppresent;
-        setTimeout(
-          () => (this.loaded = true),
-          Math.floor(Math.random() * 1500) + 750
-        );
-        // this.loaded = true;
+        // setTimeout(
+        //   () => (this.loaded = true),
+        //   Math.floor(Math.random() * 1500) + 750
+        // );
+        this.loaded = true;
       });
     },
     roundOff(value, decimals) {

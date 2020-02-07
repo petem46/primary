@@ -4,8 +4,6 @@ require('./plugins/swal');
 // require('./plugins/resume.min');
 // require('jquery-easing')
 
-// window.Vue = require('vue');
-
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 

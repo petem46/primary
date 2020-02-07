@@ -3,6 +3,7 @@
     <v-card v-if="! loaded" class="pa-2" outlined raised tile>
       <v-progress-linear indeterminate color="teal"></v-progress-linear>
       <v-card-title>Attendance Overview</v-card-title>
+      <v-divider></v-divider>
       <v-skeleton-loader type="list-item-avatar, list-item-three-line, card-heading, actions"></v-skeleton-loader>
       <v-divider></v-divider>
       <v-card-actions>
@@ -11,20 +12,21 @@
     </v-card>
     <v-card v-if="loaded" class="pa-2" outlined raised tile>
       <v-card-title>Attendance Overview</v-card-title>
-      <line-chart v-if="loaded" :chartdata="chartdata" :options="options" />
+      <v-divider></v-divider>
+      <attendance-weekly-chart v-if="loaded" :chartdata="chartdata" :options="options" />
       <v-divider></v-divider>
       <v-card-actions>
-        <v-btn text>Full Report</v-btn>
+        <v-btn text small>Full Report</v-btn>
       </v-card-actions>
     </v-card>
   </v-col>
 </template>
 <script>
 import axios from "axios";
-import LineChart from "./LineChart.js";
+import AttendanceWeeklyChart from "./AttendanceWeeklyChart.js";
 
 export default {
-  components: { LineChart },
+  components: { AttendanceWeeklyChart },
   props: ["schoolname", "enddate"],
   watch: {
     enddate: function() {
@@ -42,39 +44,43 @@ export default {
       options: {
         plugins: {
           datalabels: {
-            display:false
-          },
+            display: false
+          }
         },
         maintainAspectRatio: false,
         responsive: true,
         responsiveAnimationDuration: 1000,
         scales: {
-          yAxes: [{
-            ticks: {
-              // beginAtZero: true,
-              suggestedMin: 80,
-              suggestedMax: 100,
-            },
-          }],
-        },
-        annotation: {
-          annotations: [{
-            drawTime: "afterDatasetsDraw",
-            // id: "hline",
-            type: "line",
-            mode: "horizontal",
-            scaleID: "y-axis-0",
-            value: 95,
-            borderColor: "red",
-            borderWidth: 2,
-            borderDash: [10,10],
-            label: {
-              backgroundColor: "white",
-              content: "Nat",
-              enabled: false,
-            },
-          }],
-        },
+          yAxes: [
+            {
+              ticks: {
+                // beginAtZero: true,
+                suggestedMin: 80,
+                suggestedMax: 100
+              }
+            }
+          ]
+        }
+        //     annotation: {
+        //       annotations: [
+        //         {
+        //           drawTime: "afterDatasetsDraw",
+        //           // id: "hline",
+        //           type: "line",
+        //           mode: "horizontal",
+        //           scaleID: "y-axis-0",
+        //           value: 95,
+        //           borderColor: "red",
+        //           borderWidth: 2,
+        //           borderDash: [10, 10],
+        //           label: {
+        //             backgroundColor: "white",
+        //             content: "Nat",
+        //             enabled: false
+        //           }
+        //         }
+        //       ]
+        //     }
       },
       endpoint:
         "api/dev/attendanceweekly/" + this.schoolname + "/" + this.enddate
@@ -91,8 +97,14 @@ export default {
       axios
         .get(this.endpoint)
         .then(({ data }) => {
-          this.weekly = data.data.map(weekly => weekly.pattendance);
-          this.weeks = data.data.map(weeks => weeks.wk);
+          this.weekly = data.data.map(weekly =>
+            this.roundOff(weekly.pattendance, 1)
+          );
+          this.running = data.data.map(running =>
+            this.roundOff(running.RunningPercent, 1)
+          );
+          this.weeks = data.data.map(weeks => "Wk " + weeks.wk); // show week number as x-axis label
+          //   this.weeks = data.data.map(weeks => weeks.wkdate); // show week start date as x-axis label
         })
         .then(() => {
           this.barcolors = this.setbarcolors();
@@ -105,40 +117,43 @@ export default {
                 label: "Weekly Attendance",
                 backgroundColor: this.barcolors,
                 data: this.weekly
+              },
+              {
+                label: "Overall Attendance",
+                type: "line",
+                fill: false,
+                borderColor: "teal",
+                lineTension: 0.1,
+                data: this.running
               }
             ]
           }),
-            setTimeout(
-              () => (this.loaded = true),
-              Math.floor(Math.random() * 1500) + 750
-            );
-          // this.loaded = true;
+          this.loaded = true;
         });
     },
     roundOff(value, decimals) {
       return Number(Math.round(value + "e" + decimals) + "e-" + decimals);
     },
     callMe() {
-        // alert('A NEW END DATE HAS BEEN SET.  YOU SHOULD FETCH NEW DATA');
-        this.loaded = false;
-        this.fetch();
+      this.loaded = false;
+      this.fetch();
     },
     setbarcolors() {
       var colors = [];
       for (let i = 0; i < this.weekly.length; i++) {
         if (this.weekly[i] < 90) {
-          colors.push('rgba(220, 20, 60, 0.8)');
+          colors.push("rgba(220, 20, 60, 0.8)"); //red
         } else if (this.weekly[i] < 93) {
-          colors.push('rgba(255, 140, 0, 0.8)');
+          colors.push("rgba(255, 140, 0, 0.8)"); //orange
         } else if (this.weekly[i] < 95) {
-          colors.push('rgba(56,193,114,0.8)');
+          colors.push("rgba(56,193,114,0.8)"); // light green
         } else {
-          colors.push('rgba(72,193,56,0.8)');
+          colors.push("rgba(72,193,56,0.8)"); // green
         }
       }
-    // console.log(colors);
-    return colors;
-    },
+      // console.log(colors);
+      return colors;
+    }
   }
 };
 </script>
