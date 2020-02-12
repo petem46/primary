@@ -28,8 +28,11 @@ Route::get('/dev/yeargroupsummary/{schoolname}', 'Api\AnalysisController@yeargro
 Route::get('/dev/startersleaverssummary/{schoolname}/{enddate}', 'Api\AnalysisController@startersleaverssummary');
 
 Route::get('/dev/attendanceweekly/{schoolname}/{enddate}', 'Api\AnalysisController@attendanceweekly');
+Route::get('/dev/attendanceweek/{schoolname}/{enddate}', 'Api\AnalysisController@attendanceyear');
+Route::get('/dev/attendanceweek/{schoolname}/{enddate}/{week}', 'Api\AnalysisController@attendanceweek');
 Route::get('/dev/attendancepie/{schoolname}/{enddate}', 'Api\AnalysisController@attendancepie');
 
+Route::get('/dev/paatrisk/{schoolname}/{enddate}', 'Api\AnalysisController@paatrisk');
 
 
 Route::get('/dev/{school}', 'Api\AnalysisController@dev');

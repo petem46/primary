@@ -11,7 +11,7 @@
     </v-card>
     <v-card v-if="loaded" class="pa-2" outlined raised tile>
       <v-card-title class="py-2">Starters & Leavers 19/20</v-card-title>
-      <v-simple-table fixed-header height="345px">
+      <v-simple-table class="less-padding" fixed-header height="345px">
         <template v-slot:default>
           <thead class>
             <tr>

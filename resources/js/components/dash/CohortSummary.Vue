@@ -11,7 +11,7 @@
     </v-card>
     <v-card v-if="loaded" class="pa-2" outlined raised tile>
       <v-card-title class="py-2">Cohort Summary</v-card-title>
-      <v-simple-table fixed-header height="345px">
+      <v-simple-table class="less-padding" fixed-header height="345px">
         <template v-slot:default>
           <thead class>
             <tr>
@@ -61,11 +61,11 @@ export default {
     fetch() {
       axios.get(this.endpoint).then(({ data }) => {
         this.groups = data.data;
-        setTimeout(
-          () => (this.loaded = true),
-          Math.floor(Math.random() * 1500) + 750
-        );
-        // this.loaded = true;
+        // setTimeout(
+        //   () => (this.loaded = true),
+        //   Math.floor(Math.random() * 1500) + 750
+        // );
+        this.loaded = true;
       });
     },
     roundOff(value, decimals) {

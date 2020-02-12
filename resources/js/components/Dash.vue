@@ -64,10 +64,10 @@
             </div>
           </v-row>
           <v-row>
-            <number-on-roll-kpi-card :schoolname="this.schoolname" :enddate="this.enddate"></number-on-roll-kpi-card>
-            <percent-pp-kpi-card :schoolname="this.schoolname" :enddate="this.enddate"></percent-pp-kpi-card>
+            <nor-kpi-card :schoolname="this.schoolname" :enddate="this.enddate"></nor-kpi-card>
+            <pp-kpi-card :schoolname="this.schoolname" :enddate="this.enddate"></pp-kpi-card>
             <attendance-kpi-card :schoolname="this.schoolname" :enddate="this.enddate"></attendance-kpi-card>
-            <percent-pa-kpi-card :schoolname="this.schoolname" :enddate="this.enddate"></percent-pa-kpi-card>
+            <pa-kpi-card :schoolname="this.schoolname" :enddate="this.enddate"></pa-kpi-card>
           </v-row>
           <v-row>
             <cohort-summary :schoolname="this.schoolname" :enddate="this.enddate"></cohort-summary>
@@ -75,8 +75,8 @@
             <starters-leavers-summary :schoolname="this.schoolname" :enddate="this.enddate"></starters-leavers-summary>
           </v-row>
           <v-row>
-            <attendance-overview :schoolname="this.schoolname" :enddate="this.enddate"></attendance-overview>
-            <attendance-pie :schoolname="this.schoolname" :enddate="this.enddate"></attendance-pie>
+            <attendance-overview :schoolname="this.schoolname" :enddate="this.enddate" @updateWeek="updateWeek"></attendance-overview>
+            <attendance-week :schoolname="this.schoolname" :enddate="this.enddate" :attendanceweek="this.attendanceweek" :attendanceforweek="this.attendanceforweek"></attendance-week>
           </v-row>
           <v-row>
             <at-risk-pa-overview :schoolname="this.schoolname" :enddate="this.enddate"></at-risk-pa-overview>
@@ -91,7 +91,33 @@ import axios from "axios";
 import format from "date-fns/format";
 // import subDays from 'date-fns/sub_days'
 import parseISO from "date-fns/parseISO";
+
+import NorKpiCard from './dash/kpiCards/NorKpiCard'
+import PpKpiCard from './dash/kpiCards/PpKpiCard'
+import AttendanceKpiCard from './dash/kpiCards/AttendanceKpiCard'
+import PaKpiCard from './dash/kpiCards/PaKpiCard'
+import CohortSummary from './dash/CohortSummary'
+import YearGroupSummary from './dash/YearGroupSummary'
+import StartersLeaversSummary from './dash/StartersLeaversSummary'
+import AttendanceOverview from './dash/AttendanceOverview'
+import AttendancePie from './dash/AttendancePie'
+import AttendanceWeek from './dash/AttendanceWeek'
+import AtRiskPaOverview from './dash/AtRiskPaOverview'
+
 export default {
+    components: {
+        NorKpiCard,
+        PpKpiCard,
+        AttendanceKpiCard,
+        PaKpiCard,
+        CohortSummary,
+        YearGroupSummary,
+        StartersLeaversSummary,
+        AttendanceOverview,
+        AttendancePie,
+        AttendanceWeek,
+        AtRiskPaOverview,
+    },
   props: ["schoolname", "start", "end"],
   data() {
     return {
@@ -102,6 +128,8 @@ export default {
     //   endpoint: "api/dev",
       startdate: this.start,
       enddate: this.end,
+      attendanceweek: null,
+      attendanceforweek: null,
     };
   },
   created() {
@@ -120,7 +148,12 @@ export default {
       console.log("New End Date has been set");
       this.loaded = false;
       this.fetch();
-    }
+    },
+    updateWeek(week, weekatt) {
+        console.log('Emit updateWeek method triggered');
+        this.attendanceweek = week;
+        this.attendanceforweek = weekatt;
+    },
   },
   computed: {
     formattedStartDate() {
@@ -132,7 +165,7 @@ export default {
       return this.enddate
         ? format(parseISO(this.enddate), "iiii, do MMM yyyy")
         : "";
-    }
+    },
   }
 };
 </script>

@@ -1,5 +1,18 @@
 <template>
   <v-col cols="12" lg="7" xl="8">
+    <v-card v-if="loaded" class="pa-2" outlined raised tile>
+      <v-card-title>Attendance Overview</v-card-title>
+      <v-card-text>
+        <v-icon>mdi-calendar-multiselect</v-icon>&nbsp;&nbsp;
+        Week {{ week }} - Attendance: {{ weekatt }} % Running Attendance: {{ runningatt }} %
+      </v-card-text>
+      <v-divider></v-divider>
+      <attendance-weekly-chart v-if="loaded" :chartdata="chartdata" :options="options" :styles="myStyles" />
+      <v-divider></v-divider>
+      <v-card-actions>
+        <v-btn text small>Full Report {{ week }} </v-btn>
+      </v-card-actions>
+    </v-card>
     <v-card v-if="! loaded" class="pa-2" outlined raised tile>
       <v-progress-linear indeterminate color="teal"></v-progress-linear>
       <v-card-title>Attendance Overview</v-card-title>
@@ -10,15 +23,6 @@
         <v-btn text disabled>Loading...</v-btn>
       </v-card-actions>
     </v-card>
-    <v-card v-if="loaded" class="pa-2" outlined raised tile>
-      <v-card-title>Attendance Overview</v-card-title>
-      <v-divider></v-divider>
-      <attendance-weekly-chart v-if="loaded" :chartdata="chartdata" :options="options" />
-      <v-divider></v-divider>
-      <v-card-actions>
-        <v-btn text small>Full Report</v-btn>
-      </v-card-actions>
-    </v-card>
   </v-col>
 </template>
 <script>
@@ -27,12 +31,12 @@ import AttendanceWeeklyChart from "./AttendanceWeeklyChart.js";
 
 export default {
   components: { AttendanceWeeklyChart },
-  props: ["schoolname", "enddate"],
+  props: ["schoolname", "enddate", "attendanceweek"],
   watch: {
     enddate: function() {
       this.endpoint =
         "api/dev/attendanceweekly/" + this.schoolname + "/" + this.enddate;
-      console.log(this.endpoint);
+    //   console.log(this.endpoint);
       this.callMe();
     }
   },
@@ -41,46 +45,81 @@ export default {
       message: null,
       loaded: false,
       chartdata: null,
+      runningatt: null,
+      week: null,
+      weekatt: null,
+      finalweeknumber: null,
+      finalweekattendance: null,
       options: {
         plugins: {
           datalabels: {
             display: false
           }
         },
+        tooltips: {
+            enabled: false
+        },
+        hover: {
+          mode: "nearest",
+          intersect: false,
+          onHover: (e, element) => {
+            if (element && element.length > 0) {
+              const runningatt = this.chartdata.datasets[1].data[element[0]._index];
+              const weekatt = this.chartdata.datasets[0].data[element[0]._index];
+              const week = this.chartdata.labels[element[0]._index];
+              this.runningatt = runningatt;
+              this.weekatt = weekatt;
+              this.week = week;
+            }
+          },
+        },
+        onClick: (e, element) => {
+            if (element && element.length > 0) {
+              const week = this.chartdata.labels[element[0]._index];
+              const weekatt = this.chartdata.datasets[0].data[element[0]._index];
+            //   console.log('load drill down chart for week ' + week);
+              this.week = week;
+              this.weekatt = weekatt;
+              this.updateWeek();
+            }
+        },
         maintainAspectRatio: false,
         responsive: true,
         responsiveAnimationDuration: 1000,
         scales: {
-          yAxes: [
-            {
+          yAxes: [{
               ticks: {
                 // beginAtZero: true,
                 suggestedMin: 80,
                 suggestedMax: 100
               }
+          }],
+          xAxes: [{
+            scaleLabel: {
+                display: true,
+                labelString: 'Week Number',
+
             }
-          ]
-        }
-        //     annotation: {
-        //       annotations: [
-        //         {
-        //           drawTime: "afterDatasetsDraw",
-        //           // id: "hline",
-        //           type: "line",
-        //           mode: "horizontal",
-        //           scaleID: "y-axis-0",
-        //           value: 95,
-        //           borderColor: "red",
-        //           borderWidth: 2,
-        //           borderDash: [10, 10],
-        //           label: {
-        //             backgroundColor: "white",
-        //             content: "Nat",
-        //             enabled: false
-        //           }
-        //         }
-        //       ]
-        //     }
+          }]
+        },
+        annotation: {
+            annotations: [{
+            drawTime: "afterDatasetsDraw",
+            // id: "hline",
+            type: "line",
+            mode: "horizontal",
+            scaleID: "y-axis-0",
+            value: 95,
+            borderColor: "red",
+            borderWidth: 2,
+            borderDash: [10, 10],
+            label: {
+                backgroundColor: "white",
+                content: "Nat",
+                enabled: false,
+            },
+            }],
+        },
       },
       endpoint:
         "api/dev/attendanceweekly/" + this.schoolname + "/" + this.enddate
@@ -90,7 +129,7 @@ export default {
     this.fetch();
   },
   mounted() {
-    console.log("Attendance KPI Mounted.");
+    console.log("Attendance Ovreview Mounted.");
   },
   methods: {
     fetch() {
@@ -103,7 +142,7 @@ export default {
           this.running = data.data.map(running =>
             this.roundOff(running.RunningPercent, 1)
           );
-          this.weeks = data.data.map(weeks => "Wk " + weeks.wk); // show week number as x-axis label
+          this.weeks = data.data.map(weeks => weeks.wk); // show week number as x-axis label
           //   this.weeks = data.data.map(weeks => weeks.wkdate); // show week start date as x-axis label
         })
         .then(() => {
@@ -128,7 +167,10 @@ export default {
               }
             ]
           }),
-          this.loaded = true;
+            this.loaded = true;
+            this.finalweeknumber = this.getfinalweeknumber();
+            this.finalweekattendance = this.getfinalweekattendance();
+            this.sendFinalWeek();
         });
     },
     roundOff(value, decimals) {
@@ -153,7 +195,38 @@ export default {
       }
       // console.log(colors);
       return colors;
+    },
+    getfinalweeknumber() {
+      var finalweek;
+      for (let i = 0; i < this.weeks.length; i++) {
+          finalweek = this.weeks[i];
+      }
+    //   console.log('Last Week Number = ' + finalweek);
+      return finalweek;
+    },
+    getfinalweekattendance() {
+      var finalweekattendance;
+      for (let i = 0; i < this.weekly.length; i++) {
+          finalweekattendance = this.weekly[i];
+      }
+    //   console.log('Last Week Attendance = ' + finalweekattendance);
+      return finalweekattendance;
+    },
+    sendFinalWeek() {
+        this.$emit('updateWeek', this.finalweeknumber, this.finalweekattendance);
+    },
+    updateWeek() {
+        this.$emit('updateWeek', this.week, this.weekatt);
+    },
+  },
+    computed: {
+        myStyles () {
+            return {
+                height: '300px',
+                position: 'relative'
+            }
+        }
     }
-  }
+
 };
 </script>

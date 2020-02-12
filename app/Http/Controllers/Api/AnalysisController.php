@@ -100,6 +100,22 @@ class AnalysisController extends Controller
         return new Analysis($data);
     }
 
+    public function attendanceyear($schoolname, $enddate) {
+        // $enddate = Carbon::yesterday()->toDateString();
+        $lastFriday = Carbon::parse($enddate)->modify("last friday")->toDateString();
+        $data = DB::select(" exec sp_att_yearRunningWeek19 @enddate = '$lastFriday', @school = '$schoolname', @week = '$week' ");
+
+        return new Analysis($data);
+    }
+
+    public function attendanceweek($schoolname, $enddate, $week) {
+        // $enddate = Carbon::yesterday()->toDateString();
+        $lastFriday = Carbon::parse($enddate)->modify("last friday")->toDateString();
+        $data = DB::select(" exec sp_att_yearRunningWeek19 @enddate = '$lastFriday', @school = '$schoolname', @week = '$week' ");
+
+        return new Analysis($data);
+    }
+
     public function attendancepie($schoolname, $enddate) {
         // $enddate = Carbon::yesterday()->toDateString();
         $lastFriday = Carbon::parse($enddate)->modify("last friday")->toDateString();
@@ -108,7 +124,13 @@ class AnalysisController extends Controller
         return new Analysis($data);
     }
 
+    public function paatrisk($schoolname, $enddate) {
+        // $enddate = Carbon::yesterday()->toDateString();
+        $lastFriday = Carbon::parse($enddate)->modify("last friday")->toDateString();
+        $data = DB::select(" exec sp_att_paGroups19 @enddate = '$lastFriday', @school = '$schoolname' ");
 
+        return new Analysis($data);
+    }
 
     public function dev($school)
     {
