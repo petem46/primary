@@ -127,7 +127,17 @@ class AnalysisController extends Controller
     public function paatrisk($schoolname, $enddate) {
         // $enddate = Carbon::yesterday()->toDateString();
         $lastFriday = Carbon::parse($enddate)->modify("last friday")->toDateString();
-        $data = DB::select(" exec sp_att_paGroups19 @enddate = '$lastFriday', @school = '$schoolname' ");
+        $data = [
+            'paatrisk' => DB::select(" exec sp_att_paGroups19 @enddate = '$lastFriday', @school = '$schoolname' "),
+            'pastudents' => DB::select(" exec sp_AttendancePAStudents19 @enddate = '$enddate', @school = '$schoolname' "),
+        ];
+        return new Analysis($data);
+    }
+
+    public function paatriskstudents($schoolname, $enddate) {
+        // $enddate = Carbon::yesterday()->toDateString();
+        // $lastFriday = Carbon::parse($enddate)->modify("last friday")->toDateString();
+        $data = DB::select(" exec sp_AttendancePAStudents19 @enddate = '$enddate', @school = '$schoolname' ");
 
         return new Analysis($data);
     }

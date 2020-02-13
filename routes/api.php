@@ -33,11 +33,14 @@ Route::get('/dev/attendanceweek/{schoolname}/{enddate}/{week}', 'Api\AnalysisCon
 Route::get('/dev/attendancepie/{schoolname}/{enddate}', 'Api\AnalysisController@attendancepie');
 
 Route::get('/dev/paatrisk/{schoolname}/{enddate}', 'Api\AnalysisController@paatrisk');
+Route::get('/dev/paatriskstudents/{schoolname}/{enddate}', 'Api\AnalysisController@paatriskstudents');
 
 
 Route::get('/dev/{school}', 'Api\AnalysisController@dev');
 
 Route::resource('/dev', 'Api\AnalysisController');
+Route::resource('/Assessment', 'Api\AnalysisController');
+Route::resource('/Attendance', 'Api\AnalysisController');
 
 
 // Route::group(['middleware' => 'auth:api'], function(){

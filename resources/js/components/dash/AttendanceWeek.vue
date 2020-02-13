@@ -155,7 +155,7 @@ export default {
       return Number(Math.round(value + "e" + decimals) + "e-" + decimals);
     },
     callMe() {
-      this.loaded = false;
+    //   this.loaded = false;
       this.fetch();
     },
     setbarcolors() {

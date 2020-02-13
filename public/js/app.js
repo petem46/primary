@@ -1899,6 +1899,390 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Assessment.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Assessment.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var date_fns_format__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! date-fns/format */ "./node_modules/date-fns/esm/format/index.js");
+/* harmony import */ var date_fns_parseISO__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! date-fns/parseISO */ "./node_modules/date-fns/esm/parseISO/index.js");
+/* harmony import */ var _dash_kpiCards_NorKpiCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./dash/kpiCards/NorKpiCard */ "./resources/js/components/dash/kpiCards/NorKpiCard.vue");
+/* harmony import */ var _dash_kpiCards_PpKpiCard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./dash/kpiCards/PpKpiCard */ "./resources/js/components/dash/kpiCards/PpKpiCard.vue");
+/* harmony import */ var _dash_kpiCards_AttendanceKpiCard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./dash/kpiCards/AttendanceKpiCard */ "./resources/js/components/dash/kpiCards/AttendanceKpiCard.vue");
+/* harmony import */ var _dash_kpiCards_PaKpiCard__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./dash/kpiCards/PaKpiCard */ "./resources/js/components/dash/kpiCards/PaKpiCard.vue");
+/* harmony import */ var _dash_CohortSummary__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./dash/CohortSummary */ "./resources/js/components/dash/CohortSummary.vue");
+/* harmony import */ var _dash_YearGroupSummary__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./dash/YearGroupSummary */ "./resources/js/components/dash/YearGroupSummary.vue");
+/* harmony import */ var _dash_StartersLeaversSummary__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./dash/StartersLeaversSummary */ "./resources/js/components/dash/StartersLeaversSummary.vue");
+/* harmony import */ var _dash_AttendanceOverview__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./dash/AttendanceOverview */ "./resources/js/components/dash/AttendanceOverview.vue");
+/* harmony import */ var _dash_AttendancePie__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./dash/AttendancePie */ "./resources/js/components/dash/AttendancePie.vue");
+/* harmony import */ var _dash_AttendanceWeek__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./dash/AttendanceWeek */ "./resources/js/components/dash/AttendanceWeek.vue");
+/* harmony import */ var _dash_AtRiskPaOverview__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./dash/AtRiskPaOverview */ "./resources/js/components/dash/AtRiskPaOverview.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+ // import subDays from 'date-fns/sub_days'
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    NorKpiCard: _dash_kpiCards_NorKpiCard__WEBPACK_IMPORTED_MODULE_3__["default"],
+    PpKpiCard: _dash_kpiCards_PpKpiCard__WEBPACK_IMPORTED_MODULE_4__["default"],
+    AttendanceKpiCard: _dash_kpiCards_AttendanceKpiCard__WEBPACK_IMPORTED_MODULE_5__["default"],
+    PaKpiCard: _dash_kpiCards_PaKpiCard__WEBPACK_IMPORTED_MODULE_6__["default"],
+    CohortSummary: _dash_CohortSummary__WEBPACK_IMPORTED_MODULE_7__["default"],
+    YearGroupSummary: _dash_YearGroupSummary__WEBPACK_IMPORTED_MODULE_8__["default"],
+    StartersLeaversSummary: _dash_StartersLeaversSummary__WEBPACK_IMPORTED_MODULE_9__["default"],
+    AttendanceOverview: _dash_AttendanceOverview__WEBPACK_IMPORTED_MODULE_10__["default"],
+    AttendancePie: _dash_AttendancePie__WEBPACK_IMPORTED_MODULE_11__["default"],
+    AttendanceWeek: _dash_AttendanceWeek__WEBPACK_IMPORTED_MODULE_12__["default"],
+    AtRiskPaOverview: _dash_AtRiskPaOverview__WEBPACK_IMPORTED_MODULE_13__["default"]
+  },
+  props: ["schoolname", "start", "end"],
+  data: function data() {
+    return {
+      message: null,
+      startdatemenu: false,
+      enddatemenu: false,
+      loaded: true,
+      //   endpoint: "api/dev",
+      startdate: this.start,
+      enddate: this.end,
+      attendanceweek: null,
+      attendanceforweek: null
+    };
+  },
+  created: function created() {// this.fetch();
+  },
+  mounted: function mounted() {
+    console.log("Dashboard Mounted.");
+  },
+  methods: {
+    fetch: function fetch() {
+      var _this = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(this.endpoint).then(function (_ref) {
+        var data = _ref.data;
+        _this.loaded = true;
+      });
+    },
+    newDate: function newDate() {
+      console.log("New End Date has been set");
+      this.loaded = false;
+      this.fetch();
+    },
+    updateWeek: function updateWeek(week, weekatt) {
+      console.log('Emit updateWeek method triggered');
+      this.attendanceweek = week;
+      this.attendanceforweek = weekatt;
+    }
+  },
+  computed: {
+    formattedStartDate: function formattedStartDate() {
+      return this.startdate ? Object(date_fns_format__WEBPACK_IMPORTED_MODULE_1__["default"])(Object(date_fns_parseISO__WEBPACK_IMPORTED_MODULE_2__["default"])(this.startdate), "iiii, do MMM yyyy") : "";
+    },
+    formattedEndDate: function formattedEndDate() {
+      return this.enddate ? Object(date_fns_format__WEBPACK_IMPORTED_MODULE_1__["default"])(Object(date_fns_parseISO__WEBPACK_IMPORTED_MODULE_2__["default"])(this.enddate), "iiii, do MMM yyyy") : "";
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Attendance.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Attendance.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var date_fns_format__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! date-fns/format */ "./node_modules/date-fns/esm/format/index.js");
+/* harmony import */ var date_fns_parseISO__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! date-fns/parseISO */ "./node_modules/date-fns/esm/parseISO/index.js");
+/* harmony import */ var _dash_kpiCards_NorKpiCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./dash/kpiCards/NorKpiCard */ "./resources/js/components/dash/kpiCards/NorKpiCard.vue");
+/* harmony import */ var _dash_kpiCards_PpKpiCard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./dash/kpiCards/PpKpiCard */ "./resources/js/components/dash/kpiCards/PpKpiCard.vue");
+/* harmony import */ var _dash_kpiCards_AttendanceKpiCard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./dash/kpiCards/AttendanceKpiCard */ "./resources/js/components/dash/kpiCards/AttendanceKpiCard.vue");
+/* harmony import */ var _dash_kpiCards_PaKpiCard__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./dash/kpiCards/PaKpiCard */ "./resources/js/components/dash/kpiCards/PaKpiCard.vue");
+/* harmony import */ var _dash_CohortSummary__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./dash/CohortSummary */ "./resources/js/components/dash/CohortSummary.vue");
+/* harmony import */ var _dash_YearGroupSummary__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./dash/YearGroupSummary */ "./resources/js/components/dash/YearGroupSummary.vue");
+/* harmony import */ var _dash_StartersLeaversSummary__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./dash/StartersLeaversSummary */ "./resources/js/components/dash/StartersLeaversSummary.vue");
+/* harmony import */ var _dash_AttendanceOverview__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./dash/AttendanceOverview */ "./resources/js/components/dash/AttendanceOverview.vue");
+/* harmony import */ var _dash_AttendancePie__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./dash/AttendancePie */ "./resources/js/components/dash/AttendancePie.vue");
+/* harmony import */ var _dash_AttendanceWeek__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./dash/AttendanceWeek */ "./resources/js/components/dash/AttendanceWeek.vue");
+/* harmony import */ var _dash_AtRiskPaOverview__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./dash/AtRiskPaOverview */ "./resources/js/components/dash/AtRiskPaOverview.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+ // import subDays from 'date-fns/sub_days'
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    NorKpiCard: _dash_kpiCards_NorKpiCard__WEBPACK_IMPORTED_MODULE_3__["default"],
+    PpKpiCard: _dash_kpiCards_PpKpiCard__WEBPACK_IMPORTED_MODULE_4__["default"],
+    AttendanceKpiCard: _dash_kpiCards_AttendanceKpiCard__WEBPACK_IMPORTED_MODULE_5__["default"],
+    PaKpiCard: _dash_kpiCards_PaKpiCard__WEBPACK_IMPORTED_MODULE_6__["default"],
+    CohortSummary: _dash_CohortSummary__WEBPACK_IMPORTED_MODULE_7__["default"],
+    YearGroupSummary: _dash_YearGroupSummary__WEBPACK_IMPORTED_MODULE_8__["default"],
+    StartersLeaversSummary: _dash_StartersLeaversSummary__WEBPACK_IMPORTED_MODULE_9__["default"],
+    AttendanceOverview: _dash_AttendanceOverview__WEBPACK_IMPORTED_MODULE_10__["default"],
+    AttendancePie: _dash_AttendancePie__WEBPACK_IMPORTED_MODULE_11__["default"],
+    AttendanceWeek: _dash_AttendanceWeek__WEBPACK_IMPORTED_MODULE_12__["default"],
+    AtRiskPaOverview: _dash_AtRiskPaOverview__WEBPACK_IMPORTED_MODULE_13__["default"]
+  },
+  props: ["schoolname", "start", "end"],
+  data: function data() {
+    return {
+      message: null,
+      startdatemenu: false,
+      enddatemenu: false,
+      loaded: true,
+      //   endpoint: "api/dev",
+      startdate: this.start,
+      enddate: this.end,
+      attendanceweek: null,
+      attendanceforweek: null
+    };
+  },
+  created: function created() {// this.fetch();
+  },
+  mounted: function mounted() {
+    console.log("Dashboard Mounted.");
+  },
+  methods: {
+    fetch: function fetch() {
+      var _this = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(this.endpoint).then(function (_ref) {
+        var data = _ref.data;
+        _this.loaded = true;
+      });
+    },
+    newDate: function newDate() {
+      console.log("New End Date has been set");
+      this.loaded = false;
+      this.fetch();
+    },
+    updateWeek: function updateWeek(week, weekatt) {
+      console.log('Emit updateWeek method triggered');
+      this.attendanceweek = week;
+      this.attendanceforweek = weekatt;
+    }
+  },
+  computed: {
+    formattedStartDate: function formattedStartDate() {
+      return this.startdate ? Object(date_fns_format__WEBPACK_IMPORTED_MODULE_1__["default"])(Object(date_fns_parseISO__WEBPACK_IMPORTED_MODULE_2__["default"])(this.startdate), "iiii, do MMM yyyy") : "";
+    },
+    formattedEndDate: function formattedEndDate() {
+      return this.enddate ? Object(date_fns_format__WEBPACK_IMPORTED_MODULE_1__["default"])(Object(date_fns_parseISO__WEBPACK_IMPORTED_MODULE_2__["default"])(this.enddate), "iiii, do MMM yyyy") : "";
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Dash.vue?vue&type=script&lang=js&":
 /*!***************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Dash.vue?vue&type=script&lang=js& ***!
@@ -2176,6 +2560,83 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2191,16 +2652,81 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   data: function data() {
+    var _this = this;
+
     return {
       message: null,
       loaded: false,
+      showPupils: false,
       groups: [],
       chartdata: [],
       endpoint: 'api/dev/paatrisk/' + this.schoolname + '/' + this.enddate,
+      search: '',
+      gender: 'All',
+      genders: ['All', 'Boys', 'Girls'],
+      pp: 'All',
+      pps: ['All', 'PP', 'nPP'],
+      attendance: 90,
+      headers: [{
+        text: 'Surname',
+        align: 'left',
+        sortable: true,
+        value: 'surname'
+      }, {
+        text: 'Forename',
+        align: 'left',
+        sortable: true,
+        value: 'forename'
+      }, {
+        text: 'Year',
+        align: 'left',
+        sortable: true,
+        value: 'year'
+      }, {
+        text: 'Reg',
+        align: 'left',
+        sortable: true,
+        value: 'reg'
+      }, {
+        text: 'Gender',
+        align: 'left',
+        sortable: true,
+        value: 'genderlabel',
+        filter: function filter(value) {
+          if (_this.gender === 'All') return true;
+          if (!_this.gender) return true;
+          return value === _this.gender;
+        }
+      }, {
+        text: 'PP',
+        align: 'left',
+        sortable: true,
+        value: 'pplabel',
+        filter: function filter(value) {
+          if (_this.pp === 'All') return true;
+          if (!_this.pp) return true;
+          return value === _this.pp;
+        }
+      }, {
+        text: 'SEND',
+        align: 'left',
+        sortable: true,
+        value: 'sendlabel'
+      }, {
+        text: '% Att',
+        align: 'left',
+        sortable: true,
+        value: 'percentage',
+        filter: function filter(value) {
+          if (!_this.attendance) return true;
+          return value <= parseInt(_this.attendance);
+        }
+      }],
       options: {
         plugins: {
           datalabels: {
-            color: 'white'
+            color: 'white',
+            anchor: 'start'
           }
         },
         maintainAspectRatio: false,
@@ -2214,10 +2740,10 @@ __webpack_require__.r(__webpack_exports__);
             }
           }],
           yAxes: [{
-            display: false,
-            gridLines: {
-              display: false
-            }
+            ticks: {
+              beginAtZero: true
+            } // display: false,
+
           }]
         },
         title: {
@@ -2256,27 +2782,29 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     fetch: function fetch() {
-      var _this = this;
+      var _this2 = this;
 
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(this.endpoint).then(function (_ref) {
         var data = _ref.data;
-        _this.groups = data.data;
-        _this.patrisk = data.data.map(function (patrisk) {
-          return _this.roundOff(patrisk.pAt_Risk, 1);
+        console.log(data.data);
+        _this2.groups = data.data.paatrisk;
+        _this2.pupils = data.data.pastudents;
+        _this2.patrisk = data.data.paatrisk.map(function (patrisk) {
+          return _this2.roundOff(patrisk.pAt_Risk, 1);
         });
-        _this.cohorts = data.data.map(function (cohorts) {
+        _this2.cohorts = data.data.paatrisk.map(function (cohorts) {
           return cohorts.cohort;
         }); // this.loaded = true;
       }).then(function () {
-        _this.chartdata = {
-          labels: _this.cohorts,
+        _this2.chartdata = {
+          labels: _this2.cohorts,
           datasets: [{
             // type: 'horizontalBar',
             label: "At Risk of PA",
             backgroundColor: "rgba(255, 140, 0, 0.8)",
-            data: _this.patrisk
+            data: _this2.patrisk
           }]
-        }, _this.loaded = true;
+        }, _this2.loaded = true;
       });
     },
     roundOff: function roundOff(value, decimals) {
@@ -2776,7 +3304,7 @@ __webpack_require__.r(__webpack_exports__);
       return Number(Math.round(value + "e" + decimals) + "e-" + decimals);
     },
     callMe: function callMe() {
-      this.loaded = false;
+      //   this.loaded = false;
       this.fetch();
     },
     setbarcolors: function setbarcolors() {
@@ -4331,36 +4859,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
  // import subDays from 'date-fns/sub_days'
 
 
@@ -4371,117 +4869,143 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      schoolname: null,
+      schoolname: "FCAT",
+      appName: "myDataDash",
       fab: false,
-      start: '2019-08-26',
-      end: '2020-02-02',
+      start: "2019-08-26",
+      end: null,
       dialog: false,
       drawer: null,
       items: [{
-        icon: 'mdi-contacts',
-        name: 'Students'
+        core: "Wiggle",
+        icon: "mdi-contacts",
+        name: "Students",
+        school: "Aspire",
+        link: "school=Aspire&start=2019-08-26&end=2020-02-13",
+        schoollink: "school=",
+        startdatelink: "start=",
+        enddatelink: "end="
       }, {
-        icon: 'mdi-history',
-        name: 'Summary'
+        icon: "mdi-history",
+        name: "Summary",
+        school: "Aspire",
+        schoollink: "school=",
+        startdatelink: "start=",
+        enddatelink: "end="
       }, {
-        icon: 'mdi-calendar-multiselect',
-        name: 'Attendance'
+        icon: "mdi-calendar-multiselect",
+        name: "Attendance",
+        school: "Aspire",
+        schoollink: "school=",
+        startdatelink: "start=",
+        enddatelink: "end="
       }, {
-        icon: 'mdi-history',
-        name: 'Behaviours'
+        icon: "mdi-history",
+        name: "Behaviours",
+        school: "Aspire",
+        schoollink: "school=",
+        startdatelink: "start=",
+        enddatelink: "end="
       }, {
-        icon: 'mdi-star-box-multiple-outline',
-        name: 'Assessments'
+        icon: "mdi-star-box-multiple-outline",
+        name: "Assessments",
+        school: "Aspire",
+        schoollink: "school=",
+        startdatelink: "start=",
+        enddatelink: "end="
       }, {
-        icon: 'mdi-content-copy',
-        name: 'FCAT',
-        schoollink: '?school=FCAT'
+        icon: "mdi-content-copy",
+        name: "FCAT",
+        school: "FCAT",
+        schoollink: "school=",
+        startdatelink: "start=",
+        enddatelink: "end="
       }, {
-        icon: 'mdi-chevron-up',
-        'icon-alt': 'mdi-chevron-down',
-        text: 'All Through',
+        icon: "mdi-chevron-up",
+        "icon-alt": "mdi-chevron-down",
+        text: "All Through",
         model: false,
         children: [{
-          icon: 'mdi-home-export-outline',
-          name: 'Armfield',
-          schoollink: 'school=',
-          startdatelink: 'start=',
-          enddatelink: 'end='
+          icon: "mdi-home-export-outline",
+          school: "Armfield",
+          schoollink: "school=",
+          startdatelink: "start=",
+          enddatelink: "end="
         }, {
-          icon: 'mdi-home-export-outline',
-          name: 'Unity',
-          schoollink: 'school=',
-          startdatelink: 'start=',
-          enddatelink: 'end='
+          icon: "mdi-home-export-outline",
+          school: "Unity",
+          schoollink: "school=",
+          startdatelink: "start=",
+          enddatelink: "end="
         }]
       }, {
-        icon: 'mdi-chevron-up',
-        'icon-alt': 'mdi-chevron-down',
-        text: 'Secondary',
+        icon: "mdi-chevron-up",
+        "icon-alt": "mdi-chevron-down",
+        text: "Secondary",
         model: false,
         children: [{
-          icon: 'mdi-home-export-outline',
-          name: 'Aspire',
-          schoollink: 'school=',
-          startdatelink: 'start=',
-          enddatelink: 'end='
+          icon: "mdi-home-export-outline",
+          school: "Aspire",
+          schoollink: "school=",
+          startdatelink: "start=",
+          enddatelink: "end="
         }, {
-          icon: 'mdi-home-export-outline',
-          name: 'Garstang',
-          schoollink: 'school=',
-          startdatelink: 'start=',
-          enddatelink: 'end='
+          icon: "mdi-home-export-outline",
+          school: "Garstang",
+          schoollink: "school=",
+          startdatelink: "start=",
+          enddatelink: "end="
         }, {
-          icon: 'mdi-home-export-outline',
-          name: 'Montgomery',
-          schoollink: 'school=',
-          startdatelink: 'start=',
-          enddatelink: 'end='
+          icon: "mdi-home-export-outline",
+          school: "Montgomery",
+          schoollink: "school=",
+          startdatelink: "start=",
+          enddatelink: "end="
         }]
       }, {
-        icon: 'mdi-chevron-up',
-        'icon-alt': 'mdi-chevron-down',
-        text: 'Primary',
+        icon: "mdi-chevron-up",
+        "icon-alt": "mdi-chevron-down",
+        text: "Primary",
         model: false,
         children: [{
-          icon: 'mdi-home-export-outline',
-          name: 'Gateway',
-          schoollink: 'school=',
-          startdatelink: 'start=',
-          enddatelink: 'end='
+          icon: "mdi-home-export-outline",
+          school: "Gateway",
+          schoollink: "school=",
+          startdatelink: "start=",
+          enddatelink: "end="
         }, {
-          icon: 'mdi-home-export-outline',
-          name: 'Hambleton',
-          schoollink: 'school=',
-          startdatelink: 'start=',
-          enddatelink: 'end='
+          icon: "mdi-home-export-outline",
+          school: "Hambleton",
+          schoollink: "school=",
+          startdatelink: "start=",
+          enddatelink: "end="
         }, {
-          icon: 'mdi-home-export-outline',
-          name: 'Mereside',
-          schoollink: 'school=',
-          startdatelink: 'start=',
-          enddatelink: 'end='
+          icon: "mdi-home-export-outline",
+          school: "Mereside",
+          schoollink: "school=",
+          startdatelink: "start=",
+          enddatelink: "end="
         }, {
-          icon: 'mdi-home-export-outline',
-          name: 'Westcliff',
-          schoollink: 'school=',
-          startdatelink: 'start=',
-          enddatelink: 'end='
+          icon: "mdi-home-export-outline",
+          school: "Westcliff",
+          schoollink: "school=",
+          startdatelink: "start=",
+          enddatelink: "end="
         }, {
-          icon: 'mdi-home-export-outline',
-          name: 'Westminster',
-          schoollink: 'school=',
-          startdatelink: 'start=',
-          enddatelink: 'end='
+          icon: "mdi-home-export-outline",
+          school: "Westminster",
+          schoollink: "school=",
+          startdatelink: "start=",
+          enddatelink: "end="
         }]
       }]
     };
   },
-  created: function created() {// this.end = '2020-02-02'
+  created: function created() {// this.schoolname = schoolname;
   },
   methods: {
     onScroll: function onScroll(e) {
-      if (typeof window === 'undefined') return;
+      if (typeof window === "undefined") return;
       var top = window.pageYOffset || e.target.scrollTop || 0;
       this.fab = top > 20;
     },
@@ -4491,10 +5015,10 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     startdate: function startdate() {
-      return '2019-08-26';
+      return "2019-08-26";
     },
     enddate: function enddate() {
-      return Object(date_fns_format__WEBPACK_IMPORTED_MODULE_0__["default"])(new Date(), 'yyyy-MM-dd');
+      return Object(date_fns_format__WEBPACK_IMPORTED_MODULE_0__["default"])(new Date(), "yyyy-MM-dd");
     }
   }
 });
@@ -62436,6 +62960,618 @@ var reactiveProp = {
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Assessment.vue?vue&type=template&id=a7809b26&":
+/*!*************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Assessment.vue?vue&type=template&id=a7809b26& ***!
+  \*************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    !_vm.loaded
+      ? _c("div", [
+          _c("i", { staticClass: "fas fa-spinner fa-spin fa-3x" }),
+          _vm._v("   Loading...\n  ")
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.loaded
+      ? _c("div", [
+          _c(
+            "div",
+            {},
+            [
+              _c(
+                "v-container",
+                { attrs: { fluid: "" } },
+                [
+                  _c("v-row", [
+                    _c("div", { staticClass: "col-12 text-center" }, [
+                      _c("h1", { staticClass: "display-3 mx-auto my-2" }, [
+                        _vm._v(_vm._s(_vm.schoolname) + " Data Dashboard")
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-3" },
+                      [
+                        _c(
+                          "v-menu",
+                          {
+                            attrs: {
+                              "close-on-content-click": false,
+                              "nudge-right": 40,
+                              transition: "scale-transition",
+                              "offset-y": "",
+                              "min-width": "290px"
+                            },
+                            scopedSlots: _vm._u(
+                              [
+                                {
+                                  key: "activator",
+                                  fn: function(ref) {
+                                    var on = ref.on
+                                    return [
+                                      _c(
+                                        "v-text-field",
+                                        _vm._g(
+                                          {
+                                            attrs: {
+                                              readonly: "",
+                                              value: _vm.formattedStartDate,
+                                              label: "Start Date",
+                                              "prepend-icon":
+                                                "mdi-calendar-multiselect"
+                                            }
+                                          },
+                                          on
+                                        )
+                                      )
+                                    ]
+                                  }
+                                }
+                              ],
+                              null,
+                              false,
+                              3259371349
+                            ),
+                            model: {
+                              value: _vm.startdatemenu,
+                              callback: function($$v) {
+                                _vm.startdatemenu = $$v
+                              },
+                              expression: "startdatemenu"
+                            }
+                          },
+                          [
+                            _vm._v(" "),
+                            _c("v-date-picker", {
+                              attrs: { scrollable: "", "show-current": "" },
+                              on: {
+                                input: function($event) {
+                                  _vm.startdatemenu = false
+                                }
+                              },
+                              model: {
+                                value: _vm.startdate,
+                                callback: function($$v) {
+                                  _vm.startdate = $$v
+                                },
+                                expression: "startdate"
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-3" },
+                      [
+                        _c(
+                          "v-menu",
+                          {
+                            attrs: {
+                              "close-on-content-click": false,
+                              "nudge-right": 40,
+                              transition: "scale-transition",
+                              "offset-y": "",
+                              "min-width": "290px"
+                            },
+                            scopedSlots: _vm._u(
+                              [
+                                {
+                                  key: "activator",
+                                  fn: function(ref) {
+                                    var on = ref.on
+                                    return [
+                                      _c(
+                                        "v-text-field",
+                                        _vm._g(
+                                          {
+                                            attrs: {
+                                              readonly: "",
+                                              value: _vm.formattedEndDate,
+                                              label: "End Date",
+                                              "prepend-icon":
+                                                "mdi-calendar-multiselect"
+                                            }
+                                          },
+                                          on
+                                        )
+                                      )
+                                    ]
+                                  }
+                                }
+                              ],
+                              null,
+                              false,
+                              3833939381
+                            ),
+                            model: {
+                              value: _vm.enddatemenu,
+                              callback: function($$v) {
+                                _vm.enddatemenu = $$v
+                              },
+                              expression: "enddatemenu"
+                            }
+                          },
+                          [
+                            _vm._v(" "),
+                            _c("v-date-picker", {
+                              attrs: { scrollable: "", "show-current": "" },
+                              on: {
+                                input: function($event) {
+                                  _vm.enddatemenu = false
+                                }
+                              },
+                              model: {
+                                value: _vm.enddate,
+                                callback: function($$v) {
+                                  _vm.enddate = $$v
+                                },
+                                expression: "enddate"
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "v-row",
+                    [
+                      _c("nor-kpi-card", {
+                        attrs: {
+                          schoolname: this.schoolname,
+                          enddate: this.enddate
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("pp-kpi-card", {
+                        attrs: {
+                          schoolname: this.schoolname,
+                          enddate: this.enddate
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("attendance-kpi-card", {
+                        attrs: {
+                          schoolname: this.schoolname,
+                          enddate: this.enddate
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("pa-kpi-card", {
+                        attrs: {
+                          schoolname: this.schoolname,
+                          enddate: this.enddate
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-row",
+                    [
+                      _c("cohort-summary", {
+                        attrs: {
+                          schoolname: this.schoolname,
+                          enddate: this.enddate
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("year-group-summary", {
+                        attrs: {
+                          schoolname: this.schoolname,
+                          enddate: this.enddate
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("starters-leavers-summary", {
+                        attrs: {
+                          schoolname: this.schoolname,
+                          enddate: this.enddate
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-row",
+                    [
+                      _c("attendance-overview", {
+                        attrs: {
+                          schoolname: this.schoolname,
+                          enddate: this.enddate
+                        },
+                        on: { updateWeek: _vm.updateWeek }
+                      }),
+                      _vm._v(" "),
+                      _c("attendance-week", {
+                        attrs: {
+                          schoolname: this.schoolname,
+                          enddate: this.enddate,
+                          attendanceweek: this.attendanceweek,
+                          attendanceforweek: this.attendanceforweek
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-row",
+                    [
+                      _c("at-risk-pa-overview", {
+                        attrs: {
+                          schoolname: this.schoolname,
+                          enddate: this.enddate
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ])
+      : _vm._e()
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Attendance.vue?vue&type=template&id=16f3f314&":
+/*!*************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Attendance.vue?vue&type=template&id=16f3f314& ***!
+  \*************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    !_vm.loaded
+      ? _c("div", [
+          _c("i", { staticClass: "fas fa-spinner fa-spin fa-3x" }),
+          _vm._v("   Loading...\n  ")
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.loaded
+      ? _c("div", [
+          _c(
+            "div",
+            {},
+            [
+              _c(
+                "v-container",
+                { attrs: { fluid: "" } },
+                [
+                  _c("v-row", [
+                    _c("div", { staticClass: "col-12 text-center" }, [
+                      _c("h1", { staticClass: "display-3 mx-auto my-2" }, [
+                        _vm._v(_vm._s(_vm.schoolname) + " Data Dashboard")
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-3" },
+                      [
+                        _c(
+                          "v-menu",
+                          {
+                            attrs: {
+                              "close-on-content-click": false,
+                              "nudge-right": 40,
+                              transition: "scale-transition",
+                              "offset-y": "",
+                              "min-width": "290px"
+                            },
+                            scopedSlots: _vm._u(
+                              [
+                                {
+                                  key: "activator",
+                                  fn: function(ref) {
+                                    var on = ref.on
+                                    return [
+                                      _c(
+                                        "v-text-field",
+                                        _vm._g(
+                                          {
+                                            attrs: {
+                                              readonly: "",
+                                              value: _vm.formattedStartDate,
+                                              label: "Start Date",
+                                              "prepend-icon":
+                                                "mdi-calendar-multiselect"
+                                            }
+                                          },
+                                          on
+                                        )
+                                      )
+                                    ]
+                                  }
+                                }
+                              ],
+                              null,
+                              false,
+                              3259371349
+                            ),
+                            model: {
+                              value: _vm.startdatemenu,
+                              callback: function($$v) {
+                                _vm.startdatemenu = $$v
+                              },
+                              expression: "startdatemenu"
+                            }
+                          },
+                          [
+                            _vm._v(" "),
+                            _c("v-date-picker", {
+                              attrs: { scrollable: "", "show-current": "" },
+                              on: {
+                                input: function($event) {
+                                  _vm.startdatemenu = false
+                                }
+                              },
+                              model: {
+                                value: _vm.startdate,
+                                callback: function($$v) {
+                                  _vm.startdate = $$v
+                                },
+                                expression: "startdate"
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-3" },
+                      [
+                        _c(
+                          "v-menu",
+                          {
+                            attrs: {
+                              "close-on-content-click": false,
+                              "nudge-right": 40,
+                              transition: "scale-transition",
+                              "offset-y": "",
+                              "min-width": "290px"
+                            },
+                            scopedSlots: _vm._u(
+                              [
+                                {
+                                  key: "activator",
+                                  fn: function(ref) {
+                                    var on = ref.on
+                                    return [
+                                      _c(
+                                        "v-text-field",
+                                        _vm._g(
+                                          {
+                                            attrs: {
+                                              readonly: "",
+                                              value: _vm.formattedEndDate,
+                                              label: "End Date",
+                                              "prepend-icon":
+                                                "mdi-calendar-multiselect"
+                                            }
+                                          },
+                                          on
+                                        )
+                                      )
+                                    ]
+                                  }
+                                }
+                              ],
+                              null,
+                              false,
+                              3833939381
+                            ),
+                            model: {
+                              value: _vm.enddatemenu,
+                              callback: function($$v) {
+                                _vm.enddatemenu = $$v
+                              },
+                              expression: "enddatemenu"
+                            }
+                          },
+                          [
+                            _vm._v(" "),
+                            _c("v-date-picker", {
+                              attrs: { scrollable: "", "show-current": "" },
+                              on: {
+                                input: function($event) {
+                                  _vm.enddatemenu = false
+                                }
+                              },
+                              model: {
+                                value: _vm.enddate,
+                                callback: function($$v) {
+                                  _vm.enddate = $$v
+                                },
+                                expression: "enddate"
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "v-row",
+                    [
+                      _c("nor-kpi-card", {
+                        attrs: {
+                          schoolname: this.schoolname,
+                          enddate: this.enddate
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("pp-kpi-card", {
+                        attrs: {
+                          schoolname: this.schoolname,
+                          enddate: this.enddate
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("attendance-kpi-card", {
+                        attrs: {
+                          schoolname: this.schoolname,
+                          enddate: this.enddate
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("pa-kpi-card", {
+                        attrs: {
+                          schoolname: this.schoolname,
+                          enddate: this.enddate
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-row",
+                    [
+                      _c("cohort-summary", {
+                        attrs: {
+                          schoolname: this.schoolname,
+                          enddate: this.enddate
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("year-group-summary", {
+                        attrs: {
+                          schoolname: this.schoolname,
+                          enddate: this.enddate
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("starters-leavers-summary", {
+                        attrs: {
+                          schoolname: this.schoolname,
+                          enddate: this.enddate
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-row",
+                    [
+                      _c("attendance-overview", {
+                        attrs: {
+                          schoolname: this.schoolname,
+                          enddate: this.enddate
+                        },
+                        on: { updateWeek: _vm.updateWeek }
+                      }),
+                      _vm._v(" "),
+                      _c("attendance-week", {
+                        attrs: {
+                          schoolname: this.schoolname,
+                          enddate: this.enddate,
+                          attendanceweek: this.attendanceweek,
+                          attendanceforweek: this.attendanceforweek
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-row",
+                    [
+                      _c("at-risk-pa-overview", {
+                        attrs: {
+                          schoolname: this.schoolname,
+                          enddate: this.enddate
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ])
+      : _vm._e()
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Dash.vue?vue&type=template&id=0cf04d7d&":
 /*!*******************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Dash.vue?vue&type=template&id=0cf04d7d& ***!
@@ -62853,107 +63989,274 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      _c(
-        "v-col",
-        { attrs: { cols: "12", lg: "4" } },
-        [
-          _vm.loaded
-            ? _c(
-                "v-card",
-                {
-                  staticClass: "pa-2",
-                  attrs: { outlined: "", raised: "", tile: "" }
-                },
-                [
-                  _c("v-card-title", [
-                    _vm._v(
-                      "\n                % At Risk of Persistent Absence\n            "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("v-simple-table", {
-                    staticClass: "less-padding",
-                    attrs: { "fixed-header": "", height: "345px" },
-                    scopedSlots: _vm._u(
-                      [
-                        {
-                          key: "default",
-                          fn: function() {
-                            return [
-                              _c("thead", {}, [
-                                _c("tr", [
-                                  _c(
-                                    "th",
-                                    {
-                                      staticClass: "grey darken-3 white--text"
-                                    },
-                                    [_vm._v("Group")]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "th",
-                                    {
-                                      staticClass: "grey darken-3 white--text"
-                                    },
-                                    [_vm._v("Count")]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "th",
-                                    {
-                                      staticClass: "grey darken-3 white--text"
-                                    },
-                                    [_vm._v("%")]
-                                  )
-                                ])
-                              ]),
-                              _vm._v(" "),
-                              _c(
-                                "tbody",
-                                _vm._l(_vm.groups, function(group) {
-                                  return _c("tr", { key: group.sortorder }, [
-                                    _c("td", [_vm._v(_vm._s(group.cohort))]),
-                                    _vm._v(" "),
-                                    _c("td", [_vm._v(_vm._s(group.PA_Count))]),
-                                    _vm._v(" "),
-                                    _c("td", [
-                                      _vm._v(
-                                        _vm._s(_vm.roundOff(group.pAt_Risk, 1))
+      !_vm.showPupils
+        ? _c(
+            "v-col",
+            { attrs: { cols: "12", lg: "4" } },
+            [
+              _vm.loaded
+                ? _c(
+                    "v-card",
+                    {
+                      staticClass: "pa-2",
+                      attrs: { outlined: "", raised: "", tile: "" }
+                    },
+                    [
+                      _c("v-card-title", [
+                        _vm._v(
+                          "\n                % At Risk of Persistent Absence\n            "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("v-simple-table", {
+                        staticClass: "td--less-padding",
+                        attrs: { "fixed-header": "", height: "345px" },
+                        scopedSlots: _vm._u(
+                          [
+                            {
+                              key: "default",
+                              fn: function() {
+                                return [
+                                  _c("thead", {}, [
+                                    _c("tr", [
+                                      _c(
+                                        "th",
+                                        {
+                                          staticClass:
+                                            "grey darken-3 white--text"
+                                        },
+                                        [_vm._v("Group")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "th",
+                                        {
+                                          staticClass:
+                                            "grey darken-3 white--text"
+                                        },
+                                        [_vm._v("Count")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "th",
+                                        {
+                                          staticClass:
+                                            "grey darken-3 white--text"
+                                        },
+                                        [_vm._v("%")]
                                       )
                                     ])
-                                  ])
-                                }),
-                                0
-                              )
-                            ]
-                          },
-                          proxy: true
-                        }
-                      ],
-                      null,
-                      false,
-                      3782368866
-                    )
-                  }),
-                  _vm._v(" "),
-                  _c("v-divider"),
-                  _vm._v(" "),
-                  _c(
-                    "v-card-actions",
-                    [
-                      _c("v-btn", { attrs: { text: "", small: "" } }, [
-                        _vm._v("Full Report")
-                      ])
+                                  ]),
+                                  _vm._v(" "),
+                                  _c(
+                                    "tbody",
+                                    _vm._l(_vm.groups, function(group) {
+                                      return _c(
+                                        "tr",
+                                        { key: group.sortorder },
+                                        [
+                                          _c("td", [
+                                            _vm._v(_vm._s(group.cohort))
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("td", [
+                                            _vm._v(_vm._s(group.PA_Count))
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("td", [
+                                            _vm._v(
+                                              _vm._s(
+                                                _vm.roundOff(group.pAt_Risk, 1)
+                                              )
+                                            )
+                                          ])
+                                        ]
+                                      )
+                                    }),
+                                    0
+                                  )
+                                ]
+                              },
+                              proxy: true
+                            }
+                          ],
+                          null,
+                          false,
+                          3782368866
+                        )
+                      }),
+                      _vm._v(" "),
+                      _c("v-divider"),
+                      _vm._v(" "),
+                      _c(
+                        "v-card-actions",
+                        [
+                          _c("v-btn", { attrs: { text: "", small: "" } }, [
+                            _vm._v("Full Report")
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "v-btn",
+                            {
+                              attrs: { text: "", small: "" },
+                              on: {
+                                click: function($event) {
+                                  _vm.showPupils = true
+                                }
+                              }
+                            },
+                            [_vm._v("Show Pupils")]
+                          )
+                        ],
+                        1
+                      )
                     ],
                     1
                   )
-                ],
-                1
-              )
-            : _vm._e()
-        ],
-        1
-      ),
+                : _vm._e()
+            ],
+            1
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.showPupils
+        ? _c(
+            "v-col",
+            { attrs: { cols: "12", lg: "4" } },
+            [
+              _vm.loaded
+                ? _c(
+                    "v-card",
+                    {
+                      staticClass: "pa-2",
+                      attrs: { outlined: "", raised: "", tile: "" }
+                    },
+                    [
+                      _c("v-card-title", [
+                        _vm._v(
+                          "\n                % At Risk of Persistent Absence\n            "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("v-simple-table", {
+                        staticClass: "td--less-padding",
+                        attrs: { "fixed-header": "", height: "345px" },
+                        scopedSlots: _vm._u(
+                          [
+                            {
+                              key: "default",
+                              fn: function() {
+                                return [
+                                  _c("thead", {}, [
+                                    _c("tr", [
+                                      _c(
+                                        "th",
+                                        {
+                                          staticClass:
+                                            "grey darken-3 white--text"
+                                        },
+                                        [_vm._v("Pupil")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "th",
+                                        {
+                                          staticClass:
+                                            "grey darken-3 white--text"
+                                        },
+                                        [_vm._v("Year")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "th",
+                                        {
+                                          staticClass:
+                                            "grey darken-3 white--text"
+                                        },
+                                        [_vm._v("Reg")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "th",
+                                        {
+                                          staticClass:
+                                            "grey darken-3 white--text"
+                                        },
+                                        [_vm._v("%")]
+                                      )
+                                    ])
+                                  ]),
+                                  _vm._v(" "),
+                                  _c(
+                                    "tbody",
+                                    _vm._l(_vm.pupils, function(pupil) {
+                                      return _c("tr", { key: pupil.upn }, [
+                                        _c("td", [
+                                          _vm._v(
+                                            _vm._s(pupil.forename) +
+                                              " " +
+                                              _vm._s(pupil.surname)
+                                          )
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("td", [_vm._v(_vm._s(pupil.year))]),
+                                        _vm._v(" "),
+                                        _c("td", [_vm._v(_vm._s(pupil.reg))]),
+                                        _vm._v(" "),
+                                        _c("td", [
+                                          _vm._v(
+                                            _vm._s(
+                                              _vm.roundOff(pupil.percentage, 1)
+                                            )
+                                          )
+                                        ])
+                                      ])
+                                    }),
+                                    0
+                                  )
+                                ]
+                              },
+                              proxy: true
+                            }
+                          ],
+                          null,
+                          false,
+                          868288362
+                        )
+                      }),
+                      _vm._v(" "),
+                      _c("v-divider"),
+                      _vm._v(" "),
+                      _c(
+                        "v-card-actions",
+                        [
+                          _c("v-btn", { attrs: { text: "", small: "" } }, [
+                            _vm._v("Full Report")
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "v-btn",
+                            {
+                              attrs: { text: "", small: "" },
+                              on: {
+                                click: function($event) {
+                                  _vm.showPupils = false
+                                }
+                              }
+                            },
+                            [_vm._v("Show Groups")]
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                : _vm._e()
+            ],
+            1
+          )
+        : _vm._e(),
       _vm._v(" "),
       _c(
         "v-col",
@@ -63000,7 +64303,178 @@ var render = function() {
             : _vm._e()
         ],
         1
-      )
+      ),
+      _vm._v(" "),
+      _vm.showPupils
+        ? _c(
+            "v-col",
+            { attrs: { cols: "12" } },
+            [
+              _vm.loaded
+                ? _c(
+                    "v-card",
+                    {
+                      staticClass: "pa-2",
+                      attrs: { outlined: "", raised: "", tile: "" }
+                    },
+                    [
+                      _c(
+                        "v-card-title",
+                        [
+                          _vm._v(
+                            "\n                % At Risk of Persistent Absence\n            "
+                          ),
+                          _c("v-spacer"),
+                          _vm._v(" "),
+                          _c("v-text-field", {
+                            attrs: {
+                              "append-icon": "mdi-search",
+                              label: "Search",
+                              "single-line": "",
+                              "hide-details": ""
+                            },
+                            model: {
+                              value: _vm.search,
+                              callback: function($$v) {
+                                _vm.search = $$v
+                              },
+                              expression: "search"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c("v-data-table", {
+                        staticClass: "elevation-1",
+                        attrs: {
+                          headers: _vm.headers,
+                          items: _vm.pupils,
+                          "items-per-page": 6,
+                          search: _vm.search,
+                          "fixed-header": "",
+                          height: "345px"
+                        },
+                        scopedSlots: _vm._u(
+                          [
+                            {
+                              key: "top",
+                              fn: function() {
+                                return [
+                                  _c(
+                                    "v-row",
+                                    { staticClass: "px-1" },
+                                    [
+                                      _c(
+                                        "v-col",
+                                        { attrs: { cols: "2" } },
+                                        [
+                                          _c("v-select", {
+                                            attrs: {
+                                              items: _vm.genders,
+                                              label: "Gender Filter"
+                                            },
+                                            model: {
+                                              value: _vm.gender,
+                                              callback: function($$v) {
+                                                _vm.gender = $$v
+                                              },
+                                              expression: "gender"
+                                            }
+                                          })
+                                        ],
+                                        1
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "v-col",
+                                        { attrs: { cols: "2" } },
+                                        [
+                                          _c("v-select", {
+                                            attrs: {
+                                              items: _vm.pps,
+                                              label: "PP Filter"
+                                            },
+                                            model: {
+                                              value: _vm.pp,
+                                              callback: function($$v) {
+                                                _vm.pp = $$v
+                                              },
+                                              expression: "pp"
+                                            }
+                                          })
+                                        ],
+                                        1
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "v-col",
+                                        { attrs: { cols: "2" } },
+                                        [
+                                          _c("v-text-field", {
+                                            attrs: {
+                                              type: "number",
+                                              min: "1",
+                                              max: "100",
+                                              label: "% attendance less than"
+                                            },
+                                            model: {
+                                              value: _vm.attendance,
+                                              callback: function($$v) {
+                                                _vm.attendance = $$v
+                                              },
+                                              expression: "attendance"
+                                            }
+                                          })
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  )
+                                ]
+                              },
+                              proxy: true
+                            }
+                          ],
+                          null,
+                          false,
+                          3254638826
+                        )
+                      }),
+                      _vm._v(" "),
+                      _c("v-divider"),
+                      _vm._v(" "),
+                      _c(
+                        "v-card-actions",
+                        [
+                          _c("v-btn", { attrs: { text: "", small: "" } }, [
+                            _vm._v("Full Report")
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "v-btn",
+                            {
+                              attrs: { text: "", small: "" },
+                              on: {
+                                click: function($event) {
+                                  _vm.showPupils = false
+                                }
+                              }
+                            },
+                            [_vm._v("Show Groups")]
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                : _vm._e()
+            ],
+            1
+          )
+        : _vm._e()
     ],
     1
   )
@@ -63426,7 +64900,6 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("v-simple-table", {
-                staticClass: "less-padding",
                 attrs: { "fixed-header": "", height: "345px" },
                 scopedSlots: _vm._u(
                   [
@@ -63589,7 +65062,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("v-simple-table", {
-                staticClass: "less-padding",
+                staticClass: "td--less-padding",
                 attrs: { "fixed-header": "", height: "345px" },
                 scopedSlots: _vm._u(
                   [
@@ -63750,7 +65223,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("v-simple-table", {
-                staticClass: "less-padding",
+                staticClass: "td--less-padding",
                 attrs: { "fixed-header": "", height: "345px" },
                 scopedSlots: _vm._u(
                   [
@@ -65556,49 +67029,7 @@ var render = function() {
             [
               _vm._l(_vm.items, function(item) {
                 return [
-                  item.heading
-                    ? _c(
-                        "v-row",
-                        { key: item.heading, attrs: { align: "center" } },
-                        [
-                          _c(
-                            "v-col",
-                            { attrs: { cols: "6" } },
-                            [
-                              item.heading
-                                ? _c("v-subheader", [
-                                    _vm._v(
-                                      "\n              " +
-                                        _vm._s(item.heading) +
-                                        "\n            "
-                                    )
-                                  ])
-                                : _vm._e()
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-col",
-                            {
-                              staticClass: "text-center",
-                              attrs: { cols: "6" }
-                            },
-                            [
-                              _c(
-                                "a",
-                                {
-                                  staticClass: "body-2 black--text",
-                                  attrs: { href: "#!" }
-                                },
-                                [_vm._v("EDIT")]
-                              )
-                            ]
-                          )
-                        ],
-                        1
-                      )
-                    : item.children
+                  item.children
                     ? _c(
                         "v-list-group",
                         {
@@ -65619,11 +67050,7 @@ var render = function() {
                                       "v-list-item-content",
                                       [
                                         _c("v-list-item-title", [
-                                          _vm._v(
-                                            "\n                " +
-                                              _vm._s(item.text) +
-                                              "\n              "
-                                          )
+                                          _vm._v(_vm._s(item.text))
                                         ])
                                       ],
                                       1
@@ -65674,7 +67101,7 @@ var render = function() {
                                             href:
                                               "?" +
                                               child.schoollink +
-                                              child.name +
+                                              child.school +
                                               "&" +
                                               child.startdatelink +
                                               _vm.startdate +
@@ -65683,13 +67110,7 @@ var render = function() {
                                               _vm.enddate
                                           }
                                         },
-                                        [
-                                          _vm._v(
-                                            "\n                  " +
-                                              _vm._s(child.name) +
-                                              "\n                "
-                                          )
-                                        ]
+                                        [_vm._v(_vm._s(child.school))]
                                       )
                                     ])
                                   ],
@@ -65723,7 +67144,7 @@ var render = function() {
                                       href:
                                         "?" +
                                         item.schoollink +
-                                        item.name +
+                                        item.school +
                                         "&" +
                                         item.startdatelink +
                                         _vm.startdate +
@@ -65732,13 +67153,7 @@ var render = function() {
                                         _vm.enddate
                                     }
                                   },
-                                  [
-                                    _vm._v(
-                                      "\n                  " +
-                                        _vm._s(item.name) +
-                                        "\n              "
-                                    )
-                                  ]
+                                  [_vm._v(_vm._s(item.name))]
                                 )
                               ])
                             ],
@@ -65787,7 +67202,7 @@ var render = function() {
                 { staticClass: "hidden-sm-and-down" },
                 [
                   _c("v-icon", [_vm._v("mdi-hexagon-multiple-outline")]),
-                  _vm._v("   myDataDash")
+                  _vm._v("   " + _vm._s(_vm.appName) + "\n      ")
                 ],
                 1
               )
@@ -122208,6 +123623,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuetify__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vuetify__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _views_App__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./views/App */ "./resources/js/views/App.vue");
 /* harmony import */ var _components_Dash__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/Dash */ "./resources/js/components/Dash.vue");
+/* harmony import */ var _components_Assessment__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/Assessment */ "./resources/js/components/Assessment.vue");
+/* harmony import */ var _components_Attendance__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/Attendance */ "./resources/js/components/Attendance.vue");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! ./plugins/swal */ "./resources/js/plugins/swal.js"); // require('./plugins/resume.min');
@@ -122241,6 +123658,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('passport-personal-access-t
 // Vue.component('at-risk-pa-overview', require('./components/dash/AtRiskPaOverview').default);
 
 
+
+
  // import NorKpiCard from './components/dash/kpiCards/NorKpiCard'
 // import PpKpiCard from './components/dash/kpiCards/PpKpiCard'
 // import AttendanceKpiCard from './components/dash/kpiCards/AttendanceKpiCard'
@@ -122266,6 +123685,28 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
         end: route.query.end
       };
     }
+  }, {
+    path: '/assessment',
+    name: 'assessment',
+    component: _components_Assessment__WEBPACK_IMPORTED_MODULE_5__["default"],
+    props: function props(route) {
+      return {
+        schoolname: route.query.school,
+        start: route.query.start,
+        end: route.query.end
+      };
+    }
+  }, {
+    path: '/attendance',
+    name: 'attendance',
+    component: _components_Attendance__WEBPACK_IMPORTED_MODULE_6__["default"],
+    props: function props(route) {
+      return {
+        schoolname: route.query.school,
+        start: route.query.start,
+        end: route.query.end
+      };
+    }
   }]
 });
 var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
@@ -122273,7 +123714,9 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   vuetify: new vuetify__WEBPACK_IMPORTED_MODULE_2___default.a(),
   components: {
     App: _views_App__WEBPACK_IMPORTED_MODULE_3__["default"],
-    Dash: _components_Dash__WEBPACK_IMPORTED_MODULE_4__["default"]
+    Dash: _components_Dash__WEBPACK_IMPORTED_MODULE_4__["default"],
+    Assessment: _components_Assessment__WEBPACK_IMPORTED_MODULE_5__["default"],
+    Attendance: _components_Attendance__WEBPACK_IMPORTED_MODULE_6__["default"]
   },
   router: router
 });
@@ -122322,6 +123765,144 @@ if (token) {
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/components/Assessment.vue":
+/*!************************************************!*\
+  !*** ./resources/js/components/Assessment.vue ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Assessment_vue_vue_type_template_id_a7809b26___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Assessment.vue?vue&type=template&id=a7809b26& */ "./resources/js/components/Assessment.vue?vue&type=template&id=a7809b26&");
+/* harmony import */ var _Assessment_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Assessment.vue?vue&type=script&lang=js& */ "./resources/js/components/Assessment.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Assessment_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Assessment_vue_vue_type_template_id_a7809b26___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Assessment_vue_vue_type_template_id_a7809b26___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Assessment.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Assessment.vue?vue&type=script&lang=js&":
+/*!*************************************************************************!*\
+  !*** ./resources/js/components/Assessment.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Assessment_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Assessment.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Assessment.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Assessment_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Assessment.vue?vue&type=template&id=a7809b26&":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/components/Assessment.vue?vue&type=template&id=a7809b26& ***!
+  \*******************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Assessment_vue_vue_type_template_id_a7809b26___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Assessment.vue?vue&type=template&id=a7809b26& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Assessment.vue?vue&type=template&id=a7809b26&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Assessment_vue_vue_type_template_id_a7809b26___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Assessment_vue_vue_type_template_id_a7809b26___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Attendance.vue":
+/*!************************************************!*\
+  !*** ./resources/js/components/Attendance.vue ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Attendance_vue_vue_type_template_id_16f3f314___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Attendance.vue?vue&type=template&id=16f3f314& */ "./resources/js/components/Attendance.vue?vue&type=template&id=16f3f314&");
+/* harmony import */ var _Attendance_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Attendance.vue?vue&type=script&lang=js& */ "./resources/js/components/Attendance.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Attendance_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Attendance_vue_vue_type_template_id_16f3f314___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Attendance_vue_vue_type_template_id_16f3f314___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Attendance.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Attendance.vue?vue&type=script&lang=js&":
+/*!*************************************************************************!*\
+  !*** ./resources/js/components/Attendance.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Attendance_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Attendance.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Attendance.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Attendance_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Attendance.vue?vue&type=template&id=16f3f314&":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/components/Attendance.vue?vue&type=template&id=16f3f314& ***!
+  \*******************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Attendance_vue_vue_type_template_id_16f3f314___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Attendance.vue?vue&type=template&id=16f3f314& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Attendance.vue?vue&type=template&id=16f3f314&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Attendance_vue_vue_type_template_id_16f3f314___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Attendance_vue_vue_type_template_id_16f3f314___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
 
 /***/ }),
 

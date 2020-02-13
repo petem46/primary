@@ -50,6 +50,8 @@ Vue.component(
 
 import App from './views/App'
 import Dash from './components/Dash'
+import Assessment from './components/Assessment'
+import Attendance from './components/Attendance'
 // import NorKpiCard from './components/dash/kpiCards/NorKpiCard'
 // import PpKpiCard from './components/dash/kpiCards/PpKpiCard'
 // import AttendanceKpiCard from './components/dash/kpiCards/AttendanceKpiCard'
@@ -71,6 +73,18 @@ const router = new VueRouter({
             component: Dash,
             props: (route) => ({ schoolname: route.query.school, start: route.query.start, end: route.query.end }),
         },
+        {
+            path: '/assessment',
+            name: 'assessment',
+            component: Assessment,
+            props: (route) => ({ schoolname: route.query.school, start: route.query.start, end: route.query.end }),
+        },
+        {
+            path: '/attendance',
+            name: 'attendance',
+            component: Attendance,
+            props: (route) => ({ schoolname: route.query.school, start: route.query.start, end: route.query.end }),
+        },
     ],
 });
 
@@ -80,6 +94,8 @@ const app = new Vue({
     components: {
         App,
         Dash,
+        Assessment,
+        Attendance,
     },
     router,
 });
