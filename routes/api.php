@@ -35,6 +35,7 @@ Route::get('/dev/attendancepie/{schoolname}/{enddate}', 'Api\AnalysisController@
 Route::get('/dev/paatrisk/{schoolname}/{enddate}', 'Api\AnalysisController@paatrisk');
 Route::get('/dev/paatriskstudents/{schoolname}/{enddate}', 'Api\AnalysisController@paatriskstudents');
 
+Route::get('/dev/exclusionsstudents/{schoolname}', 'Api\AnalysisController@exclusionsstudents');
 
 Route::get('/dev/{school}', 'Api\AnalysisController@dev');
 

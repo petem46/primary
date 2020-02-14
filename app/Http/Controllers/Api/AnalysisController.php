@@ -22,13 +22,13 @@ class AnalysisController extends Controller
         // $data = DB::select(" exec sp_studentGroupCount19 @school = '$schoolname' ");
         // return new Analysis($data);
         $data = [
-            'studentCounts19' => DB::select(" exec sp_studentGroupCount19 @school = '$schoolname' "),
-            'studentYearCounts19' => DB::select(" exec sp_studentYearCount19 @school = '$schoolname' "),
+            // 'studentCounts19' => DB::select(" exec sp_studentGroupCount19 @school = '$schoolname' "),
+            // 'studentYearCounts19' => DB::select(" exec sp_studentYearCount19 @school = '$schoolname' "),
             // 'schoolattendance' => collect(DB::select(" exec sp_AttendanceSchool19 @enddate = '$lastFriday', @school = '$schoolname' "))->first(),
-            'pagroups' => DB::select(" exec sp_att_paGroups19 @enddate = '$lastFriday', @school = '$schoolname' "),
-            'attrunningweekly' => DB::select(" exec sp_att_schoolRunningWeek19 @enddate = '$lastFriday', @school = '$schoolname' "),
+            // 'pagroups' => DB::select(" exec sp_att_paGroups19 @enddate = '$lastFriday', @school = '$schoolname' "),
+            // 'attrunningweekly' => DB::select(" exec sp_att_schoolRunningWeek19 @enddate = '$lastFriday', @school = '$schoolname' "),
             // 'pastudents' => DB::select(" exec sp_AttendancePAStudents19 @enddate = '$enddate', @school = '$schoolname' "),
-            'nonroutine' => DB::select(" exec sp_startersLeaverer19 @enddate = '$lastFriday', @school = '$schoolname' "),
+            // 'nonroutine' => DB::select(" exec sp_startersLeaverer19 @enddate = '$lastFriday', @school = '$schoolname' "),
             // 'vov' => collect(DB::select(" exec sp_vov @enddate = '$lastFriday', @school = '$schoolname' "))->first(),
             // 'school' => $school,
             // 'userschool' => $userschool,
@@ -142,6 +142,15 @@ class AnalysisController extends Controller
         return new Analysis($data);
     }
 
+    public function exclusionsstudents($schoolname) {
+        $data = [
+            'exstudents' => DB::select(" exec sp_exclusions19 @school = '$schoolname' "),
+            'exgroups' => DB::select(" exec sp_exclusions19 @school = '$schoolname' "),
+        ];
+
+        return new Analysis($data);
+    }
+
     public function dev($school)
     {
         $userschool = User::first()->getSchool();
@@ -154,25 +163,25 @@ class AnalysisController extends Controller
         $lastFriday = Carbon::parse($enddate)->modify("last friday")->toDateString();
         // dd($lastFriday);
 
-        if($schoolname === $userschool || $userschool === 'FCAT' || $userschool === 'fcat') {
-            $data = [
-                'studentCounts19' => DB::select(" exec sp_studentGroupCount19 @school = '$schoolname' "),
-                'studentYearCounts19' => DB::select(" exec sp_studentYearCount19 @school = '$schoolname' "),
-                'schoolattendance' => collect(DB::select(" exec sp_AttendanceSchool19 @enddate = '$lastFriday', @school = '$schoolname' "))->first(),
-                'pagroups' => DB::select(" exec sp_att_paGroups19 @enddate = '$lastFriday', @school = '$schoolname' "),
-                'attrunningweekly' => DB::select(" exec sp_att_schoolRunningWeek19 @enddate = '$lastFriday', @school = '$schoolname' "),
-                // 'pastudents' => DB::select(" exec sp_AttendancePAStudents19 @enddate = '$enddate', @school = '$schoolname' "),
-                'nonroutine' => DB::select(" exec sp_startersLeaverer19 @enddate = '$lastFriday', @school = '$schoolname' "),
-                'vov' => collect(DB::select(" exec sp_vov @enddate = '$lastFriday', @school = '$schoolname' "))->first(),
-                'school' => $school,
-                'userschool' => $userschool,
-                'schoolname' => $schoolname,
-                'enddate' => $enddate,
-            ];
-            // dd($data);
-            return $data;
-        }
-        return redirect('/');
+        // if($schoolname === $userschool || $userschool === 'FCAT' || $userschool === 'fcat') {
+        //     $data = [
+        //         'studentCounts19' => DB::select(" exec sp_studentGroupCount19 @school = '$schoolname' "),
+        //         'studentYearCounts19' => DB::select(" exec sp_studentYearCount19 @school = '$schoolname' "),
+        //         'schoolattendance' => collect(DB::select(" exec sp_AttendanceSchool19 @enddate = '$lastFriday', @school = '$schoolname' "))->first(),
+        //         'pagroups' => DB::select(" exec sp_att_paGroups19 @enddate = '$lastFriday', @school = '$schoolname' "),
+        //         'attrunningweekly' => DB::select(" exec sp_att_schoolRunningWeek19 @enddate = '$lastFriday', @school = '$schoolname' "),
+        //         // 'pastudents' => DB::select(" exec sp_AttendancePAStudents19 @enddate = '$enddate', @school = '$schoolname' "),
+        //         'nonroutine' => DB::select(" exec sp_startersLeaverer19 @enddate = '$lastFriday', @school = '$schoolname' "),
+        //         'vov' => collect(DB::select(" exec sp_vov @enddate = '$lastFriday', @school = '$schoolname' "))->first(),
+        //         'school' => $school,
+        //         'userschool' => $userschool,
+        //         'schoolname' => $schoolname,
+        //         'enddate' => $enddate,
+        //     ];
+        //     // dd($data);
+        //     return $data;
+        // }
+        // return redirect('/');
 
     }
 

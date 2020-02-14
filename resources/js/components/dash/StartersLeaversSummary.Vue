@@ -11,7 +11,7 @@
     </v-card>
     <v-card v-if="loaded" class="pa-2" outlined raised tile>
       <v-card-title class="py-2">Starters & Leavers 19/20</v-card-title>
-      <v-simple-table class="td--less-padding" fixed-header height="345px">
+      <v-simple-table v-bind:class="{ 'td--less-padding' : lessPadding }" fixed-header height="345px">
         <template v-slot:default>
           <thead class>
             <tr>
@@ -89,6 +89,11 @@ export default {
       this.loaded = false;
       this.fetch();
     }
+  },
+  computed: {
+      lessPadding: function() {
+         if(this.years.length > 6) return true;
+      }
   }
 };
 </script>

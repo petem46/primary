@@ -2637,16 +2637,70 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     PaAtRiskChart: _PaAtRiskChart_js__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
-  props: ['schoolname', 'enddate'],
+  props: ["schoolname", "enddate"],
   watch: {
-    'enddate': function enddate() {
-      this.endpoint = 'api/dev/paatrisk/' + this.schoolname + '/' + this.enddate;
+    enddate: function enddate() {
+      this.endpoint = "api/dev/paatrisk/" + this.schoolname + "/" + this.enddate;
       console.log(this.endpoint);
       this.callMe();
     }
@@ -2657,76 +2711,155 @@ __webpack_require__.r(__webpack_exports__);
     return {
       message: null,
       loaded: false,
-      showPupils: false,
+      showPupils: true,
       groups: [],
       chartdata: [],
-      endpoint: 'api/dev/paatrisk/' + this.schoolname + '/' + this.enddate,
-      search: '',
-      gender: 'All',
-      genders: ['All', 'Boys', 'Girls'],
-      pp: 'All',
-      pps: ['All', 'PP', 'nPP'],
+      endpoint: "api/dev/paatrisk/" + this.schoolname + "/" + this.enddate,
+      search: "",
+      gender: "All",
+      genders: ["All", "Boys", "Girls"],
+      pp: "All",
+      pps: ["All", "PP", "nPP"],
       attendance: 90,
-      headers: [{
-        text: 'Surname',
-        align: 'left',
+      send: "All",
+      sends: ["All", "SEND", "NOT SEND"],
+      studentsheaders: [{
+        text: "Surname",
+        align: "left",
         sortable: true,
-        value: 'surname'
+        value: "surname"
       }, {
-        text: 'Forename',
-        align: 'left',
+        text: "Forename",
+        align: "left",
         sortable: true,
-        value: 'forename'
+        value: "forename"
       }, {
-        text: 'Year',
-        align: 'left',
+        text: "Year",
+        align: "left",
         sortable: true,
-        value: 'year'
+        value: "year"
       }, {
-        text: 'Reg',
-        align: 'left',
+        text: "Reg",
+        align: "left",
         sortable: true,
-        value: 'reg'
+        value: "reg"
       }, {
-        text: 'Gender',
-        align: 'left',
+        text: "Gender",
+        align: "left",
         sortable: true,
-        value: 'genderlabel',
+        value: "genderlabel",
         filter: function filter(value) {
-          if (_this.gender === 'All') return true;
+          if (_this.gender === "All") return true;
           if (!_this.gender) return true;
           return value === _this.gender;
         }
       }, {
-        text: 'PP',
-        align: 'left',
+        text: "PP",
+        align: "left",
         sortable: true,
-        value: 'pplabel',
+        value: "pplabel",
         filter: function filter(value) {
-          if (_this.pp === 'All') return true;
+          if (_this.pp === "All") return true;
           if (!_this.pp) return true;
           return value === _this.pp;
         }
       }, {
-        text: 'SEND',
-        align: 'left',
+        text: "SEND",
+        align: "left",
         sortable: true,
-        value: 'sendlabel'
+        value: "sendlabel",
+        filter: function filter(value) {
+          if (_this.send === "All") return true;
+          if (!_this.send) return true;
+          if (_this.send === "SEND") return value != _this.send + " N";
+          if (_this.send === "NOT SEND") return value === "SEND N";
+        }
       }, {
-        text: '% Att',
-        align: 'left',
+        text: "% Att",
+        align: "left",
         sortable: true,
-        value: 'percentage',
+        value: "percentage",
         filter: function filter(value) {
           if (!_this.attendance) return true;
           return value <= parseInt(_this.attendance);
         }
       }],
+      groupsheaders: [{
+        text: "Group",
+        align: "left",
+        sortable: true,
+        value: "cohort"
+      }, {
+        text: "Size",
+        align: "left",
+        sortable: true,
+        value: "Size"
+      }, {
+        text: "Count",
+        align: "left",
+        sortable: true,
+        value: "PA_Count"
+      }, {
+        text: "% At Risk",
+        align: "left",
+        sortable: true,
+        value: "pAt_Risk"
+      }],
       options: {
         plugins: {
           datalabels: {
-            color: 'white',
-            anchor: 'start'
+            color: "white",
+            anchor: "center"
+          }
+        },
+        //   hover: {
+        //     mode: "nearest",
+        //     intersect: false,
+        //     onHover: (e, element) => {
+        //       if (element && element.length > 0) {
+        //         const runningatt = this.chartdata.datasets[1].data[element[0]._index];
+        //         const weekatt = this.chartdata.datasets[0].data[element[0]._index];
+        //         const week = this.chartdata.labels[element[0]._index];
+        //         this.runningatt = runningatt;
+        //         this.weekatt = weekatt;
+        //         this.week = week;
+        //       }
+        //     },
+        //   },
+        onClick: function onClick(e, element) {
+          if (element && element.length > 0) {
+            var cohort = _this.chartdata.labels[element[0]._index]; //   const atrisk = this.chartdata.datasets[0].data[element[0]._index];
+            //   console.log('load drill down chart for week ' + week);
+
+            if (cohort === "All") {
+              _this.showPupils = true;
+              _this.pp = "All";
+              _this.gender = "All";
+              _this.send = "All";
+            }
+
+            if (cohort === "Boys" || cohort === "Girls") {
+              _this.showPupils = true;
+              _this.gender = cohort;
+              _this.pp = "All";
+              _this.send = "All";
+            }
+
+            if (cohort === "PP" || cohort === "nPP") {
+              _this.showPupils = true;
+              _this.pp = cohort;
+              _this.gender = "All";
+              _this.send = "All";
+            }
+
+            if (cohort === "SEND" || cohort === "NOT SEND") {
+              _this.showPupils = true;
+              _this.send = cohort;
+              _this.gender = "All";
+              _this.pp = "All";
+            } //   this.weekatt = atrisk;
+            //   this.updateWeek();
+
           }
         },
         maintainAspectRatio: false,
@@ -2748,7 +2881,7 @@ __webpack_require__.r(__webpack_exports__);
         },
         title: {
           display: false,
-          text: '% Pupils At Risk of PA by Group'
+          text: "% Pupils At Risk of PA by Group"
         },
         tooltips: {
           enabled: false
@@ -2818,8 +2951,8 @@ __webpack_require__.r(__webpack_exports__);
   computed: {
     myStyles: function myStyles() {
       return {
-        height: '345px',
-        position: 'relative'
+        height: "440px",
+        position: "relative"
       };
     }
   }
@@ -2839,6 +2972,38 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _AttendanceWeeklyChart_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AttendanceWeeklyChart.js */ "./resources/js/components/dash/AttendanceWeeklyChart.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2902,8 +3067,8 @@ __webpack_require__.r(__webpack_exports__);
           enabled: false
         },
         hover: {
-          mode: "nearest",
-          intersect: false,
+          //   mode: "nearest",
+          //   intersect: false,
           onHover: function onHover(e, element) {
             if (element && element.length > 0) {
               var runningatt = _this.chartdata.datasets[1].data[element[0]._index];
@@ -2940,7 +3105,7 @@ __webpack_require__.r(__webpack_exports__);
           xAxes: [{
             scaleLabel: {
               display: true,
-              labelString: 'Week Number'
+              labelString: "Week Number"
             }
           }]
         },
@@ -3058,17 +3223,17 @@ __webpack_require__.r(__webpack_exports__);
       return finalweekattendance;
     },
     sendFinalWeek: function sendFinalWeek() {
-      this.$emit('updateWeek', this.finalweeknumber, this.finalweekattendance);
+      this.$emit("updateWeek", this.finalweeknumber, this.finalweekattendance);
     },
     updateWeek: function updateWeek() {
-      this.$emit('updateWeek', this.week, this.weekatt);
+      this.$emit("updateWeek", this.week, this.weekatt);
     }
   },
   computed: {
     myStyles: function myStyles() {
       return {
-        height: '300px',
-        position: 'relative'
+        height: "300px",
+        position: "relative"
       };
     }
   }
@@ -3525,6 +3690,11 @@ __webpack_require__.r(__webpack_exports__);
       this.loaded = false;
       this.fetch();
     }
+  },
+  computed: {
+    lessPadding: function lessPadding() {
+      if (this.years.length > 6) return true;
+    }
   }
 });
 
@@ -3622,13 +3792,16 @@ __webpack_require__.r(__webpack_exports__);
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(this.endpoint).then(function (_ref) {
         var data = _ref.data;
         _this.groups = data.data;
-        setTimeout(function () {
-          return _this.loaded = true;
-        }, Math.floor(Math.random() * 1500) + 750); // this.loaded = true;
+        _this.loaded = true;
       });
     },
     roundOff: function roundOff(value, decimals) {
       return Number(Math.round(value + "e" + decimals) + "e-" + decimals);
+    }
+  },
+  computed: {
+    lessPadding: function lessPadding() {
+      if (this.groups.length > 6) return true;
     }
   }
 });
@@ -63897,102 +64070,98 @@ var render = function() {
     "div",
     { staticClass: "row mx-0" },
     [
-      _c(
-        "v-col",
-        { attrs: { cols: "12", lg: "4" } },
-        [
-          !_vm.loaded
-            ? _c(
-                "v-card",
-                {
-                  staticClass: "pa-2",
-                  attrs: { outlined: "", raised: "", tile: "" }
-                },
-                [
-                  _c("v-card-title", [
-                    _vm._v(
-                      "\n                % At Risk of Persistent Absence\n            "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("v-skeleton-loader", {
-                    attrs: {
-                      type:
-                        "list-item-avatar, list-item-three-line, card-heading, actions"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("v-divider"),
-                  _vm._v(" "),
-                  _c(
-                    "v-card-actions",
-                    [
-                      _c(
-                        "v-btn",
-                        { attrs: { text: "", small: "", disabled: "" } },
-                        [_vm._v("Loading ...")]
-                      )
-                    ],
-                    1
-                  )
-                ],
-                1
-              )
-            : _vm._e()
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "v-col",
-        { attrs: { cols: "12", lg: "8" } },
-        [
-          !_vm.loaded
-            ? _c(
-                "v-card",
-                {
-                  staticClass: "pa-2",
-                  attrs: { outlined: "", raised: "", tile: "" }
-                },
-                [
-                  _c("v-card-title", [
-                    _vm._v(
-                      "\n                % At Risk of Persistent Absence\n            "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("v-skeleton-loader", {
-                    attrs: {
-                      type:
-                        "list-item-avatar, list-item-three-line, card-heading, actions"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("v-divider"),
-                  _vm._v(" "),
-                  _c(
-                    "v-card-actions",
-                    [
-                      _c(
-                        "v-btn",
-                        { attrs: { text: "", small: "", disabled: "" } },
-                        [_vm._v("Loading ...")]
-                      )
-                    ],
-                    1
-                  )
-                ],
-                1
-              )
-            : _vm._e()
-        ],
-        1
-      ),
-      _vm._v(" "),
-      !_vm.showPupils
+      !_vm.loaded
         ? _c(
             "v-col",
-            { attrs: { cols: "12", lg: "4" } },
+            { attrs: { cols: "12", lg: "6" } },
+            [
+              _c(
+                "v-card",
+                {
+                  staticClass: "pa-2",
+                  attrs: { outlined: "", raised: "", tile: "" }
+                },
+                [
+                  _c("v-card-title", [
+                    _vm._v("% At Risk of Persistent Absence")
+                  ]),
+                  _vm._v(" "),
+                  _c("v-skeleton-loader", {
+                    attrs: {
+                      type:
+                        "list-item-avatar, list-item-three-line, card-heading, actions"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("v-divider"),
+                  _vm._v(" "),
+                  _c(
+                    "v-card-actions",
+                    [
+                      _c(
+                        "v-btn",
+                        { attrs: { text: "", small: "", disabled: "" } },
+                        [_vm._v("Loading ...")]
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      !_vm.loaded
+        ? _c(
+            "v-col",
+            { attrs: { cols: "12", lg: "6" } },
+            [
+              _c(
+                "v-card",
+                {
+                  staticClass: "pa-2",
+                  attrs: { outlined: "", raised: "", tile: "" }
+                },
+                [
+                  _c("v-card-title", [
+                    _vm._v("% At Risk of Persistent Absence")
+                  ]),
+                  _vm._v(" "),
+                  _c("v-skeleton-loader", {
+                    attrs: {
+                      type:
+                        "list-item-avatar, list-item-three-line, card-heading, actions"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("v-divider"),
+                  _vm._v(" "),
+                  _c(
+                    "v-card-actions",
+                    [
+                      _c(
+                        "v-btn",
+                        { attrs: { text: "", small: "", disabled: "" } },
+                        [_vm._v("Loading ...")]
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.showPupils
+        ? _c(
+            "v-col",
+            { attrs: { cols: "12", lg: "6" } },
             [
               _vm.loaded
                 ? _c(
@@ -64004,76 +64173,184 @@ var render = function() {
                     [
                       _c("v-card-title", [
                         _vm._v(
-                          "\n                % At Risk of Persistent Absence\n            "
+                          "\n        Pupils At Risk of Persistent Absence\n      "
                         )
                       ]),
                       _vm._v(" "),
-                      _c("v-simple-table", {
-                        staticClass: "td--less-padding",
-                        attrs: { "fixed-header": "", height: "345px" },
+                      _c("v-data-table", {
+                        staticClass: "elevation-3",
+                        attrs: {
+                          headers: _vm.studentsheaders,
+                          items: _vm.pupils,
+                          search: _vm.search,
+                          "items-per-page": -1,
+                          "fixed-header": "",
+                          "hide-default-footer": true,
+                          dense: "",
+                          "multi-sort": "",
+                          height: "345px"
+                        },
                         scopedSlots: _vm._u(
                           [
                             {
-                              key: "default",
+                              key: "top",
                               fn: function() {
                                 return [
-                                  _c("thead", {}, [
-                                    _c("tr", [
-                                      _c(
-                                        "th",
-                                        {
-                                          staticClass:
-                                            "grey darken-3 white--text"
-                                        },
-                                        [_vm._v("Group")]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "th",
-                                        {
-                                          staticClass:
-                                            "grey darken-3 white--text"
-                                        },
-                                        [_vm._v("Count")]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "th",
-                                        {
-                                          staticClass:
-                                            "grey darken-3 white--text"
-                                        },
-                                        [_vm._v("%")]
-                                      )
-                                    ])
-                                  ]),
-                                  _vm._v(" "),
                                   _c(
-                                    "tbody",
-                                    _vm._l(_vm.groups, function(group) {
-                                      return _c(
-                                        "tr",
-                                        { key: group.sortorder },
+                                    "v-row",
+                                    { staticClass: "px-3" },
+                                    [
+                                      _c(
+                                        "v-col",
+                                        { attrs: { cols: "4" } },
                                         [
-                                          _c("td", [
-                                            _vm._v(_vm._s(group.cohort))
-                                          ]),
-                                          _vm._v(" "),
-                                          _c("td", [
-                                            _vm._v(_vm._s(group.PA_Count))
-                                          ]),
-                                          _vm._v(" "),
-                                          _c("td", [
-                                            _vm._v(
-                                              _vm._s(
-                                                _vm.roundOff(group.pAt_Risk, 1)
-                                              )
+                                          _c(
+                                            "v-text-field",
+                                            _vm._b(
+                                              {
+                                                attrs: {
+                                                  "append-icon":
+                                                    "mdi-account-search",
+                                                  label: "Search",
+                                                  "single-line": "",
+                                                  "hide-details": ""
+                                                },
+                                                model: {
+                                                  value: _vm.search,
+                                                  callback: function($$v) {
+                                                    _vm.search = $$v
+                                                  },
+                                                  expression: "search"
+                                                }
+                                              },
+                                              "v-text-field",
+                                              { disabled: !_vm.showPupils },
+                                              false
                                             )
-                                          ])
-                                        ]
+                                          )
+                                        ],
+                                        1
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "v-col",
+                                        { attrs: { cols: "2" } },
+                                        [
+                                          _c(
+                                            "v-select",
+                                            _vm._b(
+                                              {
+                                                attrs: {
+                                                  items: _vm.genders,
+                                                  label: "Gender Filter"
+                                                },
+                                                model: {
+                                                  value: _vm.gender,
+                                                  callback: function($$v) {
+                                                    _vm.gender = $$v
+                                                  },
+                                                  expression: "gender"
+                                                }
+                                              },
+                                              "v-select",
+                                              { disabled: !_vm.showPupils },
+                                              false
+                                            )
+                                          )
+                                        ],
+                                        1
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "v-col",
+                                        { attrs: { cols: "2" } },
+                                        [
+                                          _c(
+                                            "v-select",
+                                            _vm._b(
+                                              {
+                                                attrs: {
+                                                  items: _vm.pps,
+                                                  label: "PP Filter"
+                                                },
+                                                model: {
+                                                  value: _vm.pp,
+                                                  callback: function($$v) {
+                                                    _vm.pp = $$v
+                                                  },
+                                                  expression: "pp"
+                                                }
+                                              },
+                                              "v-select",
+                                              { disabled: !_vm.showPupils },
+                                              false
+                                            )
+                                          )
+                                        ],
+                                        1
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "v-col",
+                                        { attrs: { cols: "2" } },
+                                        [
+                                          _c(
+                                            "v-select",
+                                            _vm._b(
+                                              {
+                                                attrs: {
+                                                  items: _vm.sends,
+                                                  label: "SEND Filter"
+                                                },
+                                                model: {
+                                                  value: _vm.send,
+                                                  callback: function($$v) {
+                                                    _vm.send = $$v
+                                                  },
+                                                  expression: "send"
+                                                }
+                                              },
+                                              "v-select",
+                                              { disabled: !_vm.showPupils },
+                                              false
+                                            )
+                                          )
+                                        ],
+                                        1
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "v-col",
+                                        { attrs: { cols: "2" } },
+                                        [
+                                          _c(
+                                            "v-text-field",
+                                            _vm._b(
+                                              {
+                                                attrs: {
+                                                  type: "number",
+                                                  min: "1",
+                                                  max: "100",
+                                                  label: "% less than"
+                                                },
+                                                model: {
+                                                  value: _vm.attendance,
+                                                  callback: function($$v) {
+                                                    _vm.attendance = $$v
+                                                  },
+                                                  expression: "attendance"
+                                                }
+                                              },
+                                              "v-text-field",
+                                              { disabled: !_vm.showPupils },
+                                              false
+                                            )
+                                          )
+                                        ],
+                                        1
                                       )
-                                    }),
-                                    0
+                                    ],
+                                    1
                                   )
                                 ]
                               },
@@ -64082,8 +64359,74 @@ var render = function() {
                           ],
                           null,
                           false,
-                          3782368866
+                          1938184408
                         )
+                      }),
+                      _vm._v(" "),
+                      _c("v-divider"),
+                      _vm._v(" "),
+                      _c(
+                        "v-card-actions",
+                        [
+                          _c("v-btn", { attrs: { text: "", small: "" } }, [
+                            _vm._v("Full Report")
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "v-btn",
+                            {
+                              attrs: { text: "", small: "" },
+                              on: {
+                                click: function($event) {
+                                  _vm.showPupils = false
+                                }
+                              }
+                            },
+                            [_vm._v("Show Groups")]
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                : _vm._e()
+            ],
+            1
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      !_vm.showPupils
+        ? _c(
+            "v-col",
+            { attrs: { cols: "12", lg: "6" } },
+            [
+              _vm.loaded
+                ? _c(
+                    "v-card",
+                    {
+                      staticClass: "pa-2",
+                      attrs: { outlined: "", raised: "", tile: "" }
+                    },
+                    [
+                      _c("v-card-title", [
+                        _vm._v(
+                          "\n        Groups At Risk of Persistent Absence\n      "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("v-data-table", {
+                        staticClass: "elevation-3",
+                        attrs: {
+                          headers: _vm.groupsheaders,
+                          items: _vm.groups,
+                          "items-per-page": -1,
+                          "fixed-header": "",
+                          "hide-default-footer": true,
+                          dense: "",
+                          "multi-sort": "",
+                          height: "345px"
+                        }
                       }),
                       _vm._v(" "),
                       _c("v-divider"),
@@ -64119,148 +64462,9 @@ var render = function() {
           )
         : _vm._e(),
       _vm._v(" "),
-      _vm.showPupils
-        ? _c(
-            "v-col",
-            { attrs: { cols: "12", lg: "4" } },
-            [
-              _vm.loaded
-                ? _c(
-                    "v-card",
-                    {
-                      staticClass: "pa-2",
-                      attrs: { outlined: "", raised: "", tile: "" }
-                    },
-                    [
-                      _c("v-card-title", [
-                        _vm._v(
-                          "\n                % At Risk of Persistent Absence\n            "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("v-simple-table", {
-                        staticClass: "td--less-padding",
-                        attrs: { "fixed-header": "", height: "345px" },
-                        scopedSlots: _vm._u(
-                          [
-                            {
-                              key: "default",
-                              fn: function() {
-                                return [
-                                  _c("thead", {}, [
-                                    _c("tr", [
-                                      _c(
-                                        "th",
-                                        {
-                                          staticClass:
-                                            "grey darken-3 white--text"
-                                        },
-                                        [_vm._v("Pupil")]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "th",
-                                        {
-                                          staticClass:
-                                            "grey darken-3 white--text"
-                                        },
-                                        [_vm._v("Year")]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "th",
-                                        {
-                                          staticClass:
-                                            "grey darken-3 white--text"
-                                        },
-                                        [_vm._v("Reg")]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "th",
-                                        {
-                                          staticClass:
-                                            "grey darken-3 white--text"
-                                        },
-                                        [_vm._v("%")]
-                                      )
-                                    ])
-                                  ]),
-                                  _vm._v(" "),
-                                  _c(
-                                    "tbody",
-                                    _vm._l(_vm.pupils, function(pupil) {
-                                      return _c("tr", { key: pupil.upn }, [
-                                        _c("td", [
-                                          _vm._v(
-                                            _vm._s(pupil.forename) +
-                                              " " +
-                                              _vm._s(pupil.surname)
-                                          )
-                                        ]),
-                                        _vm._v(" "),
-                                        _c("td", [_vm._v(_vm._s(pupil.year))]),
-                                        _vm._v(" "),
-                                        _c("td", [_vm._v(_vm._s(pupil.reg))]),
-                                        _vm._v(" "),
-                                        _c("td", [
-                                          _vm._v(
-                                            _vm._s(
-                                              _vm.roundOff(pupil.percentage, 1)
-                                            )
-                                          )
-                                        ])
-                                      ])
-                                    }),
-                                    0
-                                  )
-                                ]
-                              },
-                              proxy: true
-                            }
-                          ],
-                          null,
-                          false,
-                          868288362
-                        )
-                      }),
-                      _vm._v(" "),
-                      _c("v-divider"),
-                      _vm._v(" "),
-                      _c(
-                        "v-card-actions",
-                        [
-                          _c("v-btn", { attrs: { text: "", small: "" } }, [
-                            _vm._v("Full Report")
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "v-btn",
-                            {
-                              attrs: { text: "", small: "" },
-                              on: {
-                                click: function($event) {
-                                  _vm.showPupils = false
-                                }
-                              }
-                            },
-                            [_vm._v("Show Groups")]
-                          )
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  )
-                : _vm._e()
-            ],
-            1
-          )
-        : _vm._e(),
-      _vm._v(" "),
       _c(
         "v-col",
-        { attrs: { cols: "12", lg: "8" } },
+        { attrs: { cols: "12", lg: "6" } },
         [
           _vm.loaded
             ? _c(
@@ -64271,13 +64475,12 @@ var render = function() {
                 },
                 [
                   _c("v-card-title", [
-                    _vm._v(
-                      "\n                % At Risk of Persistent Absence\n            "
-                    )
+                    _vm._v("% At Risk of Persistent Absence")
                   ]),
                   _vm._v(" "),
                   _vm.loaded
                     ? _c("pa-at-risk-chart", {
+                        staticClass: "elevation-3",
                         attrs: {
                           chartdata: _vm.chartdata,
                           options: _vm.options,
@@ -64303,178 +64506,7 @@ var render = function() {
             : _vm._e()
         ],
         1
-      ),
-      _vm._v(" "),
-      _vm.showPupils
-        ? _c(
-            "v-col",
-            { attrs: { cols: "12" } },
-            [
-              _vm.loaded
-                ? _c(
-                    "v-card",
-                    {
-                      staticClass: "pa-2",
-                      attrs: { outlined: "", raised: "", tile: "" }
-                    },
-                    [
-                      _c(
-                        "v-card-title",
-                        [
-                          _vm._v(
-                            "\n                % At Risk of Persistent Absence\n            "
-                          ),
-                          _c("v-spacer"),
-                          _vm._v(" "),
-                          _c("v-text-field", {
-                            attrs: {
-                              "append-icon": "mdi-search",
-                              label: "Search",
-                              "single-line": "",
-                              "hide-details": ""
-                            },
-                            model: {
-                              value: _vm.search,
-                              callback: function($$v) {
-                                _vm.search = $$v
-                              },
-                              expression: "search"
-                            }
-                          })
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c("v-data-table", {
-                        staticClass: "elevation-1",
-                        attrs: {
-                          headers: _vm.headers,
-                          items: _vm.pupils,
-                          "items-per-page": 6,
-                          search: _vm.search,
-                          "fixed-header": "",
-                          height: "345px"
-                        },
-                        scopedSlots: _vm._u(
-                          [
-                            {
-                              key: "top",
-                              fn: function() {
-                                return [
-                                  _c(
-                                    "v-row",
-                                    { staticClass: "px-1" },
-                                    [
-                                      _c(
-                                        "v-col",
-                                        { attrs: { cols: "2" } },
-                                        [
-                                          _c("v-select", {
-                                            attrs: {
-                                              items: _vm.genders,
-                                              label: "Gender Filter"
-                                            },
-                                            model: {
-                                              value: _vm.gender,
-                                              callback: function($$v) {
-                                                _vm.gender = $$v
-                                              },
-                                              expression: "gender"
-                                            }
-                                          })
-                                        ],
-                                        1
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "v-col",
-                                        { attrs: { cols: "2" } },
-                                        [
-                                          _c("v-select", {
-                                            attrs: {
-                                              items: _vm.pps,
-                                              label: "PP Filter"
-                                            },
-                                            model: {
-                                              value: _vm.pp,
-                                              callback: function($$v) {
-                                                _vm.pp = $$v
-                                              },
-                                              expression: "pp"
-                                            }
-                                          })
-                                        ],
-                                        1
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "v-col",
-                                        { attrs: { cols: "2" } },
-                                        [
-                                          _c("v-text-field", {
-                                            attrs: {
-                                              type: "number",
-                                              min: "1",
-                                              max: "100",
-                                              label: "% attendance less than"
-                                            },
-                                            model: {
-                                              value: _vm.attendance,
-                                              callback: function($$v) {
-                                                _vm.attendance = $$v
-                                              },
-                                              expression: "attendance"
-                                            }
-                                          })
-                                        ],
-                                        1
-                                      )
-                                    ],
-                                    1
-                                  )
-                                ]
-                              },
-                              proxy: true
-                            }
-                          ],
-                          null,
-                          false,
-                          3254638826
-                        )
-                      }),
-                      _vm._v(" "),
-                      _c("v-divider"),
-                      _vm._v(" "),
-                      _c(
-                        "v-card-actions",
-                        [
-                          _c("v-btn", { attrs: { text: "", small: "" } }, [
-                            _vm._v("Full Report")
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "v-btn",
-                            {
-                              attrs: { text: "", small: "" },
-                              on: {
-                                click: function($event) {
-                                  _vm.showPupils = false
-                                }
-                              }
-                            },
-                            [_vm._v("Show Groups")]
-                          )
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  )
-                : _vm._e()
-            ],
-            1
-          )
-        : _vm._e()
+      )
     ],
     1
   )
@@ -64520,11 +64552,11 @@ var render = function() {
                 [
                   _c("v-icon", [_vm._v("mdi-calendar-multiselect")]),
                   _vm._v(
-                    "  \n      Week " +
+                    "   Week\n      " +
                       _vm._s(_vm.week) +
                       " - Attendance: " +
                       _vm._s(_vm.weekatt) +
-                      " % Running Attendance: " +
+                      " % Running Attendance:\n      " +
                       _vm._s(_vm.runningatt) +
                       " %\n    "
                   )
@@ -65062,7 +65094,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("v-simple-table", {
-                staticClass: "td--less-padding",
+                class: { "td--less-padding": _vm.lessPadding },
                 attrs: { "fixed-header": "", height: "345px" },
                 scopedSlots: _vm._u(
                   [
@@ -65223,7 +65255,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("v-simple-table", {
-                staticClass: "td--less-padding",
+                class: { "td--less-padding": _vm.lessPadding },
                 attrs: { "fixed-header": "", height: "345px" },
                 scopedSlots: _vm._u(
                   [

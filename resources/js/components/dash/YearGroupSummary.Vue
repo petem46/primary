@@ -13,7 +13,7 @@
     </v-card>
     <v-card v-if="loaded" class="pa-2" outlined raised tile>
       <v-card-title class="py-2">Year Group Summary</v-card-title>
-      <v-simple-table class="td--less-padding" fixed-header height="345px">
+      <v-simple-table v-bind:class="{ 'td--less-padding' : lessPadding }" fixed-header height="345px">
         <template v-slot:default>
           <thead class>
             <tr>
@@ -77,16 +77,17 @@ export default {
     fetch() {
       axios.get(this.endpoint).then(({ data }) => {
         this.groups = data.data;
-        setTimeout(
-          () => (this.loaded = true),
-          Math.floor(Math.random() * 1500) + 750
-        );
-        // this.loaded = true;
+        this.loaded = true;
       });
     },
     roundOff(value, decimals) {
       return Number(Math.round(value + "e" + decimals) + "e-" + decimals);
     }
+  },
+  computed: {
+      lessPadding: function() {
+         if(this.groups.length > 6) return true;
+      }
   }
 };
 </script>

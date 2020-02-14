@@ -1,42 +1,75 @@
 <template>
-  <v-col cols="12" lg="7" xl="8">
-    <v-card v-if="loaded" class="pa-2" outlined raised tile>
+  <v-col
+    cols="12"
+    lg="7"
+    xl="8"
+  >
+    <v-card
+      v-if="loaded"
+      class="pa-2"
+      outlined
+      raised
+      tile
+    >
       <v-card-title>Attendance Overview</v-card-title>
       <v-card-text>
-        <v-icon>mdi-calendar-multiselect</v-icon>&nbsp;&nbsp;
-        Week {{ week }} - Attendance: {{ weekatt }} % Running Attendance: {{ runningatt }} %
+        <v-icon>mdi-calendar-multiselect</v-icon>&nbsp;&nbsp; Week
+        {{ week }} - Attendance: {{ weekatt }} % Running Attendance:
+        {{ runningatt }} %
       </v-card-text>
       <v-divider></v-divider>
-      <attendance-weekly-chart v-if="loaded" :chartdata="chartdata" :options="options" :styles="myStyles" />
+      <attendance-weekly-chart
+        v-if="loaded"
+        :chartdata="chartdata"
+        :options="options"
+        :styles="myStyles"
+      />
       <v-divider></v-divider>
       <v-card-actions>
-        <v-btn text small>Full Report {{ week }} </v-btn>
+        <v-btn
+          text
+          small
+        >Full Report {{ week }} </v-btn>
       </v-card-actions>
     </v-card>
-    <v-card v-if="! loaded" class="pa-2" outlined raised tile>
-      <v-progress-linear indeterminate color="teal"></v-progress-linear>
+    <v-card
+      v-if="!loaded"
+      class="pa-2"
+      outlined
+      raised
+      tile
+    >
+      <v-progress-linear
+        indeterminate
+        color="teal"
+      ></v-progress-linear>
       <v-card-title>Attendance Overview</v-card-title>
       <v-divider></v-divider>
       <v-skeleton-loader type="list-item-avatar, list-item-three-line, card-heading, actions"></v-skeleton-loader>
       <v-divider></v-divider>
       <v-card-actions>
-        <v-btn text disabled>Loading...</v-btn>
+        <v-btn
+          text
+          disabled
+        >Loading...</v-btn>
       </v-card-actions>
     </v-card>
   </v-col>
 </template>
+
 <script>
 import axios from "axios";
 import AttendanceWeeklyChart from "./AttendanceWeeklyChart.js";
-
 export default {
-  components: { AttendanceWeeklyChart },
+  components: {
+    AttendanceWeeklyChart
+  },
   props: ["schoolname", "enddate", "attendanceweek"],
   watch: {
     enddate: function() {
       this.endpoint =
         "api/dev/attendanceweekly/" + this.schoolname + "/" + this.enddate;
-    //   console.log(this.endpoint);
+      //   console.log(this.endpoint);
       this.callMe();
     }
   },
@@ -57,69 +90,78 @@ export default {
           }
         },
         tooltips: {
-            enabled: false
+          enabled: false
         },
         hover: {
-          mode: "nearest",
-          intersect: false,
+          //   mode: "nearest",
+          //   intersect: false,
           onHover: (e, element) => {
             if (element && element.length > 0) {
-              const runningatt = this.chartdata.datasets[1].data[element[0]._index];
-              const weekatt = this.chartdata.datasets[0].data[element[0]._index];
+              const runningatt = this.chartdata.datasets[1].data[
+                element[0]._index
+              ];
+              const weekatt = this.chartdata.datasets[0].data[
+                element[0]._index
+              ];
               const week = this.chartdata.labels[element[0]._index];
               this.runningatt = runningatt;
               this.weekatt = weekatt;
               this.week = week;
             }
-          },
+          }
         },
         onClick: (e, element) => {
-            if (element && element.length > 0) {
-              const week = this.chartdata.labels[element[0]._index];
-              const weekatt = this.chartdata.datasets[0].data[element[0]._index];
+          if (element && element.length > 0) {
+            const week = this.chartdata.labels[element[0]._index];
+            const weekatt = this.chartdata.datasets[0].data[element[0]._index];
             //   console.log('load drill down chart for week ' + week);
-              this.week = week;
-              this.weekatt = weekatt;
-              this.updateWeek();
-            }
+            this.week = week;
+            this.weekatt = weekatt;
+            this.updateWeek();
+          }
         },
         maintainAspectRatio: false,
         responsive: true,
         responsiveAnimationDuration: 1000,
         scales: {
-          yAxes: [{
+          yAxes: [
+            {
               ticks: {
                 // beginAtZero: true,
                 suggestedMin: 80,
                 suggestedMax: 100
               }
-          }],
-          xAxes: [{
-            scaleLabel: {
-                display: true,
-                labelString: 'Week Number',
-
             }
-          }]
+          ],
+          xAxes: [
+            {
+              scaleLabel: {
+                display: true,
+                labelString: "Week Number"
+              }
+            }
+          ]
         },
         annotation: {
-            annotations: [{
-            drawTime: "afterDatasetsDraw",
-            // id: "hline",
-            type: "line",
-            mode: "horizontal",
-            scaleID: "y-axis-0",
-            value: 95,
-            borderColor: "red",
-            borderWidth: 2,
-            borderDash: [10, 10],
-            label: {
+          annotations: [
+            {
+              drawTime: "afterDatasetsDraw",
+              // id: "hline",
+              type: "line",
+              mode: "horizontal",
+              scaleID: "y-axis-0",
+              value: 95,
+              borderColor: "red",
+              borderWidth: 2,
+              borderDash: [10, 10],
+              label: {
                 backgroundColor: "white",
                 content: "Nat",
-                enabled: false,
-            },
-            }],
-        },
+                enabled: false
+              }
+            }
+          ]
+        }
       },
       endpoint:
         "api/dev/attendanceweekly/" + this.schoolname + "/" + this.enddate
@@ -167,10 +209,10 @@ export default {
               }
             ]
           }),
-            this.loaded = true;
-            this.finalweeknumber = this.getfinalweeknumber();
-            this.finalweekattendance = this.getfinalweekattendance();
-            this.sendFinalWeek();
+            (this.loaded = true);
+          this.finalweeknumber = this.getfinalweeknumber();
+          this.finalweekattendance = this.getfinalweekattendance();
+          this.sendFinalWeek();
         });
     },
     roundOff(value, decimals) {
@@ -199,34 +241,33 @@ export default {
     getfinalweeknumber() {
       var finalweek;
       for (let i = 0; i < this.weeks.length; i++) {
-          finalweek = this.weeks[i];
+        finalweek = this.weeks[i];
       }
-    //   console.log('Last Week Number = ' + finalweek);
+      //   console.log('Last Week Number = ' + finalweek);
       return finalweek;
     },
     getfinalweekattendance() {
       var finalweekattendance;
       for (let i = 0; i < this.weekly.length; i++) {
-          finalweekattendance = this.weekly[i];
+        finalweekattendance = this.weekly[i];
       }
-    //   console.log('Last Week Attendance = ' + finalweekattendance);
+      //   console.log('Last Week Attendance = ' + finalweekattendance);
       return finalweekattendance;
     },
     sendFinalWeek() {
-        this.$emit('updateWeek', this.finalweeknumber, this.finalweekattendance);
+      this.$emit("updateWeek", this.finalweeknumber, this.finalweekattendance);
     },
     updateWeek() {
-        this.$emit('updateWeek', this.week, this.weekatt);
-    },
-  },
-    computed: {
-        myStyles () {
-            return {
-                height: '300px',
-                position: 'relative'
-            }
-        }
+      this.$emit("updateWeek", this.week, this.weekatt);
     }
-
+  },
+  computed: {
+    myStyles() {
+      return {
+        height: "300px",
+        position: "relative"
+      };
+    }
+  }
 };
 </script>
