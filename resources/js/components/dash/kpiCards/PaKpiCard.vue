@@ -25,11 +25,21 @@ import axios from "axios";
 export default {
   props: ["schoolname", "enddate"],
   watch: {
+    schoolname: function() {
+      this.endpoint = "api/dev/pakpi/" + this.schoolname + "/" + this.enddate;
+      console.log(this.endpoint);
+      this.refresh();
+    },
+    startdate: function() {
+      this.endpoint = "api/dev/pakpi/" + this.schoolname + "/" + this.enddate;
+      console.log(this.endpoint);
+      this.refresh();
+    },
     enddate: function() {
       this.endpoint = "api/dev/pakpi/" + this.schoolname + "/" + this.enddate;
       console.log(this.endpoint);
-      this.callMe();
-    }
+      this.refresh();
+    },
   },
   data() {
     return {
@@ -49,15 +59,13 @@ export default {
     fetch() {
       axios.get(this.endpoint).then(({ data }) => {
         this.pAtRisk = data.data[0].pAt_Risk;
-        // setTimeout(() => this.loaded = true, 1500);
         this.loaded = true;
       });
     },
     roundOff(value, decimals) {
       return Number(Math.round(value + "e" + decimals) + "e-" + decimals);
     },
-    callMe() {
-      // alert('A NEW END DATE HAS BEEN SET.  YOU SHOULD FETCH NEW DATA');
+    refresh() {
       this.loaded = false;
       this.fetch();
     }

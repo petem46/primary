@@ -1,13 +1,19 @@
 <template>
   <v-col cols="12" lg="5" xl="4">
     <v-card v-if="loaded" class="pa-2" outlined raised tile>
-      <v-card-title>Attendance Week Detail</v-card-title>
+      <v-card-title>Attendance Week {{ attendanceweek }} Breakdown</v-card-title>
       <v-card-text>
-        <v-icon>mdi-calendar-multiselect</v-icon>&nbsp;&nbsp;
+        <v-icon>mdi-calendar-multiselect</v-icon>
+        &nbsp;&nbsp;
         Week {{ attendanceweek }} - Attendance: {{ attendanceforweek }} %
       </v-card-text>
       <v-divider></v-divider>
-      <attendance-drill-down-chart v-if="loaded" :chartdata="chartdata" :options="options" :styles="myStyles" />
+      <attendance-drill-down-chart
+        v-if="loaded"
+        :chartdata="chartdata"
+        :options="options"
+        :styles="myStyles"
+      />
       <v-divider></v-divider>
       <v-card-actions>
         <v-btn text small>Full Report</v-btn>
@@ -32,6 +38,17 @@ export default {
   components: { AttendanceDrillDownChart },
   props: ["schoolname", "enddate", "attendanceweek", "attendanceforweek"],
   watch: {
+    schoolname: function() {
+      this.loaded = false;
+      this.endpoint =
+        "api/dev/attendanceweek/" +
+        this.schoolname +
+        "/" +
+        this.enddate +
+        "/" +
+        this.attendanceweek;
+      this.refresh();
+    },
     attendanceweek: function() {
       this.loaded = false;
       this.endpoint =
@@ -41,7 +58,7 @@ export default {
         this.enddate +
         "/" +
         this.attendanceweek;
-      this.fetch();
+      this.refresh();
     }
   },
   data() {
@@ -63,7 +80,7 @@ export default {
           }
         },
         tooltips: {
-            // enabled: false
+          // enabled: false
         },
         maintainAspectRatio: false,
         responsive: true,
@@ -78,32 +95,36 @@ export default {
               }
             }
           ],
-          xAxes: [{
-            scaleLabel: {
+          xAxes: [
+            {
+              scaleLabel: {
                 display: true,
-                labelString: 'Year Group',
+                labelString: "Year Group"
+              }
             }
-          }]
+          ]
         },
         annotation: {
-            annotations: [{
-            drawTime: "afterDatasetsDraw",
-            // id: "hline",
-            type: "line",
-            mode: "horizontal",
-            scaleID: "y-axis-0",
-            value: 95,
-            borderColor: "red",
-            borderWidth: 2,
-            borderDash: [10, 10],
-            label: {
+          annotations: [
+            {
+              drawTime: "afterDatasetsDraw",
+              // id: "hline",
+              type: "line",
+              mode: "horizontal",
+              scaleID: "y-axis-0",
+              value: 95,
+              borderColor: "red",
+              borderWidth: 2,
+              borderDash: [10, 10],
+              label: {
                 backgroundColor: "white",
                 content: "Nat",
-                enabled: false,
-            },
-            }],
-        },
-      },
+                enabled: false
+              }
+            }
+          ]
+        }
+      }
     };
   },
   created() {
@@ -117,14 +138,14 @@ export default {
       axios
         .get(this.endpoint)
         .then(({ data }) => {
-            // console.log(data.data);
+          // console.log(data.data);
           this.weekly = data.data.map(weekly =>
             this.roundOff(weekly.pattendance, 1)
           );
-        //   this.running = data.data.map(running =>
-        //     this.roundOff(running.RunningPercent, 1)
-        //   );
-          this.years = data.data.map(years => 'Y' + years.year); // show year group as x-axis label
+          //   this.running = data.data.map(running =>
+          //     this.roundOff(running.RunningPercent, 1)
+          //   );
+          this.years = data.data.map(years => "Y" + years.year); // show year group as x-axis label
         })
         .then(() => {
           this.barcolors = this.setbarcolors();
@@ -137,15 +158,15 @@ export default {
                 label: "Weekly Attendance",
                 backgroundColor: this.barcolors,
                 data: this.weekly
-              },
-            //   {
-            //     label: "Overall Attendance",
-            //     type: "line",
-            //     fill: false,
-            //     borderColor: "teal",
-            //     lineTension: 0.1,
-            //     data: this.running
-            //   }
+              }
+              //   {
+              //     label: "Overall Attendance",
+              //     type: "line",
+              //     fill: false,
+              //     borderColor: "teal",
+              //     lineTension: 0.1,
+              //     data: this.running
+              //   }
             ]
           }),
             (this.loaded = true);
@@ -154,8 +175,8 @@ export default {
     roundOff(value, decimals) {
       return Number(Math.round(value + "e" + decimals) + "e-" + decimals);
     },
-    callMe() {
-    //   this.loaded = false;
+    refresh() {
+      this.loaded = false;
       this.fetch();
     },
     setbarcolors() {
@@ -173,15 +194,15 @@ export default {
       }
       // console.log(colors);
       return colors;
-    },
-  },
-    computed: {
-        myStyles () {
-            return {
-                height: '300px',
-                position: 'relative'
-            }
-        }
     }
+  },
+  computed: {
+    myStyles() {
+      return {
+        height: "300px",
+        position: "relative"
+      };
+    }
+  }
 };
 </script>

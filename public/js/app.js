@@ -2010,7 +2010,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
  // import subDays from 'date-fns/sub_days'
 
@@ -2040,7 +2039,7 @@ __webpack_require__.r(__webpack_exports__);
     AttendanceWeek: _dash_AttendanceWeek__WEBPACK_IMPORTED_MODULE_12__["default"],
     AtRiskPaOverview: _dash_AtRiskPaOverview__WEBPACK_IMPORTED_MODULE_13__["default"]
   },
-  props: ["schoolname", "start", "end"],
+  //   props: ["schoolname", "start", "end"],
   data: function data() {
     return {
       message: null,
@@ -2048,8 +2047,8 @@ __webpack_require__.r(__webpack_exports__);
       enddatemenu: false,
       loaded: true,
       //   endpoint: "api/dev",
-      startdate: this.start,
-      enddate: this.end,
+      //   startdate: this.start,
+      //   enddate: this.end,
       attendanceweek: null,
       attendanceforweek: null
     };
@@ -2074,7 +2073,7 @@ __webpack_require__.r(__webpack_exports__);
       this.fetch();
     },
     updateWeek: function updateWeek(week, weekatt) {
-      console.log('Emit updateWeek method triggered');
+      console.log("Emit updateWeek method triggered");
       this.attendanceweek = week;
       this.attendanceforweek = weekatt;
     }
@@ -2085,6 +2084,15 @@ __webpack_require__.r(__webpack_exports__);
     },
     formattedEndDate: function formattedEndDate() {
       return this.enddate ? Object(date_fns_format__WEBPACK_IMPORTED_MODULE_1__["default"])(Object(date_fns_parseISO__WEBPACK_IMPORTED_MODULE_2__["default"])(this.enddate), "iiii, do MMM yyyy") : "";
+    },
+    schoolname: function schoolname() {
+      return this.$store.getters.getschoolname;
+    },
+    startdate: function startdate() {
+      return this.$store.getters.getstartdate;
+    },
+    enddate: function enddate() {
+      return this.$store.getters.getenddate;
     }
   }
 });
@@ -2202,7 +2210,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
  // import subDays from 'date-fns/sub_days'
 
@@ -2232,7 +2239,7 @@ __webpack_require__.r(__webpack_exports__);
     AttendanceWeek: _dash_AttendanceWeek__WEBPACK_IMPORTED_MODULE_12__["default"],
     AtRiskPaOverview: _dash_AtRiskPaOverview__WEBPACK_IMPORTED_MODULE_13__["default"]
   },
-  props: ["schoolname", "start", "end"],
+  //   props: ["schoolname", "start", "end"],
   data: function data() {
     return {
       message: null,
@@ -2240,8 +2247,8 @@ __webpack_require__.r(__webpack_exports__);
       enddatemenu: false,
       loaded: true,
       //   endpoint: "api/dev",
-      startdate: this.start,
-      enddate: this.end,
+      //   startdate: this.start,
+      //   enddate: this.end,
       attendanceweek: null,
       attendanceforweek: null
     };
@@ -2266,7 +2273,7 @@ __webpack_require__.r(__webpack_exports__);
       this.fetch();
     },
     updateWeek: function updateWeek(week, weekatt) {
-      console.log('Emit updateWeek method triggered');
+      console.log("Emit updateWeek method triggered");
       this.attendanceweek = week;
       this.attendanceforweek = weekatt;
     }
@@ -2277,6 +2284,15 @@ __webpack_require__.r(__webpack_exports__);
     },
     formattedEndDate: function formattedEndDate() {
       return this.enddate ? Object(date_fns_format__WEBPACK_IMPORTED_MODULE_1__["default"])(Object(date_fns_parseISO__WEBPACK_IMPORTED_MODULE_2__["default"])(this.enddate), "iiii, do MMM yyyy") : "";
+    },
+    schoolname: function schoolname() {
+      return this.$store.getters.getschoolname;
+    },
+    startdate: function startdate() {
+      return this.$store.getters.getstartdate;
+    },
+    enddate: function enddate() {
+      return this.$store.getters.getenddate;
     }
   }
 });
@@ -2394,7 +2410,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
  // import subDays from 'date-fns/sub_days'
 
@@ -2424,7 +2439,7 @@ __webpack_require__.r(__webpack_exports__);
     AttendanceWeek: _dash_AttendanceWeek__WEBPACK_IMPORTED_MODULE_12__["default"],
     AtRiskPaOverview: _dash_AtRiskPaOverview__WEBPACK_IMPORTED_MODULE_13__["default"]
   },
-  props: ["schoolname", "start", "end"],
+  //   props: ["schoolname", "start", "end"],
   data: function data() {
     return {
       message: null,
@@ -2432,8 +2447,8 @@ __webpack_require__.r(__webpack_exports__);
       enddatemenu: false,
       loaded: true,
       //   endpoint: "api/dev",
-      startdate: this.start,
-      enddate: this.end,
+      //   startdate: this.start,
+      //   enddate: this.end,
       attendanceweek: null,
       attendanceforweek: null
     };
@@ -2458,7 +2473,7 @@ __webpack_require__.r(__webpack_exports__);
       this.fetch();
     },
     updateWeek: function updateWeek(week, weekatt) {
-      console.log('Emit updateWeek method triggered');
+      console.log("Emit updateWeek method triggered");
       this.attendanceweek = week;
       this.attendanceforweek = weekatt;
     }
@@ -2469,6 +2484,15 @@ __webpack_require__.r(__webpack_exports__);
     },
     formattedEndDate: function formattedEndDate() {
       return this.enddate ? Object(date_fns_format__WEBPACK_IMPORTED_MODULE_1__["default"])(Object(date_fns_parseISO__WEBPACK_IMPORTED_MODULE_2__["default"])(this.enddate), "iiii, do MMM yyyy") : "";
+    },
+    schoolname: function schoolname() {
+      return this.$store.getters.getschoolname;
+    },
+    startdate: function startdate() {
+      return this.$store.getters.getstartdate;
+    },
+    enddate: function enddate() {
+      return this.$store.getters.getenddate;
     }
   }
 });
@@ -2616,81 +2640,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2699,10 +2648,17 @@ __webpack_require__.r(__webpack_exports__);
   },
   props: ["schoolname", "enddate"],
   watch: {
+    schoolname: function schoolname() {
+      this.endpoint = "api/dev/paatrisk/" + this.schoolname + "/" + this.enddate;
+      this.refresh();
+    },
+    startdate: function startdate() {
+      this.endpoint = "api/dev/paatrisk/" + this.schoolname + "/" + this.enddate;
+      this.refresh();
+    },
     enddate: function enddate() {
       this.endpoint = "api/dev/paatrisk/" + this.schoolname + "/" + this.enddate;
-      console.log(this.endpoint);
-      this.callMe();
+      this.refresh();
     }
   },
   data: function data() {
@@ -2812,24 +2768,9 @@ __webpack_require__.r(__webpack_exports__);
             anchor: "center"
           }
         },
-        //   hover: {
-        //     mode: "nearest",
-        //     intersect: false,
-        //     onHover: (e, element) => {
-        //       if (element && element.length > 0) {
-        //         const runningatt = this.chartdata.datasets[1].data[element[0]._index];
-        //         const weekatt = this.chartdata.datasets[0].data[element[0]._index];
-        //         const week = this.chartdata.labels[element[0]._index];
-        //         this.runningatt = runningatt;
-        //         this.weekatt = weekatt;
-        //         this.week = week;
-        //       }
-        //     },
-        //   },
         onClick: function onClick(e, element) {
           if (element && element.length > 0) {
-            var cohort = _this.chartdata.labels[element[0]._index]; //   const atrisk = this.chartdata.datasets[0].data[element[0]._index];
-            //   console.log('load drill down chart for week ' + week);
+            var cohort = _this.chartdata.labels[element[0]._index];
 
             if (cohort === "All") {
               _this.showPupils = true;
@@ -2857,9 +2798,7 @@ __webpack_require__.r(__webpack_exports__);
               _this.send = cohort;
               _this.gender = "All";
               _this.pp = "All";
-            } //   this.weekatt = atrisk;
-            //   this.updateWeek();
-
+            }
           }
         },
         maintainAspectRatio: false,
@@ -2868,15 +2807,13 @@ __webpack_require__.r(__webpack_exports__);
         scales: {
           xAxes: [{
             ticks: {
-              beginAtZero: true // suggestedMax: 50,
-
+              beginAtZero: true
             }
           }],
           yAxes: [{
             ticks: {
               beginAtZero: true
-            } // display: false,
-
+            }
           }]
         },
         title: {
@@ -2919,7 +2856,6 @@ __webpack_require__.r(__webpack_exports__);
 
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(this.endpoint).then(function (_ref) {
         var data = _ref.data;
-        console.log(data.data);
         _this2.groups = data.data.paatrisk;
         _this2.pupils = data.data.pastudents;
         _this2.patrisk = data.data.paatrisk.map(function (patrisk) {
@@ -2943,7 +2879,7 @@ __webpack_require__.r(__webpack_exports__);
     roundOff: function roundOff(value, decimals) {
       return Number(Math.round(value + "e" + decimals) + "e-" + decimals);
     },
-    callMe: function callMe() {
+    refresh: function refresh() {
       this.loaded = false;
       this.fetch();
     }
@@ -3007,30 +2943,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3039,10 +2951,21 @@ __webpack_require__.r(__webpack_exports__);
   },
   props: ["schoolname", "enddate", "attendanceweek"],
   watch: {
+    schoolname: function schoolname() {
+      this.endpoint = "api/dev/attendanceweekly/" + this.schoolname + "/" + this.enddate;
+      this.refresh();
+    },
+    startdate: function startdate() {
+      this.endpoint = "api/dev/attendanceweekly/" + this.schoolname + "/" + this.enddate;
+      this.refresh();
+    },
     enddate: function enddate() {
-      this.endpoint = "api/dev/attendanceweekly/" + this.schoolname + "/" + this.enddate; //   console.log(this.endpoint);
-
-      this.callMe();
+      this.endpoint = "api/dev/attendanceweekly/" + this.schoolname + "/" + this.enddate;
+      this.refresh();
+    },
+    attendanceweek: function attendanceweek() {
+      this.endpoint = "api/dev/attendanceweekly/" + this.schoolname + "/" + this.enddate;
+      this.refresh();
     }
   },
   data: function data() {
@@ -3180,7 +3103,7 @@ __webpack_require__.r(__webpack_exports__);
     roundOff: function roundOff(value, decimals) {
       return Number(Math.round(value + "e" + decimals) + "e-" + decimals);
     },
-    callMe: function callMe() {
+    refresh: function refresh() {
       this.loaded = false;
       this.fetch();
     },
@@ -3357,6 +3280,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3365,10 +3294,15 @@ __webpack_require__.r(__webpack_exports__);
   },
   props: ["schoolname", "enddate", "attendanceweek", "attendanceforweek"],
   watch: {
+    schoolname: function schoolname() {
+      this.loaded = false;
+      this.endpoint = "api/dev/attendanceweek/" + this.schoolname + "/" + this.enddate + "/" + this.attendanceweek;
+      this.refresh();
+    },
     attendanceweek: function attendanceweek() {
       this.loaded = false;
       this.endpoint = "api/dev/attendanceweek/" + this.schoolname + "/" + this.enddate + "/" + this.attendanceweek;
-      this.fetch();
+      this.refresh();
     }
   },
   data: function data() {
@@ -3398,7 +3332,7 @@ __webpack_require__.r(__webpack_exports__);
           xAxes: [{
             scaleLabel: {
               display: true,
-              labelString: 'Year Group'
+              labelString: "Year Group"
             }
           }]
         },
@@ -3442,7 +3376,7 @@ __webpack_require__.r(__webpack_exports__);
         //   );
 
         _this.years = data.data.map(function (years) {
-          return 'Y' + years.year;
+          return "Y" + years.year;
         }); // show year group as x-axis label
       }).then(function () {
         _this.barcolors = _this.setbarcolors();
@@ -3468,8 +3402,8 @@ __webpack_require__.r(__webpack_exports__);
     roundOff: function roundOff(value, decimals) {
       return Number(Math.round(value + "e" + decimals) + "e-" + decimals);
     },
-    callMe: function callMe() {
-      //   this.loaded = false;
+    refresh: function refresh() {
+      this.loaded = false;
       this.fetch();
     },
     setbarcolors: function setbarcolors() {
@@ -3494,8 +3428,8 @@ __webpack_require__.r(__webpack_exports__);
   computed: {
     myStyles: function myStyles() {
       return {
-        height: '300px',
-        position: 'relative'
+        height: "300px",
+        position: "relative"
       };
     }
   }
@@ -3514,8 +3448,6 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 //
 //
 //
@@ -3557,16 +3489,22 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ["schoolname", "percentpresent"],
+  props: ["schoolname"],
+  watch: {
+    schoolname: function schoolname() {
+      this.loaded = false;
+      this.endpoint = "api/dev/cohortsummary/" + this.schoolname;
+      this.refresh();
+    }
+  },
   data: function data() {
-    var _ref;
-
-    return _ref = {
+    return {
       message: null,
       loaded: false,
       school: null,
-      endpoint: "api/dev/cohortsummary/" + this.schoolname
-    }, _defineProperty(_ref, "school", this.schoolname), _defineProperty(_ref, "groups", []), _ref;
+      endpoint: "api/dev/cohortsummary/" + this.schoolname,
+      groups: []
+    };
   },
   created: function created() {
     this.fetch();
@@ -3578,18 +3516,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     fetch: function fetch() {
       var _this = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(this.endpoint).then(function (_ref2) {
-        var data = _ref2.data;
-        _this.groups = data.data; // setTimeout(
-        //   () => (this.loaded = true),
-        //   Math.floor(Math.random() * 1500) + 750
-        // );
-
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(this.endpoint).then(function (_ref) {
+        var data = _ref.data;
+        _this.groups = data.data;
         _this.loaded = true;
       });
     },
     roundOff: function roundOff(value, decimals) {
       return Number(Math.round(value + "e" + decimals) + "e-" + decimals);
+    },
+    refresh: function refresh() {
+      this.loaded = false;
+      this.fetch();
     }
   }
 });
@@ -3650,10 +3588,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["schoolname", "enddate"],
   watch: {
+    schoolname: function schoolname() {
+      this.endpoint = "api/dev/startersleaverssummary/" + this.schoolname + "/" + this.enddate;
+      console.log(this.endpoint);
+      this.refresh();
+    },
     enddate: function enddate() {
       this.endpoint = "api/dev/startersleaverssummary/" + this.schoolname + "/" + this.enddate;
       console.log(this.endpoint);
-      this.callMe();
+      this.refresh();
     }
   },
   data: function data() {
@@ -3677,16 +3620,13 @@ __webpack_require__.r(__webpack_exports__);
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(this.endpoint).then(function (_ref) {
         var data = _ref.data;
         _this.years = data.data;
-        setTimeout(function () {
-          return _this.loaded = true;
-        }, Math.floor(Math.random() * 1500) + 750); // this.loaded = true;
+        _this.loaded = true;
       });
     },
     roundOff: function roundOff(value, decimals) {
       return Number(Math.round(value + "e" + decimals) + "e-" + decimals);
     },
-    callMe: function callMe() {
-      // alert('A NEW END DATE HAS BEEN SET.  YOU SHOULD FETCH NEW DATA');
+    refresh: function refresh() {
       this.loaded = false;
       this.fetch();
     }
@@ -3768,14 +3708,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ["schoolname", "percentpresent"],
+  props: ["schoolname"],
+  watch: {
+    schoolname: function schoolname() {
+      this.loaded = false;
+      this.endpoint = "api/dev/yeargroupsummary/" + this.schoolname;
+      this.refresh();
+    }
+  },
   data: function data() {
     return {
       message: null,
       loaded: false,
       showcount: false,
       endpoint: "api/dev/yeargroupsummary/" + this.schoolname,
-      school: this.schoolname,
       groups: []
     };
   },
@@ -3797,6 +3743,10 @@ __webpack_require__.r(__webpack_exports__);
     },
     roundOff: function roundOff(value, decimals) {
       return Number(Math.round(value + "e" + decimals) + "e-" + decimals);
+    },
+    refresh: function refresh() {
+      this.loaded = false;
+      this.fetch();
     }
   },
   computed: {
@@ -3845,10 +3795,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["schoolname", "enddate"],
   watch: {
+    schoolname: function schoolname() {
+      this.loaded = false;
+      "api/dev/attendancekpi/" + this.schoolname + "/" + this.startdate;
+      this.refresh();
+    },
+    startdate: function startdate() {
+      this.endpoint = "api/dev/attendancekpi/" + this.schoolname + "/" + this.startdate;
+      console.log(this.endpoint);
+      this.refresh();
+    },
     enddate: function enddate() {
       this.endpoint = "api/dev/attendancekpi/" + this.schoolname + "/" + this.enddate;
       console.log(this.endpoint);
-      this.callMe();
+      this.refresh();
     }
   },
   data: function data() {
@@ -3872,19 +3832,14 @@ __webpack_require__.r(__webpack_exports__);
 
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(this.endpoint).then(function (_ref) {
         var data = _ref.data;
-        _this.ppresent = data.data[0].ppresent; // setTimeout(
-        //   () => (this.loaded = true),
-        //   Math.floor(Math.random() * 1500) + 750
-        // );
-
+        _this.ppresent = data.data[0].ppresent;
         _this.loaded = true;
       });
     },
     roundOff: function roundOff(value, decimals) {
       return Number(Math.round(value + "e" + decimals) + "e-" + decimals);
     },
-    callMe: function callMe() {
-      // alert('A NEW END DATE HAS BEEN SET.  YOU SHOULD FETCH NEW DATA');
+    refresh: function refresh() {
       this.loaded = false;
       this.fetch();
     }
@@ -3929,6 +3884,13 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["schoolname"],
+  watch: {
+    schoolname: function schoolname() {
+      this.loaded = false;
+      this.endpoint = "api/dev/norkpi/" + this.schoolname;
+      this.refresh();
+    }
+  },
   data: function data() {
     return {
       message: null,
@@ -3954,6 +3916,10 @@ __webpack_require__.r(__webpack_exports__);
 
         _this.loaded = true;
       });
+    },
+    refresh: function refresh() {
+      this.loaded = false;
+      this.fetch();
     }
   }
 });
@@ -3997,10 +3963,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["schoolname", "enddate"],
   watch: {
+    schoolname: function schoolname() {
+      this.endpoint = "api/dev/pakpi/" + this.schoolname + "/" + this.enddate;
+      console.log(this.endpoint);
+      this.refresh();
+    },
+    startdate: function startdate() {
+      this.endpoint = "api/dev/pakpi/" + this.schoolname + "/" + this.enddate;
+      console.log(this.endpoint);
+      this.refresh();
+    },
     enddate: function enddate() {
       this.endpoint = "api/dev/pakpi/" + this.schoolname + "/" + this.enddate;
       console.log(this.endpoint);
-      this.callMe();
+      this.refresh();
     }
   },
   data: function data() {
@@ -4023,16 +3999,14 @@ __webpack_require__.r(__webpack_exports__);
 
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(this.endpoint).then(function (_ref) {
         var data = _ref.data;
-        _this.pAtRisk = data.data[0].pAt_Risk; // setTimeout(() => this.loaded = true, 1500);
-
+        _this.pAtRisk = data.data[0].pAt_Risk;
         _this.loaded = true;
       });
     },
     roundOff: function roundOff(value, decimals) {
       return Number(Math.round(value + "e" + decimals) + "e-" + decimals);
     },
-    callMe: function callMe() {
-      // alert('A NEW END DATE HAS BEEN SET.  YOU SHOULD FETCH NEW DATA');
+    refresh: function refresh() {
       this.loaded = false;
       this.fetch();
     }
@@ -4078,16 +4052,31 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ["schoolname", "count"],
+  props: ["schoolname"],
+  watch: {
+    schoolname: function schoolname() {
+      this.endpoint = "api/dev/ppkpi/" + this.schoolname;
+      console.log(this.endpoint);
+      this.refresh();
+    },
+    startdate: function startdate() {
+      this.endpoint = "api/dev/ppkpi/" + this.schoolname;
+      console.log(this.endpoint);
+      this.refresh();
+    },
+    enddate: function enddate() {
+      this.endpoint = "api/dev/ppkpi/" + this.schoolname;
+      console.log(this.endpoint);
+      this.refresh();
+    }
+  },
   data: function data() {
-    var _ref;
-
-    return _ref = {
+    return _defineProperty({
       message: null,
       loaded: false,
       school: null,
       endpoint: "api/dev/ppkpi/" + this.schoolname
-    }, _defineProperty(_ref, "school", this.schoolname), _defineProperty(_ref, "ppcount", this.count), _ref;
+    }, "school", this.schoolname);
   },
   created: function created() {
     this.fetch();
@@ -4108,6 +4097,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     roundOff: function roundOff(value, decimals) {
       return Number(Math.round(value + "e" + decimals) + "e-" + decimals);
+    },
+    refresh: function refresh() {
+      this.loaded = false;
+      this.fetch();
     }
   }
 });
@@ -5019,80 +5012,36 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
  // import subDays from 'date-fns/sub_days'
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: {
-    source: String //   end: Date,
-
-  },
   data: function data() {
     return {
-      schoolname: "FCAT",
       appName: "myDataDash",
       fab: false,
-      start: "2019-08-26",
-      end: null,
       dialog: false,
       drawer: null,
       items: [{
         core: "Wiggle",
         icon: "mdi-contacts",
-        name: "Students",
-        school: "Aspire",
-        link: "school=Aspire&start=2019-08-26&end=2020-02-13",
-        schoollink: "school=",
-        startdatelink: "start=",
-        enddatelink: "end="
+        name: "Students"
       }, {
         icon: "mdi-history",
-        name: "Summary",
-        school: "Aspire",
-        schoollink: "school=",
-        startdatelink: "start=",
-        enddatelink: "end="
+        name: "Summary"
       }, {
         icon: "mdi-calendar-multiselect",
-        name: "Attendance",
-        school: "Aspire",
-        schoollink: "school=",
-        startdatelink: "start=",
-        enddatelink: "end="
+        name: "Attendance"
       }, {
         icon: "mdi-history",
-        name: "Behaviours",
-        school: "Aspire",
-        schoollink: "school=",
-        startdatelink: "start=",
-        enddatelink: "end="
+        name: "Behaviour"
       }, {
         icon: "mdi-star-box-multiple-outline",
-        name: "Assessments",
-        school: "Aspire",
-        schoollink: "school=",
-        startdatelink: "start=",
-        enddatelink: "end="
+        name: "Assessment"
       }, {
         icon: "mdi-content-copy",
         name: "FCAT",
-        school: "FCAT",
-        schoollink: "school=",
-        startdatelink: "start=",
-        enddatelink: "end="
+        school: "FCAT"
       }, {
         icon: "mdi-chevron-up",
         "icon-alt": "mdi-chevron-down",
@@ -5100,16 +5049,10 @@ __webpack_require__.r(__webpack_exports__);
         model: false,
         children: [{
           icon: "mdi-home-export-outline",
-          school: "Armfield",
-          schoollink: "school=",
-          startdatelink: "start=",
-          enddatelink: "end="
+          school: "Armfield"
         }, {
           icon: "mdi-home-export-outline",
-          school: "Unity",
-          schoollink: "school=",
-          startdatelink: "start=",
-          enddatelink: "end="
+          school: "Unity"
         }]
       }, {
         icon: "mdi-chevron-up",
@@ -5118,22 +5061,13 @@ __webpack_require__.r(__webpack_exports__);
         model: false,
         children: [{
           icon: "mdi-home-export-outline",
-          school: "Aspire",
-          schoollink: "school=",
-          startdatelink: "start=",
-          enddatelink: "end="
+          school: "Aspire"
         }, {
           icon: "mdi-home-export-outline",
-          school: "Garstang",
-          schoollink: "school=",
-          startdatelink: "start=",
-          enddatelink: "end="
+          school: "Garstang"
         }, {
           icon: "mdi-home-export-outline",
-          school: "Montgomery",
-          schoollink: "school=",
-          startdatelink: "start=",
-          enddatelink: "end="
+          school: "Montgomery"
         }]
       }, {
         icon: "mdi-chevron-up",
@@ -5142,39 +5076,22 @@ __webpack_require__.r(__webpack_exports__);
         model: false,
         children: [{
           icon: "mdi-home-export-outline",
-          school: "Gateway",
-          schoollink: "school=",
-          startdatelink: "start=",
-          enddatelink: "end="
+          school: "Gateway"
         }, {
           icon: "mdi-home-export-outline",
-          school: "Hambleton",
-          schoollink: "school=",
-          startdatelink: "start=",
-          enddatelink: "end="
+          school: "Hambleton"
         }, {
           icon: "mdi-home-export-outline",
-          school: "Mereside",
-          schoollink: "school=",
-          startdatelink: "start=",
-          enddatelink: "end="
+          school: "Mereside"
         }, {
           icon: "mdi-home-export-outline",
-          school: "Westcliff",
-          schoollink: "school=",
-          startdatelink: "start=",
-          enddatelink: "end="
+          school: "Westcliff"
         }, {
           icon: "mdi-home-export-outline",
-          school: "Westminster",
-          schoollink: "school=",
-          startdatelink: "start=",
-          enddatelink: "end="
+          school: "Westminster"
         }]
       }]
     };
-  },
-  created: function created() {// this.schoolname = schoolname;
   },
   methods: {
     onScroll: function onScroll(e) {
@@ -5184,14 +5101,34 @@ __webpack_require__.r(__webpack_exports__);
     },
     toTop: function toTop() {
       this.$vuetify.goTo(0);
+    },
+    updateSchoolName: function updateSchoolName(sn) {
+      this.$store.commit("updateSchoolName", sn);
+    },
+    updateStartDate: function updateStartDate(sd) {
+      this.$store.commit("updateStartDate", sd);
+    },
+    updateEndDate: function updateEndDate(ed) {
+      this.$store.commit("updateEndDate", ed);
+    },
+    updateCore: function updateCore(sn, sd, ed) {
+      console.log("SN: " + sn);
+      console.log("SD: " + sd);
+      console.log("ED: " + ed);
+      this.$store.commit("updateSchoolName", sn);
+      this.$store.commit("updateStartDate", sd);
+      this.$store.commit("updateEndDate", ed);
     }
   },
   computed: {
+    schoolname: function schoolname() {
+      return this.$store.getters.getschoolname;
+    },
     startdate: function startdate() {
-      return "2019-08-26";
+      return this.$store.getters.getstartdate;
     },
     enddate: function enddate() {
-      return Object(date_fns_format__WEBPACK_IMPORTED_MODULE_0__["default"])(new Date(), "yyyy-MM-dd");
+      return this.$store.getters.getenddate;
     }
   }
 });
@@ -63152,7 +63089,7 @@ var render = function() {
     !_vm.loaded
       ? _c("div", [
           _c("i", { staticClass: "fas fa-spinner fa-spin fa-3x" }),
-          _vm._v("   Loading...\n  ")
+          _vm._v("   Loading...\n\t")
         ])
       : _vm._e(),
     _vm._v(" "),
@@ -63169,7 +63106,7 @@ var render = function() {
                   _c("v-row", [
                     _c("div", { staticClass: "col-12 text-center" }, [
                       _c("h1", { staticClass: "display-3 mx-auto my-2" }, [
-                        _vm._v(_vm._s(_vm.schoolname) + " Data Dashboard")
+                        _vm._v(_vm._s(_vm.schoolname) + " Summary Dashboard")
                       ])
                     ]),
                     _vm._v(" "),
@@ -63378,42 +63315,6 @@ var render = function() {
                       }),
                       _vm._v(" "),
                       _c("starters-leavers-summary", {
-                        attrs: {
-                          schoolname: this.schoolname,
-                          enddate: this.enddate
-                        }
-                      })
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "v-row",
-                    [
-                      _c("attendance-overview", {
-                        attrs: {
-                          schoolname: this.schoolname,
-                          enddate: this.enddate
-                        },
-                        on: { updateWeek: _vm.updateWeek }
-                      }),
-                      _vm._v(" "),
-                      _c("attendance-week", {
-                        attrs: {
-                          schoolname: this.schoolname,
-                          enddate: this.enddate,
-                          attendanceweek: this.attendanceweek,
-                          attendanceforweek: this.attendanceforweek
-                        }
-                      })
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "v-row",
-                    [
-                      _c("at-risk-pa-overview", {
                         attrs: {
                           schoolname: this.schoolname,
                           enddate: this.enddate
@@ -63458,7 +63359,7 @@ var render = function() {
     !_vm.loaded
       ? _c("div", [
           _c("i", { staticClass: "fas fa-spinner fa-spin fa-3x" }),
-          _vm._v("   Loading...\n  ")
+          _vm._v("   Loading...\n\t")
         ])
       : _vm._e(),
     _vm._v(" "),
@@ -63475,7 +63376,7 @@ var render = function() {
                   _c("v-row", [
                     _c("div", { staticClass: "col-12 text-center" }, [
                       _c("h1", { staticClass: "display-3 mx-auto my-2" }, [
-                        _vm._v(_vm._s(_vm.schoolname) + " Data Dashboard")
+                        _vm._v(_vm._s(_vm.schoolname) + " Attendance Dashboard")
                       ])
                     ]),
                     _vm._v(" "),
@@ -63631,67 +63532,6 @@ var render = function() {
                       1
                     )
                   ]),
-                  _vm._v(" "),
-                  _c(
-                    "v-row",
-                    [
-                      _c("nor-kpi-card", {
-                        attrs: {
-                          schoolname: this.schoolname,
-                          enddate: this.enddate
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("pp-kpi-card", {
-                        attrs: {
-                          schoolname: this.schoolname,
-                          enddate: this.enddate
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("attendance-kpi-card", {
-                        attrs: {
-                          schoolname: this.schoolname,
-                          enddate: this.enddate
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("pa-kpi-card", {
-                        attrs: {
-                          schoolname: this.schoolname,
-                          enddate: this.enddate
-                        }
-                      })
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "v-row",
-                    [
-                      _c("cohort-summary", {
-                        attrs: {
-                          schoolname: this.schoolname,
-                          enddate: this.enddate
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("year-group-summary", {
-                        attrs: {
-                          schoolname: this.schoolname,
-                          enddate: this.enddate
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("starters-leavers-summary", {
-                        attrs: {
-                          schoolname: this.schoolname,
-                          enddate: this.enddate
-                        }
-                      })
-                    ],
-                    1
-                  ),
                   _vm._v(" "),
                   _c(
                     "v-row",
@@ -63764,7 +63604,7 @@ var render = function() {
     !_vm.loaded
       ? _c("div", [
           _c("i", { staticClass: "fas fa-spinner fa-spin fa-3x" }),
-          _vm._v("   Loading...\n  ")
+          _vm._v("   Loading...\n\t")
         ])
       : _vm._e(),
     _vm._v(" "),
@@ -63781,7 +63621,7 @@ var render = function() {
                   _c("v-row", [
                     _c("div", { staticClass: "col-12 text-center" }, [
                       _c("h1", { staticClass: "display-3 mx-auto my-2" }, [
-                        _vm._v(_vm._s(_vm.schoolname) + " Data Dashboard")
+                        _vm._v(_vm._s(_vm.schoolname) + " Summary Dashboard")
                       ])
                     ]),
                     _vm._v(" "),
@@ -63990,42 +63830,6 @@ var render = function() {
                       }),
                       _vm._v(" "),
                       _c("starters-leavers-summary", {
-                        attrs: {
-                          schoolname: this.schoolname,
-                          enddate: this.enddate
-                        }
-                      })
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "v-row",
-                    [
-                      _c("attendance-overview", {
-                        attrs: {
-                          schoolname: this.schoolname,
-                          enddate: this.enddate
-                        },
-                        on: { updateWeek: _vm.updateWeek }
-                      }),
-                      _vm._v(" "),
-                      _c("attendance-week", {
-                        attrs: {
-                          schoolname: this.schoolname,
-                          enddate: this.enddate,
-                          attendanceweek: this.attendanceweek,
-                          attendanceforweek: this.attendanceforweek
-                        }
-                      })
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "v-row",
-                    [
-                      _c("at-risk-pa-overview", {
                         attrs: {
                           schoolname: this.schoolname,
                           enddate: this.enddate
@@ -64172,9 +63976,7 @@ var render = function() {
                     },
                     [
                       _c("v-card-title", [
-                        _vm._v(
-                          "\n        Pupils At Risk of Persistent Absence\n      "
-                        )
+                        _vm._v("Pupils At Risk of Persistent Absence")
                       ]),
                       _vm._v(" "),
                       _c("v-data-table", {
@@ -64410,9 +64212,7 @@ var render = function() {
                     },
                     [
                       _c("v-card-title", [
-                        _vm._v(
-                          "\n        Groups At Risk of Persistent Absence\n      "
-                        )
+                        _vm._v("Groups At Risk of Persistent Absence")
                       ]),
                       _vm._v(" "),
                       _c("v-data-table", {
@@ -64552,7 +64352,7 @@ var render = function() {
                 [
                   _c("v-icon", [_vm._v("mdi-calendar-multiselect")]),
                   _vm._v(
-                    "   Week\n      " +
+                    "\n         Week\n      " +
                       _vm._s(_vm.week) +
                       " - Attendance: " +
                       _vm._s(_vm.weekatt) +
@@ -64582,7 +64382,7 @@ var render = function() {
                 "v-card-actions",
                 [
                   _c("v-btn", { attrs: { text: "", small: "" } }, [
-                    _vm._v("Full Report " + _vm._s(_vm.week) + " ")
+                    _vm._v("Full Report " + _vm._s(_vm.week))
                   ])
                 ],
                 1
@@ -64765,14 +64565,18 @@ var render = function() {
               attrs: { outlined: "", raised: "", tile: "" }
             },
             [
-              _c("v-card-title", [_vm._v("Attendance Week Detail")]),
+              _c("v-card-title", [
+                _vm._v(
+                  "Attendance Week " + _vm._s(_vm.attendanceweek) + " Breakdown"
+                )
+              ]),
               _vm._v(" "),
               _c(
                 "v-card-text",
                 [
                   _c("v-icon", [_vm._v("mdi-calendar-multiselect")]),
                   _vm._v(
-                    "  \n      Week " +
+                    "\n        \n      Week " +
                       _vm._s(_vm.attendanceweek) +
                       " - Attendance: " +
                       _vm._s(_vm.attendanceforweek) +
@@ -67035,7 +66839,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "v-app",
-    { attrs: { id: "inspire" } },
+    { attrs: { id: "mydatadash" } },
     [
       _c(
         "v-navigation-drawer",
@@ -67061,6 +66865,46 @@ var render = function() {
             [
               _vm._l(_vm.items, function(item) {
                 return [
+                  item.heading
+                    ? _c(
+                        "v-row",
+                        { key: item.heading, attrs: { align: "center" } },
+                        [
+                          _c(
+                            "v-col",
+                            { attrs: { cols: "6" } },
+                            [
+                              item.heading
+                                ? _c("v-subheader", [
+                                    _vm._v(_vm._s(item.heading))
+                                  ])
+                                : _vm._e()
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-col",
+                            {
+                              staticClass: "text-center",
+                              attrs: { cols: "6" }
+                            },
+                            [
+                              _c(
+                                "a",
+                                {
+                                  staticClass: "body-2 black--text",
+                                  attrs: { href: "#!" }
+                                },
+                                [_vm._v("EDIT")]
+                              )
+                            ]
+                          )
+                        ],
+                        1
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
                   item.children
                     ? _c(
                         "v-list-group",
@@ -67125,26 +66969,28 @@ var render = function() {
                                 _c(
                                   "v-list-item-content",
                                   [
-                                    _c("v-list-item-title", [
-                                      _c(
-                                        "a",
-                                        {
-                                          attrs: {
-                                            href:
-                                              "?" +
-                                              child.schoollink +
-                                              child.school +
-                                              "&" +
-                                              child.startdatelink +
-                                              _vm.startdate +
-                                              "&" +
-                                              child.enddatelink +
+                                    _c(
+                                      "v-list-item-title",
+                                      {
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.updateCore(
+                                              child.school,
+                                              _vm.startdate,
                                               _vm.enddate
+                                            )
                                           }
-                                        },
-                                        [_vm._v(_vm._s(child.school))]
-                                      )
-                                    ])
+                                        }
+                                      },
+                                      [
+                                        _c(
+                                          "router-link",
+                                          { attrs: { to: { name: "dash" } } },
+                                          [_vm._v(_vm._s(child.school))]
+                                        )
+                                      ],
+                                      1
+                                    )
                                   ],
                                   1
                                 )
@@ -67168,26 +67014,17 @@ var render = function() {
                           _c(
                             "v-list-item-content",
                             [
-                              _c("v-list-item-title", [
-                                _c(
-                                  "a",
-                                  {
-                                    attrs: {
-                                      href:
-                                        "?" +
-                                        item.schoollink +
-                                        item.school +
-                                        "&" +
-                                        item.startdatelink +
-                                        _vm.startdate +
-                                        "&" +
-                                        item.enddatelink +
-                                        _vm.enddate
-                                    }
-                                  },
-                                  [_vm._v(_vm._s(item.name))]
-                                )
-                              ])
+                              _c(
+                                "v-list-item-title",
+                                [
+                                  _c(
+                                    "router-link",
+                                    { attrs: { to: { name: item.name } } },
+                                    [_vm._v(_vm._s(item.name))]
+                                  )
+                                ],
+                                1
+                              )
                             ],
                             1
                           )
@@ -67234,7 +67071,13 @@ var render = function() {
                 { staticClass: "hidden-sm-and-down" },
                 [
                   _c("v-icon", [_vm._v("mdi-hexagon-multiple-outline")]),
-                  _vm._v("   " + _vm._s(_vm.appName) + "\n      ")
+                  _vm._v(
+                    "\n\t\t\t\t   " +
+                      _vm._s(_vm.appName) +
+                      " || " +
+                      _vm._s(_vm.schoolname) +
+                      "\n\t\t\t"
+                  )
                 ],
                 1
               )
@@ -83478,10 +83321,10 @@ var defaultMenuProps = __assign({}, _VSelect_VSelect__WEBPACK_IMPORTED_MODULE_1_
     genSelections: function genSelections() {
       return this.hasSlot || this.multiple ? _VSelect_VSelect__WEBPACK_IMPORTED_MODULE_1__["default"].options.methods.genSelections.call(this) : [];
     },
-    onClick: function onClick() {
+    onClick: function onClick(e) {
       if (this.isDisabled) return;
       this.selectedIndex > -1 ? this.selectedIndex = -1 : this.onFocus();
-      this.activateMenu();
+      if (!this.isAppendInner(e.target)) this.activateMenu();
     },
     onInput: function onInput(e) {
       if (this.selectedIndex > -1 || !e.target) return;
@@ -89315,7 +89158,8 @@ var __read = undefined && undefined.__read || function (o, n) {
       return this.$createElement(_VIcon__WEBPACK_IMPORTED_MODULE_3__["default"], {
         staticClass: 'v-chip__close',
         props: {
-          right: true
+          right: true,
+          size: 18
         },
         on: {
           click: function click(e) {
@@ -92511,12 +92355,12 @@ function searchTableItems(items, search, headersWithCustomFilters, headersWithou
       }, {});
     },
     headersWithCustomFilters: function headersWithCustomFilters() {
-      return this.computedHeaders.filter(function (header) {
+      return this.headers.filter(function (header) {
         return header.filter && (!header.hasOwnProperty('filterable') || header.filterable === true);
       });
     },
     headersWithoutCustomFilters: function headersWithoutCustomFilters() {
-      return this.computedHeaders.filter(function (header) {
+      return this.headers.filter(function (header) {
         return !header.filter && (!header.hasOwnProperty('filterable') || header.filterable === true);
       });
     },
@@ -92683,7 +92527,7 @@ function searchTableItems(items, search, headersWithCustomFilters, headersWithou
       var isOpen = !!this.openCache[group];
       var children = [this.$createElement('template', {
         slot: 'row.content'
-      }, this.genDefaultRows(items, props))];
+      }, this.genRows(items, props))];
 
       var toggleFn = function toggleFn() {
         return _this.$set(_this.openCache, group, !_this.openCache[group]);
@@ -98220,8 +98064,8 @@ var VIcon = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_7__["default"])(_mixins
         attrs: {
           xmlns: 'http://www.w3.org/2000/svg',
           viewBox: '0 0 24 24',
-          height: fontSize || '32',
-          width: fontSize || '32',
+          height: fontSize || '24',
+          width: fontSize || '24',
           role: 'img',
           'aria-hidden': true
         }
@@ -100693,9 +100537,7 @@ var baseMixins = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_12__["default"])(_
         props: {
           name: this.transition
         }
-      }, this.showLazyContent(function () {
-        return [content];
-      }));
+      }, [content]);
     },
     genDirectives: function genDirectives() {
       var _this = this;
@@ -100760,13 +100602,7 @@ var baseMixins = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_12__["default"])(_
         options.on.mouseleave = this.mouseLeaveHandler;
       }
 
-      return this.$createElement('div', options, [this.$createElement(_VThemeProvider__WEBPACK_IMPORTED_MODULE_1__["VThemeProvider"], {
-        props: {
-          root: true,
-          light: this.light,
-          dark: this.dark
-        }
-      }, this.getContentSlot())]);
+      return this.$createElement('div', options, this.getContentSlot());
     },
     getTiles: function getTiles() {
       if (!this.$refs.content) return;
@@ -100858,6 +100694,8 @@ var baseMixins = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_12__["default"])(_
     }
   },
   render: function render(h) {
+    var _this = this;
+
     var data = {
       staticClass: 'v-menu',
       class: {
@@ -100869,7 +100707,15 @@ var baseMixins = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_12__["default"])(_
         value: this.onResize
       }]
     };
-    return h('div', data, [!this.activator && this.genActivator(), this.genTransition()]);
+    return h('div', data, [!this.activator && this.genActivator(), this.showLazyContent(function () {
+      return [_this.$createElement(_VThemeProvider__WEBPACK_IMPORTED_MODULE_1__["VThemeProvider"], {
+        props: {
+          root: true,
+          light: _this.light,
+          dark: _this.dark
+        }
+      }, [_this.genTransition()])];
+    })]);
   }
 }));
 
@@ -104102,8 +103948,9 @@ var baseMixins = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_13__["default"])(_
     },
     closeConditional: function closeConditional(e) {
       if (!this.isMenuActive) return true;
-      return !this._isDestroyed && // Click originates from outside the menu content
-      this.getContent() && !this.getContent().contains(e.target) && // Click originates from outside the element
+      return !this._isDestroyed && ( // Click originates from outside the menu content
+      // Multiple selects don't close when an item is clicked
+      !this.getContent() || !this.getContent().contains(e.target)) && // Click originates from outside the element
       this.$el && !this.$el.contains(e.target) && e.target !== this.$el;
     },
     filterDuplicates: function filterDuplicates(arr) {
@@ -109894,7 +109741,8 @@ var selectingNames = {
 
       return this.$createElement(_VTimePickerTitle__WEBPACK_IMPORTED_MODULE_0__["default"], {
         props: {
-          ampm: this.ampmInTitle && this.isAmPm,
+          ampm: this.isAmPm,
+          ampmReadonly: this.isAmPm && !this.ampmInTitle,
           disabled: this.disabled,
           hour: this.inputHour,
           minute: this.inputMinute,
@@ -110265,6 +110113,7 @@ __webpack_require__.r(__webpack_exports__);
   name: 'v-time-picker-title',
   props: {
     ampm: Boolean,
+    ampmReadonly: Boolean,
     disabled: Boolean,
     hour: Number,
     minute: Number,
@@ -110303,8 +110152,11 @@ __webpack_require__.r(__webpack_exports__);
     },
     genAmPm: function genAmPm() {
       return this.$createElement('div', {
-        staticClass: 'v-time-picker-title__ampm'
-      }, [this.genPickerButton('period', 'am', this.$vuetify.lang.t('$vuetify.timePicker.am'), this.disabled || this.readonly), this.genPickerButton('period', 'pm', this.$vuetify.lang.t('$vuetify.timePicker.pm'), this.disabled || this.readonly)]);
+        staticClass: 'v-time-picker-title__ampm',
+        class: {
+          'v-time-picker-title__ampm--readonly': this.ampmReadonly
+        }
+      }, [!this.ampmReadonly || this.period === 'am' ? this.genPickerButton('period', 'am', this.$vuetify.lang.t('$vuetify.timePicker.am'), this.disabled || this.readonly) : null, !this.ampmReadonly || this.period === 'pm' ? this.genPickerButton('period', 'pm', this.$vuetify.lang.t('$vuetify.timePicker.pm'), this.disabled || this.readonly) : null]);
     }
   },
   render: function render(h) {
@@ -114222,7 +114074,7 @@ function () {
 
   Vuetify.install = _install__WEBPACK_IMPORTED_MODULE_0__["install"];
   Vuetify.installed = false;
-  Vuetify.version = "2.2.12";
+  Vuetify.version = "2.2.14";
   return Vuetify;
 }();
 
@@ -117822,7 +117674,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _activatable__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../activatable */ "./src/mixins/activatable/index.ts");
 /* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../util/mixins */ "./src/util/mixins.ts");
 /* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../util/helpers */ "./src/util/helpers.ts");
-// Mixins
+var __assign = undefined && undefined.__assign || function () {
+  __assign = Object.assign || function (t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+      s = arguments[i];
+
+      for (var p in s) {
+        if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+      }
+    }
+
+    return t;
+  };
+
+  return __assign.apply(this, arguments);
+}; // Mixins
+
+
 
 
  // Utilities
@@ -118132,7 +118000,10 @@ var baseMixins = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_3__["default"])(_s
       this.checkActivatorFixed();
       this.checkForPageYOffset();
       this.pageWidth = document.documentElement.clientWidth;
-      var dimensions = {}; // Activator should already be shown
+      var dimensions = {
+        activator: __assign({}, this.dimensions.activator),
+        content: __assign({}, this.dimensions.content)
+      }; // Activator should already be shown
 
       if (!this.hasActivator || this.absolute) {
         dimensions.activator = this.absolutePosition();
@@ -118153,7 +118024,7 @@ var baseMixins = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_3__["default"])(_s
 
 
       this.sneakPeek(function () {
-        dimensions.content = _this.measure(_this.$refs.content);
+        _this.$refs.content && (dimensions.content = _this.measure(_this.$refs.content));
         _this.dimensions = dimensions;
       });
     }
@@ -120736,7 +120607,7 @@ var icons = {
   prev: 'fa fa-chevron-left',
   next: 'fa fa-chevron-right',
   checkboxOn: 'fa fa-check-square',
-  checkboxOff: 'far fa-square',
+  checkboxOff: 'fa fa-square-o',
   checkboxIndeterminate: 'fa fa-minus-square',
   delimiter: 'fa fa-circle',
   sort: 'fa fa-sort-up',
@@ -123575,6 +123446,1076 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_vue__;
 
 /***/ }),
 
+/***/ "./node_modules/vuex/dist/vuex.esm.js":
+/*!********************************************!*\
+  !*** ./node_modules/vuex/dist/vuex.esm.js ***!
+  \********************************************/
+/*! exports provided: default, Store, install, mapState, mapMutations, mapGetters, mapActions, createNamespacedHelpers */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* WEBPACK VAR INJECTION */(function(global) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Store", function() { return Store; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "install", function() { return install; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapState", function() { return mapState; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapMutations", function() { return mapMutations; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapGetters", function() { return mapGetters; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapActions", function() { return mapActions; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createNamespacedHelpers", function() { return createNamespacedHelpers; });
+/**
+ * vuex v3.1.2
+ * (c) 2019 Evan You
+ * @license MIT
+ */
+function applyMixin (Vue) {
+  var version = Number(Vue.version.split('.')[0]);
+
+  if (version >= 2) {
+    Vue.mixin({ beforeCreate: vuexInit });
+  } else {
+    // override init and inject vuex init procedure
+    // for 1.x backwards compatibility.
+    var _init = Vue.prototype._init;
+    Vue.prototype._init = function (options) {
+      if ( options === void 0 ) options = {};
+
+      options.init = options.init
+        ? [vuexInit].concat(options.init)
+        : vuexInit;
+      _init.call(this, options);
+    };
+  }
+
+  /**
+   * Vuex init hook, injected into each instances init hooks list.
+   */
+
+  function vuexInit () {
+    var options = this.$options;
+    // store injection
+    if (options.store) {
+      this.$store = typeof options.store === 'function'
+        ? options.store()
+        : options.store;
+    } else if (options.parent && options.parent.$store) {
+      this.$store = options.parent.$store;
+    }
+  }
+}
+
+var target = typeof window !== 'undefined'
+  ? window
+  : typeof global !== 'undefined'
+    ? global
+    : {};
+var devtoolHook = target.__VUE_DEVTOOLS_GLOBAL_HOOK__;
+
+function devtoolPlugin (store) {
+  if (!devtoolHook) { return }
+
+  store._devtoolHook = devtoolHook;
+
+  devtoolHook.emit('vuex:init', store);
+
+  devtoolHook.on('vuex:travel-to-state', function (targetState) {
+    store.replaceState(targetState);
+  });
+
+  store.subscribe(function (mutation, state) {
+    devtoolHook.emit('vuex:mutation', mutation, state);
+  });
+}
+
+/**
+ * Get the first item that pass the test
+ * by second argument function
+ *
+ * @param {Array} list
+ * @param {Function} f
+ * @return {*}
+ */
+
+/**
+ * forEach for object
+ */
+function forEachValue (obj, fn) {
+  Object.keys(obj).forEach(function (key) { return fn(obj[key], key); });
+}
+
+function isObject (obj) {
+  return obj !== null && typeof obj === 'object'
+}
+
+function isPromise (val) {
+  return val && typeof val.then === 'function'
+}
+
+function assert (condition, msg) {
+  if (!condition) { throw new Error(("[vuex] " + msg)) }
+}
+
+function partial (fn, arg) {
+  return function () {
+    return fn(arg)
+  }
+}
+
+// Base data struct for store's module, package with some attribute and method
+var Module = function Module (rawModule, runtime) {
+  this.runtime = runtime;
+  // Store some children item
+  this._children = Object.create(null);
+  // Store the origin module object which passed by programmer
+  this._rawModule = rawModule;
+  var rawState = rawModule.state;
+
+  // Store the origin module's state
+  this.state = (typeof rawState === 'function' ? rawState() : rawState) || {};
+};
+
+var prototypeAccessors = { namespaced: { configurable: true } };
+
+prototypeAccessors.namespaced.get = function () {
+  return !!this._rawModule.namespaced
+};
+
+Module.prototype.addChild = function addChild (key, module) {
+  this._children[key] = module;
+};
+
+Module.prototype.removeChild = function removeChild (key) {
+  delete this._children[key];
+};
+
+Module.prototype.getChild = function getChild (key) {
+  return this._children[key]
+};
+
+Module.prototype.update = function update (rawModule) {
+  this._rawModule.namespaced = rawModule.namespaced;
+  if (rawModule.actions) {
+    this._rawModule.actions = rawModule.actions;
+  }
+  if (rawModule.mutations) {
+    this._rawModule.mutations = rawModule.mutations;
+  }
+  if (rawModule.getters) {
+    this._rawModule.getters = rawModule.getters;
+  }
+};
+
+Module.prototype.forEachChild = function forEachChild (fn) {
+  forEachValue(this._children, fn);
+};
+
+Module.prototype.forEachGetter = function forEachGetter (fn) {
+  if (this._rawModule.getters) {
+    forEachValue(this._rawModule.getters, fn);
+  }
+};
+
+Module.prototype.forEachAction = function forEachAction (fn) {
+  if (this._rawModule.actions) {
+    forEachValue(this._rawModule.actions, fn);
+  }
+};
+
+Module.prototype.forEachMutation = function forEachMutation (fn) {
+  if (this._rawModule.mutations) {
+    forEachValue(this._rawModule.mutations, fn);
+  }
+};
+
+Object.defineProperties( Module.prototype, prototypeAccessors );
+
+var ModuleCollection = function ModuleCollection (rawRootModule) {
+  // register root module (Vuex.Store options)
+  this.register([], rawRootModule, false);
+};
+
+ModuleCollection.prototype.get = function get (path) {
+  return path.reduce(function (module, key) {
+    return module.getChild(key)
+  }, this.root)
+};
+
+ModuleCollection.prototype.getNamespace = function getNamespace (path) {
+  var module = this.root;
+  return path.reduce(function (namespace, key) {
+    module = module.getChild(key);
+    return namespace + (module.namespaced ? key + '/' : '')
+  }, '')
+};
+
+ModuleCollection.prototype.update = function update$1 (rawRootModule) {
+  update([], this.root, rawRootModule);
+};
+
+ModuleCollection.prototype.register = function register (path, rawModule, runtime) {
+    var this$1 = this;
+    if ( runtime === void 0 ) runtime = true;
+
+  if (true) {
+    assertRawModule(path, rawModule);
+  }
+
+  var newModule = new Module(rawModule, runtime);
+  if (path.length === 0) {
+    this.root = newModule;
+  } else {
+    var parent = this.get(path.slice(0, -1));
+    parent.addChild(path[path.length - 1], newModule);
+  }
+
+  // register nested modules
+  if (rawModule.modules) {
+    forEachValue(rawModule.modules, function (rawChildModule, key) {
+      this$1.register(path.concat(key), rawChildModule, runtime);
+    });
+  }
+};
+
+ModuleCollection.prototype.unregister = function unregister (path) {
+  var parent = this.get(path.slice(0, -1));
+  var key = path[path.length - 1];
+  if (!parent.getChild(key).runtime) { return }
+
+  parent.removeChild(key);
+};
+
+function update (path, targetModule, newModule) {
+  if (true) {
+    assertRawModule(path, newModule);
+  }
+
+  // update target module
+  targetModule.update(newModule);
+
+  // update nested modules
+  if (newModule.modules) {
+    for (var key in newModule.modules) {
+      if (!targetModule.getChild(key)) {
+        if (true) {
+          console.warn(
+            "[vuex] trying to add a new module '" + key + "' on hot reloading, " +
+            'manual reload is needed'
+          );
+        }
+        return
+      }
+      update(
+        path.concat(key),
+        targetModule.getChild(key),
+        newModule.modules[key]
+      );
+    }
+  }
+}
+
+var functionAssert = {
+  assert: function (value) { return typeof value === 'function'; },
+  expected: 'function'
+};
+
+var objectAssert = {
+  assert: function (value) { return typeof value === 'function' ||
+    (typeof value === 'object' && typeof value.handler === 'function'); },
+  expected: 'function or object with "handler" function'
+};
+
+var assertTypes = {
+  getters: functionAssert,
+  mutations: functionAssert,
+  actions: objectAssert
+};
+
+function assertRawModule (path, rawModule) {
+  Object.keys(assertTypes).forEach(function (key) {
+    if (!rawModule[key]) { return }
+
+    var assertOptions = assertTypes[key];
+
+    forEachValue(rawModule[key], function (value, type) {
+      assert(
+        assertOptions.assert(value),
+        makeAssertionMessage(path, key, type, value, assertOptions.expected)
+      );
+    });
+  });
+}
+
+function makeAssertionMessage (path, key, type, value, expected) {
+  var buf = key + " should be " + expected + " but \"" + key + "." + type + "\"";
+  if (path.length > 0) {
+    buf += " in module \"" + (path.join('.')) + "\"";
+  }
+  buf += " is " + (JSON.stringify(value)) + ".";
+  return buf
+}
+
+var Vue; // bind on install
+
+var Store = function Store (options) {
+  var this$1 = this;
+  if ( options === void 0 ) options = {};
+
+  // Auto install if it is not done yet and `window` has `Vue`.
+  // To allow users to avoid auto-installation in some cases,
+  // this code should be placed here. See #731
+  if (!Vue && typeof window !== 'undefined' && window.Vue) {
+    install(window.Vue);
+  }
+
+  if (true) {
+    assert(Vue, "must call Vue.use(Vuex) before creating a store instance.");
+    assert(typeof Promise !== 'undefined', "vuex requires a Promise polyfill in this browser.");
+    assert(this instanceof Store, "store must be called with the new operator.");
+  }
+
+  var plugins = options.plugins; if ( plugins === void 0 ) plugins = [];
+  var strict = options.strict; if ( strict === void 0 ) strict = false;
+
+  // store internal state
+  this._committing = false;
+  this._actions = Object.create(null);
+  this._actionSubscribers = [];
+  this._mutations = Object.create(null);
+  this._wrappedGetters = Object.create(null);
+  this._modules = new ModuleCollection(options);
+  this._modulesNamespaceMap = Object.create(null);
+  this._subscribers = [];
+  this._watcherVM = new Vue();
+  this._makeLocalGettersCache = Object.create(null);
+
+  // bind commit and dispatch to self
+  var store = this;
+  var ref = this;
+  var dispatch = ref.dispatch;
+  var commit = ref.commit;
+  this.dispatch = function boundDispatch (type, payload) {
+    return dispatch.call(store, type, payload)
+  };
+  this.commit = function boundCommit (type, payload, options) {
+    return commit.call(store, type, payload, options)
+  };
+
+  // strict mode
+  this.strict = strict;
+
+  var state = this._modules.root.state;
+
+  // init root module.
+  // this also recursively registers all sub-modules
+  // and collects all module getters inside this._wrappedGetters
+  installModule(this, state, [], this._modules.root);
+
+  // initialize the store vm, which is responsible for the reactivity
+  // (also registers _wrappedGetters as computed properties)
+  resetStoreVM(this, state);
+
+  // apply plugins
+  plugins.forEach(function (plugin) { return plugin(this$1); });
+
+  var useDevtools = options.devtools !== undefined ? options.devtools : Vue.config.devtools;
+  if (useDevtools) {
+    devtoolPlugin(this);
+  }
+};
+
+var prototypeAccessors$1 = { state: { configurable: true } };
+
+prototypeAccessors$1.state.get = function () {
+  return this._vm._data.$$state
+};
+
+prototypeAccessors$1.state.set = function (v) {
+  if (true) {
+    assert(false, "use store.replaceState() to explicit replace store state.");
+  }
+};
+
+Store.prototype.commit = function commit (_type, _payload, _options) {
+    var this$1 = this;
+
+  // check object-style commit
+  var ref = unifyObjectStyle(_type, _payload, _options);
+    var type = ref.type;
+    var payload = ref.payload;
+    var options = ref.options;
+
+  var mutation = { type: type, payload: payload };
+  var entry = this._mutations[type];
+  if (!entry) {
+    if (true) {
+      console.error(("[vuex] unknown mutation type: " + type));
+    }
+    return
+  }
+  this._withCommit(function () {
+    entry.forEach(function commitIterator (handler) {
+      handler(payload);
+    });
+  });
+  this._subscribers.forEach(function (sub) { return sub(mutation, this$1.state); });
+
+  if (
+     true &&
+    options && options.silent
+  ) {
+    console.warn(
+      "[vuex] mutation type: " + type + ". Silent option has been removed. " +
+      'Use the filter functionality in the vue-devtools'
+    );
+  }
+};
+
+Store.prototype.dispatch = function dispatch (_type, _payload) {
+    var this$1 = this;
+
+  // check object-style dispatch
+  var ref = unifyObjectStyle(_type, _payload);
+    var type = ref.type;
+    var payload = ref.payload;
+
+  var action = { type: type, payload: payload };
+  var entry = this._actions[type];
+  if (!entry) {
+    if (true) {
+      console.error(("[vuex] unknown action type: " + type));
+    }
+    return
+  }
+
+  try {
+    this._actionSubscribers
+      .filter(function (sub) { return sub.before; })
+      .forEach(function (sub) { return sub.before(action, this$1.state); });
+  } catch (e) {
+    if (true) {
+      console.warn("[vuex] error in before action subscribers: ");
+      console.error(e);
+    }
+  }
+
+  var result = entry.length > 1
+    ? Promise.all(entry.map(function (handler) { return handler(payload); }))
+    : entry[0](payload);
+
+  return result.then(function (res) {
+    try {
+      this$1._actionSubscribers
+        .filter(function (sub) { return sub.after; })
+        .forEach(function (sub) { return sub.after(action, this$1.state); });
+    } catch (e) {
+      if (true) {
+        console.warn("[vuex] error in after action subscribers: ");
+        console.error(e);
+      }
+    }
+    return res
+  })
+};
+
+Store.prototype.subscribe = function subscribe (fn) {
+  return genericSubscribe(fn, this._subscribers)
+};
+
+Store.prototype.subscribeAction = function subscribeAction (fn) {
+  var subs = typeof fn === 'function' ? { before: fn } : fn;
+  return genericSubscribe(subs, this._actionSubscribers)
+};
+
+Store.prototype.watch = function watch (getter, cb, options) {
+    var this$1 = this;
+
+  if (true) {
+    assert(typeof getter === 'function', "store.watch only accepts a function.");
+  }
+  return this._watcherVM.$watch(function () { return getter(this$1.state, this$1.getters); }, cb, options)
+};
+
+Store.prototype.replaceState = function replaceState (state) {
+    var this$1 = this;
+
+  this._withCommit(function () {
+    this$1._vm._data.$$state = state;
+  });
+};
+
+Store.prototype.registerModule = function registerModule (path, rawModule, options) {
+    if ( options === void 0 ) options = {};
+
+  if (typeof path === 'string') { path = [path]; }
+
+  if (true) {
+    assert(Array.isArray(path), "module path must be a string or an Array.");
+    assert(path.length > 0, 'cannot register the root module by using registerModule.');
+  }
+
+  this._modules.register(path, rawModule);
+  installModule(this, this.state, path, this._modules.get(path), options.preserveState);
+  // reset store to update getters...
+  resetStoreVM(this, this.state);
+};
+
+Store.prototype.unregisterModule = function unregisterModule (path) {
+    var this$1 = this;
+
+  if (typeof path === 'string') { path = [path]; }
+
+  if (true) {
+    assert(Array.isArray(path), "module path must be a string or an Array.");
+  }
+
+  this._modules.unregister(path);
+  this._withCommit(function () {
+    var parentState = getNestedState(this$1.state, path.slice(0, -1));
+    Vue.delete(parentState, path[path.length - 1]);
+  });
+  resetStore(this);
+};
+
+Store.prototype.hotUpdate = function hotUpdate (newOptions) {
+  this._modules.update(newOptions);
+  resetStore(this, true);
+};
+
+Store.prototype._withCommit = function _withCommit (fn) {
+  var committing = this._committing;
+  this._committing = true;
+  fn();
+  this._committing = committing;
+};
+
+Object.defineProperties( Store.prototype, prototypeAccessors$1 );
+
+function genericSubscribe (fn, subs) {
+  if (subs.indexOf(fn) < 0) {
+    subs.push(fn);
+  }
+  return function () {
+    var i = subs.indexOf(fn);
+    if (i > -1) {
+      subs.splice(i, 1);
+    }
+  }
+}
+
+function resetStore (store, hot) {
+  store._actions = Object.create(null);
+  store._mutations = Object.create(null);
+  store._wrappedGetters = Object.create(null);
+  store._modulesNamespaceMap = Object.create(null);
+  var state = store.state;
+  // init all modules
+  installModule(store, state, [], store._modules.root, true);
+  // reset vm
+  resetStoreVM(store, state, hot);
+}
+
+function resetStoreVM (store, state, hot) {
+  var oldVm = store._vm;
+
+  // bind store public getters
+  store.getters = {};
+  // reset local getters cache
+  store._makeLocalGettersCache = Object.create(null);
+  var wrappedGetters = store._wrappedGetters;
+  var computed = {};
+  forEachValue(wrappedGetters, function (fn, key) {
+    // use computed to leverage its lazy-caching mechanism
+    // direct inline function use will lead to closure preserving oldVm.
+    // using partial to return function with only arguments preserved in closure environment.
+    computed[key] = partial(fn, store);
+    Object.defineProperty(store.getters, key, {
+      get: function () { return store._vm[key]; },
+      enumerable: true // for local getters
+    });
+  });
+
+  // use a Vue instance to store the state tree
+  // suppress warnings just in case the user has added
+  // some funky global mixins
+  var silent = Vue.config.silent;
+  Vue.config.silent = true;
+  store._vm = new Vue({
+    data: {
+      $$state: state
+    },
+    computed: computed
+  });
+  Vue.config.silent = silent;
+
+  // enable strict mode for new vm
+  if (store.strict) {
+    enableStrictMode(store);
+  }
+
+  if (oldVm) {
+    if (hot) {
+      // dispatch changes in all subscribed watchers
+      // to force getter re-evaluation for hot reloading.
+      store._withCommit(function () {
+        oldVm._data.$$state = null;
+      });
+    }
+    Vue.nextTick(function () { return oldVm.$destroy(); });
+  }
+}
+
+function installModule (store, rootState, path, module, hot) {
+  var isRoot = !path.length;
+  var namespace = store._modules.getNamespace(path);
+
+  // register in namespace map
+  if (module.namespaced) {
+    if (store._modulesNamespaceMap[namespace] && "development" !== 'production') {
+      console.error(("[vuex] duplicate namespace " + namespace + " for the namespaced module " + (path.join('/'))));
+    }
+    store._modulesNamespaceMap[namespace] = module;
+  }
+
+  // set state
+  if (!isRoot && !hot) {
+    var parentState = getNestedState(rootState, path.slice(0, -1));
+    var moduleName = path[path.length - 1];
+    store._withCommit(function () {
+      if (true) {
+        if (moduleName in parentState) {
+          console.warn(
+            ("[vuex] state field \"" + moduleName + "\" was overridden by a module with the same name at \"" + (path.join('.')) + "\"")
+          );
+        }
+      }
+      Vue.set(parentState, moduleName, module.state);
+    });
+  }
+
+  var local = module.context = makeLocalContext(store, namespace, path);
+
+  module.forEachMutation(function (mutation, key) {
+    var namespacedType = namespace + key;
+    registerMutation(store, namespacedType, mutation, local);
+  });
+
+  module.forEachAction(function (action, key) {
+    var type = action.root ? key : namespace + key;
+    var handler = action.handler || action;
+    registerAction(store, type, handler, local);
+  });
+
+  module.forEachGetter(function (getter, key) {
+    var namespacedType = namespace + key;
+    registerGetter(store, namespacedType, getter, local);
+  });
+
+  module.forEachChild(function (child, key) {
+    installModule(store, rootState, path.concat(key), child, hot);
+  });
+}
+
+/**
+ * make localized dispatch, commit, getters and state
+ * if there is no namespace, just use root ones
+ */
+function makeLocalContext (store, namespace, path) {
+  var noNamespace = namespace === '';
+
+  var local = {
+    dispatch: noNamespace ? store.dispatch : function (_type, _payload, _options) {
+      var args = unifyObjectStyle(_type, _payload, _options);
+      var payload = args.payload;
+      var options = args.options;
+      var type = args.type;
+
+      if (!options || !options.root) {
+        type = namespace + type;
+        if ( true && !store._actions[type]) {
+          console.error(("[vuex] unknown local action type: " + (args.type) + ", global type: " + type));
+          return
+        }
+      }
+
+      return store.dispatch(type, payload)
+    },
+
+    commit: noNamespace ? store.commit : function (_type, _payload, _options) {
+      var args = unifyObjectStyle(_type, _payload, _options);
+      var payload = args.payload;
+      var options = args.options;
+      var type = args.type;
+
+      if (!options || !options.root) {
+        type = namespace + type;
+        if ( true && !store._mutations[type]) {
+          console.error(("[vuex] unknown local mutation type: " + (args.type) + ", global type: " + type));
+          return
+        }
+      }
+
+      store.commit(type, payload, options);
+    }
+  };
+
+  // getters and state object must be gotten lazily
+  // because they will be changed by vm update
+  Object.defineProperties(local, {
+    getters: {
+      get: noNamespace
+        ? function () { return store.getters; }
+        : function () { return makeLocalGetters(store, namespace); }
+    },
+    state: {
+      get: function () { return getNestedState(store.state, path); }
+    }
+  });
+
+  return local
+}
+
+function makeLocalGetters (store, namespace) {
+  if (!store._makeLocalGettersCache[namespace]) {
+    var gettersProxy = {};
+    var splitPos = namespace.length;
+    Object.keys(store.getters).forEach(function (type) {
+      // skip if the target getter is not match this namespace
+      if (type.slice(0, splitPos) !== namespace) { return }
+
+      // extract local getter type
+      var localType = type.slice(splitPos);
+
+      // Add a port to the getters proxy.
+      // Define as getter property because
+      // we do not want to evaluate the getters in this time.
+      Object.defineProperty(gettersProxy, localType, {
+        get: function () { return store.getters[type]; },
+        enumerable: true
+      });
+    });
+    store._makeLocalGettersCache[namespace] = gettersProxy;
+  }
+
+  return store._makeLocalGettersCache[namespace]
+}
+
+function registerMutation (store, type, handler, local) {
+  var entry = store._mutations[type] || (store._mutations[type] = []);
+  entry.push(function wrappedMutationHandler (payload) {
+    handler.call(store, local.state, payload);
+  });
+}
+
+function registerAction (store, type, handler, local) {
+  var entry = store._actions[type] || (store._actions[type] = []);
+  entry.push(function wrappedActionHandler (payload) {
+    var res = handler.call(store, {
+      dispatch: local.dispatch,
+      commit: local.commit,
+      getters: local.getters,
+      state: local.state,
+      rootGetters: store.getters,
+      rootState: store.state
+    }, payload);
+    if (!isPromise(res)) {
+      res = Promise.resolve(res);
+    }
+    if (store._devtoolHook) {
+      return res.catch(function (err) {
+        store._devtoolHook.emit('vuex:error', err);
+        throw err
+      })
+    } else {
+      return res
+    }
+  });
+}
+
+function registerGetter (store, type, rawGetter, local) {
+  if (store._wrappedGetters[type]) {
+    if (true) {
+      console.error(("[vuex] duplicate getter key: " + type));
+    }
+    return
+  }
+  store._wrappedGetters[type] = function wrappedGetter (store) {
+    return rawGetter(
+      local.state, // local state
+      local.getters, // local getters
+      store.state, // root state
+      store.getters // root getters
+    )
+  };
+}
+
+function enableStrictMode (store) {
+  store._vm.$watch(function () { return this._data.$$state }, function () {
+    if (true) {
+      assert(store._committing, "do not mutate vuex store state outside mutation handlers.");
+    }
+  }, { deep: true, sync: true });
+}
+
+function getNestedState (state, path) {
+  return path.length
+    ? path.reduce(function (state, key) { return state[key]; }, state)
+    : state
+}
+
+function unifyObjectStyle (type, payload, options) {
+  if (isObject(type) && type.type) {
+    options = payload;
+    payload = type;
+    type = type.type;
+  }
+
+  if (true) {
+    assert(typeof type === 'string', ("expects string as the type, but found " + (typeof type) + "."));
+  }
+
+  return { type: type, payload: payload, options: options }
+}
+
+function install (_Vue) {
+  if (Vue && _Vue === Vue) {
+    if (true) {
+      console.error(
+        '[vuex] already installed. Vue.use(Vuex) should be called only once.'
+      );
+    }
+    return
+  }
+  Vue = _Vue;
+  applyMixin(Vue);
+}
+
+/**
+ * Reduce the code which written in Vue.js for getting the state.
+ * @param {String} [namespace] - Module's namespace
+ * @param {Object|Array} states # Object's item can be a function which accept state and getters for param, you can do something for state and getters in it.
+ * @param {Object}
+ */
+var mapState = normalizeNamespace(function (namespace, states) {
+  var res = {};
+  if ( true && !isValidMap(states)) {
+    console.error('[vuex] mapState: mapper parameter must be either an Array or an Object');
+  }
+  normalizeMap(states).forEach(function (ref) {
+    var key = ref.key;
+    var val = ref.val;
+
+    res[key] = function mappedState () {
+      var state = this.$store.state;
+      var getters = this.$store.getters;
+      if (namespace) {
+        var module = getModuleByNamespace(this.$store, 'mapState', namespace);
+        if (!module) {
+          return
+        }
+        state = module.context.state;
+        getters = module.context.getters;
+      }
+      return typeof val === 'function'
+        ? val.call(this, state, getters)
+        : state[val]
+    };
+    // mark vuex getter for devtools
+    res[key].vuex = true;
+  });
+  return res
+});
+
+/**
+ * Reduce the code which written in Vue.js for committing the mutation
+ * @param {String} [namespace] - Module's namespace
+ * @param {Object|Array} mutations # Object's item can be a function which accept `commit` function as the first param, it can accept anthor params. You can commit mutation and do any other things in this function. specially, You need to pass anthor params from the mapped function.
+ * @return {Object}
+ */
+var mapMutations = normalizeNamespace(function (namespace, mutations) {
+  var res = {};
+  if ( true && !isValidMap(mutations)) {
+    console.error('[vuex] mapMutations: mapper parameter must be either an Array or an Object');
+  }
+  normalizeMap(mutations).forEach(function (ref) {
+    var key = ref.key;
+    var val = ref.val;
+
+    res[key] = function mappedMutation () {
+      var args = [], len = arguments.length;
+      while ( len-- ) args[ len ] = arguments[ len ];
+
+      // Get the commit method from store
+      var commit = this.$store.commit;
+      if (namespace) {
+        var module = getModuleByNamespace(this.$store, 'mapMutations', namespace);
+        if (!module) {
+          return
+        }
+        commit = module.context.commit;
+      }
+      return typeof val === 'function'
+        ? val.apply(this, [commit].concat(args))
+        : commit.apply(this.$store, [val].concat(args))
+    };
+  });
+  return res
+});
+
+/**
+ * Reduce the code which written in Vue.js for getting the getters
+ * @param {String} [namespace] - Module's namespace
+ * @param {Object|Array} getters
+ * @return {Object}
+ */
+var mapGetters = normalizeNamespace(function (namespace, getters) {
+  var res = {};
+  if ( true && !isValidMap(getters)) {
+    console.error('[vuex] mapGetters: mapper parameter must be either an Array or an Object');
+  }
+  normalizeMap(getters).forEach(function (ref) {
+    var key = ref.key;
+    var val = ref.val;
+
+    // The namespace has been mutated by normalizeNamespace
+    val = namespace + val;
+    res[key] = function mappedGetter () {
+      if (namespace && !getModuleByNamespace(this.$store, 'mapGetters', namespace)) {
+        return
+      }
+      if ( true && !(val in this.$store.getters)) {
+        console.error(("[vuex] unknown getter: " + val));
+        return
+      }
+      return this.$store.getters[val]
+    };
+    // mark vuex getter for devtools
+    res[key].vuex = true;
+  });
+  return res
+});
+
+/**
+ * Reduce the code which written in Vue.js for dispatch the action
+ * @param {String} [namespace] - Module's namespace
+ * @param {Object|Array} actions # Object's item can be a function which accept `dispatch` function as the first param, it can accept anthor params. You can dispatch action and do any other things in this function. specially, You need to pass anthor params from the mapped function.
+ * @return {Object}
+ */
+var mapActions = normalizeNamespace(function (namespace, actions) {
+  var res = {};
+  if ( true && !isValidMap(actions)) {
+    console.error('[vuex] mapActions: mapper parameter must be either an Array or an Object');
+  }
+  normalizeMap(actions).forEach(function (ref) {
+    var key = ref.key;
+    var val = ref.val;
+
+    res[key] = function mappedAction () {
+      var args = [], len = arguments.length;
+      while ( len-- ) args[ len ] = arguments[ len ];
+
+      // get dispatch function from store
+      var dispatch = this.$store.dispatch;
+      if (namespace) {
+        var module = getModuleByNamespace(this.$store, 'mapActions', namespace);
+        if (!module) {
+          return
+        }
+        dispatch = module.context.dispatch;
+      }
+      return typeof val === 'function'
+        ? val.apply(this, [dispatch].concat(args))
+        : dispatch.apply(this.$store, [val].concat(args))
+    };
+  });
+  return res
+});
+
+/**
+ * Rebinding namespace param for mapXXX function in special scoped, and return them by simple object
+ * @param {String} namespace
+ * @return {Object}
+ */
+var createNamespacedHelpers = function (namespace) { return ({
+  mapState: mapState.bind(null, namespace),
+  mapGetters: mapGetters.bind(null, namespace),
+  mapMutations: mapMutations.bind(null, namespace),
+  mapActions: mapActions.bind(null, namespace)
+}); };
+
+/**
+ * Normalize the map
+ * normalizeMap([1, 2, 3]) => [ { key: 1, val: 1 }, { key: 2, val: 2 }, { key: 3, val: 3 } ]
+ * normalizeMap({a: 1, b: 2, c: 3}) => [ { key: 'a', val: 1 }, { key: 'b', val: 2 }, { key: 'c', val: 3 } ]
+ * @param {Array|Object} map
+ * @return {Object}
+ */
+function normalizeMap (map) {
+  if (!isValidMap(map)) {
+    return []
+  }
+  return Array.isArray(map)
+    ? map.map(function (key) { return ({ key: key, val: key }); })
+    : Object.keys(map).map(function (key) { return ({ key: key, val: map[key] }); })
+}
+
+/**
+ * Validate whether given map is valid or not
+ * @param {*} map
+ * @return {Boolean}
+ */
+function isValidMap (map) {
+  return Array.isArray(map) || isObject(map)
+}
+
+/**
+ * Return a function expect two param contains namespace and map. it will normalize the namespace and then the param's function will handle the new namespace and the map.
+ * @param {Function} fn
+ * @return {Function}
+ */
+function normalizeNamespace (fn) {
+  return function (namespace, map) {
+    if (typeof namespace !== 'string') {
+      map = namespace;
+      namespace = '';
+    } else if (namespace.charAt(namespace.length - 1) !== '/') {
+      namespace += '/';
+    }
+    return fn(namespace, map)
+  }
+}
+
+/**
+ * Search a special module from store by namespace. if module not exist, print error message.
+ * @param {Object} store
+ * @param {String} helper
+ * @param {String} namespace
+ * @return {Object}
+ */
+function getModuleByNamespace (store, helper, namespace) {
+  var module = store._modulesNamespaceMap[namespace];
+  if ( true && !module) {
+    console.error(("[vuex] module namespace not found in " + helper + "(): " + namespace));
+  }
+  return module
+}
+
+var index_esm = {
+  Store: Store,
+  install: install,
+  version: '3.1.2',
+  mapState: mapState,
+  mapMutations: mapMutations,
+  mapGetters: mapGetters,
+  mapActions: mapActions,
+  createNamespacedHelpers: createNamespacedHelpers
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (index_esm);
+
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
+
+/***/ }),
+
 /***/ "./node_modules/webpack/buildin/global.js":
 /*!***********************************!*\
   !*** (webpack)/buildin/global.js ***!
@@ -123650,107 +124591,98 @@ module.exports = function(module) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
-/* harmony import */ var vuetify__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuetify */ "./node_modules/vuetify/dist/vuetify.js");
-/* harmony import */ var vuetify__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vuetify__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _views_App__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./views/App */ "./resources/js/views/App.vue");
-/* harmony import */ var _components_Dash__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/Dash */ "./resources/js/components/Dash.vue");
-/* harmony import */ var _components_Assessment__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/Assessment */ "./resources/js/components/Assessment.vue");
-/* harmony import */ var _components_Attendance__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/Attendance */ "./resources/js/components/Attendance.vue");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
+/* harmony import */ var vuetify__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuetify */ "./node_modules/vuetify/dist/vuetify.js");
+/* harmony import */ var vuetify__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(vuetify__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _views_App__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./views/App */ "./resources/js/views/App.vue");
+/* harmony import */ var _components_Dash__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/Dash */ "./resources/js/components/Dash.vue");
+/* harmony import */ var _components_Assessment__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/Assessment */ "./resources/js/components/Assessment.vue");
+/* harmony import */ var _components_Attendance__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/Attendance */ "./resources/js/components/Attendance.vue");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-__webpack_require__(/*! ./plugins/swal */ "./resources/js/plugins/swal.js"); // require('./plugins/resume.min');
-// require('jquery-easing')
+__webpack_require__(/*! ./plugins/swal */ "./resources/js/plugins/swal.js");
 
 
 
 
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]); // Vue.component('paginate', require('vuejs-paginate'));
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_2__["default"]);
 
-
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuetify__WEBPACK_IMPORTED_MODULE_2___default.a); // var Chart = require('chart.js');
-// import Chart from 'chart.js'
-// Vue.use(Chart)
-// import VueGoogleCharts from 'vue-google-charts'
-// Vue.use(VueGoogleCharts)
-
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuetify__WEBPACK_IMPORTED_MODULE_3___default.a);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('passport-clients', __webpack_require__(/*! ./components/passport/Clients.vue */ "./resources/js/components/passport/Clients.vue")["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('passport-authorized-clients', __webpack_require__(/*! ./components/passport/AuthorizedClients.vue */ "./resources/js/components/passport/AuthorizedClients.vue")["default"]);
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('passport-personal-access-tokens', __webpack_require__(/*! ./components/passport/PersonalAccessTokens.vue */ "./resources/js/components/passport/PersonalAccessTokens.vue")["default"]); // Vue.component('app', require('./views/App.vue').default);
-// Vue.component('number-on-roll-kpi-card', require('./components/dash/kpiCards/NorKpiCard').default);
-// Vue.component('percent-pp-kpi-card', require('./components/dash/kpiCards/PpKpiCard').default);
-// Vue.component('attendance-kpi-card', require('./components/dash/kpiCards/AttendanceKpiCard').default);
-// Vue.component('percent-pa-kpi-card', require('./components/dash/kpiCards/PaKpiCard').default);
-// Vue.component('cohort-summary', require('./components/dash/CohortSummary').default);
-// Vue.component('year-group-summary', require('./components/dash/YearGroupSummary').default);
-// Vue.component('starters-leavers-summary', require('./components/dash/StartersLeaversSummary').default);
-// Vue.component('attendance-overview', require('./components/dash/AttendanceOverview').default);
-// Vue.component('attendance-pie', require('./components/dash/AttendancePie').default);
-// Vue.component('attendance-week', require('./components/dash/AttendanceWeek').default);
-// Vue.component('at-risk-pa-overview', require('./components/dash/AtRiskPaOverview').default);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('passport-personal-access-tokens', __webpack_require__(/*! ./components/passport/PersonalAccessTokens.vue */ "./resources/js/components/passport/PersonalAccessTokens.vue")["default"]);
 
 
 
 
- // import NorKpiCard from './components/dash/kpiCards/NorKpiCard'
-// import PpKpiCard from './components/dash/kpiCards/PpKpiCard'
-// import AttendanceKpiCard from './components/dash/kpiCards/AttendanceKpiCard'
-// import PaKpiCard from './components/dash/kpiCards/PaKpiCard'
-// import CohortSummary from './components/dash/CohortSummary'
-// import YearGroupSummary from './components/dash/YearGroupSummary'
-// import StartersLeaversSummary from './components/dash/StartersLeaversSummary'
-// import AttendanceOverview from './components/dash/AttendanceOverview'
-// import AttendancePie from './components/dash/AttendancePie'
-// import AttendanceWeek from './components/dash/AttendanceWeek'
-// import AtRiskPaOverview from './components/dash/AtRiskPaOverview'
-
-var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
+var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
+  state: {
+    schoolname: 'Aspire',
+    startdate: '2019-08-26',
+    enddate: '2020-02-20'
+  },
+  mutations: {
+    updateCore: function updateCore(state, sn, sd, ed) {
+      state.schoolname = sn;
+      state.startdate = sd;
+      state.enddate = ed;
+    },
+    updateSchoolName: function updateSchoolName(state, sn) {
+      state.schoolname = sn;
+    },
+    updateStartDate: function updateStartDate(state, sd) {
+      state.startdate = sd;
+    },
+    updateEndDate: function updateEndDate(state, ed) {
+      state.enddate = ed;
+    }
+  },
+  actions: {},
+  getters: {
+    getschoolname: function getschoolname(state) {
+      return state.schoolname;
+    },
+    getstartdate: function getstartdate(state) {
+      return state.startdate;
+    },
+    getenddate: function getenddate(state) {
+      return state.enddate;
+    }
+  }
+});
+var router = new vue_router__WEBPACK_IMPORTED_MODULE_2__["default"]({
   mode: 'history',
   routes: [{
     path: '/dev',
     name: 'dash',
-    component: _components_Dash__WEBPACK_IMPORTED_MODULE_4__["default"],
-    props: function props(route) {
-      return {
-        schoolname: route.query.school,
-        start: route.query.start,
-        end: route.query.end
-      };
-    }
+    component: _components_Dash__WEBPACK_IMPORTED_MODULE_5__["default"]
+  }, {
+    path: '/summary',
+    name: 'Summary',
+    component: _components_Dash__WEBPACK_IMPORTED_MODULE_5__["default"]
   }, {
     path: '/assessment',
-    name: 'assessment',
-    component: _components_Assessment__WEBPACK_IMPORTED_MODULE_5__["default"],
-    props: function props(route) {
-      return {
-        schoolname: route.query.school,
-        start: route.query.start,
-        end: route.query.end
-      };
-    }
+    name: 'Assessment',
+    component: _components_Assessment__WEBPACK_IMPORTED_MODULE_6__["default"]
   }, {
     path: '/attendance',
-    name: 'attendance',
-    component: _components_Attendance__WEBPACK_IMPORTED_MODULE_6__["default"],
-    props: function props(route) {
-      return {
-        schoolname: route.query.school,
-        start: route.query.start,
-        end: route.query.end
-      };
-    }
+    name: 'Attendance',
+    component: _components_Attendance__WEBPACK_IMPORTED_MODULE_7__["default"]
   }]
 });
 var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   el: '#app',
-  vuetify: new vuetify__WEBPACK_IMPORTED_MODULE_2___default.a(),
+  vuetify: new vuetify__WEBPACK_IMPORTED_MODULE_3___default.a(),
   components: {
-    App: _views_App__WEBPACK_IMPORTED_MODULE_3__["default"],
-    Dash: _components_Dash__WEBPACK_IMPORTED_MODULE_4__["default"],
-    Assessment: _components_Assessment__WEBPACK_IMPORTED_MODULE_5__["default"],
-    Attendance: _components_Attendance__WEBPACK_IMPORTED_MODULE_6__["default"]
+    App: _views_App__WEBPACK_IMPORTED_MODULE_4__["default"],
+    Dash: _components_Dash__WEBPACK_IMPORTED_MODULE_5__["default"],
+    Assessment: _components_Assessment__WEBPACK_IMPORTED_MODULE_6__["default"],
+    Attendance: _components_Attendance__WEBPACK_IMPORTED_MODULE_7__["default"]
   },
-  router: router
+  router: router,
+  store: store
 });
 
 /***/ }),
@@ -125268,8 +126200,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! c:\inetpub\wwwroot\fcatfocus\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! c:\inetpub\wwwroot\fcatfocus\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\code\primary\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\code\primary\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

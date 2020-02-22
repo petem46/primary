@@ -56,14 +56,20 @@
 <script>
 import axios from "axios";
 export default {
-  props: ["schoolname", "percentpresent"],
-  data() {
+  props: ["schoolname"],
+	watch: {
+		schoolname: function() {
+			this.loaded = false;
+			this.endpoint = "api/dev/yeargroupsummary/" + this.schoolname;
+			this.refresh();
+		}
+	},
+	data() {
     return {
       message: null,
       loaded: false,
       showcount: false,
       endpoint: "api/dev/yeargroupsummary/" + this.schoolname,
-      school: this.schoolname,
       groups: []
     };
   },
@@ -82,7 +88,11 @@ export default {
     },
     roundOff(value, decimals) {
       return Number(Math.round(value + "e" + decimals) + "e-" + decimals);
-    }
+		},
+		refresh() {
+			this.loaded = false;
+			this.fetch();
+		},
   },
   computed: {
       lessPadding: function() {

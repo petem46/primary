@@ -23,15 +23,31 @@
 <script>
 import axios from "axios";
 export default {
-  props: ["schoolname", "count"],
+  props: ["schoolname"],
+  watch: {
+    schoolname: function() {
+      this.endpoint = "api/dev/ppkpi/" + this.schoolname;
+      console.log(this.endpoint);
+      this.refresh();
+    },
+    startdate: function() {
+      this.endpoint = "api/dev/ppkpi/" + this.schoolname;
+      console.log(this.endpoint);
+      this.refresh();
+    },
+    enddate: function() {
+      this.endpoint = "api/dev/ppkpi/" + this.schoolname;
+      console.log(this.endpoint);
+      this.refresh();
+    }
+  },
   data() {
     return {
       message: null,
       loaded: false,
       school: null,
       endpoint: "api/dev/ppkpi/" + this.schoolname,
-      school: this.schoolname,
-      ppcount: this.count
+      school: this.schoolname
     };
   },
   created() {
@@ -50,6 +66,10 @@ export default {
     },
     roundOff(value, decimals) {
       return Number(Math.round(value + "e" + decimals) + "e-" + decimals);
+    },
+    refresh() {
+      this.loaded = false;
+      this.fetch();
     }
   }
 };

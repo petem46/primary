@@ -1,19 +1,10 @@
 <template>
-  <v-col
-    cols="12"
-    lg="7"
-    xl="8"
-  >
-    <v-card
-      v-if="loaded"
-      class="pa-2"
-      outlined
-      raised
-      tile
-    >
+  <v-col cols="12" lg="7" xl="8">
+    <v-card v-if="loaded" class="pa-2" outlined raised tile>
       <v-card-title>Attendance Overview</v-card-title>
       <v-card-text>
-        <v-icon>mdi-calendar-multiselect</v-icon>&nbsp;&nbsp; Week
+        <v-icon>mdi-calendar-multiselect</v-icon>
+        &nbsp;&nbsp; Week
         {{ week }} - Attendance: {{ weekatt }} % Running Attendance:
         {{ runningatt }} %
       </v-card-text>
@@ -26,32 +17,17 @@
       />
       <v-divider></v-divider>
       <v-card-actions>
-        <v-btn
-          text
-          small
-        >Full Report {{ week }} </v-btn>
+        <v-btn text small>Full Report {{ week }}</v-btn>
       </v-card-actions>
     </v-card>
-    <v-card
-      v-if="!loaded"
-      class="pa-2"
-      outlined
-      raised
-      tile
-    >
-      <v-progress-linear
-        indeterminate
-        color="teal"
-      ></v-progress-linear>
+    <v-card v-if="!loaded" class="pa-2" outlined raised tile>
+      <v-progress-linear indeterminate color="teal"></v-progress-linear>
       <v-card-title>Attendance Overview</v-card-title>
       <v-divider></v-divider>
       <v-skeleton-loader type="list-item-avatar, list-item-three-line, card-heading, actions"></v-skeleton-loader>
       <v-divider></v-divider>
       <v-card-actions>
-        <v-btn
-          text
-          disabled
-        >Loading...</v-btn>
+        <v-btn text disabled>Loading...</v-btn>
       </v-card-actions>
     </v-card>
   </v-col>
@@ -66,12 +42,26 @@ export default {
   },
   props: ["schoolname", "enddate", "attendanceweek"],
   watch: {
+    schoolname: function() {
+      this.endpoint =
+        "api/dev/attendanceweekly/" + this.schoolname + "/" + this.enddate;
+      this.refresh();
+    },
+    startdate: function() {
+      this.endpoint =
+        "api/dev/attendanceweekly/" + this.schoolname + "/" + this.enddate;
+      this.refresh();
+    },
     enddate: function() {
       this.endpoint =
         "api/dev/attendanceweekly/" + this.schoolname + "/" + this.enddate;
-      //   console.log(this.endpoint);
-      this.callMe();
-    }
+      this.refresh();
+    },
+    attendanceweek: function() {
+      this.endpoint =
+        "api/dev/attendanceweekly/" + this.schoolname + "/" + this.enddate;
+      this.refresh();
+    },
   },
   data() {
     return {
@@ -218,7 +208,7 @@ export default {
     roundOff(value, decimals) {
       return Number(Math.round(value + "e" + decimals) + "e-" + decimals);
     },
-    callMe() {
+    refresh() {
       this.loaded = false;
       this.fetch();
     },

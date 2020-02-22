@@ -11,6 +11,23 @@
 |
 */
 
+use Illuminate\Database\Connection;
+
+// Route::get('/', function () {
+
+//     // Test database connection
+//     try {
+//         DB::connection()->getPdo();
+//         echo "Connected successfully to: " . DB::connection()->getDatabaseName();
+//     } catch (\Exception $e) {
+//         die("Could not connect to the database. Please check your configuration. error:" . $e );
+//     }
+
+//     return view('welcome');
+// });
+
+
+
 Route::get('/notapproved', function () {
     return view('notapproved');
 });
@@ -24,7 +41,7 @@ Route::get('/callback', 'SocialAuthGoogleController@callback');
 Route::get('/analysis/{school}', 'AnalysisController@show');
 
 Route::group(['middleware' => ['auth']], function () {
-    // Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/home', 'HomeController@index')->name('home');
 
     Route::get('/', function () {
         return redirect('/analysis/' . App\User::first()->getSchool());

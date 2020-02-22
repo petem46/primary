@@ -24,6 +24,13 @@
 import axios from "axios";
 export default {
   props: ["schoolname"],
+  watch: {
+    schoolname: function() {
+      this.loaded = false;
+      this.endpoint = "api/dev/norkpi/" + this.schoolname;
+      this.refresh();
+    }
+  },
   data: function() {
     return {
       message: null,
@@ -46,7 +53,11 @@ export default {
         // setTimeout(() => this.loaded = true, Math.floor(Math.random() * 1500) + 750);
         this.loaded = true;
       });
-    }
+    },
+    refresh() {
+      this.loaded = false;
+      this.fetch();
+    },
   }
 };
 </script>

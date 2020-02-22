@@ -25,12 +25,23 @@ import axios from "axios";
 export default {
   props: ["schoolname", "enddate"],
   watch: {
+    schoolname: function() {
+      this.loaded = false;
+      "api/dev/attendancekpi/" + this.schoolname + "/" + this.startdate;
+      this.refresh();
+    },
+    startdate: function() {
+      this.endpoint =
+        "api/dev/attendancekpi/" + this.schoolname + "/" + this.startdate;
+      console.log(this.endpoint);
+      this.refresh();
+    },
     enddate: function() {
       this.endpoint =
         "api/dev/attendancekpi/" + this.schoolname + "/" + this.enddate;
       console.log(this.endpoint);
-      this.callMe();
-    }
+      this.refresh();
+    },
   },
   data() {
     return {
@@ -51,18 +62,13 @@ export default {
     fetch() {
       axios.get(this.endpoint).then(({ data }) => {
         this.ppresent = data.data[0].ppresent;
-        // setTimeout(
-        //   () => (this.loaded = true),
-        //   Math.floor(Math.random() * 1500) + 750
-        // );
         this.loaded = true;
       });
     },
     roundOff(value, decimals) {
       return Number(Math.round(value + "e" + decimals) + "e-" + decimals);
     },
-    callMe() {
-      // alert('A NEW END DATE HAS BEEN SET.  YOU SHOULD FETCH NEW DATA');
+    refresh() {
       this.loaded = false;
       this.fetch();
     }
