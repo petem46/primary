@@ -124,9 +124,6 @@ export default {
 			startdatemenu: false,
 			enddatemenu: false,
 			loaded: true,
-			//   endpoint: "api/dev",
-			//   startdate: this.start,
-			//   enddate: this.end,
 			attendanceweek: null,
 			attendanceforweek: null
 		};
@@ -135,7 +132,8 @@ export default {
 		// this.fetch();
 	},
 	mounted() {
-		console.log("Dashboard Mounted.");
+    console.log("Dashboard Mounted.");
+    this.setenddate;
 	},
 	methods: {
 		fetch() {
@@ -152,7 +150,7 @@ export default {
 			console.log("Emit updateWeek method triggered");
 			this.attendanceweek = week;
 			this.attendanceforweek = weekatt;
-		}
+    },
 	},
 	computed: {
 		formattedStartDate() {
@@ -168,12 +166,22 @@ export default {
 		schoolname() {
 			return this.$store.getters.getschoolname;
 		},
-		startdate() {
-			return this.$store.getters.getstartdate;
+		startdate: {
+      get: function() {
+        return this.$store.getters.getstartdate;
+      },
+      set: function(newDate) {
+        this.$store.commit("updateStartDate", newDate);
+      },
+    },
+		enddate: {
+      get: function() {
+        return this.$store.getters.getenddate;
+      },
+      set: function(newDate) {
+        this.$store.commit("updateEndDate", newDate);
+      },
 		},
-		enddate() {
-			return this.$store.getters.getenddate;
-		}
 	}
 };
 </script>

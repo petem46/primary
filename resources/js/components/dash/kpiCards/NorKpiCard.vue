@@ -3,7 +3,7 @@
     <v-card class="pa-2" outlined raised tile>
       <v-row>
         <v-col cols="4" class="py-0">
-          <v-icon size="50" color="teal lighten-2">mdi-account-group</v-icon>
+          <v-icon size="50" color="teal lighten-2">fa-users</v-icon>
         </v-col>
         <v-col cols="8" class="text-right py-0">
           <div class="overline">pupils</div>

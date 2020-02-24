@@ -49,7 +49,7 @@
 										v-on="on"
 									></v-text-field>
 								</template>
-								<v-date-picker scrollable show-current v-model="enddate" @input="enddatemenu = false"></v-date-picker>
+								<v-date-picker scrollable show-current v-model="enddate" @input="enddatemenu = false; updateEndDate"></v-date-picker>
 							</v-menu>
 						</div>
 					</v-row>
@@ -152,7 +152,13 @@ export default {
 			console.log("Emit updateWeek method triggered");
 			this.attendanceweek = week;
 			this.attendanceforweek = weekatt;
-		}
+		},
+    updateStartDate(sd) {
+      this.$store.commit("updateStartDate", sd);
+    },
+    updateEndDate(ed) {
+      this.$store.commit("updateEndDate", ed);
+    },
 	},
 	computed: {
 		formattedStartDate() {
@@ -168,12 +174,22 @@ export default {
 		schoolname() {
 			return this.$store.getters.getschoolname;
 		},
-		startdate() {
-			return this.$store.getters.getstartdate;
+		startdate: {
+      get: function() {
+        return this.$store.getters.getstartdate;
+      },
+      set: function(newDate) {
+        this.$store.commit("updateStartDate", newDate);
+      },
+    },
+		enddate: {
+      get: function() {
+        return this.$store.getters.getenddate;
+      },
+      set: function(newDate) {
+        this.$store.commit("updateEndDate", newDate);
+      },
 		},
-		enddate() {
-			return this.$store.getters.getenddate;
-		}
 	}
 };
 </script>

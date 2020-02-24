@@ -16,7 +16,7 @@
       />
       <v-divider></v-divider>
       <v-card-actions>
-        <v-btn text small>Full Report</v-btn>
+        <v-btn text small color="teal darken-1">Full Report</v-btn>
       </v-card-actions>
     </v-card>
     <v-card v-if="! loaded" class="pa-2" outlined raised tile>

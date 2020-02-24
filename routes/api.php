@@ -37,6 +37,27 @@ Route::get('/dev/paatriskstudents/{schoolname}/{enddate}', 'Api\AnalysisControll
 
 Route::get('/dev/exclusionsstudents/{schoolname}', 'Api\AnalysisController@exclusionsstudents');
 
+Route::get('/dev/fcat/norkpi/{schoolname}', 'Api\FCATAnalysisController@norkpi');
+Route::get('/dev/fcat/ppkpi/{schoolname}', 'Api\FCATAnalysisController@ppkpi');
+Route::get('/dev/fcat/attendancekpi/{schoolname}/{enddate}', 'Api\FCATAnalysisController@attendancekpi');
+Route::get('/dev/fcat/pakpi/{schoolname}/{enddate}', 'Api\FCATAnalysisController@pakpi');
+
+Route::get('/dev/fcat/cohortsummary/{schoolname}', 'Api\FCATAnalysisController@cohortsummary');
+Route::get('/dev/fcat/yeargroupsummary/{schoolname}', 'Api\FCATAnalysisController@yeargroupsummary');
+Route::get('/dev/fcat/startersleaverssummary/{schoolname}/{enddate}', 'Api\FCATAnalysisController@startersleaverssummary');
+
+Route::get('/dev/fcat/attendanceweekly/{schoolname}/{enddate}', 'Api\FCATAnalysisController@attendanceweekly');
+Route::get('/dev/fcat/attendanceweek/{schoolname}/{enddate}', 'Api\FCATAnalysisController@attendanceyear');
+Route::get('/dev/fcat/attendanceweek/{schoolname}/{enddate}/{week}', 'Api\FCATAnalysisController@attendanceweek');
+Route::get('/dev/fcat/attendancepie/{schoolname}/{enddate}', 'Api\FCATAnalysisController@attendancepie');
+
+Route::get('/dev/fcat/paatrisk/{schoolname}/{enddate}', 'Api\FCATAnalysisController@paatrisk');
+Route::get('/dev/fcat/paatriskstudents/{schoolname}/{enddate}', 'Api\FCATAnalysisController@paatriskstudents');
+
+Route::get('/dev/fcat/exclusionsstudents/{schoolname}', 'Api\FCATAnalysisController@exclusionsstudents');
+
+
+
 Route::get('/dev/{school}', 'Api\AnalysisController@dev');
 
 Route::resource('/dev', 'Api\AnalysisController');

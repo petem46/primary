@@ -96,7 +96,7 @@ export default {
   },
   computed: {
       lessPadding: function() {
-         if(this.groups.length > 6) return true;
+         if(this.groups.length > 7) return true;
       }
   }
 };

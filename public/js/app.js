@@ -1908,21 +1908,6 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var date_fns_format__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! date-fns/format */ "./node_modules/date-fns/esm/format/index.js");
-/* harmony import */ var date_fns_parseISO__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! date-fns/parseISO */ "./node_modules/date-fns/esm/parseISO/index.js");
-/* harmony import */ var _dash_kpiCards_NorKpiCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./dash/kpiCards/NorKpiCard */ "./resources/js/components/dash/kpiCards/NorKpiCard.vue");
-/* harmony import */ var _dash_kpiCards_PpKpiCard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./dash/kpiCards/PpKpiCard */ "./resources/js/components/dash/kpiCards/PpKpiCard.vue");
-/* harmony import */ var _dash_kpiCards_AttendanceKpiCard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./dash/kpiCards/AttendanceKpiCard */ "./resources/js/components/dash/kpiCards/AttendanceKpiCard.vue");
-/* harmony import */ var _dash_kpiCards_PaKpiCard__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./dash/kpiCards/PaKpiCard */ "./resources/js/components/dash/kpiCards/PaKpiCard.vue");
-/* harmony import */ var _dash_CohortSummary__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./dash/CohortSummary */ "./resources/js/components/dash/CohortSummary.vue");
-/* harmony import */ var _dash_YearGroupSummary__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./dash/YearGroupSummary */ "./resources/js/components/dash/YearGroupSummary.vue");
-/* harmony import */ var _dash_StartersLeaversSummary__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./dash/StartersLeaversSummary */ "./resources/js/components/dash/StartersLeaversSummary.vue");
-/* harmony import */ var _dash_AttendanceOverview__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./dash/AttendanceOverview */ "./resources/js/components/dash/AttendanceOverview.vue");
-/* harmony import */ var _dash_AttendancePie__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./dash/AttendancePie */ "./resources/js/components/dash/AttendancePie.vue");
-/* harmony import */ var _dash_AttendanceWeek__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./dash/AttendanceWeek */ "./resources/js/components/dash/AttendanceWeek.vue");
-/* harmony import */ var _dash_AtRiskPaOverview__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./dash/AtRiskPaOverview */ "./resources/js/components/dash/AtRiskPaOverview.vue");
 //
 //
 //
@@ -2010,89 +1995,78 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-
- // import subDays from 'date-fns/sub_days'
-
-
-
-
-
-
-
-
-
-
-
-
-
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  components: {
-    NorKpiCard: _dash_kpiCards_NorKpiCard__WEBPACK_IMPORTED_MODULE_3__["default"],
-    PpKpiCard: _dash_kpiCards_PpKpiCard__WEBPACK_IMPORTED_MODULE_4__["default"],
-    AttendanceKpiCard: _dash_kpiCards_AttendanceKpiCard__WEBPACK_IMPORTED_MODULE_5__["default"],
-    PaKpiCard: _dash_kpiCards_PaKpiCard__WEBPACK_IMPORTED_MODULE_6__["default"],
-    CohortSummary: _dash_CohortSummary__WEBPACK_IMPORTED_MODULE_7__["default"],
-    YearGroupSummary: _dash_YearGroupSummary__WEBPACK_IMPORTED_MODULE_8__["default"],
-    StartersLeaversSummary: _dash_StartersLeaversSummary__WEBPACK_IMPORTED_MODULE_9__["default"],
-    AttendanceOverview: _dash_AttendanceOverview__WEBPACK_IMPORTED_MODULE_10__["default"],
-    AttendancePie: _dash_AttendancePie__WEBPACK_IMPORTED_MODULE_11__["default"],
-    AttendanceWeek: _dash_AttendanceWeek__WEBPACK_IMPORTED_MODULE_12__["default"],
-    AtRiskPaOverview: _dash_AtRiskPaOverview__WEBPACK_IMPORTED_MODULE_13__["default"]
-  },
-  //   props: ["schoolname", "start", "end"],
+  components: {},
   data: function data() {
     return {
-      message: null,
-      startdatemenu: false,
-      enddatemenu: false,
-      loaded: true,
-      //   endpoint: "api/dev",
-      //   startdate: this.start,
-      //   enddate: this.end,
-      attendanceweek: null,
-      attendanceforweek: null
+      loaded: true
     };
   },
-  created: function created() {// this.fetch();
-  },
-  mounted: function mounted() {
-    console.log("Dashboard Mounted.");
-  },
-  methods: {
-    fetch: function fetch() {
-      var _this = this;
-
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(this.endpoint).then(function (_ref) {
-        var data = _ref.data;
-        _this.loaded = true;
-      });
-    },
-    newDate: function newDate() {
-      console.log("New End Date has been set");
-      this.loaded = false;
-      this.fetch();
-    },
-    updateWeek: function updateWeek(week, weekatt) {
-      console.log("Emit updateWeek method triggered");
-      this.attendanceweek = week;
-      this.attendanceforweek = weekatt;
-    }
-  },
+  created: function created() {},
+  mounted: function mounted() {},
+  methods: {},
   computed: {
-    formattedStartDate: function formattedStartDate() {
-      return this.startdate ? Object(date_fns_format__WEBPACK_IMPORTED_MODULE_1__["default"])(Object(date_fns_parseISO__WEBPACK_IMPORTED_MODULE_2__["default"])(this.startdate), "iiii, do MMM yyyy") : "";
-    },
-    formattedEndDate: function formattedEndDate() {
-      return this.enddate ? Object(date_fns_format__WEBPACK_IMPORTED_MODULE_1__["default"])(Object(date_fns_parseISO__WEBPACK_IMPORTED_MODULE_2__["default"])(this.enddate), "iiii, do MMM yyyy") : "";
-    },
     schoolname: function schoolname() {
       return this.$store.getters.getschoolname;
-    },
-    startdate: function startdate() {
-      return this.$store.getters.getstartdate;
-    },
-    enddate: function enddate() {
-      return this.$store.getters.getenddate;
     }
   }
 });
@@ -2276,6 +2250,12 @@ __webpack_require__.r(__webpack_exports__);
       console.log("Emit updateWeek method triggered");
       this.attendanceweek = week;
       this.attendanceforweek = weekatt;
+    },
+    updateStartDate: function updateStartDate(sd) {
+      this.$store.commit("updateStartDate", sd);
+    },
+    updateEndDate: function updateEndDate(ed) {
+      this.$store.commit("updateEndDate", ed);
     }
   },
   computed: {
@@ -2288,11 +2268,21 @@ __webpack_require__.r(__webpack_exports__);
     schoolname: function schoolname() {
       return this.$store.getters.getschoolname;
     },
-    startdate: function startdate() {
-      return this.$store.getters.getstartdate;
+    startdate: {
+      get: function get() {
+        return this.$store.getters.getstartdate;
+      },
+      set: function set(newDate) {
+        this.$store.commit("updateStartDate", newDate);
+      }
     },
-    enddate: function enddate() {
-      return this.$store.getters.getenddate;
+    enddate: {
+      get: function get() {
+        return this.$store.getters.getenddate;
+      },
+      set: function set(newDate) {
+        this.$store.commit("updateEndDate", newDate);
+      }
     }
   }
 });
@@ -2446,9 +2436,6 @@ __webpack_require__.r(__webpack_exports__);
       startdatemenu: false,
       enddatemenu: false,
       loaded: true,
-      //   endpoint: "api/dev",
-      //   startdate: this.start,
-      //   enddate: this.end,
       attendanceweek: null,
       attendanceforweek: null
     };
@@ -2457,6 +2444,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     console.log("Dashboard Mounted.");
+    this.setenddate;
   },
   methods: {
     fetch: function fetch() {
@@ -2488,11 +2476,21 @@ __webpack_require__.r(__webpack_exports__);
     schoolname: function schoolname() {
       return this.$store.getters.getschoolname;
     },
-    startdate: function startdate() {
-      return this.$store.getters.getstartdate;
+    startdate: {
+      get: function get() {
+        return this.$store.getters.getstartdate;
+      },
+      set: function set(newDate) {
+        this.$store.commit("updateStartDate", newDate);
+      }
     },
-    enddate: function enddate() {
-      return this.$store.getters.getenddate;
+    enddate: {
+      get: function get() {
+        return this.$store.getters.getenddate;
+      },
+      set: function set(newDate) {
+        this.$store.commit("updateEndDate", newDate);
+      }
     }
   }
 });
@@ -2511,6 +2509,88 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _PaAtRiskChart_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PaAtRiskChart.js */ "./resources/js/components/dash/PaAtRiskChart.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3751,7 +3831,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     lessPadding: function lessPadding() {
-      if (this.groups.length > 6) return true;
+      if (this.groups.length > 7) return true;
     }
   }
 });
@@ -5012,6 +5092,53 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
  // import subDays from 'date-fns/sub_days'
 
 
@@ -5023,36 +5150,42 @@ __webpack_require__.r(__webpack_exports__);
       dialog: false,
       drawer: null,
       items: [{
-        core: "Wiggle",
-        icon: "mdi-contacts",
-        name: "Students"
+        icon: "fa-users fa-sm fa-fw",
+        name: "Students" // iconsize: "small"
+
       }, {
         icon: "mdi-history",
         name: "Summary"
       }, {
-        icon: "mdi-calendar-multiselect",
-        name: "Attendance"
-      }, {
-        icon: "mdi-history",
-        name: "Behaviour"
-      }, {
         icon: "mdi-star-box-multiple-outline",
         name: "Assessment"
       }, {
+        icon: "mdi-calendar-multiselect",
+        name: "Attendance"
+      }, {
+        icon: "mdi-shield-star-outline",
+        name: "Behaviour"
+      }, {
+        icon: "mdi-account-clock-outline",
+        name: "Exclusions"
+      }, {
         icon: "mdi-content-copy",
         name: "FCAT",
-        school: "FCAT"
+        school: "FCAT",
+        fcat: "FCAT"
       }, {
         icon: "mdi-chevron-up",
         "icon-alt": "mdi-chevron-down",
         text: "All Through",
         model: false,
         children: [{
-          icon: "mdi-home-export-outline",
-          school: "Armfield"
+          icon: "far fa-building",
+          school: "Armfield",
+          iconsize: "small"
         }, {
-          icon: "mdi-home-export-outline",
-          school: "Unity"
+          icon: "far fa-building",
+          school: "Unity",
+          iconsize: "small"
         }]
       }, {
         icon: "mdi-chevron-up",
@@ -63089,7 +63222,7 @@ var render = function() {
     !_vm.loaded
       ? _c("div", [
           _c("i", { staticClass: "fas fa-spinner fa-spin fa-3x" }),
-          _vm._v("   Loading...\n\t")
+          _vm._v("   Loading...\n  ")
         ])
       : _vm._e(),
     _vm._v(" "),
@@ -63101,225 +63234,361 @@ var render = function() {
             [
               _c(
                 "v-container",
-                { attrs: { fluid: "" } },
+                { attrs: { "text-center": "", fluid: "" } },
                 [
-                  _c("v-row", [
-                    _c("div", { staticClass: "col-12 text-center" }, [
-                      _c("h1", { staticClass: "display-3 mx-auto my-2" }, [
-                        _vm._v(_vm._s(_vm.schoolname) + " Summary Dashboard")
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "col-3" },
-                      [
-                        _c(
-                          "v-menu",
-                          {
-                            attrs: {
-                              "close-on-content-click": false,
-                              "nudge-right": 40,
-                              transition: "scale-transition",
-                              "offset-y": "",
-                              "min-width": "290px"
-                            },
-                            scopedSlots: _vm._u(
-                              [
-                                {
-                                  key: "activator",
-                                  fn: function(ref) {
-                                    var on = ref.on
-                                    return [
-                                      _c(
-                                        "v-text-field",
-                                        _vm._g(
-                                          {
-                                            attrs: {
-                                              readonly: "",
-                                              value: _vm.formattedStartDate,
-                                              label: "Start Date",
-                                              "prepend-icon":
-                                                "mdi-calendar-multiselect"
-                                            }
-                                          },
-                                          on
-                                        )
-                                      )
-                                    ]
-                                  }
-                                }
-                              ],
-                              null,
-                              false,
-                              3259371349
-                            ),
-                            model: {
-                              value: _vm.startdatemenu,
-                              callback: function($$v) {
-                                _vm.startdatemenu = $$v
-                              },
-                              expression: "startdatemenu"
-                            }
-                          },
-                          [
-                            _vm._v(" "),
-                            _c("v-date-picker", {
-                              attrs: { scrollable: "", "show-current": "" },
-                              on: {
-                                input: function($event) {
-                                  _vm.startdatemenu = false
-                                }
-                              },
-                              model: {
-                                value: _vm.startdate,
-                                callback: function($$v) {
-                                  _vm.startdate = $$v
-                                },
-                                expression: "startdate"
-                              }
-                            })
-                          ],
-                          1
-                        )
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "col-3" },
-                      [
-                        _c(
-                          "v-menu",
-                          {
-                            attrs: {
-                              "close-on-content-click": false,
-                              "nudge-right": 40,
-                              transition: "scale-transition",
-                              "offset-y": "",
-                              "min-width": "290px"
-                            },
-                            scopedSlots: _vm._u(
-                              [
-                                {
-                                  key: "activator",
-                                  fn: function(ref) {
-                                    var on = ref.on
-                                    return [
-                                      _c(
-                                        "v-text-field",
-                                        _vm._g(
-                                          {
-                                            attrs: {
-                                              readonly: "",
-                                              value: _vm.formattedEndDate,
-                                              label: "End Date",
-                                              "prepend-icon":
-                                                "mdi-calendar-multiselect"
-                                            }
-                                          },
-                                          on
-                                        )
-                                      )
-                                    ]
-                                  }
-                                }
-                              ],
-                              null,
-                              false,
-                              3833939381
-                            ),
-                            model: {
-                              value: _vm.enddatemenu,
-                              callback: function($$v) {
-                                _vm.enddatemenu = $$v
-                              },
-                              expression: "enddatemenu"
-                            }
-                          },
-                          [
-                            _vm._v(" "),
-                            _c("v-date-picker", {
-                              attrs: { scrollable: "", "show-current": "" },
-                              on: {
-                                input: function($event) {
-                                  _vm.enddatemenu = false
-                                }
-                              },
-                              model: {
-                                value: _vm.enddate,
-                                callback: function($$v) {
-                                  _vm.enddate = $$v
-                                },
-                                expression: "enddate"
-                              }
-                            })
-                          ],
-                          1
-                        )
-                      ],
-                      1
-                    )
+                  _c("v-col", [
+                    _c("h1", { staticClass: "display-3 mx-auto my-2" }, [
+                      _vm._v(_vm._s(_vm.schoolname) + " Reporting")
+                    ])
                   ]),
                   _vm._v(" "),
                   _c(
-                    "v-row",
+                    "v-col",
                     [
-                      _c("nor-kpi-card", {
-                        attrs: {
-                          schoolname: this.schoolname,
-                          enddate: this.enddate
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("pp-kpi-card", {
-                        attrs: {
-                          schoolname: this.schoolname,
-                          enddate: this.enddate
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("attendance-kpi-card", {
-                        attrs: {
-                          schoolname: this.schoolname,
-                          enddate: this.enddate
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("pa-kpi-card", {
-                        attrs: {
-                          schoolname: this.schoolname,
-                          enddate: this.enddate
-                        }
-                      })
+                      _c(
+                        "v-btn",
+                        {
+                          staticClass: "white--text",
+                          attrs: {
+                            href:
+                              "http://fcatdata/rs/Pages/ReportViewer.aspx?%2fFCAT+Data+SSRS%2fCoreSubjectSummaryByYear&school=" +
+                              _vm.schoolname +
+                              "&rs:Command=Render&rc:LinkTarget=main&rs:Format=HTML4.0",
+                            onclick:
+                              "return !window.open(this.href, 'Subject Summary Grid', 'width=1024,height=768')",
+                            color: "orange darken-1"
+                          }
+                        },
+                        [_vm._v("Core Subject Summary by Year")]
+                      )
                     ],
                     1
                   ),
                   _vm._v(" "),
                   _c(
-                    "v-row",
+                    "v-col",
                     [
-                      _c("cohort-summary", {
-                        attrs: {
-                          schoolname: this.schoolname,
-                          enddate: this.enddate
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("year-group-summary", {
-                        attrs: {
-                          schoolname: this.schoolname,
-                          enddate: this.enddate
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("starters-leavers-summary", {
-                        attrs: {
-                          schoolname: this.schoolname,
-                          enddate: this.enddate
-                        }
-                      })
+                      _c(
+                        "v-btn",
+                        {
+                          staticClass: "white--text",
+                          attrs: {
+                            href:
+                              "http://fcatdata/rs/Pages/ReportViewer.aspx?%2fFCAT+Data+SSRS%2fCoreSubjectSummaryByYear&school=" +
+                              _vm.schoolname +
+                              "&rs:Command=Render",
+                            onclick:
+                              "return !window.open(this.href, 'Subject Summary Grid', 'width=1024,height=768')",
+                            color: "orange darken-1"
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                Core Subject Summary by Year\n              "
+                          )
+                        ]
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-col",
+                    [
+                      _c(
+                        "v-btn",
+                        {
+                          staticClass: "white--text",
+                          attrs: {
+                            href:
+                              "http://fcatdata/rs/Pages/ReportViewer.aspx?%2fFCAT+Data+SSRS%2fSubjectSummaryByYear&school=" +
+                              _vm.schoolname +
+                              "&rs:Command=Render",
+                            onclick:
+                              "return !window.open(this.href, 'Subject Summary Grid', 'width=1024,height=768')",
+                            color: "orange darken-1"
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                Subject Summary by Year\n              "
+                          )
+                        ]
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("v-divider"),
+                  _vm._v(" "),
+                  _c(
+                    "v-col",
+                    [
+                      _c(
+                        "v-btn",
+                        {
+                          staticClass: "white--text",
+                          attrs: {
+                            href:
+                              "http://fcatdata/rs/Pages/ReportViewer.aspx?%2fFCAT+Data+SSRS%2fSubjectSummaryBySchool&school=" +
+                              _vm.schoolname +
+                              "&rs:Command=Render",
+                            onclick:
+                              "return !window.open(this.href, 'Subject Summary Grid', 'width=1024,height=768')",
+                            color: "teal darken-1"
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                Whole School Overview\n              "
+                          )
+                        ]
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-col",
+                    [
+                      _c(
+                        "v-btn",
+                        {
+                          staticClass: "white--text",
+                          attrs: {
+                            href:
+                              "http://fcatdata/rs/Pages/ReportViewer.aspx?%2fFCAT+Data+SSRS%2fSchoolSubjectSummaryGender&school=" +
+                              _vm.schoolname +
+                              "&rs:Command=Render",
+                            onclick:
+                              "return !window.open(this.href, 'Subject Summary Grid', 'width=1024,height=768')",
+                            color: "blue darken-1"
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                Whole School Overview (Girl/Boy)\n              "
+                          )
+                        ]
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-col",
+                    [
+                      _c(
+                        "v-btn",
+                        {
+                          staticClass: "white--text",
+                          attrs: {
+                            href:
+                              "http://fcatdata/rs/Pages/ReportViewer.aspx?%2fFCAT+Data+SSRS%2fSchoolSubjectSummaryPP&school=" +
+                              _vm.schoolname +
+                              "&rs:Command=Render",
+                            onclick:
+                              "return !window.open(this.href, 'Subject Summary Grid', 'width=1024,height=768')",
+                            color: "green darken-1"
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                Whole School Overview (PP)\n              "
+                          )
+                        ]
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-col",
+                    [
+                      _c(
+                        "v-btn",
+                        {
+                          staticClass: "white--text",
+                          attrs: {
+                            href:
+                              "http://fcatdata/rs/Pages/ReportViewer.aspx?%2fFCAT+Data+SSRS%2fSchoolSubjectSummarySEND&school=" +
+                              _vm.schoolname +
+                              "&rs:Command=Render",
+                            onclick:
+                              "return !window.open(this.href, 'Subject Summary Grid', 'width=1024,height=768')",
+                            color: "purple lighten-1"
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                Whole School Overview (SEND)\n              "
+                          )
+                        ]
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-col",
+                    [
+                      _c(
+                        "v-btn",
+                        {
+                          staticClass: "white--text",
+                          attrs: {
+                            href:
+                              "http://fcatdata/rs/Pages/ReportViewer.aspx?%2fFCAT+Data+SSRS%2fSchoolSubjectSummaryEAL&school=" +
+                              _vm.schoolname +
+                              "&rs:Command=Render",
+                            onclick:
+                              "return !window.open(this.href, 'Subject Summary Grid', 'width=1024,height=768')",
+                            color: "grey darken-1"
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                Whole School Overview (EAL)\n              "
+                          )
+                        ]
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("v-divider"),
+                  _vm._v(" "),
+                  _c(
+                    "v-col",
+                    [
+                      _c(
+                        "v-btn",
+                        {
+                          staticClass: "white--text",
+                          attrs: {
+                            href:
+                              "http://fcatdata/rs/Pages/ReportViewer.aspx?%2fFCAT+Data+SSRS%2fYearSubjectSummary&school=" +
+                              _vm.schoolname +
+                              "&rs:Command=Render",
+                            onclick:
+                              "return !window.open(this.href, 'Subject Summary Grid', 'width=1024,height=768')",
+                            color: "teal darken-1"
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                Subject Overview by Year\n              "
+                          )
+                        ]
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-col",
+                    [
+                      _c(
+                        "v-btn",
+                        {
+                          staticClass: "white--text",
+                          attrs: {
+                            href:
+                              "http://fcatdata/rs/Pages/ReportViewer.aspx?%2fFCAT+Data+SSRS%2fYearSubjectSummaryGender&school=" +
+                              _vm.schoolname +
+                              "&rs:Command=Render",
+                            onclick:
+                              "return !window.open(this.href, 'Subject Summary Grid', 'width=1024,height=768')",
+                            color: "blue darken-1"
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                Subject Overview by Year (Girl/Boy)\n              "
+                          )
+                        ]
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-col",
+                    [
+                      _c(
+                        "v-btn",
+                        {
+                          staticClass: "white--text",
+                          attrs: {
+                            href:
+                              "http://fcatdata/rs/Pages/ReportViewer.aspx?%2fFCAT+Data+SSRS%2fYearSubjectSummaryPP&school=" +
+                              _vm.schoolname +
+                              "&rs:Command=Render",
+                            onclick:
+                              "return !window.open(this.href, 'Subject Summary Grid', 'width=1024,height=768')",
+                            color: "green darken-1"
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                Subject Overview by Year (PP)\n              "
+                          )
+                        ]
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-col",
+                    [
+                      _c(
+                        "v-btn",
+                        {
+                          staticClass: "white--text",
+                          attrs: {
+                            href:
+                              "http://fcatdata/rs/Pages/ReportViewer.aspx?%2fFCAT+Data+SSRS%2fYearSubjectSummarySEND&school=" +
+                              _vm.schoolname +
+                              "&rs:Command=Render",
+                            onclick:
+                              "return !window.open(this.href, 'Subject Summary Grid', 'width=1024,height=768')",
+                            color: "purple lighten-1"
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                Subject Overview by Year (SEND)\n              "
+                          )
+                        ]
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-col",
+                    [
+                      _c(
+                        "v-btn",
+                        {
+                          staticClass: "white--text",
+                          attrs: {
+                            href:
+                              "http://fcatdata/rs/Pages/ReportViewer.aspx?%2fFCAT+Data+SSRS%2fYearSubjectSummaryEAL&school=" +
+                              _vm.schoolname +
+                              "&rs:Command=Render",
+                            onclick:
+                              "return !window.open(this.href, 'Subject Summary Grid', 'width=1024,height=768')",
+                            color: "grey darken-1"
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                Subject Overview by Year (EAL)\n              "
+                          )
+                        ]
+                      )
                     ],
                     1
                   )
@@ -63515,6 +63784,7 @@ var render = function() {
                               on: {
                                 input: function($event) {
                                   _vm.enddatemenu = false
+                                  _vm.updateEndDate
                                 }
                               },
                               model: {
@@ -64170,14 +64440,26 @@ var render = function() {
                       _c(
                         "v-card-actions",
                         [
-                          _c("v-btn", { attrs: { text: "", small: "" } }, [
-                            _vm._v("Full Report")
-                          ]),
+                          _c(
+                            "v-btn",
+                            {
+                              attrs: {
+                                text: "",
+                                small: "",
+                                color: "teal darken-1"
+                              }
+                            },
+                            [_vm._v("Full Report")]
+                          ),
                           _vm._v(" "),
                           _c(
                             "v-btn",
                             {
-                              attrs: { text: "", small: "" },
+                              attrs: {
+                                text: "",
+                                small: "",
+                                color: "teal darken-1"
+                              },
                               on: {
                                 click: function($event) {
                                   _vm.showPupils = false
@@ -64234,14 +64516,26 @@ var render = function() {
                       _c(
                         "v-card-actions",
                         [
-                          _c("v-btn", { attrs: { text: "", small: "" } }, [
-                            _vm._v("Full Report")
-                          ]),
+                          _c(
+                            "v-btn",
+                            {
+                              attrs: {
+                                text: "",
+                                small: "",
+                                color: "teal darken-1"
+                              }
+                            },
+                            [_vm._v("Full Report")]
+                          ),
                           _vm._v(" "),
                           _c(
                             "v-btn",
                             {
-                              attrs: { text: "", small: "" },
+                              attrs: {
+                                text: "",
+                                small: "",
+                                color: "teal darken-1"
+                              },
                               on: {
                                 click: function($event) {
                                   _vm.showPupils = true
@@ -64294,9 +64588,13 @@ var render = function() {
                   _c(
                     "v-card-actions",
                     [
-                      _c("v-btn", { attrs: { text: "", small: "" } }, [
-                        _vm._v("Full Report")
-                      ])
+                      _c(
+                        "v-btn",
+                        {
+                          attrs: { text: "", small: "", color: "teal darken-1" }
+                        },
+                        [_vm._v("Full Report")]
+                      )
                     ],
                     1
                   )
@@ -64381,9 +64679,11 @@ var render = function() {
               _c(
                 "v-card-actions",
                 [
-                  _c("v-btn", { attrs: { text: "", small: "" } }, [
-                    _vm._v("Full Report " + _vm._s(_vm.week))
-                  ])
+                  _c(
+                    "v-btn",
+                    { attrs: { text: "", small: "", color: "teal darken-1" } },
+                    [_vm._v("Full Report")]
+                  )
                 ],
                 1
               )
@@ -64603,9 +64903,11 @@ var render = function() {
               _c(
                 "v-card-actions",
                 [
-                  _c("v-btn", { attrs: { text: "", small: "" } }, [
-                    _vm._v("Full Report")
-                  ])
+                  _c(
+                    "v-btn",
+                    { attrs: { text: "", small: "", color: "teal darken-1" } },
+                    [_vm._v("Full Report")]
+                  )
                 ],
                 1
               )
@@ -65443,7 +65745,7 @@ var render = function() {
                   _c(
                     "v-icon",
                     { attrs: { size: "50", color: "teal lighten-2" } },
-                    [_vm._v("mdi-account-group")]
+                    [_vm._v("fa-users")]
                   )
                 ],
                 1
@@ -66846,7 +67148,7 @@ var render = function() {
         {
           attrs: {
             clipped: _vm.$vuetify.breakpoint.lgAndUp,
-            "expand-on-hover": true,
+            "expand-on-hover": false,
             "mini-variant": false,
             app: ""
           },
@@ -66865,46 +67167,6 @@ var render = function() {
             [
               _vm._l(_vm.items, function(item) {
                 return [
-                  item.heading
-                    ? _c(
-                        "v-row",
-                        { key: item.heading, attrs: { align: "center" } },
-                        [
-                          _c(
-                            "v-col",
-                            { attrs: { cols: "6" } },
-                            [
-                              item.heading
-                                ? _c("v-subheader", [
-                                    _vm._v(_vm._s(item.heading))
-                                  ])
-                                : _vm._e()
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-col",
-                            {
-                              staticClass: "text-center",
-                              attrs: { cols: "6" }
-                            },
-                            [
-                              _c(
-                                "a",
-                                {
-                                  staticClass: "body-2 black--text",
-                                  attrs: { href: "#!" }
-                                },
-                                [_vm._v("EDIT")]
-                              )
-                            ]
-                          )
-                        ],
-                        1
-                      )
-                    : _vm._e(),
-                  _vm._v(" "),
                   item.children
                     ? _c(
                         "v-list-group",
@@ -66958,9 +67220,11 @@ var render = function() {
                                   ? _c(
                                       "v-list-item-action",
                                       [
-                                        _c("v-icon", [
-                                          _vm._v(_vm._s(child.icon))
-                                        ])
+                                        _c(
+                                          "v-icon",
+                                          { attrs: { size: child.iconsize } },
+                                          [_vm._v(_vm._s(child.icon))]
+                                        )
                                       ],
                                       1
                                     )
@@ -66985,7 +67249,12 @@ var render = function() {
                                       [
                                         _c(
                                           "router-link",
-                                          { attrs: { to: { name: "dash" } } },
+                                          {
+                                            attrs: {
+                                              exact: "",
+                                              to: { name: "dash" }
+                                            }
+                                          },
                                           [_vm._v(_vm._s(child.school))]
                                         )
                                       ],
@@ -67007,7 +67276,11 @@ var render = function() {
                         [
                           _c(
                             "v-list-item-action",
-                            [_c("v-icon", [_vm._v(_vm._s(item.icon))])],
+                            [
+                              _c("v-icon", { attrs: { size: item.iconsize } }, [
+                                _vm._v(_vm._s(item.icon))
+                              ])
+                            ],
                             1
                           ),
                           _vm._v(" "),
@@ -67019,7 +67292,13 @@ var render = function() {
                                 [
                                   _c(
                                     "router-link",
-                                    { attrs: { to: { name: item.name } } },
+                                    {
+                                      attrs: {
+                                        exact: "",
+                                        "exact-active-class": "teal--text",
+                                        to: { name: item.name }
+                                      }
+                                    },
                                     [_vm._v(_vm._s(item.name))]
                                   )
                                 ],
@@ -67072,11 +67351,11 @@ var render = function() {
                 [
                   _c("v-icon", [_vm._v("mdi-hexagon-multiple-outline")]),
                   _vm._v(
-                    "\n\t\t\t\t   " +
+                    "\n           " +
                       _vm._s(_vm.appName) +
                       " || " +
                       _vm._s(_vm.schoolname) +
-                      "\n\t\t\t"
+                      "\n      "
                   )
                 ],
                 1
@@ -124617,6 +124896,9 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('passport-personal-access-t
 
 
 
+
+
+
 var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
   state: {
     schoolname: 'Aspire',
@@ -124670,6 +124952,18 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_2__["default"]({
     path: '/attendance',
     name: 'Attendance',
     component: _components_Attendance__WEBPACK_IMPORTED_MODULE_7__["default"]
+  }, {
+    path: '/summary',
+    name: 'Students',
+    component: _components_Dash__WEBPACK_IMPORTED_MODULE_5__["default"]
+  }, {
+    path: '/summary',
+    name: 'Behaviour',
+    component: _components_Dash__WEBPACK_IMPORTED_MODULE_5__["default"]
+  }, {
+    path: '/summary',
+    name: 'FCAT',
+    component: _components_Dash__WEBPACK_IMPORTED_MODULE_5__["default"]
   }]
 });
 var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
@@ -126200,8 +126494,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\code\primary\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\code\primary\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! c:\inetpub\wwwroot\fcatfocus\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! c:\inetpub\wwwroot\fcatfocus\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

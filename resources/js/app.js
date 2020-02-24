@@ -31,6 +31,9 @@ import App from './views/App'
 import Dash from './components/Dash'
 import Assessment from './components/Assessment'
 import Attendance from './components/Attendance'
+import FCAT from './components/Dash'
+import Students from './components/Dash'
+import Behaviour from './components/Dash'
 
 const store = new Vuex.Store({
 
@@ -93,6 +96,21 @@ const router = new VueRouter({
             path: '/attendance',
             name: 'Attendance',
             component: Attendance,
+        },
+        {
+            path: '/summary',
+            name: 'Students',
+            component: Students,
+        },
+        {
+            path: '/summary',
+            name: 'Behaviour',
+            component: Behaviour,
+        },
+        {
+            path: '/summary',
+            name: 'FCAT',
+            component: FCAT,
         },
     ],
 });
