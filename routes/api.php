@@ -38,7 +38,11 @@ Route::get('/dev/paatriskstudents/{schoolname}/{enddate}', 'Api\AnalysisControll
 Route::get('/dev/exclusionsstudents/{schoolname}', 'Api\AnalysisController@exclusionsstudents');
 
 Route::get('/dev/students/{schoolname}', 'Api\StudentsController@list');
-Route::get('/dev/student/{schoolname}/{id}', 'Api\StudentsController@show');
+Route::get('/dev/student/details/{schoolname}/{id}', 'Api\StudentsController@details');
+Route::get('/dev/student/attendance/{schoolname}/{id}', 'Api\StudentsController@attendance');
+Route::get('/dev/student/weekdayattendance/{schoolname}/{id}', 'Api\StudentsController@weekdayattendance');
+Route::get('/dev/student/weeklyrunningattendance/{schoolname}/{id}', 'Api\StudentsController@weeklyrunningattendance');
+Route::get('/dev/student/data/{schoolname}/{id}', 'Api\StudentsController@data');
 
 Route::get('/dev/fcat/norkpi/{schoolname}', 'Api\FCATAnalysisController@norkpi');
 Route::get('/dev/fcat/ppkpi/{schoolname}', 'Api\FCATAnalysisController@ppkpi');

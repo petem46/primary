@@ -74,32 +74,77 @@ class StudentsController extends Controller
      * @param  \App\students  $students
      * @return \Illuminate\Http\Response
      */
-    public function show($school, $id)
+    public function details($school, $id)
     {
         $upn = Student::select('upn', 'school')->find($id);
-        if(strlen($upn->upn) < 3) {
-            return redirect()->back()->with('message-fail','<i class="fas fa-exclamation-triangle"></i>&nbsp;&nbsp;Pupil missing UPN');
+        if($school === $upn->school || $school === 'FCAT' || $school === 'fcat') {
+            $data = [
+              'student' => Student::where('upn', $upn->upn)->where('id', $id)->first(),
+            ];
+            return new StudentResource($data);
         }
-        /** SET $enddate to YESTERDAY'S DATE
-        */
+        return 'NOOPE';
+    }
+
+    public function attendance($school, $id)
+    {
+        $upn = Student::select('upn', 'school')->find($id);
         $enddate = Carbon::yesterday()->toDateString();
 
         if($school === $upn->school || $school === 'FCAT' || $school === 'fcat') {
             $aupn = $upn->upn;
             $data = [
-                'student' => Student::where('upn', $upn->upn)->where('id', $id)->first(),
-                // 'student' => Student::with('Attendance')->where('upn', $upn->upn)->first(),
                 'attendance' => DB::select(" exec sp_AttendancePAStudents19 @enddate = '$enddate', @upn = '$aupn' "),
+            ];
+            return new StudentResource($data);
+        }
+        return 'NOOPE';
+    }
+
+    public function weekdayattendance($school, $id)
+    {
+        $upn = Student::select('upn', 'school')->find($id);
+        $enddate = Carbon::yesterday()->toDateString();
+
+        if($school === $upn->school || $school === 'FCAT' || $school === 'fcat') {
+            $aupn = $upn->upn;
+            $data = [
                 'weekdayattendance' => DB::select(" exec sp_att_studentWeekDay19 @enddate = '$enddate', @upn = '$aupn' "),
+            ];
+            return new StudentResource($data);
+        }
+        return 'NOOPE';
+    }
+
+    public function weeklyrunningattendance($school, $id)
+    {
+        $upn = Student::select('upn', 'school')->find($id);
+        $enddate = Carbon::yesterday()->toDateString();
+
+        if($school === $upn->school || $school === 'FCAT' || $school === 'fcat') {
+            $aupn = $upn->upn;
+            $data = [
                 'weeklyrunningattendance' => DB::select(" exec sp_att_studentRunningWeek @enddate = '$enddate', @upn = '$aupn' "),
+            ];
+            return new StudentResource($data);
+        }
+        return 'NOOPE';
+    }
+
+    public function data($school, $id)
+    {
+        $upn = Student::select('upn', 'school')->find($id);
+        $enddate = Carbon::yesterday()->toDateString();
+        if($school === $upn->school || $school === 'FCAT' || $school === 'fcat') {
+            $aupn = $upn->upn;
+            $data = [
                 'ppa' => collect(DB::select(" exec sp_pupilPriorAttainment @upn = '$aupn' "))->first(),
                 'primarydcdata' => DB::select(" exec sp_pupilPrimaryDCData @upn = '$aupn' "),
                 'secondarydcdata' => DB::select(" exec sp_pupilSecondaryDCData @upn = '$aupn' "),
             ];
-            // dd($data);
             return new StudentResource($data);
         }
-        return redirect('/summary');
+        return 'NOOPE';
     }
 
     /**

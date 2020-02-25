@@ -3757,36 +3757,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  watch: {
-    schoolname: function (_schoolname) {
-      function schoolname() {
-        return _schoolname.apply(this, arguments);
-      }
-
-      schoolname.toString = function () {
-        return _schoolname.toString();
-      };
-
-      return schoolname;
-    }(function () {
-      this.endpoint = "api/dev/student/" + schoolname;
-      this.refresh();
-    }),
-    startdate: function startdate() {
-      this.endpoint = "api/dev/student/" + schoolname;
-      this.refresh();
-    },
-    enddate: function enddate() {
-      this.endpoint = "api/dev/student/" + schoolname + "/" + this.studentid;
-      this.refresh();
-    }
-  },
   data: function data() {
     return {
       // schoolname: null,
@@ -3803,20 +3775,33 @@ __webpack_require__.r(__webpack_exports__);
     fetch: function fetch() {
       var _this = this;
 
-      this.endpoint = "api/dev/student/" + schoolname + studentid;
+      this.endpoint = "api/dev/student/details/" + this.schoolname + "/" + this.studentid;
+      console.log(this.endpoint);
+      console.log('WIIGLELELEL');
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(this.endpoint).then(function (_ref) {
         var data = _ref.data;
+        console.log('WIIGLELELEL');
         _this.student = data.data.student;
-        _this.attendance = data.data.attendance;
-        _this.weekdayattendance = data.data.weekdayattendance;
-        _this.weeklyrunningattendance = data.data.weeklyrunningattendance;
-        _this.ppa = data.data.ppa;
-        _this.primarydcdata = data.data.primarydcdata;
+        /** MAKE COMPONENTS FOR EACH API CALL DATA BLOCK
+            THIS WILL HELP WITH LOADING TIMES
+            CAN LOAD COMPONENTS ONE AT A TIME
+            USING SKELETON LOADERS
+         */
+        // this.attendance = data.data.attendance;
+        // this.weekdayattendance = data.data.weekdayattendance;
+        // this.weeklyrunningattendance = data.data.weeklyrunningattendance;
+        // this.ppa = data.data.ppa;
+        // this.primarydcdata = data.data.primarydcdata;
+
         _this.loaded = true;
       });
     },
     roundOff: function roundOff(value, decimals) {
       return Number(Math.round(value + "e" + decimals) + "e-" + decimals);
+    },
+    refresh: function refresh() {
+      this.loaded = false;
+      this.fetch();
     }
   },
   computed: {
@@ -4079,7 +4064,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     viewStudent: function viewStudent(id) {
       console.log(id);
-      setStudentid(id);
+      this.setStudentid(id);
       this.$router.push({
         name: 'Student',
         params: {
@@ -25976,7 +25961,7 @@ __webpack_require__.r(__webpack_exports__);
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
  * @param {Date|Number} date - the date to be changed
- * @param {Number} amount - the amount of milliseconds to be added
+ * @param {Number} amount - the amount of milliseconds to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
  * @returns {Date} the new date with the milliseconds added
  * @throws {TypeError} 2 arguments required
  *
@@ -27507,7 +27492,7 @@ __webpack_require__.r(__webpack_exports__);
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
  * @param {Date|Number} date - the date to be changed
- * @param {Number} amount - the amount of milliseconds to be subtracted
+ * @param {Number} amount - the amount of milliseconds to be subtracted. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
  * @returns {Date} the new date with the milliseconds subtracted
  * @throws {TypeError} 2 arguments required
  *
@@ -65803,7 +65788,14 @@ var render = function() {
     { staticClass: "row mx-0" },
     [
       _c("v-col", { attrs: { cols: "12", lg: "12" } }, [
-        _c("h1", [_vm._v("HELLO STUDENT")])
+        _c("h1", [
+          _vm._v(
+            "HELLO " +
+              _vm._s(_vm.schoolname) +
+              " STUDENT " +
+              _vm._s(_vm.studentid)
+          )
+        ])
       ])
     ],
     1
@@ -127462,8 +127454,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! c:\inetpub\wwwroot\fcatfocus\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! c:\inetpub\wwwroot\fcatfocus\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\code\primary\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\code\primary\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

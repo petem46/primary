@@ -209,7 +209,7 @@ export default {
     },
     viewStudent(id) {
       console.log(id);
-      setStudentid(id);
+      this.setStudentid(id);
       this.$router.push({ name: 'Student', params: { schoolname: this.schoolname, id } });
     }
   },
