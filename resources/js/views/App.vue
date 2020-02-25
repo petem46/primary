@@ -33,7 +33,7 @@
                 <v-list-item-title @click="updateCore(child.school, startdate, enddate)">
                   <router-link
                     exact
-                    :to="{ name: 'dash' }"
+                    :to="{ name: 'Summary' }"
                   >{{ child.school }}</router-link>
                 </v-list-item-title>
               </v-list-item-content>
@@ -158,7 +158,7 @@ export default {
     drawer: null,
     items: [
       {
-        icon: "fa-users fa-sm fa-fw",
+        icon: "mdi-account-multiple",
         name: "Students",
         // iconsize: "small"
       },
@@ -195,14 +195,13 @@ export default {
         model: false,
         children: [
           {
-            icon: "far fa-building",
+            icon: "mdi-domain",
             school: "Armfield",
-            iconsize: "small"
           },
           {
-            icon: "far fa-building",
+            icon: "mdi-domain",
             school: "Unity",
-            iconsize: "small"
+            // iconsize: "small"
           }
         ]
       },
@@ -213,15 +212,15 @@ export default {
         model: false,
         children: [
           {
-            icon: "mdi-home-export-outline",
+            icon: "mdi-home-city-outline",
             school: "Aspire"
           },
           {
-            icon: "mdi-home-export-outline",
+            icon: "mdi-home-city-outline",
             school: "Garstang"
           },
           {
-            icon: "mdi-home-export-outline",
+            icon: "mdi-home-city-outline",
             school: "Montgomery"
           }
         ]
@@ -233,23 +232,23 @@ export default {
         model: false,
         children: [
           {
-            icon: "mdi-home-export-outline",
+            icon: "mdi-home-group",
             school: "Gateway"
           },
           {
-            icon: "mdi-home-export-outline",
+            icon: "mdi-home-group",
             school: "Hambleton"
           },
           {
-            icon: "mdi-home-export-outline",
+            icon: "mdi-home-group",
             school: "Mereside"
           },
           {
-            icon: "mdi-home-export-outline",
+            icon: "mdi-home-group",
             school: "Westcliff"
           },
           {
-            icon: "mdi-home-export-outline",
+            icon: "mdi-home-group",
             school: "Westminster"
           }
         ]

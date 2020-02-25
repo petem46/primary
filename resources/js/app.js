@@ -29,10 +29,12 @@ Vue.component(
 
 import App from './views/App'
 import Dash from './components/Dash'
+import Summary from './components/Summary'
 import Assessment from './components/Assessment'
 import Attendance from './components/Attendance'
 import FCAT from './components/Dash'
-import Students from './components/Dash'
+import Students from './components/dash/StudentList'
+import Student from './components/dash/Student'
 import Behaviour from './components/Dash'
 
 const store = new Vuex.Store({
@@ -41,6 +43,7 @@ const store = new Vuex.Store({
         schoolname: 'Aspire',
         startdate: '2019-08-26',
         enddate: '2020-02-20',
+        studentid: '0',
     },
     mutations: {
         updateCore(state, sn, sd, ed) {
@@ -57,6 +60,9 @@ const store = new Vuex.Store({
         updateEndDate(state, ed) {
             state.enddate = ed;
         },
+        updateStudentid(state, id) {
+            state.studentid = id;
+        },
     },
     actions: {
 
@@ -70,6 +76,9 @@ const store = new Vuex.Store({
         },
         getenddate(state) {
             return state.enddate;
+        },
+        getstudentid(state) {
+            return state.studentid;
         },
     },
 });
@@ -85,7 +94,7 @@ const router = new VueRouter({
         {
             path: '/summary',
             name: 'Summary',
-            component: Dash,
+            component: Summary,
         },
         {
             path: '/assessment',
@@ -98,12 +107,17 @@ const router = new VueRouter({
             component: Attendance,
         },
         {
-            path: '/summary',
+            path: '/students',
             name: 'Students',
             component: Students,
         },
         {
-            path: '/summary',
+            path: '/student',
+            name: 'Student',
+            component: Student,
+        },
+        {
+            path: '/behaviour',
             name: 'Behaviour',
             component: Behaviour,
         },

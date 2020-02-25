@@ -41,29 +41,29 @@ Route::get('/callback', 'SocialAuthGoogleController@callback');
 Route::get('/analysis/{school}', 'AnalysisController@show');
 
 Route::group(['middleware' => ['auth']], function () {
-    Route::get('/home', 'HomeController@index')->name('home');
+    // Route::get('/home', 'HomeController@index')->name('home');
 
-    Route::get('/', function () {
-        return redirect('/analysis/' . App\User::first()->getSchool());
-    })->name('dashboard');
+    // Route::get('/', function () {
+    //     return redirect('/analysis/' . App\User::first()->getSchool());
+    // })->name('dashboard');
 
-    Route::get('/home', function () {
-        return redirect('/analysis/' . App\User::first()->getSchool());
-    })->name('dashboard');
+    // Route::get('/home', function () {
+    //     return redirect('/analysis/' . App\User::first()->getSchool());
+    // })->name('dashboard');
 
-    Route::get('/dev/{school}', 'AnalysisController@dev');
+    // Route::get('/dev/{school}', 'AnalysisController@dev');
 
-    Route::get('/analysis/assessment/{school}', 'AnalysisController@assessment');
+    // Route::get('/analysis/assessment/{school}', 'AnalysisController@assessment');
 
-    Route::get('/conductreporting', function () {
-        return view('conductreporting');
-    });
-    Route::get('/attendancereporting', function () {
-        return view('attendancereporting');
-    });
+    // Route::get('/conductreporting', function () {
+    //     return view('conductreporting');
+    // });
+    // Route::get('/attendancereporting', function () {
+    //     return view('attendancereporting');
+    // });
 
-    Route::resource('students', 'StudentsController');
-    Route::resource('schools', 'SchoolsController');
+    // Route::resource('students', 'StudentsController');
+    // Route::resource('schools', 'SchoolsController');
 
 
 });

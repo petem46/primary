@@ -1,16 +1,43 @@
 <template>
-  <v-col cols="6" md="3">
-    <v-card class="pa-2" outlined raised tile>
+  <v-col
+    cols="6"
+    md="3"
+  >
+    <v-card
+      class="pa-2"
+      outlined
+      raised
+      tile
+    >
       <v-row>
-        <v-col cols="4" class="py-0">
-          <v-icon size="50" color="orange">mdi-calendar-multiselect</v-icon>
+        <v-col
+          cols="4"
+          class="py-0"
+        >
+          <v-icon
+            size="50"
+            color="orange"
+          >mdi-calendar-multiselect</v-icon>
         </v-col>
-        <v-col cols="8" class="text-right py-0">
+        <v-col
+          cols="8"
+          class="text-right py-0"
+        >
           <div class="overline">% present</div>
-          <v-progress-circular v-if="! loaded" indeterminate color="orange"></v-progress-circular>
-          <h3 v-if="loaded" class="pa-0 text-right display-1">{{ roundOff(ppresent,2) }}</h3>
+          <v-progress-circular
+            v-if="! loaded"
+            indeterminate
+            color="orange"
+          ></v-progress-circular>
+          <h3
+            v-if="loaded"
+            class="pa-0 text-right display-1"
+          >{{ roundOff(ppresent,2) }}</h3>
         </v-col>
-        <v-col cols="12" class="py-0">
+        <v-col
+          cols="12"
+          class="py-0"
+        >
           <v-divider></v-divider>
           <div class="text-right orange--text">
             <small>Whole School Attendance</small>
@@ -31,24 +58,22 @@ export default {
       this.refresh();
     },
     startdate: function() {
-      this.endpoint =
-        "api/dev/attendancekpi/" + this.schoolname + "/" + this.startdate;
+      this.endpoint = "api/dev/attendancekpi/" + this.schoolname + "/" + this.startdate;
       console.log(this.endpoint);
       this.refresh();
     },
     enddate: function() {
-      this.endpoint =
-        "api/dev/attendancekpi/" + this.schoolname + "/" + this.enddate;
+      this.endpoint = "api/dev/attendancekpi/" + this.schoolname + "/" + this.enddate;
       console.log(this.endpoint);
       this.refresh();
-    },
+    }
   },
   data() {
     return {
       message: null,
       loaded: false,
       school: null,
-      endpoint: "api/dev/attendancekpi/" + this.schoolname + "/" + this.enddate,
+      endpoint: "api/dev/attendancekpi/",
       ppresent: this.percentpresent
     };
   },
@@ -60,6 +85,7 @@ export default {
   },
   methods: {
     fetch() {
+      this.endpoint = "api/dev/attendancekpi/" + this.schoolname + "/" + this.enddate;
       axios.get(this.endpoint).then(({ data }) => {
         this.ppresent = data.data[0].ppresent;
         this.loaded = true;
@@ -71,6 +97,40 @@ export default {
     refresh() {
       this.loaded = false;
       this.fetch();
+    }
+  },
+  computed: {
+    formattedStartDate() {
+      return this.startdate
+        ? format(parseISO(this.startdate), "iiii, do MMM yyyy")
+        : "";
+    },
+    formattedEndDate() {
+      return this.enddate
+        ? format(parseISO(this.enddate), "iiii, do MMM yyyy")
+        : "";
+    },
+    getschoolname() {
+      return this.$store.getters.getschoolname;
+    },
+    getstartdate: {
+      get: function() {
+        return this.$store.getters.getstartdate;
+      },
+      set: function(newDate) {
+        this.$store.commit("updateStartDate", newDate);
+      }
+    },
+    getenddate: {
+      get: function() {
+        return this.$store.getters.getenddate;
+      },
+      set: function(newDate) {
+        this.$store.commit("updateEndDate", newDate);
+      }
+    },
+    getstudentid() {
+      return this.$store.getters.getstudentid;
     }
   }
 };

@@ -11,17 +11,17 @@
             </v-col>
             <v-col>
               <v-btn
-                :href="'http://fcatdata/rs/Pages/ReportViewer.aspx?%2fFCAT+Data+SSRS%2fCoreSubjectSummaryByYear&school='+schoolname+'&rs:Command=Render&rc:LinkTarget=main&rs:Format=HTML4.0'"
+                :href="'http://fcatdata/rs/Pages/ReportViewer.aspx?%2fFCAT+Data+SSRS%2fStudentSubjectCWAandOTIbyClass&school='+schoolname+'&rs:Command=Render&rc:LinkTarget=main&rs:Format=HTML4.0'"
                 onclick="return !window.open(this.href, 'Subject Summary Grid', 'width=1024,height=768')"
-                color="orange darken-1"
+                color="teal darken-1"
                 class="white--text"
-              >Core Subject Summary by Year</v-btn>
+              >Student Core Subject Summary by Class</v-btn>
             </v-col>
               <v-col>
                 <v-btn
                   :href="'http://fcatdata/rs/Pages/ReportViewer.aspx?%2fFCAT+Data+SSRS%2fCoreSubjectSummaryByYear&school='+schoolname+'&rs:Command=Render'"
                   onclick="return !window.open(this.href, 'Subject Summary Grid', 'width=1024,height=768')"
-                  color="orange darken-1"
+                  color="green darken-1"
                   class="white--text"
                 >
                   Core Subject Summary by Year
@@ -31,7 +31,7 @@
                 <v-btn
                   :href="'http://fcatdata/rs/Pages/ReportViewer.aspx?%2fFCAT+Data+SSRS%2fSubjectSummaryByYear&school='+schoolname+'&rs:Command=Render'"
                   onclick="return !window.open(this.href, 'Subject Summary Grid', 'width=1024,height=768')"
-                  color="orange darken-1"
+                  color="green darken-1"
                   class="white--text"
                 >
                   Subject Summary by Year

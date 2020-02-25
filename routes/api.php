@@ -37,6 +37,9 @@ Route::get('/dev/paatriskstudents/{schoolname}/{enddate}', 'Api\AnalysisControll
 
 Route::get('/dev/exclusionsstudents/{schoolname}', 'Api\AnalysisController@exclusionsstudents');
 
+Route::get('/dev/students/{schoolname}', 'Api\StudentsController@list');
+Route::get('/dev/student/{schoolname}/{id}', 'Api\StudentsController@show');
+
 Route::get('/dev/fcat/norkpi/{schoolname}', 'Api\FCATAnalysisController@norkpi');
 Route::get('/dev/fcat/ppkpi/{schoolname}', 'Api\FCATAnalysisController@ppkpi');
 Route::get('/dev/fcat/attendancekpi/{schoolname}/{enddate}', 'Api\FCATAnalysisController@attendancekpi');
@@ -55,6 +58,7 @@ Route::get('/dev/fcat/paatrisk/{schoolname}/{enddate}', 'Api\FCATAnalysisControl
 Route::get('/dev/fcat/paatriskstudents/{schoolname}/{enddate}', 'Api\FCATAnalysisController@paatriskstudents');
 
 Route::get('/dev/fcat/exclusionsstudents/{schoolname}', 'Api\FCATAnalysisController@exclusionsstudents');
+
 
 
 
