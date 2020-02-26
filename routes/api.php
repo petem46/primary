@@ -42,7 +42,7 @@ Route::get('/dev/student/details/{schoolname}/{id}', 'Api\StudentsController@det
 Route::get('/dev/student/attendance/{schoolname}/{id}', 'Api\StudentsController@attendance');
 Route::get('/dev/student/weekdayattendance/{schoolname}/{id}', 'Api\StudentsController@weekdayattendance');
 Route::get('/dev/student/weeklyrunningattendance/{schoolname}/{id}', 'Api\StudentsController@weeklyrunningattendance');
-Route::get('/dev/student/data/{schoolname}/{id}', 'Api\StudentsController@data');
+Route::get('/dev/student/assessmentdata/{schoolname}/{id}', 'Api\StudentsController@assessmentdata');
 
 Route::get('/dev/fcat/norkpi/{schoolname}', 'Api\FCATAnalysisController@norkpi');
 Route::get('/dev/fcat/ppkpi/{schoolname}', 'Api\FCATAnalysisController@ppkpi');

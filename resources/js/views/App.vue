@@ -3,8 +3,6 @@
     <v-navigation-drawer
       v-model="drawer"
       :clipped="$vuetify.breakpoint.lgAndUp"
-      :expand-on-hover="false"
-      :mini-variant="false"
       app
     >
       <v-list dense>
@@ -81,8 +79,7 @@
 
     <v-app-bar
       :clipped-left="$vuetify.breakpoint.lgAndUp"
-      collapse-on-scroll:
-      true
+      false
       app
       color="teal darken-3"
       dark
@@ -94,7 +91,7 @@
       >
         <span class="hidden-sm-and-down">
           <v-icon>mdi-hexagon-multiple-outline</v-icon>
-          &nbsp;&nbsp;&nbsp;{{ appName }} || {{schoolname}}
+          &nbsp;&nbsp;&nbsp;{{ appName }}
         </span>
       </v-toolbar-title>
       <v-spacer />
@@ -103,20 +100,6 @@
       </v-btn>
       <v-btn icon>
         <v-icon>mdi-bell</v-icon>
-      </v-btn>
-      <v-btn
-        icon
-        large
-      >
-        <v-avatar
-          size="32px"
-          item
-        >
-          <v-img
-            src="https://cdn.vuetifyjs.com/images/logos/logo.svg"
-            alt="Vuetify"
-          />
-        </v-avatar>
       </v-btn>
     </v-app-bar>
 

@@ -131,7 +131,7 @@ class StudentsController extends Controller
         return 'NOOPE';
     }
 
-    public function data($school, $id)
+    public function assessmentdata($school, $id)
     {
         $upn = Student::select('upn', 'school')->find($id);
         $enddate = Carbon::yesterday()->toDateString();

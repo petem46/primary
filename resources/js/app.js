@@ -1,16 +1,14 @@
-
-require('./bootstrap');
-require('./plugins/swal');
-
 import Vue from 'vue'
 import Vuex from 'vuex'
 import VueRouter from 'vue-router'
+import Vuetify from 'vuetify'
 
 Vue.use(Vuex)
 Vue.use(VueRouter)
-
-import Vuetify from 'vuetify'
 Vue.use(Vuetify)
+
+require('./bootstrap');
+require('./plugins/swal');
 
 Vue.component(
     'passport-clients',
@@ -28,14 +26,14 @@ Vue.component(
 );
 
 import App from './views/App'
-import Dash from './components/Dash'
-import Summary from './components/Summary'
-import Assessment from './components/Assessment'
-import Attendance from './components/Attendance'
-import FCAT from './components/Dash'
-import Students from './components/dash/StudentList'
-import Student from './components/dash/Student'
-import Behaviour from './components/Dash'
+import Dash from './views/Dash'
+import Summary from './views/Summary'
+import Assessment from './views/Assessment'
+import Attendance from './views/Attendance'
+import FCAT from './views/Dash'
+import StudentList from './views/StudentList'
+import Student from './views/Student'
+import Behaviour from './views/Behaviour'
 
 const store = new Vuex.Store({
 
@@ -109,7 +107,7 @@ const router = new VueRouter({
         {
             path: '/students',
             name: 'Students',
-            component: Students,
+            component: StudentList,
         },
         {
             path: '/student',

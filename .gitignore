@@ -1,6 +1,7 @@
 /node_modules
 /public/hot
 /public/storage
+/public/images/gateway
 /storage/*.key
 /vendor
 /config/services.php
