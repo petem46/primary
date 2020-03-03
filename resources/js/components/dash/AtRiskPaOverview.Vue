@@ -122,6 +122,7 @@
         </v-data-table>
         <v-divider></v-divider>
         <v-card-actions>
+          <v-spacer />
           <v-btn
             text
             small
@@ -162,6 +163,7 @@
         ></v-data-table>
         <v-divider></v-divider>
         <v-card-actions>
+          <v-spacer />
           <v-btn
             text
             small
@@ -198,6 +200,7 @@
         />
         <v-divider></v-divider>
         <v-card-actions>
+          <v-spacer />
           <v-btn
             text
             small

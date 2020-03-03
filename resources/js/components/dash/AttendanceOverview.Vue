@@ -27,6 +27,7 @@
       />
       <v-divider></v-divider>
       <v-card-actions>
+        <v-spacer />
         <v-btn
           dark
           color="teal darken-1"
@@ -64,6 +65,7 @@
       <v-skeleton-loader type="list-item-avatar, list-item-three-line, card-heading, actions"></v-skeleton-loader>
       <v-divider></v-divider>
       <v-card-actions>
+        <v-spacer></v-spacer>
         <v-btn
           text
           disabled
