@@ -74,10 +74,10 @@ export default {
     };
   },
   created() {
-    this.fetch();
-  },
+    },
   mounted() {
-    console.log("Year Group Summary Mounted.");
+    this.endpoint = "api/dev/yeargroupsummary/" + this.schoolname
+    this.fetch();
   },
   methods: {
     fetch() {

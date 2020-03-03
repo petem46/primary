@@ -2,10 +2,12 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import VueRouter from 'vue-router'
 import Vuetify from 'vuetify'
+import VueFilterDateFormat from 'vue-filter-date-format'
 
 Vue.use(Vuex)
 Vue.use(VueRouter)
 Vue.use(Vuetify)
+Vue.use(VueFilterDateFormat)
 
 require('./bootstrap');
 require('./plugins/swal');
@@ -38,10 +40,12 @@ import Behaviour from './views/Behaviour'
 const store = new Vuex.Store({
 
     state: {
-        schoolname: 'Aspire',
+        schoolname: null,
         startdate: '2019-08-26',
-        enddate: '2020-02-20',
-        studentid: '0',
+        enddate: null,
+        studentid: null,
+        whodis: [],
+        whodisschool: null,
     },
     mutations: {
         updateCore(state, sn, sd, ed) {
@@ -61,6 +65,12 @@ const store = new Vuex.Store({
         updateStudentid(state, id) {
             state.studentid = id;
         },
+        setUser(state, user) {
+          state.whodis = user;
+        },
+        setWhoDisSchool(state, school) {
+          state.whodisschool = school;
+        },
     },
     actions: {
 
@@ -77,6 +87,12 @@ const store = new Vuex.Store({
         },
         getstudentid(state) {
             return state.studentid;
+        },
+        getwhodis(state) {
+          return state.whodis;
+        },
+        getwhodisschool(state) {
+          return state.whodisschool;
         },
     },
 });

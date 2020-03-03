@@ -109,7 +109,7 @@ class StudentsController extends Controller
         if($school === $upn->school || $school === 'FCAT' || $school === 'fcat') {
             $aupn = $upn->upn;
             $data = [
-                'weekdayattendance' => DB::select(" exec sp_att_studentWeekDay19 @enddate = '$enddate', @upn = '$aupn' "),
+                'weekdayattendance' => DB::select(" exec sp_att_RunningWeekDaybyYearStudent19 @enddate = '$enddate', @upn = '$aupn' "),
             ];
             return new StudentResource($data);
         }
@@ -124,7 +124,7 @@ class StudentsController extends Controller
         if($school === $upn->school || $school === 'FCAT' || $school === 'fcat') {
             $aupn = $upn->upn;
             $data = [
-                'weeklyrunningattendance' => DB::select(" exec sp_att_studentRunningWeek @enddate = '$enddate', @upn = '$aupn' "),
+                'weeklyrunningattendance' => DB::select(" exec sp_att_RunningWeeklybyYearStudent19 @enddate = '$enddate', @upn = '$aupn' "),
             ];
             return new StudentResource($data);
         }

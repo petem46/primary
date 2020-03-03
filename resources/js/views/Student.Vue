@@ -3,9 +3,6 @@
       <v-card
         v-if="loaded"
         class="pa-2"
-        outlined
-        raised
-        tile
       >
       <StudentDetails></StudentDetails>
       <StudentAttendance></StudentAttendance>

@@ -7,8 +7,6 @@
       <v-card
         v-if="loaded"
         class="pa-2"
-        outlined
-        raised
         tile
       >
         <v-card-title>Pupils At {{ schoolname }}</v-card-title>

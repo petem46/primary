@@ -13,6 +13,9 @@ class AnalysisController extends Controller
 {
   public function norkpi($schoolname)
   {
+    if($schoolname === 'FCAT') {
+      $schoolname = '%';
+    }
     $data = DB::select(" exec sp_studentGroupCount19 @school = '$schoolname' ");
     return new Analysis($data);
   }
@@ -25,9 +28,9 @@ class AnalysisController extends Controller
 
   public function ppkpi($schoolname)
   {
-    // $school = 'Montgomery';
-    // $schoolname = $school;
-
+    if($schoolname === 'FCAT') {
+      $schoolname = '%';
+    }
     $data = DB::select(" exec sp_studentGroupCount19 @school = '$schoolname' ");
 
     return new Analysis($data);
@@ -35,6 +38,9 @@ class AnalysisController extends Controller
 
   public function attendancekpi($schoolname, $enddate)
   {
+    if($schoolname === 'FCAT') {
+      $schoolname = '%';
+    }
     // $enddate = Carbon::yesterday()->toDateString();
     $lastFriday = Carbon::parse($enddate)->modify("last friday")->toDateString();
     $data = DB::select(" exec sp_AttendanceSchool19 @enddate = '$lastFriday', @school = '$schoolname' ");
@@ -44,6 +50,9 @@ class AnalysisController extends Controller
 
   public function pakpi($schoolname, $enddate)
   {
+    if($schoolname === 'FCAT') {
+      $schoolname = '%';
+    }
     // $enddate = Carbon::yesterday()->toDateString();
     $lastFriday = Carbon::parse($enddate)->modify("last friday")->toDateString();
     $data = DB::select(" exec sp_att_paGroups19 @enddate = '$lastFriday', @school = '$schoolname' ");
@@ -53,6 +62,9 @@ class AnalysisController extends Controller
 
   public function cohortsummary($schoolname)
   {
+    if($schoolname === 'FCAT') {
+      $schoolname = '%';
+    }
     $data = DB::select(" exec sp_studentGroupCount19 @school = '$schoolname' ");
 
     return new Analysis($data);
@@ -60,6 +72,9 @@ class AnalysisController extends Controller
 
   public function yeargroupsummary($schoolname)
   {
+    if($schoolname === 'FCAT') {
+      $schoolname = '%';
+    }
     $data = DB::select(" exec sp_studentYearCount19 @school = '$schoolname' ");
 
     return new Analysis($data);
@@ -67,6 +82,9 @@ class AnalysisController extends Controller
 
   public function startersleaverssummary($schoolname, $enddate)
   {
+    if($schoolname === 'FCAT') {
+      $schoolname = '%';
+    }
     // $enddate = Carbon::parse($enddate)->toDateString();
     $lastFriday = Carbon::parse($enddate)->modify("last friday")->toDateString();
     $data = DB::select(" exec sp_startersLeaverer19 @enddate = '$lastFriday', @school = '$schoolname' ");
@@ -76,33 +94,45 @@ class AnalysisController extends Controller
 
   public function attendanceweekly($schoolname, $enddate)
   {
+    if($schoolname === 'FCAT') {
+      $schoolname = '%';
+    }
     // $enddate = Carbon::yesterday()->toDateString();
     $lastFriday = Carbon::parse($enddate)->modify("last friday")->toDateString();
-    $data = DB::select(" exec sp_att_schoolRunningWeek19 @enddate = '$lastFriday', @school = '$schoolname' ");
+    $data = DB::select(" exec sp_att_RunningWeeklybySchool19 @enddate = '$lastFriday', @school = '$schoolname' ");
 
     return new Analysis($data);
   }
 
   public function attendanceyear($schoolname, $enddate)
   {
+    if($schoolname === 'FCAT') {
+      $schoolname = '%';
+    }
     // $enddate = Carbon::yesterday()->toDateString();
     $lastFriday = Carbon::parse($enddate)->modify("last friday")->toDateString();
-    $data = DB::select(" exec sp_att_yearRunningWeek19 @enddate = '$lastFriday', @school = '$schoolname', @week = '$week' ");
+    $data = DB::select(" exec sp_att_RunningWeeklybyYear19 @enddate = '$lastFriday', @school = '$schoolname', @week = '$week' ");
 
     return new Analysis($data);
   }
 
   public function attendanceweek($schoolname, $enddate, $week)
   {
+    if($schoolname === 'FCAT') {
+      $schoolname = '%';
+    }
     // $enddate = Carbon::yesterday()->toDateString();
     $lastFriday = Carbon::parse($enddate)->modify("last friday")->toDateString();
-    $data = DB::select(" exec sp_att_yearRunningWeek19 @enddate = '$lastFriday', @school = '$schoolname', @week = '$week' ");
+    $data = DB::select(" exec sp_att_RunningWeeklybyYear19 @enddate = '$lastFriday', @school = '$schoolname', @week = '$week' ");
 
     return new Analysis($data);
   }
 
   public function attendancepie($schoolname, $enddate)
   {
+    if($schoolname === 'FCAT') {
+      $schoolname = '%';
+    }
     // $enddate = Carbon::yesterday()->toDateString();
     $lastFriday = Carbon::parse($enddate)->modify("last friday")->toDateString();
     $data = DB::select(" exec sp_AttendanceSchool19 @enddate = '$lastFriday', @school = '$schoolname' ");
@@ -112,6 +142,9 @@ class AnalysisController extends Controller
 
   public function paatrisk($schoolname, $enddate)
   {
+    if($schoolname === 'FCAT') {
+      $schoolname = '%';
+    }
     // $enddate = Carbon::yesterday()->toDateString();
     $lastFriday = Carbon::parse($enddate)->modify("last friday")->toDateString();
     $data = [
@@ -123,6 +156,9 @@ class AnalysisController extends Controller
 
   public function paatriskstudents($schoolname, $enddate)
   {
+    if($schoolname === 'FCAT') {
+      $schoolname = '%';
+    }
     // $enddate = Carbon::yesterday()->toDateString();
     // $lastFriday = Carbon::parse($enddate)->modify("last friday")->toDateString();
     $data = DB::select(" exec sp_AttendancePAStudents19 @enddate = '$enddate', @school = '$schoolname' ");
@@ -132,6 +168,9 @@ class AnalysisController extends Controller
 
   public function exclusionsstudents($schoolname)
   {
+    if($schoolname === 'FCAT') {
+      $schoolname = '%';
+    }
     $data = [
       'exstudents' => DB::select(" exec sp_exclusions19 @school = '$schoolname' "),
       'exgroups' => DB::select(" exec sp_exclusions19 @school = '$schoolname' "),

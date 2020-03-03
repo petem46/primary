@@ -9,6 +9,10 @@ class SpaController extends Controller
 {
     public function index()
     {
-        return view('/analysis/dev');
+      $data = [
+        'whodisschool' => User::first()->getSchool(),
+      ];
+      // dd($whodisschool);
+        return view('/analysis/dev', $data);
     }
 }

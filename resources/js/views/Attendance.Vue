@@ -135,7 +135,6 @@ export default {
 		// this.fetch();
 	},
 	mounted() {
-		console.log("Dashboard Mounted.");
 	},
 	methods: {
 		fetch() {

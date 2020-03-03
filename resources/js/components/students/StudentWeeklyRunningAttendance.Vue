@@ -1,15 +1,15 @@
 <template>
   <div class="container">
-    <p class="headline font-weight-light teal--text text--darken-2"><v-icon color="teal darken-2">far fa-chart-bar fa-fw</v-icon>  Attendance Running Weekly</p>
+    <p class="headline font-weight-light teal--text text--darken-2">
+      <v-icon color="teal darken-2">far fa-chart-bar fa-fw</v-icon> Attendance Running Weekly
+    </p>
     <v-row class="mx-0">
       <v-col
         cols="12"
         md="8"
         class="pa-0"
       >
-        <v-simple-table
-          fixed-header
-        >
+        <v-simple-table fixed-header>
           <thead class="th--dark th--text-center">
             <tr>
               <th>Week</th>
@@ -68,7 +68,6 @@ export default {
         this.schoolname +
         "/" +
         this.studentid;
-      console.log(this.endpoint);
       console.log("weeklyrunningattendance");
       axios.get(this.endpoint).then(({ data }) => {
         this.weeklyrunningattendance = data.data.weeklyrunningattendance;

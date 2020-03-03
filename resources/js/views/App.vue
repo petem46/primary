@@ -95,9 +95,75 @@
         </span>
       </v-toolbar-title>
       <v-spacer />
+
+      <v-menu
+        bottom
+        left
+        :close-on-content-click="closeOnContentClick"
+      >
+        <template v-slot:activator="{ on }">
+          <v-btn
+            icon
+            v-on="on"
+          >
+            <v-icon>mdi-home-city-outline</v-icon>
+          </v-btn>
+        </template>
+          <v-list dense>
+        <v-list-item-group
+          color="primary"
+        >
+            <v-subheader>Trust</v-subheader>
+            <v-list-item>
+              <router-link
+                  v-on:click.native="updateCore('FCAT', startdate, enddate)"
+                  exact
+                  exact-active-class="teal--text"
+                  :to="{ name: Summary }"
+                ><v-icon>mdi-domain</v-icon>FCAT
+              </router-link>
+            </v-list-item>
+        </v-list-item-group>
+            <v-subheader>All Through</v-subheader>
+            <v-list-item>
+              <v-list-item-title>Armfield</v-list-item-title>
+            </v-list-item>
+            <v-list-item>
+              <v-list-item-title>Unity</v-list-item-title>
+            </v-list-item>
+            <v-subheader>Secondary</v-subheader>
+            <v-list-item>
+              <v-list-item-title>Aspire</v-list-item-title>
+            </v-list-item>
+            <v-list-item>
+              <v-list-item-title>Garstang</v-list-item-title>
+            </v-list-item>
+            <v-list-item>
+              <v-list-item-title>Montgomery</v-list-item-title>
+            </v-list-item>
+            <v-subheader>Primary</v-subheader>
+            <v-list-item>
+              <v-list-item-title>Gateway</v-list-item-title>
+            </v-list-item>
+            <v-list-item>
+              <v-list-item-title>Hambleton</v-list-item-title>
+            </v-list-item>
+            <v-list-item>
+              <v-list-item-title>Mereside</v-list-item-title>
+            </v-list-item>
+            <v-list-item>
+              <v-list-item-title>Westcliff</v-list-item-title>
+            </v-list-item>
+            <v-list-item>
+              <v-list-item-title>Westminster</v-list-item-title>
+            </v-list-item>
+          </v-list>
+      </v-menu>
+
       <v-btn icon>
         <v-icon>mdi-apps</v-icon>
       </v-btn>
+
       <v-btn icon>
         <v-icon>mdi-bell</v-icon>
       </v-btn>
@@ -134,15 +200,26 @@ import format from "date-fns/format";
 // import subDays from 'date-fns/sub_days'
 import parseISO from "date-fns/parseISO";
 export default {
+  props: [
+    "whodis",
+    "whodisavatar",
+    "whodisemail",
+    "whodisid",
+    "whodisname",
+    "whodisschool",
+    "whodisusergroup_id"
+  ],
   data: () => ({
     appName: "myDataDash",
+    closeOnContentClick: true,
     fab: false,
     dialog: false,
     drawer: null,
+    who: [],
     items: [
       {
         icon: "mdi-account-multiple",
-        name: "Students",
+        name: "Students"
         // iconsize: "small"
       },
       {
@@ -179,11 +256,11 @@ export default {
         children: [
           {
             icon: "mdi-domain",
-            school: "Armfield",
+            school: "Armfield"
           },
           {
             icon: "mdi-domain",
-            school: "Unity",
+            school: "Unity"
             // iconsize: "small"
           }
         ]
@@ -238,6 +315,20 @@ export default {
       }
     ]
   }),
+  mounted() {
+    this.$store.commit("setUser", this.whodis);
+    /** SET SCHOOL NAME FROM USER EMAIL */
+    console.log(this.whodisschool);
+    if (this.$store.getters.getschoolname === null) {
+      this.$store.commit("updateSchoolName", this.whodisschool);
+      this.$store.commit("setWhoDisSchool", this.whodisschool);
+    }
+
+    /** SET END DATE TO TODAY */
+    if (this.$store.getters.getenddate === null) {
+      this.$store.commit("updateEndDate", format(new Date(), "yyyy-MM-dd"));
+    }
+  },
   methods: {
     onScroll(e) {
       if (typeof window === "undefined") return;
@@ -246,6 +337,9 @@ export default {
     },
     toTop() {
       this.$vuetify.goTo(0);
+    },
+    storeUser(user) {
+      this.$store.commit("setUser", user);
     },
     updateSchoolName(sn) {
       this.$store.commit("updateSchoolName", sn);

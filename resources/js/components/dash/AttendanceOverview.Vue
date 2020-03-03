@@ -1,6 +1,16 @@
 <template>
-  <v-col cols="12" lg="7" xl="8">
-    <v-card v-if="loaded" class="pa-2" outlined raised tile>
+  <v-col
+    cols="12"
+    lg="7"
+    xl="8"
+  >
+    <v-card
+      v-if="loaded"
+      class="pa-2"
+      outlined
+      raised
+      tile
+    >
       <v-card-title>Attendance Overview</v-card-title>
       <v-card-text>
         <v-icon>mdi-calendar-multiselect</v-icon>
@@ -17,17 +27,47 @@
       />
       <v-divider></v-divider>
       <v-card-actions>
-        <v-btn text small color="teal darken-1">Full Report</v-btn>
+        <v-btn
+          dark
+          color="teal darken-1"
+          :href="'http://fcatdata/rs/Pages/ReportViewer.aspx?%2fFCAT+Data+SSRS%2fAttendanceWeekly19&school='+schoolname+'&rs:Command=Render&rc:LinkTarget=main&rs:Format=HTML4.0'"
+          onclick="return !window.open(this.href, 'Weekly Attendance', 'width=1024,height=768')"
+        >
+          <v-icon left>mdi-file-table-outline</v-icon>
+          <span>Groups Weekly Report</span>
+        </v-btn>
+        <v-btn
+          dark
+          color="teal darken-1"
+          :href="'http://fcatdata/rs/Pages/ReportViewer.aspx?%2fFCAT+Data+SSRS%2fAttendanceStudentWeekly19&school='+schoolname+'&rs:Command=Render&rc:LinkTarget=main&rs:Format=HTML4.0'"
+          onclick="return !window.open(this.href, 'Student Weekly Attendance by Class', 'width=1024,height=768')"
+        >
+          <v-icon left>mdi-file-table-outline</v-icon>
+          <span>
+            Student Weekly Report</span>
+        </v-btn>
       </v-card-actions>
     </v-card>
-    <v-card v-if="!loaded" class="pa-2" outlined raised tile>
-      <v-progress-linear indeterminate color="teal"></v-progress-linear>
+    <v-card
+      v-if="!loaded"
+      class="pa-2"
+      outlined
+      raised
+      tile
+    >
+      <v-progress-linear
+        indeterminate
+        color="teal"
+      ></v-progress-linear>
       <v-card-title>Attendance Overview</v-card-title>
       <v-divider></v-divider>
       <v-skeleton-loader type="list-item-avatar, list-item-three-line, card-heading, actions"></v-skeleton-loader>
       <v-divider></v-divider>
       <v-card-actions>
-        <v-btn text disabled>Loading...</v-btn>
+        <v-btn
+          text
+          disabled
+        >Loading...</v-btn>
       </v-card-actions>
     </v-card>
   </v-col>
@@ -61,7 +101,7 @@ export default {
       this.endpoint =
         "api/dev/attendanceweekly/" + this.schoolname + "/" + this.enddate;
       this.refresh();
-    },
+    }
   },
   data() {
     return {
