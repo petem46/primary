@@ -1,11 +1,13 @@
 <template>
   <v-app id="mydatadash">
     <v-navigation-drawer
-      v-model="drawer"
-      :clipped="$vuetify.breakpoint.lgAndUp"
       app
-      :mini-variant=true
+      :clipped="$vuetify.breakpoint.lgAndUp"
+      dark
       expand-on-hover
+      :mini-variant=true
+      v-model="drawer"
+      class="grey darken-3"
     >
       <v-list dense>
         <template v-for="item in items">
@@ -33,30 +35,11 @@
                 <v-list-item-title @click="updateCore(child.school, startdate, enddate)">
                   <router-link
                     exact
-                    :to="{ name: 'Summary' }"
                   >{{ child.school }}</router-link>
                 </v-list-item-title>
               </v-list-item-content>
             </v-list-item>
           </v-list-group>
-          <!-- <v-list-item
-            v-if="item.fcat"
-            :key="item.fcat"
-            link
-          >
-            <v-list-item-action>
-              <v-icon>{{ item.icon }}</v-icon>
-            </v-list-item-action>
-            <v-list-item-content>
-              <v-list-item-title @click="updateCore('FCAT', startdate, enddate)">
-                <router-link
-                  exact
-                  exact-active-class="teal--text"
-                  :to="{ name: 'dash' }"
-                >{{ item.name }}</router-link>
-              </v-list-item-title>
-            </v-list-item-content>
-					</v-list-item>-->
           <v-list-item
             v-else
             :key="item.name"
@@ -69,7 +52,7 @@
               <v-list-item-title>
                 <router-link
                   exact
-                  exact-active-class="teal--text"
+                  exact-active-class="teal--yellow"
                   :to="{ name: item.name }"
                 >{{ item.name }}</router-link>
               </v-list-item-title>
@@ -127,7 +110,6 @@
                   color="white"
                   link
                   v-on:click.native="updateCore('FCAT', startdate, enddate)"
-                  :to="{ name: 'Summary' }"
                 >
                   <v-avatar color="teal darken-2">
                     <v-icon dark>mdi-lan</v-icon>
@@ -143,7 +125,6 @@
                   color="white"
                   link
                   v-on:click.native="updateCore('Armfield', startdate, enddate)"
-                  :to="{ name: 'Summary' }"
                 >
                   <v-avatar color="white">
                     <img
@@ -162,7 +143,6 @@
                   color="white"
                   link
                   v-on:click.native="updateCore('Aspire', startdate, enddate)"
-                  :to="{ name: 'Summary' }"
                 >
                   <v-avatar color="white">
                     <img
@@ -186,7 +166,6 @@
                   color="white"
                   link
                   v-on:click.native="updateCore('Garstang', startdate, enddate)"
-                  :to="{ name: 'Summary' }"
                 >
                   <v-avatar color="blue">
                     <span class="white--text headline">GCA</span>
@@ -202,7 +181,6 @@
                   color="white"
                   link
                   v-on:click.native="updateCore('Gateway', startdate, enddate)"
-                  :to="{ name: 'Summary' }"
                 >
                   <v-avatar color="white">
                     <img
@@ -214,7 +192,10 @@
                 <p>Gateway</p>
               </v-col>
               <v-col>
-                <v-avatar color="red darken-1">
+                <v-avatar
+                  color="red darken-1"
+                  v-on:click.native="updateCore('Gateway', startdate, enddate)"
+                >
                   <span class="white--text headline">H</span>
                 </v-avatar>
                 <p>Hambleton</p>
@@ -232,7 +213,6 @@
                   color="white"
                   link
                   v-on:click.native="updateCore('Mereside', startdate, enddate)"
-                  :to="{ name: 'Summary' }"
                 >
                   <v-avatar color="red">
                     <span class="white--text headline">M</span>
@@ -248,7 +228,6 @@
                   color="white"
                   link
                   v-on:click.native="updateCore('Montgomery', startdate, enddate)"
-                  :to="{ name: 'Summary' }"
                 >
                   <v-avatar color="white">
                     <img
@@ -267,7 +246,6 @@
                   color="white"
                   link
                   v-on:click.native="updateCore('Unity', startdate, enddate)"
-                  :to="{ name: 'Summary' }"
                 >
                   <v-avatar color="grey darken-4">
                     <span class="white--text headline">U</span>
@@ -288,7 +266,6 @@
                   color="white"
                   link
                   v-on:click.native="updateCore('Westcliff', startdate, enddate)"
-                  :to="{ name: 'Summary' }"
                 >
                   <v-avatar color="red">
                     <span class="white--text headline">WC</span>
@@ -304,7 +281,6 @@
                   color="white"
                   link
                   v-on:click.native="updateCore('Westminster', startdate, enddate)"
-                  :to="{ name: 'Summary' }"
                 >
                   <v-avatar color="teal">
                     <span class="white--text headline">WM</span>
@@ -358,22 +334,7 @@
         <v-icon>mdi-chevron-up</v-icon>
       </v-btn>
     </v-fab-transition>
-    <v-footer
-      dark
-      padless
-      color="teal darken-2"
-      class="pt-5"
-    >
-      <v-card
-        class="flex"
-        flat
-        tile
-      >
-        <v-card-text class="py-2 white--text text-center">
-          {{ new Date().getFullYear() }} — <strong>Pete</strong>
-        </v-card-text>
-      </v-card>
-    </v-footer>
+
   </v-app>
 </template>
 
@@ -393,12 +354,14 @@ export default {
   ],
   data: () => ({
     appName: "myDataDash",
+    bottomNav: 3,
     closeOnContentClick: true,
     openOnHover: false,
     offsetY: true,
     fab: false,
     dialog: false,
     drawer: null,
+    loaded: false,
     who: [],
     icons: [
       "fab fa-facebook",
@@ -433,86 +396,15 @@ export default {
         icon: "mdi-account-clock-outline",
         name: "Exclusions"
       }
-      // {
-      // 	icon: "mdi-content-copy",
-      // 	name: "FCAT",
-      // 	school: "FCAT",
-      // 	fcat: "FCAT"
-      // },
-      // {
-      // 	icon: "mdi-chevron-up",
-      // 	"icon-alt": "mdi-chevron-down",
-      // 	text: "All Through",
-      // 	model: false,
-      // 	children: [
-      // 		{
-      // 			icon: "mdi-domain",
-      // 			school: "Armfield"
-      // 		},
-      // 		{
-      // 			icon: "mdi-domain",
-      // 			school: "Unity"
-      // 			// iconsize: "small"
-      // 		}
-      // 	]
-      // },
-      // {
-      // 	icon: "mdi-chevron-up",
-      // 	"icon-alt": "mdi-chevron-down",
-      // 	text: "Secondary",
-      // 	model: false,
-      // 	children: [
-      // 		{
-      // 			icon: "mdi-home-city-outline",
-      // 			school: "Aspire"
-      // 		},
-      // 		{
-      // 			icon: "mdi-home-city-outline",
-      // 			school: "Garstang"
-      // 		},
-      // 		{
-      // 			icon: "mdi-home-city-outline",
-      // 			school: "Montgomery"
-      // 		}
-      // 	]
-      // },
-      // {
-      // 	icon: "mdi-chevron-up",
-      // 	"icon-alt": "mdi-chevron-down",
-      // 	text: "Primary",
-      // 	model: false,
-      // 	children: [
-      // 		{
-      // 			icon: "mdi-home-group",
-      // 			school: "Gateway"
-      // 		},
-      // 		{
-      // 			icon: "mdi-home-group",
-      // 			school: "Hambleton"
-      // 		},
-      // 		{
-      // 			icon: "mdi-home-group",
-      // 			school: "Mereside"
-      // 		},
-      // 		{
-      // 			icon: "mdi-home-group",
-      // 			school: "Westcliff"
-      // 		},
-      // 		{
-      // 			icon: "mdi-home-group",
-      // 			school: "Westminster"
-      // 		}
-      // 	]
-      // }
     ]
   }),
   mounted() {
     this.$store.commit("setUser", this.whodis);
     /** SET SCHOOL NAME FROM USER EMAIL */
-    console.log(this.whodisschool);
-    if (this.$store.getters.getschoolname === null) {
+    if (this.$store.getters.getschoolname === null || this.$store.getters.getschoolname === undefined) {
       this.$store.commit("updateSchoolName", this.whodisschool);
       this.$store.commit("setWhoDisSchool", this.whodisschool);
+      this.loaded = true;
     }
 
     /** SET END DATE TO TODAY */
@@ -542,12 +434,10 @@ export default {
       this.$store.commit("updateEndDate", ed);
     },
     updateCore(sn, sd, ed) {
-      console.log("SN: " + sn);
-      console.log("SD: " + sd);
-      console.log("ED: " + ed);
       this.$store.commit("updateSchoolName", sn);
       this.$store.commit("updateStartDate", sd);
       this.$store.commit("updateEndDate", ed);
+      // this.$router.push({ name: 'Summary', params: { schoolname: this.schoolname, id: value.id } });
     }
   },
   computed: {

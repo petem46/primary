@@ -1,5 +1,12 @@
 <template>
-  <div class="container">
+  <div>
+  <div v-if="! loaded" class="container">
+    <v-progress-linear
+      indeterminate
+      color="teal"
+    ></v-progress-linear>
+  </div>
+  <div v-if="loaded" class="container">
     <p class="headline font-weight-light teal--text text--darken-2"><v-icon color="teal darken-2">far fa-list-alt fa-fw</v-icon>  Daily Breakdown</p>
     <v-row class="mx-0">
       <v-col
@@ -23,6 +30,7 @@
         </v-simple-table>
       </v-col>
     </v-row>
+  </div>
   </div>
 </template>
 <script>

@@ -1,5 +1,12 @@
 <template>
-  <div class="container">
+  <div>
+  <div v-if="! loaded" class="container">
+    <v-progress-linear
+      indeterminate
+      color="teal"
+    ></v-progress-linear>
+  </div>
+  <div v-if="loaded" class="container">
     <p class="display-1 font-weight-light teal--text text--darken-2">Assessment</p>
     <p class="title font-weight-light teal--text text--darken-2">Prior Attainment</p>
     <v-row class="mx-0">
@@ -8,6 +15,7 @@
     <v-row class="mx-0">
     </v-row>
     <v-divider class="my-3"></v-divider>
+  </div>
   </div>
 </template>
 <script>

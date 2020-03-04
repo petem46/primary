@@ -25,18 +25,19 @@
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@8.14.0/dist/sweetalert2.min.css">
+
 </head>
 <body>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8.14.0/dist/sweetalert2.all.min.js"></script>
     <script src="{{URL::asset('js/swal.js')}}"></script>
     <div id="app">
 
-        @include('layouts.nav')
+        {{-- @include('layouts.nav') --}}
         <main class="my-4">
 
             @yield('content')
         </main>
-        @include('layouts.footer')
+        {{-- @include('layouts.footer') --}}
     </div>
 
 </body>

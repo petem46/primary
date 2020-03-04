@@ -46,6 +46,7 @@ const store = new Vuex.Store({
         studentid: null,
         whodis: [],
         whodisschool: null,
+        whodisname: null,
     },
     mutations: {
         updateCore(state, sn, sd, ed) {
@@ -94,6 +95,9 @@ const store = new Vuex.Store({
         getwhodisschool(state) {
           return state.whodisschool;
         },
+        getwhodisname(state) {
+          return state.whodisname;
+        },
     },
 });
 
@@ -101,9 +105,9 @@ const router = new VueRouter({
     mode: 'history',
     routes: [
         {
-            path: '/dev',
+            path: '/',
             name: 'dash',
-            component: Dash,
+            component: Summary,
         },
         {
             path: '/summary',

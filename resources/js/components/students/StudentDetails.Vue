@@ -1,5 +1,12 @@
 <template>
-  <div class="container">
+  <div>
+  <div v-if="! loaded" class="container">
+    <v-progress-linear
+      indeterminate
+      color="teal"
+    ></v-progress-linear>
+  </div>
+  <div v-if="loaded" class="container">
     <v-row class="mx-0">
       <div class="photo">
 
@@ -102,6 +109,7 @@
       </v-col>
     </v-row>
     <v-divider class="my-3"></v-divider>
+  </div>
   </div>
 </template>
 <script>

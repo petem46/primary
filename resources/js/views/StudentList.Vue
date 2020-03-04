@@ -5,11 +5,10 @@
       lg="12"
     >
       <v-card
-        v-if="loaded"
         class="pa-2"
         flat
       >
-        <v-card-title>Pupils At {{ schoolname }}</v-card-title>
+        <v-card-title><h1 class="display-3">Pupils At {{ schoolname }}</h1></v-card-title>
         <v-data-table
           :headers="studentsheaders"
           :items="pupils"
@@ -19,6 +18,8 @@
           multi-sort
           class="elevation-3"
           @click:row="viewStudent"
+          :loading="! loaded"
+          loading-text="Loading... Please wait">
         >
           <template v-slot:top>
             <v-row class="px-3">
@@ -86,23 +87,8 @@
 <script>
 import axios from "axios";
 export default {
-  watch: {
-    schoolname: function() {
-      this.endpoint = "api/dev/students/" + schoolname;
-      this.refresh();
-    },
-    startdate: function() {
-      this.endpoint = "api/dev/students/" + schoolname;
-      this.refresh();
-    },
-    enddate: function() {
-      this.endpoint = "api/dev/students/" + schoolname;
-      this.refresh();
-    }
-  },
   data() {
     return {
-      // schoolname: null,
       message: null,
       loaded: false,
       endpoint: "api/dev/students/",
@@ -250,6 +236,20 @@ export default {
     studentid() {
         return this.$store.getters.getstudentid;
     }
-  }
+  },
+  watch: {
+    schoolname: function() {
+      this.endpoint = "api/dev/students/" + this.schoolname;
+      this.refresh();
+    },
+    startdate: function() {
+      this.endpoint = "api/dev/students/" + this.schoolname;
+      this.refresh();
+    },
+    enddate: function() {
+      this.endpoint = "api/dev/students/" + this.schoolname;
+      this.refresh();
+    }
+  },
 };
 </script>

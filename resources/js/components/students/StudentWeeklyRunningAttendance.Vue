@@ -1,5 +1,13 @@
 <template>
-  <div class="container">
+  <div>
+  <div v-if="! loaded" class="container">
+    <v-progress-linear
+      indeterminate
+      color="teal"
+    ></v-progress-linear>
+  </div>
+  <div v-if="loaded" class="container">
+    <v-card>
     <p class="headline font-weight-light teal--text text--darken-2">
       <v-icon color="teal darken-2">far fa-chart-bar fa-fw</v-icon> Attendance Running Weekly
     </p>
@@ -40,6 +48,8 @@
     </v-row>
 
     <v-divider class="my-3"></v-divider>
+  </v-card>
+  </div>
   </div>
 </template>
 <script>
