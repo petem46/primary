@@ -62,7 +62,8 @@
       <v-card-actions>
         <v-spacer />
         <v-btn
-          dark
+          disabled
+          text
           color="teal darken-1"
         >Action</v-btn>
       </v-card-actions>

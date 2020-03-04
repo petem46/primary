@@ -29,7 +29,7 @@
       <v-card-actions>
         <v-spacer />
         <v-btn
-          dark
+          text
           color="teal darken-1"
           :href="'http://fcatdata/rs/Pages/ReportViewer.aspx?%2fFCAT+Data+SSRS%2fAttendanceWeekly19&school='+schoolname+'&rs:Command=Render&rc:LinkTarget=main&rs:Format=HTML4.0'"
           onclick="return !window.open(this.href, 'Weekly Attendance', 'width=1024,height=768')"
@@ -38,7 +38,7 @@
           <span>Groups Weekly Report</span>
         </v-btn>
         <v-btn
-          dark
+          text
           color="teal darken-1"
           :href="'http://fcatdata/rs/Pages/ReportViewer.aspx?%2fFCAT+Data+SSRS%2fAttendanceStudentWeekly19&school='+schoolname+'&rs:Command=Render&rc:LinkTarget=main&rs:Format=HTML4.0'"
           onclick="return !window.open(this.href, 'Student Weekly Attendance by Class', 'width=1024,height=768')"

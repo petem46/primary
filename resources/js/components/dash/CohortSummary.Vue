@@ -32,7 +32,7 @@
 			<v-divider></v-divider>
 			<v-card-actions>
         <v-spacer />
-				<v-btn dark color="teal darken-1">Action</v-btn>
+				<v-btn disabled text color="teal darken-1">Action</v-btn>
 			</v-card-actions>
 		</v-card>
 	</v-col>
