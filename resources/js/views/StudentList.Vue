@@ -216,13 +216,13 @@ export default {
     setPhoto() {
 
     },
-    randomItem (items) {
-      return Math.floor(Math.random()*items);
+    randomItem(items) {
+      return items[Math.floor(Math.random() * items.length)];
     },
     randomAvatar() {
-      console.log("AVATAR = " + this.randomItem(this.avatars));
+      console.log("AVATAR = " + '"' + this.randomItem(this.avatars) + '"');
       return this.randomItem(this.avatars);
-    },    
+    },  
   },
   computed: {
     formattedStartDate() {
