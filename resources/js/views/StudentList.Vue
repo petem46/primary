@@ -64,18 +64,17 @@
           </template>
           <template v-slot:item.upn="{ item }">
           <v-avatar
-            v-if="item.upn"
             size="64"
           >
             <v-img
-              :src="'https://donkey.mydatadash.co.uk/images/gateway/' + item.upn + '.jpg'"
+              :src="randomAvatar()"
               alt="Pupil"
             aspect-ratio="1.3"
             >
             </v-img>
           </v-avatar>
-
           </template>
+
         </v-data-table>
         <v-divider></v-divider>
       </v-card>
@@ -93,6 +92,17 @@ export default {
       loaded: false,
       endpoint: "api/dev/students/",
       search: "",
+      avatars: [
+        'images/avatars/bee-icon.png',
+        'images/avatars/bird-icon.png',
+        'images/avatars/bulldog-icon.png',
+        'images/avatars/cat-icon.png',
+        'images/avatars/cow-icon.png',
+        'images/avatars/elephant-icon.png',
+        'images/avatars/fish-icon.png',
+        'images/avatars/monkey-icon.png',
+        'images/avatars/penguin-icon.png',
+      ],
       gender: "All",
       genders: ["All", "Boys", "Girls"],
       pp: "All",
@@ -177,6 +187,7 @@ export default {
   },
   created() {
     this.fetch();
+    this.randomAvatar();
   },
   mounted() {
   },
@@ -201,7 +212,17 @@ export default {
     viewStudent(value) {
       this.setStudentid(value.id);
       this.$router.push({ name: 'Student', params: { schoolname: this.schoolname, id: value.id } });
-    }
+    },
+    setPhoto() {
+
+    },
+    randomItem (items) {
+      return Math.floor(Math.random()*items);
+    },
+    randomAvatar() {
+      console.log("AVATAR = " + this.randomItem(this.avatars));
+      return this.randomItem(this.avatars);
+    },    
   },
   computed: {
     formattedStartDate() {

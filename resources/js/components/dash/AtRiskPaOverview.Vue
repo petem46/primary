@@ -122,18 +122,27 @@
         </v-data-table>
         <v-divider></v-divider>
         <v-card-actions>
-          <v-spacer />
+        <v-spacer />
           <v-btn
-            text
-            small
+            disabled
+            dark
             color="teal darken-1"
-          >Full Report</v-btn>
+            :href="'http://fcatdata/rs/Pages/ReportViewer.aspx?%2fFCAT+Data+SSRS%2fAttendanceStudentWeekly19&school='+schoolname+'&rs:Command=Render&rc:LinkTarget=main&rs:Format=HTML4.0'"
+            onclick="return !window.open(this.href, 'Student Weekly Attendance by Class', 'width=1024,height=768')"
+          >
+            <v-icon left>mdi-file-download-outline</v-icon>
+            <span>
+              Student PA Report</span>
+          </v-btn>
           <v-btn
             @click="showPupils = false"
-            text
-            small
+            dark
             color="teal darken-1"
-          >Show Groups</v-btn>
+          >            
+          <v-icon left>mdi-account-group</v-icon>
+            <span>
+              Show Groups</span>
+          </v-btn>
         </v-card-actions>
       </v-card>
     </v-col>
@@ -163,18 +172,27 @@
         ></v-data-table>
         <v-divider></v-divider>
         <v-card-actions>
-          <v-spacer />
+        <v-spacer />
           <v-btn
-            text
-            small
+          disabled
+            dark
             color="teal darken-1"
-          >Full Report</v-btn>
+            :href="'http://fcatdata/rs/Pages/ReportViewer.aspx?%2fFCAT+Data+SSRS%2fAttendanceStudentWeekly19&school='+schoolname+'&rs:Command=Render&rc:LinkTarget=main&rs:Format=HTML4.0'"
+            onclick="return !window.open(this.href, 'Student Weekly Attendance by Class', 'width=1024,height=768')"
+          >
+            <v-icon left>mdi-file-download-outline</v-icon>
+            <span>
+              Group PA Report</span>
+          </v-btn>
           <v-btn
             @click="showPupils = true"
-            text
-            small
+            dark
             color="teal darken-1"
-          >Show Pupils</v-btn>
+          >            
+          <v-icon left>mdi-account</v-icon>
+            <span>
+              Show Pupils</span>
+          </v-btn>
         </v-card-actions>
       </v-card>
     </v-col>
@@ -200,12 +218,18 @@
         />
         <v-divider></v-divider>
         <v-card-actions>
-          <v-spacer />
+        <v-spacer />
           <v-btn
-            text
-            small
+          disabled
+            dark
             color="teal darken-1"
-          >Full Report</v-btn>
+            :href="'http://fcatdata/rs/Pages/ReportViewer.aspx?%2fFCAT+Data+SSRS%2fAttendanceStudentWeekly19&school='+schoolname+'&rs:Command=Render&rc:LinkTarget=main&rs:Format=HTML4.0'"
+            onclick="return !window.open(this.href, 'Student Weekly Attendance by Class', 'width=1024,height=768')"
+          >
+            <v-icon left>mdi-file-download-outline</v-icon>
+            <span>
+              Group PA Report</span>
+          </v-btn>
         </v-card-actions>
       </v-card>
     </v-col>

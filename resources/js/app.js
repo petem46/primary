@@ -107,7 +107,7 @@ const router = new VueRouter({
         {
             path: '/',
             name: 'dash',
-            component: Summary,
+            component: Dash,
         },
         {
             path: '/summary',

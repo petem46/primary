@@ -24,7 +24,7 @@ class SocialAuthGoogleController extends Controller
         $user = $service->createOrGetUser(Socialite::driver('google')->user());
         if($user != 'DENIED') {
             auth()->login($user);
-            return redirect()->to('/home');
+            return redirect()->to('/');
         } else {
             return redirect('/notapproved')->with('warning', 'You are not an approved user');
         }

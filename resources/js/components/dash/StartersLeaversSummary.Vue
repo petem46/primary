@@ -60,14 +60,9 @@
       </v-simple-table>
       <v-divider></v-divider>
       <v-card-actions>
+        <v-spacer />
         <v-btn
-          text
-          small
-          color="teal darken-1"
-        >Action</v-btn>
-        <v-btn
-          text
-          small
+          dark
           color="teal darken-1"
         >Action</v-btn>
       </v-card-actions>
@@ -105,12 +100,17 @@ export default {
     };
   },
   mounted() {
-    this.endpoint = "api/dev/startersleaverssummary/" + this.schoolname + "/" + this.enddate;
+    this.endpoint =
+      "api/dev/startersleaverssummary/" + this.schoolname + "/" + this.enddate;
     this.fetch();
   },
   methods: {
     fetch() {
-      this.endpoint = "api/dev/startersleaverssummary/" + this.schoolname + "/" + this.enddate,
+      (this.endpoint =
+        "api/dev/startersleaverssummary/" +
+        this.schoolname +
+        "/" +
+        this.enddate),
         axios.get(this.endpoint).then(({ data }) => {
           this.years = data.data;
           this.loaded = true;

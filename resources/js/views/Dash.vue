@@ -5,7 +5,19 @@
         <h1>WELCOME , </h1>
         <h1>CURRENT SCHOOL IS {{ schoolname }}</h1>
         <h1>CHOOSE A SCHOOL FROM THE NAV BAR</h1>
-        <h1>OR CHOOSE A DASHBOARD VIEW FROM THE SIDE BAR</h1>
+        <h1
+        @click="randomAvatar"
+        >OR CHOOSE A DASHBOARD VIEW FROM THE SIDE BAR</h1>
+                <v-avatar
+            size="64"
+          >
+            <v-img
+              :src="randomAvatar()"
+              alt="Pupil"
+            >
+            </v-img>
+          </v-avatar>
+
       </v-container>
     </div>
   </div>
@@ -13,6 +25,21 @@
 <script>
 import format from "date-fns/format";
 export default {
+  data() {
+    return {
+          avatars: [
+        'images/avatars/bee-icon.png',
+        'images/avatars/bird-icon.png',
+        'images/avatars/bulldog-icon.png',
+        'images/avatars/cat-icon.png',
+        'images/avatars/cow-icon.png',
+        'images/avatars/elephant-icon.png',
+        'images/avatars/fish-icon.png',
+        'images/avatars/monkey-icon.png',
+        'images/avatars/penguin-icon.png',
+      ],
+    }
+  },
   computed: {
     schoolname () {
       return this.$store.getters.getschoolname;
@@ -39,6 +66,15 @@ export default {
     if (this.$store.getters.getenddate == null) {
       this.$store.commit("updateEndDate", format(new Date(), "yyyy-MM-dd"));
     }
+  },
+  methods: {
+        randomItem (items) {
+      return items[Math.floor(Math.random()*items.length)];
+    },
+    randomAvatar() {
+      console.log("AVATAR = " + '"' + this.randomItem(this.avatars) + '"');
+      return this.randomItem(this.avatars);
+  },
   },
 };
 

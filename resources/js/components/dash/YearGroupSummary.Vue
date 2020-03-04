@@ -47,8 +47,9 @@
       </v-simple-table>
       <v-divider></v-divider>
       <v-card-actions>
-        <v-btn v-if="! showcount" @click="showcount = true" text small color="teal darken-1">Show Count</v-btn>
-        <v-btn v-if="showcount" @click="showcount = false" text small color="teal darken-1">Show Percent</v-btn>
+        <v-spacer />
+        <v-btn v-if="! showcount" @click="showcount = true" dark color="teal darken-1">Show Count</v-btn>
+        <v-btn v-if="showcount" @click="showcount = false" dark color="teal darken-1">Show Percent</v-btn>
       </v-card-actions>
     </v-card>
   </v-col>

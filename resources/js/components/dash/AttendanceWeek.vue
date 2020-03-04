@@ -17,7 +17,16 @@
       <v-divider></v-divider>
       <v-card-actions>
         <v-spacer />
-        <v-btn text small color="teal darken-1">Full Report</v-btn>
+        <v-btn
+          disabled
+          dark
+          color="teal darken-1"
+          :href="'http://fcatdata/rs/Pages/ReportViewer.aspx?%2fFCAT+Data+SSRS%2fAttendanceWeekly19&school='+schoolname+'&rs:Command=Render&rc:LinkTarget=main&rs:Format=HTML4.0'"
+          onclick="return !window.open(this.href, 'Weekly Attendance', 'width=1024,height=768')"
+        >
+          <v-icon left>mdi-file-download-outline</v-icon>
+          <span>Weekly Report</span>
+        </v-btn>
       </v-card-actions>
     </v-card>
     <v-card v-if="! loaded" class="pa-2" outlined raised tile>

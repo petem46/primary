@@ -31,8 +31,8 @@
 			</v-simple-table>
 			<v-divider></v-divider>
 			<v-card-actions>
-				<v-btn text small color="teal darken-1">Action</v-btn>
-				<v-btn text small color="teal darken-1">Action</v-btn>
+        <v-spacer />
+				<v-btn dark color="teal darken-1">Action</v-btn>
 			</v-card-actions>
 		</v-card>
 	</v-col>

@@ -34,7 +34,7 @@
           :href="'http://fcatdata/rs/Pages/ReportViewer.aspx?%2fFCAT+Data+SSRS%2fAttendanceWeekly19&school='+schoolname+'&rs:Command=Render&rc:LinkTarget=main&rs:Format=HTML4.0'"
           onclick="return !window.open(this.href, 'Weekly Attendance', 'width=1024,height=768')"
         >
-          <v-icon left>mdi-file-table-outline</v-icon>
+          <v-icon left>mdi-file-download-outline</v-icon>
           <span>Groups Weekly Report</span>
         </v-btn>
         <v-btn
@@ -43,7 +43,7 @@
           :href="'http://fcatdata/rs/Pages/ReportViewer.aspx?%2fFCAT+Data+SSRS%2fAttendanceStudentWeekly19&school='+schoolname+'&rs:Command=Render&rc:LinkTarget=main&rs:Format=HTML4.0'"
           onclick="return !window.open(this.href, 'Student Weekly Attendance by Class', 'width=1024,height=768')"
         >
-          <v-icon left>mdi-file-table-outline</v-icon>
+          <v-icon left>mdi-file-download-outline</v-icon>
           <span>
             Student Weekly Report</span>
         </v-btn>

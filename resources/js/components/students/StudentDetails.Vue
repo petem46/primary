@@ -20,7 +20,7 @@
             size="128"
           >
             <v-img
-              :src="'https://donkey.mydatadash.co.uk/images/gateway/' + student.upn + '.jpg'"
+              :src="'https://fcat.mydatadash.co.uk/images/gateway/' + student.upn + '.jpg'"
               alt="Pupil"
             aspect-ratio="1.3"
             >

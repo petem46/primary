@@ -315,7 +315,7 @@
     <!-- MAIN CONTENT - VUE ROUTER SPA -->
     <!-- ***************************** -->
 
-    <v-content>
+    <v-content class="mb-12">
       <router-view></router-view>
     </v-content>
 
