@@ -34,11 +34,10 @@ import parseISO from "date-fns/parseISO";
 export default {
   data() {
     return {
-      // schoolname: null,
       message: null,
       loaded: false,
       weekdayattendance: [],
-      endpoint: "api/dev/student/weekdayattendance/"
+      endpoint: null,
     };
   },
   created() {

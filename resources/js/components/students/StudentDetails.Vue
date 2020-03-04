@@ -115,7 +115,7 @@ export default {
       message: null,
       loaded: false,
       student: [],
-      endpoint: "api/dev/student/details/"
+      endpoint: null,
     };
   },
   created() {
@@ -126,8 +126,6 @@ export default {
     fetch() {
       this.endpoint =
         "api/dev/student/details/" + this.schoolname + "/" + this.studentid;
-      console.log(this.endpoint);
-      console.log("details");
       axios.get(this.endpoint).then(({ data }) => {
         this.student = data.data.student;
         this.loaded = true;

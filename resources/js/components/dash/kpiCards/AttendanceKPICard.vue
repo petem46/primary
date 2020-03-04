@@ -73,8 +73,7 @@ export default {
       message: null,
       loaded: false,
       school: null,
-      endpoint: "api/dev/attendancekpi/",
-      ppresent: this.percentpresent
+      endpoint: null,
     };
   },
   created() {

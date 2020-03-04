@@ -35,7 +35,7 @@ export default {
     return {
       message: null,
       loaded: false,
-      endpoint: "api/dev/norkpi/" + this.schoolname,
+      endpoint: null,
       school: this.schoolname,
       norcount: this.count
     };
@@ -48,6 +48,7 @@ export default {
   },
   methods: {
     fetch() {
+      this.endpoint = "api/dev/norkpi/" + this.schoolname;
       axios.get(this.endpoint).then(({ data }) => {
         this.norcount = data.data[0].Count;
         // setTimeout(() => this.loaded = true, Math.floor(Math.random() * 1500) + 750);

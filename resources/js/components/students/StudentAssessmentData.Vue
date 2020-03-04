@@ -19,11 +19,10 @@ import parseISO from "date-fns/parseISO";
 export default {
   data() {
     return {
-      // schoolname: null,
       message: null,
       loaded: false,
       assessmentdata: [],
-      endpoint: "api/dev/student/assessmentdata/"
+      endpoint: null,
     };
   },
   created() {
@@ -37,8 +36,6 @@ export default {
         this.schoolname +
         "/" +
         this.studentid;
-      console.log(this.endpoint);
-      console.log("assessmentdata");
       axios.get(this.endpoint).then(({ data }) => {
         this.student = data.data.student;
         this.ppa = data.data.ppa;

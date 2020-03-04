@@ -3,6 +3,7 @@
       <v-card
         v-if="loaded"
         class="pa-2"
+        flat
       >
       <StudentDetails></StudentDetails>
       <StudentAttendance></StudentAttendance>
@@ -48,12 +49,9 @@ export default {
 	methods: {
 		fetch() {
 			this.endpoint = "api/dev/student/details/" + this.schoolname + "/" + this.studentid;
-        console.log(this.endpoint);
-					console.log('WIIGLELELEL');
 			axios
 				.get(this.endpoint)
 				.then(({ data }) => {
-					console.log('WIIGLELELEL');
 					this.student = data.data.student;
           this.loaded = true;
 				});

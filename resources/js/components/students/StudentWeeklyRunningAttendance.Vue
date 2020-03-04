@@ -50,11 +50,10 @@ import parseISO from "date-fns/parseISO";
 export default {
   data() {
     return {
-      // schoolname: null,
       message: null,
       loaded: false,
       weeklyrunningattendance: [],
-      endpoint: "api/dev/student/weeklyrunningattendance/"
+      endpoint: null,
     };
   },
   created() {
@@ -68,7 +67,6 @@ export default {
         this.schoolname +
         "/" +
         this.studentid;
-      console.log("weeklyrunningattendance");
       axios.get(this.endpoint).then(({ data }) => {
         this.weeklyrunningattendance = data.data.weeklyrunningattendance;
         this.loaded = true;

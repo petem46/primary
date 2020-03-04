@@ -25,22 +25,23 @@ class StudentsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $school = User::first()->getSchool();
-        if($school === 'FCAT' || $school === 'fcat') {$school = '%';}
-        $data = [
-            // 'students' => Student::where('school', 'armfield')->get(),
-            'schoolname' => $school,
-            'students' => Student::where('school', 'LIKE', $school)->where('isLeaver', NULL)->orderBy('lsurname')->get(),
+    // public function index()
+    // {
+    //     $school = User::first()->getSchool();
+    //     if($school === 'FCAT' || $school === 'fcat') {$school = '%';}
+    //     $data = [
+    //         // 'students' => Student::where('school', 'armfield')->get(),
+    //         'schoolname' => $school,
+    //         'students' => Student::where('school', 'LIKE', $school)->where('isLeaver', NULL)->orderBy('lsurname')->get(),
 
-        ];
-        // dd($data);
-        return view('students.index', $data);
-    }
+    //     ];
+    //     // dd($data);
+    //     return view('students.index', $data);
+    // }
 
     public function list($school)
     {
+        if($school === 'FCAT' || $school === 'fcat') {$school = '%';}
         $data = [
             'students' => Student::where('school', 'LIKE', $school)->where('isLeaver', NULL)->orderBy('lsurname')->get(),
         ];
@@ -109,7 +110,7 @@ class StudentsController extends Controller
         if($school === $upn->school || $school === 'FCAT' || $school === 'fcat') {
             $aupn = $upn->upn;
             $data = [
-                'weekdayattendance' => DB::select(" exec sp_att_RunningWeekDaybyYearStudent19 @enddate = '$enddate', @upn = '$aupn' "),
+                'weekdayattendance' => DB::select(" exec sp_att_WeekDaybyStudent19 @enddate = '$enddate', @upn = '$aupn' "),
             ];
             return new StudentResource($data);
         }
@@ -124,7 +125,7 @@ class StudentsController extends Controller
         if($school === $upn->school || $school === 'FCAT' || $school === 'fcat') {
             $aupn = $upn->upn;
             $data = [
-                'weeklyrunningattendance' => DB::select(" exec sp_att_RunningWeeklybyYearStudent19 @enddate = '$enddate', @upn = '$aupn' "),
+                'weeklyrunningattendance' => DB::select(" exec sp_att_RunningWeeklybyStudent19 @enddate = '$enddate', @upn = '$aupn' "),
             ];
             return new StudentResource($data);
         }

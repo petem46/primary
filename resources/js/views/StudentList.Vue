@@ -7,7 +7,7 @@
       <v-card
         v-if="loaded"
         class="pa-2"
-        tile
+        flat
       >
         <v-card-title>Pupils At {{ schoolname }}</v-card-title>
         <v-data-table
