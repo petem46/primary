@@ -8,7 +8,7 @@
         <div class="col-12 text-center">
             <div class="v-card pa-10 text-center">
                 <div class="v-card__header">
-                  <h1 class="display-1">FCAT FOCUS - MyDataDash</h1>
+                  <h1 class="display-4">FCAT FOCUS - MyDataDash</h1>
                 </div>
                 <div class="v-card__text">
                     <div class="v-col">
