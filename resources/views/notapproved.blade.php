@@ -25,5 +25,17 @@
             </div>
         </div>
     </div>
+    <div>
+      <a href="https://fcat.mydatadash.co.uk/logout"
+         onclick="event.preventDefault();
+                       document.getElementById('logout-form').submit();">
+          {{ __('Logout') }}
+      </a>
+
+      <form id="logout-form" action="https://fcat.mydatadash.co.uk/logout" method="POST" style="display: none;">
+          @csrf
+      </form>
+  </div>
+
 </div>
 @endsection

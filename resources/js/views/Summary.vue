@@ -164,7 +164,15 @@ export default {
 				: "";
 		},
 		schoolname() {
-			return this.$store.getters.getschoolname;
+      return this.$store.getters.getschoolname;
+      // if (
+      //   this.$store.getters.getwhodisschool === "FCAT" ||
+      //   this.$store.getters.getschoolname === this.$store.getters.getwhodisschool
+      // ) {
+        //   return this.$store.getters.getschoolname;
+        // } else {
+          //   return this.$store.getters.getwhodisschool;
+      // }
 		},
 		startdate: {
       get: function() {

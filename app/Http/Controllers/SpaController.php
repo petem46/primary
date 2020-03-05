@@ -11,6 +11,7 @@ class SpaController extends Controller
     {
       $data = [
         'whodisschool' => User::first()->getSchool(),
+        'whodisname' => User::first()->getName(),
       ];
       // dd($whodisschool);
         return view('/analysis/dev', $data);

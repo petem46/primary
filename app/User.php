@@ -59,4 +59,9 @@ class User extends Authenticatable
 
         return $school;
     }
-}
+
+    public function getName() {
+       return Auth::user()->name;
+    }
+
+  }

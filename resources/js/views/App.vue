@@ -33,9 +33,7 @@
               </v-list-item-action>
               <v-list-item-content>
                 <v-list-item-title @click="updateCore(child.school, startdate, enddate)">
-                  <router-link
-                    exact
-                  >{{ child.school }}</router-link>
+                  <router-link exact>{{ child.school }}</router-link>
                 </v-list-item-title>
               </v-list-item-content>
             </v-list-item>
@@ -306,7 +304,10 @@
       <v-btn icon>
         <v-icon>mdi-bell</v-icon>
       </v-btn>
-      <v-btn icon>
+      <v-btn
+        icon
+        @click="logout()"
+      >
         <v-icon>mdi-account</v-icon>
       </v-btn>
     </v-app-bar>
@@ -372,11 +373,6 @@ export default {
     ],
     items: [
       {
-        icon: "mdi-account-multiple",
-        name: "Students"
-        // iconsize: "small"
-      },
-      {
         icon: "mdi-history",
         name: "Summary"
       },
@@ -395,17 +391,20 @@ export default {
       {
         icon: "mdi-account-clock-outline",
         name: "Exclusions"
+      },
+      {
+        icon: "mdi-account-multiple",
+        name: "Students"
+        // iconsize: "small"
       }
     ]
   }),
   mounted() {
-    this.$store.commit("setUser", this.whodis);
+    /** SET USER PROPS */
+    this.storeUser(this.whodis);
+    this.storeUserName();
+    this.storeUserSchool();
     /** SET SCHOOL NAME FROM USER EMAIL */
-    if (this.$store.getters.getschoolname === null || this.$store.getters.getschoolname === undefined) {
-      this.$store.commit("updateSchoolName", this.whodisschool);
-      this.$store.commit("setWhoDisSchool", this.whodisschool);
-      this.loaded = true;
-    }
 
     /** SET END DATE TO TODAY */
     if (this.$store.getters.getenddate === null) {
@@ -424,8 +423,30 @@ export default {
     storeUser(user) {
       this.$store.commit("setUser", user);
     },
+    storeUserSchool() {
+      if (
+        this.$store.getters.getschoolname === null ||
+        this.$store.getters.getschoolname === undefined
+      ) {
+        this.$store.commit("updateSchoolName", this.whodisschool);
+        this.$store.commit("setWhoDisSchool", this.whodisschool);
+      }
+    },
+    storeUserName() {
+      if (
+        this.$store.getters.getwhodisname === null ||
+        this.$store.getters.getwhodisname === undefined
+      ) {
+        this.$store.commit("setWhoDisName", this.whodisname);
+      }
+    },
     updateSchoolName(sn) {
-      this.$store.commit("updateSchoolName", sn);
+      if (
+        this.$store.getters.getwhodisschool === sn ||
+        this.$store.getters.getwhodisschool === "FCAT"
+      ) {
+        this.$store.commit("updateSchoolName", sn);
+      }
     },
     updateStartDate(sd) {
       this.$store.commit("updateStartDate", sd);
@@ -434,10 +455,18 @@ export default {
       this.$store.commit("updateEndDate", ed);
     },
     updateCore(sn, sd, ed) {
-      this.$store.commit("updateSchoolName", sn);
+      if (
+        this.$store.getters.getwhodisschool === sn ||
+        this.$store.getters.getwhodisschool === "FCAT"
+      ) {
+        this.$store.commit("updateSchoolName", sn);
+      }
       this.$store.commit("updateStartDate", sd);
       this.$store.commit("updateEndDate", ed);
       // this.$router.push({ name: 'Summary', params: { schoolname: this.schoolname, id: value.id } });
+    },
+    logout: function() {
+      window.location.href = "/notapproved";
     }
   },
   computed: {

@@ -72,6 +72,9 @@ const store = new Vuex.Store({
         setWhoDisSchool(state, school) {
           state.whodisschool = school;
         },
+        setWhoDisName(state, name) {
+          state.whodisname = name;
+        },
     },
     actions: {
 
@@ -107,7 +110,7 @@ const router = new VueRouter({
         {
             path: '/',
             name: 'dash',
-            component: Dash,
+            component: Summary,
         },
         {
             path: '/summary',
