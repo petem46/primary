@@ -67,7 +67,7 @@
             size="64"
           >
             <v-img
-              :src="randomAvatar()"
+              :src="setPhotoPath(item.upn)"
               alt="Pupil"
             aspect-ratio="1.3"
             >
@@ -79,7 +79,6 @@
         <v-divider></v-divider>
       </v-card>
     </v-col>
-
   </div>
 </template>
 
@@ -93,15 +92,15 @@ export default {
       endpoint: "api/dev/students/",
       search: "",
       avatars: [
-        'images/avatars/bee-icon.png',
-        'images/avatars/bird-icon.png',
-        'images/avatars/bulldog-icon.png',
-        'images/avatars/cat-icon.png',
-        'images/avatars/cow-icon.png',
-        'images/avatars/elephant-icon.png',
-        'images/avatars/fish-icon.png',
-        'images/avatars/monkey-icon.png',
-        'images/avatars/penguin-icon.png',
+        '../images/avatars/bee-icon.png',
+        '../images/avatars/bird-icon.png',
+        '../images/avatars/bulldog-icon.png',
+        '../images/avatars/cat-icon.png',
+        '../images/avatars/cow-icon.png',
+        '../images/avatars/elephant-icon.png',
+        '../images/avatars/fish-icon.png',
+        '../images/avatars/monkey-icon.png',
+        '../images/avatars/penguin-icon.png',
       ],
       gender: "All",
       genders: ["All", "Boys", "Girls"],
@@ -213,16 +212,26 @@ export default {
       this.setStudentid(value.id);
       this.$router.push({ name: 'Student', params: { schoolname: this.schoolname, id: value.id } });
     },
-    setPhoto() {
-
-    },
     randomItem(items) {
       return items[Math.floor(Math.random() * items.length)];
     },
     randomAvatar() {
-      console.log("AVATAR = " + '"' + this.randomItem(this.avatars) + '"');
       return this.randomItem(this.avatars);
-    },  
+    },
+    setPhotoPath(upn) {
+      let avatar = this.randomItem(this.avatars);
+      let photo = "/images/gateway/" + upn + ".jpg";
+      var request;
+      request = new XMLHttpRequest();
+      request.open("GET", photo, false);
+      request.send();
+      console.log(request.getResponseHeader("Last-Modified"));
+      if (request.getResponseHeader("Last-Modified") === null) {
+        console.log('SHOW ME AN AVATAR');
+        return avatar;
+      }
+      return photo;
+    }
   },
   computed: {
     formattedStartDate() {

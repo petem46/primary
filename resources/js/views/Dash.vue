@@ -3,17 +3,46 @@
     <div class="container">
       <v-container fluid>
         <h1>WELCOME , </h1>
-        <h1>CURRENT SCHOOL IS {{ schoolname }}</h1>
-        <h1>CHOOSE A SCHOOL FROM THE NAV BAR</h1>
-        <h1 @click="randomAvatar">OR CHOOSE A DASHBOARD VIEW FROM THE SIDE BAR</h1>
-        <v-avatar size="64">
+        <h1>CURRENT SCHOOL IS <span class="display-2 teal--text">{{ schoolname }}</span></h1>
+        <h1>CHOOSE A SCHOOL FROM THE <span class="display-2 red--text">NAV BAR</span> above</h1>
+        <h1 @click="setPhotoPath">OR CHOOSE A DASHBOARD VIEW FROM THE <span class="display-2 green--text">SIDE BAR</span> on the left</h1>
+        <div class="my-5">
+        <v-avatar tile size="64" class="mr-5">
           <v-img
             :src="randomAvatar()"
             alt="Pupil"
           >
           </v-img>
         </v-avatar>
-
+        <v-avatar tile size="64" class="mr-5">
+          <v-img
+            :src="randomAvatar()"
+            alt="Pupil"
+          >
+          </v-img>
+        </v-avatar>
+        <v-avatar tile size="64" class="mr-5">
+          <v-img
+            :src="randomAvatar()"
+            alt="Pupil"
+          >
+          </v-img>
+        </v-avatar>
+        <v-avatar tile size="64" class="mr-5">
+          <v-img
+            :src="randomAvatar()"
+            alt="Pupil"
+          >
+          </v-img>
+        </v-avatar>
+        <v-avatar tile size="64" class="mr-5">
+          <v-img
+            :src="randomAvatar()"
+            alt="Pupil"
+          >
+          </v-img>
+        </v-avatar>
+        </div>
       </v-container>
     </div>
   </div>
@@ -68,6 +97,25 @@ export default {
     randomAvatar() {
       console.log("AVATAR = " + '"' + this.randomItem(this.avatars) + '"');
       return this.randomItem(this.avatars);
+    },
+    randomAvatare(e) {
+      console.log("AVATAR = " + '"' + this.randomItem(this.avatars) + '"');
+      console.log(e);
+      e = this.randomItem(this.avatars);
+    },
+    setPhotoPath(upn) {
+      let avatar = this.randomItem(this.avatars);
+      let photo = "/images/gateway/" + upn + ".jpg";
+      var request;
+      request = new XMLHttpRequest();
+      request.open("GET", photo, false);
+      request.send();
+      console.log(request.getResponseHeader("Last-Modified"));
+      if (request.getResponseHeader("Last-Modified") === null) {
+        console.log('SHOW ME AN AVATAR');
+        return avatar;
+      }
+      return photo;
     }
   }
 };
