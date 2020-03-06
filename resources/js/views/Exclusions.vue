@@ -6,7 +6,7 @@
     <div v-if="loaded">
       <div class>
         <v-container text-center fluid>
-          <h1 class="display-3 mx-auto my-2">>{{ schoolname }} Exclusions Page</h1>
+          <h1 class="display-3 mx-auto my-2">{{ schoolname }} Exclusions Page</h1>
         </v-container>
       </div>
     </div>
