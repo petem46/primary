@@ -53,15 +53,15 @@ export default {
 			message: null,
 			loaded: false,
 			school: null,
-			endpoint: "api/dev/cohortsummary/" + this.schoolname,
+			endpoint: null,
 			groups: []
 		};
 	},
 	created() {
-		this.fetch();
 	},
 	mounted() {
-		console.log("Cohort Summary Mounted.");
+    setTimeout(() => this.endpoint = "api/dev/cohortsummary/" + this.schoolname, 1000);
+    setTimeout(() => this.fetch(), 1000);
 	},
 	methods: {
 		fetch() {

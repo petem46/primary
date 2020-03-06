@@ -74,7 +74,7 @@
       >
         <span class="hidden-sm-and-down">
           <v-icon large>mdi-database-search</v-icon>
-          &nbsp;&nbsp;&nbsp;{{ appName }}
+          &nbsp;&nbsp;&nbsp;{{ appName }}<v-icon>mdi-menu-right</v-icon>{{schoolname}}
         </span>
       </v-toolbar-title>
       <v-spacer />
@@ -101,54 +101,39 @@
               class="text-center"
             >
               <v-col>
-                <v-btn
-                  fab
-                  outlined
-                  text
-                  color="white"
-                  link
-                  v-on:click.native="updateCore('FCAT', startdate, enddate)"
+                <v-avatar
+                  color="teal darken-2"
+                  class="v-avatar--link"
+                  @click="updateCore('FCAT', startdate, enddate)"
                 >
-                  <v-avatar color="teal darken-2">
-                    <v-icon dark>mdi-lan</v-icon>
-                  </v-avatar>
-                </v-btn>
+                  <v-icon dark>mdi-lan</v-icon>
+                </v-avatar>
                 <p>FCAT</p>
               </v-col>
               <v-col>
-                <v-btn
-                  fab
-                  outlined
-                  text
+                <v-avatar
                   color="white"
-                  link
-                  v-on:click.native="updateCore('Armfield', startdate, enddate)"
+                  class="v-avatar--link"
+                  @click="updateCore('Armfield', startdate, enddate)"
                 >
-                  <v-avatar color="white">
-                    <img
-                      src="https://pbs.twimg.com/profile_images/918818978935353344/reyYBvky_400x400.jpg"
-                      alt="A"
-                    >
-                  </v-avatar>
-                </v-btn>
+                  <img
+                    src="https://pbs.twimg.com/profile_images/918818978935353344/reyYBvky_400x400.jpg"
+                    alt="A"
+                  >
+                </v-avatar>
                 <p>Armfield</p>
               </v-col>
               <v-col>
-                <v-btn
-                  fab
-                  outlined
-                  text
+                <v-avatar
                   color="white"
-                  link
-                  v-on:click.native="updateCore('Aspire', startdate, enddate)"
+                  class="v-avatar--link"
+                  @click="updateCore('Aspire', startdate, enddate)"
                 >
-                  <v-avatar color="white">
-                    <img
-                      src="https://pbs.twimg.com/profile_images/503284274032701440/YdTlOg_G_400x400.jpeg"
-                      alt="A"
-                    >
-                  </v-avatar>
-                </v-btn>
+                  <img
+                    src="https://pbs.twimg.com/profile_images/503284274032701440/YdTlOg_G_400x400.jpeg"
+                    alt="A"
+                  >
+                </v-avatar>
                 <p>Aspire</p>
               </v-col>
             </v-row>
@@ -157,42 +142,33 @@
               class="text-center"
             >
               <v-col>
-                <v-btn
-                  fab
-                  outlined
-                  text
-                  color="white"
-                  link
+                <v-avatar
+                  color="blue"
+                  class="v-avatar--link"
                   v-on:click.native="updateCore('Garstang', startdate, enddate)"
                 >
-                  <v-avatar color="blue">
-                    <span class="white--text headline">GCA</span>
-                  </v-avatar>
-                </v-btn>
+                  <span class="white--text headline">GCA</span>
+                </v-avatar>
                 <p>Garstang</p>
               </v-col>
               <v-col>
-                <v-btn
-                  fab
-                  outlined
-                  text
+                <v-avatar
                   color="white"
-                  link
-                  v-on:click.native="updateCore('Gateway', startdate, enddate)"
+                  class="v-avatar--link"
+                  @click="updateCore('Gateway', startdate, enddate)"
                 >
-                  <v-avatar color="white">
-                    <img
-                      src="https://pbs.twimg.com/profile_images/1043178044511461376/iPCRKUZk_400x400.jpg"
-                      alt="G"
-                    >
-                  </v-avatar>
-                </v-btn>
+                  <img
+                    src="https://pbs.twimg.com/profile_images/1043178044511461376/iPCRKUZk_400x400.jpg"
+                    alt="G"
+                  >
+                </v-avatar>
                 <p>Gateway</p>
               </v-col>
               <v-col>
                 <v-avatar
                   color="red darken-1"
-                  v-on:click.native="updateCore('Gateway', startdate, enddate)"
+                  class="v-avatar--link"
+                  @click="updateCore('Hambleton', startdate, enddate)"
                 >
                   <span class="white--text headline">H</span>
                 </v-avatar>
@@ -204,51 +180,36 @@
               class="text-center"
             >
               <v-col>
-                <v-btn
-                  fab
-                  outlined
-                  text
-                  color="white"
-                  link
-                  v-on:click.native="updateCore('Mereside', startdate, enddate)"
+                <v-avatar
+                  color="red"
+                  class="v-avatar--link"
+                  @click="updateCore('Mereside', startdate, enddate)"
                 >
-                  <v-avatar color="red">
-                    <span class="white--text headline">M</span>
-                  </v-avatar>
-                </v-btn>
+                  <span class="white--text headline">M</span>
+                </v-avatar>
                 <p>Mereside</p>
               </v-col>
               <v-col>
-                <v-btn
-                  fab
-                  outlined
-                  text
+                <v-avatar
                   color="white"
-                  link
-                  v-on:click.native="updateCore('Montgomery', startdate, enddate)"
+                  class="v-avatar--link"
+                  @click="updateCore('Montgomery', startdate, enddate)"
                 >
-                  <v-avatar color="white">
-                    <img
-                      src="https://pbs.twimg.com/profile_images/1106213524244783106/lFDjZrEd_400x400.png"
-                      alt="M"
-                    >
-                  </v-avatar>
-                </v-btn>
+                  <img
+                    src="https://pbs.twimg.com/profile_images/1106213524244783106/lFDjZrEd_400x400.png"
+                    alt="M"
+                  >
+                </v-avatar>
                 <p>Montgomery</p>
               </v-col>
               <v-col>
-                <v-btn
-                  fab
-                  outlined
-                  text
-                  color="white"
-                  link
-                  v-on:click.native="updateCore('Unity', startdate, enddate)"
+                <v-avatar
+                  color="grey darken-4"
+                  class="v-avatar--link"
+                  @click="updateCore('Unity', startdate, enddate)"
                 >
-                  <v-avatar color="grey darken-4">
-                    <span class="white--text headline">U</span>
-                  </v-avatar>
-                </v-btn>
+                  <span class="white--text headline">U</span>
+                </v-avatar>
                 <p>Unity</p>
               </v-col>
             </v-row>
@@ -257,33 +218,23 @@
               class="text-center"
             >
               <v-col>
-                <v-btn
-                  fab
-                  outlined
-                  text
-                  color="white"
-                  link
-                  v-on:click.native="updateCore('Westcliff', startdate, enddate)"
+                <v-avatar
+                  color="red"
+                  class="v-avatar--link"
+                  @click="updateCore('Westcliff', startdate, enddate)"
                 >
-                  <v-avatar color="red">
-                    <span class="white--text headline">WC</span>
-                  </v-avatar>
-                </v-btn>
+                  <span class="white--text headline">WC</span>
+                </v-avatar>
                 <p>Westcliff</p>
               </v-col>
               <v-col>
-                <v-btn
-                  fab
-                  outlined
-                  text
-                  color="white"
-                  link
-                  v-on:click.native="updateCore('Westminster', startdate, enddate)"
+                <v-avatar
+                  color="teal"
+                  class="v-avatar--link"
+                  @click="updateCore('Westminster', startdate, enddate)"
                 >
-                  <v-avatar color="teal">
-                    <span class="white--text headline">WM</span>
-                  </v-avatar>
-                </v-btn>
+                  <span class="white--text headline">WM</span>
+                </v-avatar>
                 <p>Westminster</p>
               </v-col>
               <v-col>
@@ -387,6 +338,10 @@ export default {
       {
         icon: "mdi-shield-star-outline",
         name: "Behaviour"
+      },
+      {
+        icon: "mdi-file-search-outline",
+        name: "DC_Reports"
       },
       {
         icon: "mdi-account-clock-outline",

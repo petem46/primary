@@ -6,139 +6,19 @@
     <div v-if="loaded">
       <div class>
         <v-container text-center fluid>
-            <v-col>
-              <h1 class="display-3 mx-auto my-2">{{schoolname}} Reporting</h1>
+					<v-row>
+          <h1 class="display-3 mx-auto my-2">Published Performance Data (DfE) {{ schoolname }} 2019</h1>
+					</v-row>
+          <v-row>
+            <v-col
+              cols="6"
+            >
+
             </v-col>
-            <v-col>
-              <v-btn
-                :href="'http://fcatdata/rs/Pages/ReportViewer.aspx?%2fFCAT+Data+SSRS%2fStudentSubjectCWAandOTIbyClass&school='+schoolname+'&rs:Command=Render&rc:LinkTarget=main&rs:Format=HTML4.0'"
-                onclick="return !window.open(this.href, 'Subject Summary Grid', 'width=1024,height=768')"
-                color="teal darken-1"
-                class="white--text"
-              >Student Core Subject Summary by Class</v-btn>
-            </v-col>
-              <v-col>
-                <v-btn
-                  :href="'http://fcatdata/rs/Pages/ReportViewer.aspx?%2fFCAT+Data+SSRS%2fCoreSubjectSummaryByYear&school='+schoolname+'&rs:Command=Render'"
-                  onclick="return !window.open(this.href, 'Subject Summary Grid', 'width=1024,height=768')"
-                  color="green darken-1"
-                  class="white--text"
-                >
-                  Core Subject Summary by Year
-                </v-btn>
-              </v-col>
-              <v-col>
-                <v-btn
-                  :href="'http://fcatdata/rs/Pages/ReportViewer.aspx?%2fFCAT+Data+SSRS%2fSubjectSummaryByYear&school='+schoolname+'&rs:Command=Render'"
-                  onclick="return !window.open(this.href, 'Subject Summary Grid', 'width=1024,height=768')"
-                  color="green darken-1"
-                  class="white--text"
-                >
-                  Subject Summary by Year
-                </v-btn>
-              </v-col>
-              <v-divider></v-divider>
-              <v-col>
-                <v-btn
-                  :href="'http://fcatdata/rs/Pages/ReportViewer.aspx?%2fFCAT+Data+SSRS%2fSubjectSummaryBySchool&school='+schoolname+'&rs:Command=Render'"
-                  onclick="return !window.open(this.href, 'Subject Summary Grid', 'width=1024,height=768')"
-                  color="teal darken-1"
-                  class="white--text"
-                >
-                  Whole School Overview
-                </v-btn>
-              </v-col>
-              <v-col>
-                <v-btn
-                  :href="'http://fcatdata/rs/Pages/ReportViewer.aspx?%2fFCAT+Data+SSRS%2fSchoolSubjectSummaryGender&school='+schoolname+'&rs:Command=Render'"
-                  onclick="return !window.open(this.href, 'Subject Summary Grid', 'width=1024,height=768')"
-                  color="blue darken-1"
-                  class="white--text"
-                >
-                  Whole School Overview (Girl/Boy)
-                </v-btn>
-              </v-col>
-              <v-col>
-                <v-btn
-                  :href="'http://fcatdata/rs/Pages/ReportViewer.aspx?%2fFCAT+Data+SSRS%2fSchoolSubjectSummaryPP&school='+schoolname+'&rs:Command=Render'"
-                  onclick="return !window.open(this.href, 'Subject Summary Grid', 'width=1024,height=768')"
-                  color="green darken-1"
-                  class="white--text"
-                >
-                  Whole School Overview (PP)
-                </v-btn>
-              </v-col>
-              <v-col>
-                <v-btn
-                  :href="'http://fcatdata/rs/Pages/ReportViewer.aspx?%2fFCAT+Data+SSRS%2fSchoolSubjectSummarySEND&school='+schoolname+'&rs:Command=Render'"
-                  onclick="return !window.open(this.href, 'Subject Summary Grid', 'width=1024,height=768')"
-                  color="purple lighten-1"
-                  class="white--text"
-                >
-                  Whole School Overview (SEND)
-                </v-btn>
-              </v-col>
-              <v-col>
-                <v-btn
-                  :href="'http://fcatdata/rs/Pages/ReportViewer.aspx?%2fFCAT+Data+SSRS%2fSchoolSubjectSummaryEAL&school='+schoolname+'&rs:Command=Render'"
-                  onclick="return !window.open(this.href, 'Subject Summary Grid', 'width=1024,height=768')"
-                  color="grey darken-1"
-                  class="white--text"
-                >
-                  Whole School Overview (EAL)
-                </v-btn>
-              </v-col>
-              <v-divider></v-divider>
-              <v-col>
-                <v-btn
-                  :href="'http://fcatdata/rs/Pages/ReportViewer.aspx?%2fFCAT+Data+SSRS%2fYearSubjectSummary&school='+schoolname+'&rs:Command=Render'"
-                  onclick="return !window.open(this.href, 'Subject Summary Grid', 'width=1024,height=768')"
-                  color="teal darken-1"
-                  class="white--text"
-                >
-                  Subject Overview by Year
-                </v-btn>
-              </v-col>
-              <v-col>
-                <v-btn
-                  :href="'http://fcatdata/rs/Pages/ReportViewer.aspx?%2fFCAT+Data+SSRS%2fYearSubjectSummaryGender&school='+schoolname+'&rs:Command=Render'"
-                  onclick="return !window.open(this.href, 'Subject Summary Grid', 'width=1024,height=768')"
-                  color="blue darken-1"
-                  class="white--text"
-                >
-                  Subject Overview by Year (Girl/Boy)
-                </v-btn>
-              </v-col>
-              <v-col>
-                <v-btn
-                  :href="'http://fcatdata/rs/Pages/ReportViewer.aspx?%2fFCAT+Data+SSRS%2fYearSubjectSummaryPP&school='+schoolname+'&rs:Command=Render'"
-                  onclick="return !window.open(this.href, 'Subject Summary Grid', 'width=1024,height=768')"
-                  color="green darken-1"
-                  class="white--text"
-                >
-                  Subject Overview by Year (PP)
-                </v-btn>
-              </v-col>
-              <v-col>
-                <v-btn
-                  :href="'http://fcatdata/rs/Pages/ReportViewer.aspx?%2fFCAT+Data+SSRS%2fYearSubjectSummarySEND&school='+schoolname+'&rs:Command=Render'"
-                  onclick="return !window.open(this.href, 'Subject Summary Grid', 'width=1024,height=768')"
-                  color="purple lighten-1"
-                  class="white--text"
-                >
-                  Subject Overview by Year (SEND)
-                </v-btn>
-              </v-col>
-              <v-col>
-                <v-btn
-                  :href="'http://fcatdata/rs/Pages/ReportViewer.aspx?%2fFCAT+Data+SSRS%2fYearSubjectSummaryEAL&school='+schoolname+'&rs:Command=Render'"
-                  onclick="return !window.open(this.href, 'Subject Summary Grid', 'width=1024,height=768')"
-                  color="grey darken-1"
-                  class="white--text"
-                >
-                  Subject Overview by Year (EAL)
-                </v-btn>
-              </v-col>
+          </v-row>
+          <v-row></v-row>
+          <v-row></v-row>
+          <v-row></v-row>
         </v-container>
       </div>
     </div>
@@ -149,13 +29,32 @@ export default {
   components: {},
   data() {
     return {
-      loaded: true
+      loaded: false,
+      abs_18: null,
+      census_19: [],
+      ks4_19: [],
+      ks4_pup_dest: [],
+      ofsted: [],
     };
   },
   created() {},
   mounted() {
+    setTimeout(() => this.endpoint = "api/dev/dfe_compare/" + this.$store.getters.getschoolname, 1000);
+    setTimeout(() => this.fetch(), 1000);
   },
-  methods: {},
+  methods: {
+    fetch() {
+      axios.get(this.endpoint).then(({ data }) => {
+        console.log(data.data);
+        this.abs_18 = data.data.abs_18;
+        this.census_19 = data.data.census_19;
+        this.ks4_19 = data.data.ks4_19;
+        this.ks4_pup_dest = data.data.ks4_pup_dest;
+        this.ofsted = data.data.ofsted;
+        this.loaded = true;
+      });
+    },
+  },
   computed: {
     schoolname() {
       return this.$store.getters.getschoolname;

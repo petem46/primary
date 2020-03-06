@@ -13,7 +13,7 @@
         <v-col cols="12" class="py-0">
           <v-divider></v-divider>
           <div class="text-right teal--text text--lighten-2">
-            <small>{{ school }} number on roll</small>
+            <small>{{ schoolname }} number on roll</small>
           </div>
         </v-col>
       </v-row>
@@ -36,28 +36,29 @@ export default {
       message: null,
       loaded: false,
       endpoint: null,
-      school: this.schoolname,
       norcount: this.count
     };
   },
   created() {
-    this.fetch();
   },
   mounted() {
-    console.log("Number On Roll Mounted.");
+    setTimeout(() => this.endpoint = "api/dev/norkpi/" + this.schoolname, this.randBetween(500,1000));
+    setTimeout(() => this.fetch(), this.randBetween(500,1000));
   },
   methods: {
     fetch() {
-      this.endpoint = "api/dev/norkpi/" + this.schoolname;
       axios.get(this.endpoint).then(({ data }) => {
         this.norcount = data.data[0].Count;
-        // setTimeout(() => this.loaded = true, Math.floor(Math.random() * 1500) + 750);
         this.loaded = true;
       });
     },
     refresh() {
       this.loaded = false;
       this.fetch();
+    },
+    randBetween(min,max) {
+      // setTimeout(() => this.loaded = true, Math.floor(Math.random() * 1500) + 750);
+      Math.floor(Math.random() * max) + min;
     },
   }
 };

@@ -28,7 +28,6 @@ export default {
     enddate: function() {
       this.endpoint =
         "api/dev/attendancepie/" + this.schoolname + "/" + this.enddate;
-      console.log(this.endpoint);
       this.callMe();
     }
   },
@@ -40,10 +39,9 @@ export default {
     };
   },
   created() {
-    this.fetch();
-  },
+    },
   mounted() {
-    console.log("Attendance PIE Mounted.");
+    this.fetch();
   },
   methods: {
     fetch() {
@@ -53,7 +51,6 @@ export default {
           Math.floor(Math.random() * 1500) + 750
         );
         // this.loaded = true;
-        console.log(data.data);
       });
     },
     roundOff(value, decimals) {

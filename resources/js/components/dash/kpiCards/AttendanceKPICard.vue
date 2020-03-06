@@ -59,12 +59,10 @@ export default {
     },
     startdate: function() {
       this.endpoint = "api/dev/attendancekpi/" + this.schoolname + "/" + this.startdate;
-      console.log(this.endpoint);
       this.refresh();
     },
     enddate: function() {
       this.endpoint = "api/dev/attendancekpi/" + this.schoolname + "/" + this.enddate;
-      console.log(this.endpoint);
       this.refresh();
     }
   },
@@ -72,19 +70,17 @@ export default {
     return {
       message: null,
       loaded: false,
-      school: null,
       endpoint: null,
     };
   },
   created() {
-    this.fetch();
   },
   mounted() {
-    console.log("Attendance KPI Mounted.");
+    setTimeout(() => this.endpoint = "api/dev/attendancekpi/" + this.schoolname + "/" + this.enddate, this.randBetween(500,1000));
+    setTimeout(() => this.fetch(), this.randBetween(500,1000));
   },
   methods: {
     fetch() {
-      this.endpoint = "api/dev/attendancekpi/" + this.schoolname + "/" + this.enddate;
       axios.get(this.endpoint).then(({ data }) => {
         this.ppresent = data.data[0].ppresent;
         this.loaded = true;
@@ -96,7 +92,11 @@ export default {
     refresh() {
       this.loaded = false;
       this.fetch();
-    }
+    },
+    randBetween(min,max) {
+      // setTimeout(() => this.loaded = true, Math.floor(Math.random() * 1500) + 750);
+      Math.floor(Math.random() * max) + min;
+    },
   },
   computed: {
     formattedStartDate() {

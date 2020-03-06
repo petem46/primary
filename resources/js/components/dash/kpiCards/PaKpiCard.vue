@@ -27,17 +27,14 @@ export default {
   watch: {
     schoolname: function() {
       this.endpoint = "api/dev/pakpi/" + this.schoolname + "/" + this.enddate;
-      console.log(this.endpoint);
       this.refresh();
     },
     startdate: function() {
       this.endpoint = "api/dev/pakpi/" + this.schoolname + "/" + this.enddate;
-      console.log(this.endpoint);
       this.refresh();
     },
     enddate: function() {
       this.endpoint = "api/dev/pakpi/" + this.schoolname + "/" + this.enddate;
-      console.log(this.endpoint);
       this.refresh();
     },
   },
@@ -45,15 +42,14 @@ export default {
     return {
       message: null,
       loaded: false,
-      endpoint: "api/dev/pakpi/" + this.schoolname + "/" + this.enddate
-      // pAtRisk: null,
+      endpoint: null,
     };
   },
   created() {
-    this.fetch();
   },
   mounted() {
-    console.log("PA KPI Mounted.");
+    setTimeout(() => this.endpoint = "api/dev/pakpi/" + this.schoolname + "/" + this.enddate, this.randBetween(500,1000));
+    setTimeout(() => this.fetch(), this.randBetween(500,1000));
   },
   methods: {
     fetch() {
@@ -68,7 +64,11 @@ export default {
     refresh() {
       this.loaded = false;
       this.fetch();
-    }
+    },
+    randBetween(min,max) {
+      // setTimeout(() => this.loaded = true, Math.floor(Math.random() * 1500) + 750);
+      Math.floor(Math.random() * max) + min;
+    },
   }
 };
 </script>

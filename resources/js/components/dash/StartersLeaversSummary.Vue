@@ -101,17 +101,11 @@ export default {
     };
   },
   mounted() {
-    this.endpoint =
-      "api/dev/startersleaverssummary/" + this.schoolname + "/" + this.enddate;
-    this.fetch();
+    setTimeout(() => this.endpoint = "api/dev/startersleaverssummary/" + this.schoolname + "/" + this.enddate, this.randBetween(500,1000));
+    setTimeout(() => this.fetch(), this.randBetween(500,1000));
   },
   methods: {
     fetch() {
-      (this.endpoint =
-        "api/dev/startersleaverssummary/" +
-        this.schoolname +
-        "/" +
-        this.enddate),
         axios.get(this.endpoint).then(({ data }) => {
           this.years = data.data;
           this.loaded = true;
@@ -123,7 +117,10 @@ export default {
     refresh() {
       this.loaded = false;
       this.fetch();
-    }
+    },
+    randBetween(min,max) {
+      Math.floor(Math.random() * max) + min;
+    },
   },
   computed: {
     lessPadding: function() {

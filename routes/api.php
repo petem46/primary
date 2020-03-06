@@ -18,6 +18,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/dev/{schoolname}', 'AnalysisController@index');
+
+Route::get('/dev/dfe_compare/{schoolname}', 'Api\AnalysisController@dfe_compare');
+
 Route::get('/dev/norkpi/{schoolname}', 'Api\AnalysisController@norkpi');
 Route::get('/dev/ppkpi/{schoolname}', 'Api\AnalysisController@ppkpi');
 Route::get('/dev/attendancekpi/{schoolname}/{enddate}', 'Api\AnalysisController@attendancekpi');

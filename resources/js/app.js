@@ -31,11 +31,13 @@ import App from './views/App'
 import Dash from './views/Dash'
 import Summary from './views/Summary'
 import Assessment from './views/Assessment'
+import DCReports from './views/DCReports'
 import Attendance from './views/Attendance'
 import FCAT from './views/Dash'
 import StudentList from './views/StudentList'
 import Student from './views/Student'
 import Behaviour from './views/Behaviour'
+import Exclusions from './views/Exclusions'
 
 const store = new Vuex.Store({
 
@@ -123,6 +125,11 @@ const router = new VueRouter({
             component: Assessment,
         },
         {
+            path: '/dc-reports',
+            name: 'DC_Reports',
+            component: DCReports,
+        },
+        {
             path: '/attendance',
             name: 'Attendance',
             component: Attendance,
@@ -141,6 +148,11 @@ const router = new VueRouter({
             path: '/behaviour',
             name: 'Behaviour',
             component: Behaviour,
+        },
+        {
+            path: '/exclusions',
+            name: 'Exclusions',
+            component: Exclusions,
         },
         {
             path: '/summary',

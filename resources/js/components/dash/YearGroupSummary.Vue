@@ -77,8 +77,8 @@ export default {
   created() {
     },
   mounted() {
-    this.endpoint = "api/dev/yeargroupsummary/" + this.schoolname
-    this.fetch();
+    setTimeout(() => this.endpoint = "api/dev/yeargroupsummary/" + this.schoolname, 1000);
+    setTimeout(() => this.fetch(), 1000);
   },
   methods: {
     fetch() {

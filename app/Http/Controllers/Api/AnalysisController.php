@@ -11,18 +11,28 @@ use App\User;
 
 class AnalysisController extends Controller
 {
+
+  public function dfe_compare($schoolname)
+  {
+    if($schoolname === 'FCAT') {
+      $schoolname = '%';
+    }
+    $data = [
+      'ks4_19' => DB::select(" select * from dfe_compare where school = '$schoolname' and namespace = 'ks4_19' "),
+      'ofsted' => DB::select(" select * from dfe_compare where school = '$schoolname' and namespace = 'o' "),
+      'census_19' => DB::select(" select * from dfe_compare where school = '$schoolname' and namespace = 'census_19' "),
+      'abs_18' => DB::select(" select * from dfe_compare where school = '$schoolname' and namespace = 'abs_18' "),
+      'ks4_pupdest_19' => DB::select(" select * from dfe_compare where school = '$schoolname' and namespace = 'ks4_pupdest_19' "),
+    ];
+    return new Analysis($data);
+  }
+
   public function norkpi($schoolname)
   {
     if($schoolname === 'FCAT') {
       $schoolname = '%';
     }
     $data = DB::select(" exec sp_studentGroupCount19 @school = '$schoolname' ");
-    return new Analysis($data);
-  }
-
-  public function norkpifcat($schoolname)
-  {
-    $data = DB::select(" exec sp_studentGroupCount19 @school = '%'");
     return new Analysis($data);
   }
 

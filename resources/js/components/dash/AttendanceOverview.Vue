@@ -146,7 +146,6 @@ export default {
           if (element && element.length > 0) {
             const week = this.chartdata.labels[element[0]._index];
             const weekatt = this.chartdata.datasets[0].data[element[0]._index];
-            //   console.log('load drill down chart for week ' + week);
             this.week = week;
             this.weekatt = weekatt;
             this.updateWeek();
@@ -200,10 +199,9 @@ export default {
     };
   },
   created() {
-    this.fetch();
-  },
+    },
   mounted() {
-    console.log("Attendance Ovreview Mounted.");
+    this.fetch();
   },
   methods: {
     fetch() {
@@ -267,7 +265,6 @@ export default {
           colors.push("rgba(72,193,56,0.8)"); // green
         }
       }
-      // console.log(colors);
       return colors;
     },
     getfinalweeknumber() {
@@ -275,7 +272,6 @@ export default {
       for (let i = 0; i < this.weeks.length; i++) {
         finalweek = this.weeks[i];
       }
-      //   console.log('Last Week Number = ' + finalweek);
       return finalweek;
     },
     getfinalweekattendance() {
@@ -283,7 +279,6 @@ export default {
       for (let i = 0; i < this.weekly.length; i++) {
         finalweekattendance = this.weekly[i];
       }
-      //   console.log('Last Week Attendance = ' + finalweekattendance);
       return finalweekattendance;
     },
     sendFinalWeek() {

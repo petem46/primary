@@ -139,17 +139,14 @@ export default {
     };
   },
   created() {
-    // this.fetch();
   },
   mounted() {
-    console.log("Attendance Week Mounted.");
   },
   methods: {
     fetch() {
       axios
         .get(this.endpoint)
         .then(({ data }) => {
-          // console.log(data.data);
           this.weekly = data.data.map(weekly =>
             this.roundOff(weekly.pattendance, 1)
           );
@@ -203,7 +200,6 @@ export default {
           colors.push("rgba(72,193,56,0.8)"); // green
         }
       }
-      // console.log(colors);
       return colors;
     }
   },

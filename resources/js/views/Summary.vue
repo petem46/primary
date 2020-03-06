@@ -132,7 +132,6 @@ export default {
 		// this.fetch();
 	},
 	mounted() {
-    console.log("Dashboard Mounted.");
     this.setenddate;
 	},
 	methods: {
