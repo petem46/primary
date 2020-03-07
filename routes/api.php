@@ -17,6 +17,16 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::middleware('auth:api')->group(function () {
+    Route::get('/user', function (Request $request) {
+        return $request->user();
+    });
+
+  Route::post('/logout', 'AuthController@login');
+});
+
+Route::post('/login', 'AuthController@login');
+
 Route::get('/dev/{schoolname}', 'AnalysisController@index');
 
 Route::get('/dev/dfe_compare/{schoolname}', 'Api\AnalysisController@dfe_compare');
@@ -46,28 +56,6 @@ Route::get('/dev/student/attendance/{schoolname}/{id}', 'Api\StudentsController@
 Route::get('/dev/student/weekdayattendance/{schoolname}/{id}', 'Api\StudentsController@weekdayattendance');
 Route::get('/dev/student/weeklyrunningattendance/{schoolname}/{id}', 'Api\StudentsController@weeklyrunningattendance');
 Route::get('/dev/student/assessmentdata/{schoolname}/{id}', 'Api\StudentsController@assessmentdata');
-
-Route::get('/dev/fcat/norkpi/{schoolname}', 'Api\FCATAnalysisController@norkpi');
-Route::get('/dev/fcat/ppkpi/{schoolname}', 'Api\FCATAnalysisController@ppkpi');
-Route::get('/dev/fcat/attendancekpi/{schoolname}/{enddate}', 'Api\FCATAnalysisController@attendancekpi');
-Route::get('/dev/fcat/pakpi/{schoolname}/{enddate}', 'Api\FCATAnalysisController@pakpi');
-
-Route::get('/dev/fcat/cohortsummary/{schoolname}', 'Api\FCATAnalysisController@cohortsummary');
-Route::get('/dev/fcat/yeargroupsummary/{schoolname}', 'Api\FCATAnalysisController@yeargroupsummary');
-Route::get('/dev/fcat/startersleaverssummary/{schoolname}/{enddate}', 'Api\FCATAnalysisController@startersleaverssummary');
-
-Route::get('/dev/fcat/attendanceweekly/{schoolname}/{enddate}', 'Api\FCATAnalysisController@attendanceweekly');
-Route::get('/dev/fcat/attendanceweek/{schoolname}/{enddate}', 'Api\FCATAnalysisController@attendanceyear');
-Route::get('/dev/fcat/attendanceweek/{schoolname}/{enddate}/{week}', 'Api\FCATAnalysisController@attendanceweek');
-Route::get('/dev/fcat/attendancepie/{schoolname}/{enddate}', 'Api\FCATAnalysisController@attendancepie');
-
-Route::get('/dev/fcat/paatrisk/{schoolname}/{enddate}', 'Api\FCATAnalysisController@paatrisk');
-Route::get('/dev/fcat/paatriskstudents/{schoolname}/{enddate}', 'Api\FCATAnalysisController@paatriskstudents');
-
-Route::get('/dev/fcat/exclusionsstudents/{schoolname}', 'Api\FCATAnalysisController@exclusionsstudents');
-
-
-
 
 Route::get('/dev/{school}', 'Api\AnalysisController@dev');
 
