@@ -22,9 +22,9 @@ Route::middleware('auth:api')->group(function () {
         return $request->user();
     });
 
-  Route::post('/logout', 'AuthController@login');
-});
+  });
 
+Route::post('/logout', 'AuthController@login');
 Route::post('/login', 'AuthController@login');
 
 Route::get('/dev/{schoolname}', 'AnalysisController@index');
