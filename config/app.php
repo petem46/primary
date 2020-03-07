@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://fcat.mydatadash.co.uk'),
+    'url' => env('APP_URL', 'http://donkey.mydatadash.co.uk'),
 
     'asset_url' => env('ASSET_URL', null),
 

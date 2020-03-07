@@ -153,7 +153,7 @@ return [
     |
     */
 
-    'domain' => 'fcat.mydatadash.co.uk',
+    'domain' => env('SESSION_DOMAIN', null),
 
     /*
     |--------------------------------------------------------------------------
