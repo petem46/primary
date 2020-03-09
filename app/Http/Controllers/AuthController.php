@@ -32,13 +32,28 @@ class AuthController extends Controller
       }
   }
 
-  public function logout()
-  {
-    auth()->user()->tokens0>each(function($token, $key) {
-      $token->delete();
-    });
+  // public function logout()
+  // {
 
-    return response()->json('Logged out successfully', 200);
-  }
+  //   auth()->user()->tokens0>each(function($token, $key) {
+  //     $token->delete();
+  //   });
+
+  //   return response()->json('Logged out successfully', 200);
+  // }
+
+  // public function logout(Request $request)
+  // {
+
+  //   dd
+
+  //     $this->guard()->logout();
+
+  //     $request->session()->invalidate();
+
+  //     $request->session()->regenerateToken();
+
+  //     return $this->loggedOut($request) ?: redirect('/');
+  // }
 
 }

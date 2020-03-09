@@ -57,7 +57,7 @@
 						<nor-kpi-card :schoolname="this.schoolname" :enddate="this.enddate"></nor-kpi-card>
 						<pp-kpi-card :schoolname="this.schoolname" :enddate="this.enddate"></pp-kpi-card>
 						<attendance-kpi-card :schoolname="this.schoolname" :enddate="this.enddate"></attendance-kpi-card>
-						<pa-kpi-card :schoolname="this.schoolname" :enddate="this.enddate"></pa-kpi-card>
+						<!-- <pa-kpi-card :schoolname="this.schoolname" :enddate="this.enddate"></pa-kpi-card> -->
 					</v-row>
 					<v-row>
 						<cohort-summary :schoolname="this.schoolname" :enddate="this.enddate"></cohort-summary>
