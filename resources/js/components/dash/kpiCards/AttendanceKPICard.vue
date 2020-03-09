@@ -54,15 +54,18 @@ export default {
   watch: {
     schoolname: function() {
       this.loaded = false;
-      "api/dev/attendancekpi/" + this.schoolname + "/" + this.startdate;
+      this.endpoint =
+        "api/dev/attendancekpi/" + this.schoolname + "/" + this.enddate;
       this.refresh();
     },
     startdate: function() {
-      this.endpoint = "api/dev/attendancekpi/" + this.schoolname + "/" + this.startdate;
+      this.endpoint =
+        "api/dev/attendancekpi/" + this.schoolname + "/" + this.enddate;
       this.refresh();
     },
     enddate: function() {
-      this.endpoint = "api/dev/attendancekpi/" + this.schoolname + "/" + this.enddate;
+      this.endpoint =
+        "api/dev/attendancekpi/" + this.schoolname + "/" + this.enddate;
       this.refresh();
     }
   },
@@ -70,21 +73,34 @@ export default {
     return {
       message: null,
       loaded: false,
-      endpoint: null,
+      endpoint: "api/dev/attendancekpi/" + this.schoolname + "/" + this.enddate,
+      ppresent: null,
     };
   },
-  created() {
-  },
+  created() {},
   mounted() {
-    setTimeout(() => this.endpoint = "api/dev/attendancekpi/" + this.schoolname + "/" + this.enddate, this.randBetween(500,1000));
-    setTimeout(() => this.fetch(), this.randBetween(500,1000));
+    setTimeout(
+      () =>
+        (this.endpoint =
+          "api/dev/attendancekpi/" + this.schoolname + "/" + this.enddate),
+      this.randBetween(500, 1000)
+    );
+    setTimeout(() => this.fetch(), this.randBetween(500, 1000));
   },
   methods: {
     fetch() {
-      axios.get(this.endpoint).then(({ data }) => {
-        this.ppresent = data.data[0].ppresent;
-        this.loaded = true;
-      });
+      if (this.schoolname === "FCAT") {
+        this.endpoint = "api/dev/attendancekpi/" + this.enddate;
+        axios.get(this.endpoint).then(({ data }) => {
+          this.ppresent = data.data[0].ppresent;
+          this.loaded = true;
+        });
+      } else {
+        axios.get(this.endpoint).then(({ data }) => {
+          this.ppresent = data.data[0].ppresent;
+          this.loaded = true;
+        });
+      }
     },
     roundOff(value, decimals) {
       return Number(Math.round(value + "e" + decimals) + "e-" + decimals);
@@ -93,10 +109,10 @@ export default {
       this.loaded = false;
       this.fetch();
     },
-    randBetween(min,max) {
+    randBetween(min, max) {
       // setTimeout(() => this.loaded = true, Math.floor(Math.random() * 1500) + 750);
       Math.floor(Math.random() * max) + min;
-    },
+    }
   },
   computed: {
     formattedStartDate() {

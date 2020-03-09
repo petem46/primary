@@ -51,9 +51,16 @@ class AnalysisController extends Controller
     if($schoolname === 'FCAT') {
       $schoolname = '%';
     }
-    // $enddate = Carbon::yesterday()->toDateString();
     $lastFriday = Carbon::parse($enddate)->modify("last friday")->toDateString();
-    $data = DB::select(" exec sp_AttendanceSchool19 @enddate = '$lastFriday', @school = '$schoolname' ");
+    $data = DB::select(" exec sp_AttendanceBySchool19 @enddate = '$lastFriday', @school = '$schoolname' ");
+
+    return new Analysis($data);
+  }
+
+  public function trustattendancekpi($enddate)
+  {
+    $lastFriday = Carbon::parse($enddate)->modify("last friday")->toDateString();
+    $data = DB::select(" exec sp_AttendanceByTrust19 @enddate = '$lastFriday' ");
 
     return new Analysis($data);
   }
@@ -63,7 +70,6 @@ class AnalysisController extends Controller
     if($schoolname === 'FCAT') {
       $schoolname = '%';
     }
-    // $enddate = Carbon::yesterday()->toDateString();
     $lastFriday = Carbon::parse($enddate)->modify("last friday")->toDateString();
     $data = DB::select(" exec sp_att_paGroups19 @enddate = '$lastFriday', @school = '$schoolname' ");
 
