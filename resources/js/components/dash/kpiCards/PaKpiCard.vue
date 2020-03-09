@@ -1,16 +1,43 @@
 <template>
-  <v-col cols="6" md="3">
-    <v-card class="pa-2" outlined raised tile>
+  <v-col
+    cols="6"
+    md="3"
+  >
+    <v-card
+      class="pa-2"
+      outlined
+      raised
+      tile
+    >
       <v-row>
-        <v-col cols="4" class="py-0">
-          <v-icon size="50" color="red darken-2 red--text text--darken-2">mdi-flag-variant</v-icon>
+        <v-col
+          cols="4"
+          class="py-0"
+        >
+          <v-icon
+            size="50"
+            color="red darken-2 red--text text--darken-2"
+          >mdi-flag-variant</v-icon>
         </v-col>
-        <v-col cols="8" class="text-right py-0">
+        <v-col
+          cols="8"
+          class="text-right py-0"
+        >
           <div class="overline">% pupils</div>
-          <v-progress-circular v-if="! loaded" indeterminate color="red"></v-progress-circular>
-          <h3 v-if="loaded" class="pa-0 text-right display-1">{{ roundOff(this.pAtRisk,1) }}</h3>
+          <v-progress-circular
+            v-if="! loaded"
+            indeterminate
+            color="red"
+          ></v-progress-circular>
+          <h3
+            v-if="loaded"
+            class="pa-0 text-right display-1"
+          >{{ roundOff(this.pAtRisk,1) }}</h3>
         </v-col>
-        <v-col cols="12" class="py-0">
+        <v-col
+          cols="12"
+          class="py-0"
+        >
           <v-divider></v-divider>
           <div class="text-right red--text text--darken-2">
             <small>At risk of Persistent Absence</small>
@@ -36,23 +63,26 @@ export default {
     enddate: function() {
       this.endpoint = "api/dev/pakpi/" + this.schoolname + "/" + this.enddate;
       this.refresh();
-    },
+    }
   },
   data() {
     return {
       message: null,
       loaded: false,
-      endpoint: null,
+      endpoint: null
     };
   },
-  created() {
-  },
+  created() {},
   mounted() {
-    setTimeout(() => this.endpoint = "api/dev/pakpi/" + this.schoolname + "/" + this.enddate, this.randBetween(500,1000));
-    setTimeout(() => this.fetch(), this.randBetween(500,1000));
+    this.endpoint = "api/dev/pakpi/" + this.schoolname + "/" + this.enddate;
+    this.fetch();
   },
   methods: {
     fetch() {
+      if (this.schoolname == null) {
+        this.schoolname = this.$store.getters.getschoolname;
+      }
+
       axios.get(this.endpoint).then(({ data }) => {
         this.pAtRisk = data.data[0].pAt_Risk;
         this.loaded = true;
@@ -65,10 +95,10 @@ export default {
       this.loaded = false;
       this.fetch();
     },
-    randBetween(min,max) {
+    randBetween(min, max) {
       // setTimeout(() => this.loaded = true, Math.floor(Math.random() * 1500) + 750);
       Math.floor(Math.random() * max) + min;
-    },
+    }
   }
 };
 </script>

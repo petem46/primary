@@ -4,7 +4,6 @@
 /public/images/gateway
 /storage/*.key
 /vendor
-/config/services.php
 .env
 .env.backup
 .phpunit.result.cache
