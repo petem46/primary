@@ -34,6 +34,7 @@ Route::get('/dev/dfe_compare/{schoolname}', 'Api\AnalysisController@dfe_compare'
 Route::get('/dev/norkpi/{schoolname}', 'Api\AnalysisController@norkpi');
 Route::get('/dev/ppkpi/{schoolname}', 'Api\AnalysisController@ppkpi');
 Route::get('/dev/attendancekpi/{schoolname}/{enddate}', 'Api\AnalysisController@attendancekpi');
+Route::get('/dev/attendancekpi/{enddate}', 'Api\AnalysisController@trustattendancekpi');
 Route::get('/dev/pakpi/{schoolname}/{enddate}', 'Api\AnalysisController@pakpi');
 
 Route::get('/dev/cohortsummary/{schoolname}', 'Api\AnalysisController@cohortsummary');

@@ -26,13 +26,13 @@
         </div>
     </div>
     <div>
-      <a href="http://donkey.mydatadash.co.uk/logout"
+      <a href="http://fcat.mydatadash.co.uk/logout"
          onclick="event.preventDefault();
                        document.getElementById('logout-form').submit();">
           {{ __('Logout') }}
       </a>
 
-      <form id="logout-form" action="http://donkey.mydatadash.co.uk/logout" method="POST" style="display: none;">
+      <form id="logout-form" action="http://fcat.mydatadash.co.uk/logout" method="POST" style="display: none;">
           @csrf
       </form>
   </div>

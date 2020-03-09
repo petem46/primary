@@ -36,7 +36,6 @@ export default {
       message: null,
       loaded: false,
       endpoint: null,
-      norcount: this.count
     };
   },
   created() {
