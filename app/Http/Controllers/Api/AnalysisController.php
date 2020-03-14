@@ -120,6 +120,14 @@ class AnalysisController extends Controller
     return new Analysis($data);
   }
 
+  public function trustattendanceweekly($enddate)
+  {
+    $lastFriday = Carbon::parse($enddate)->modify("last friday")->toDateString();
+    $data = DB::select(" exec sp_att_RunningWeeklybyTrust19 @enddate = '$lastFriday' ");
+
+    return new Analysis($data);
+  }
+
   public function attendanceyear($schoolname, $enddate)
   {
     if($schoolname === 'FCAT') {
@@ -161,7 +169,6 @@ class AnalysisController extends Controller
     if($schoolname === 'FCAT') {
       $schoolname = '%';
     }
-    // $enddate = Carbon::yesterday()->toDateString();
     $lastFriday = Carbon::parse($enddate)->modify("last friday")->toDateString();
     $data = [
       'paatrisk' => DB::select(" exec sp_att_paGroups19 @enddate = '$lastFriday', @school = '$schoolname' "),
@@ -175,9 +182,24 @@ class AnalysisController extends Controller
     if($schoolname === 'FCAT') {
       $schoolname = '%';
     }
-    // $enddate = Carbon::yesterday()->toDateString();
-    // $lastFriday = Carbon::parse($enddate)->modify("last friday")->toDateString();
     $data = DB::select(" exec sp_AttendancePAStudents19 @enddate = '$enddate', @school = '$schoolname' ");
+
+    return new Analysis($data);
+  }
+
+  public function trustpaatrisk($enddate)
+  {
+    $lastFriday = Carbon::parse($enddate)->modify("last friday")->toDateString();
+    $data = [
+      'paatrisk' => DB::select(" exec sp_att_paGroups19 @enddate = '$lastFriday' "),
+      'pastudents' => DB::select(" exec sp_AttendancePAStudents19 @enddate = '$enddate' "),
+    ];
+    return new Analysis($data);
+  }
+
+  public function trustpaatriskstudents($enddate)
+  {
+    $data = DB::select(" exec sp_AttendancePAStudents19 @enddate = '$enddate' ");
 
     return new Analysis($data);
   }

@@ -27,6 +27,13 @@
 <script>
 export default {
   components: {},
+  watch: {
+    schoolname: function() {
+      this.loaded = false;
+      setTimeout(() => this.endpoint = "api/dev/dfe_compare/" + this.$store.getters.getschoolname, 1000);
+      setTimeout(() => this.fetch(), 1000);
+    }
+  },
   data() {
     return {
       loaded: false,

@@ -135,6 +135,8 @@ export default {
 		// this.fetch();
 	},
 	mounted() {
+    if (this.schoolname == null) {this.schoolname = this.$store.getters.schoolname;}
+    if (this.enddate == null) {this.enddate = this.$store.getters.getenddate;}
 	},
 	methods: {
 		fetch() {

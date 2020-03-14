@@ -409,6 +409,7 @@ export default {
 	},
 	methods: {
 		fetch() {
+      if (this.schoolname === "FCAT") { this.endpoint = "api/dev/paatrisk/" + this.enddate;}
 			axios
 				.get(this.endpoint)
 				.then(({ data }) => {

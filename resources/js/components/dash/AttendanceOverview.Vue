@@ -115,6 +115,7 @@ export default {
       weekatt: null,
       finalweeknumber: null,
       finalweekattendance: null,
+      chartlabels: [],
       options: {
         plugins: {
           datalabels: {
@@ -205,6 +206,7 @@ export default {
   },
   methods: {
     fetch() {
+      if (this.schoolname === "FCAT") { this.endpoint = 'api/dev/attendanceweekly/' + this.enddate;}
       axios
         .get(this.endpoint)
         .then(({ data }) => {
@@ -215,14 +217,15 @@ export default {
             this.roundOff(running.RunningPercent, 1)
           );
           this.weeks = data.data.map(weeks => weeks.wk); // show week number as x-axis label
-          //   this.weeks = data.data.map(weeks => weeks.wkdate); // show week start date as x-axis label
+          this.weekdates = data.data.map(weekdates => weekdates.wkdate); // show week start date as x-axis label
+          this.chartlabels = this.weeks;
         })
         .then(() => {
           this.barcolors = this.setbarcolors();
         })
         .then(() => {
           (this.chartdata = {
-            labels: this.weeks,
+            labels: this.chartlabels,
             datasets: [
               {
                 label: "Weekly Attendance",

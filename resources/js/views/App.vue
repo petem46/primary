@@ -102,37 +102,31 @@
             >
               <v-col>
                 <v-avatar
-                  color="teal darken-2"
+                  size="62"
                   class="v-avatar--link"
                   @click="updateCore('FCAT', startdate, enddate)"
                 >
-                  <v-icon dark>mdi-lan</v-icon>
+                <img src="/images/icons/fcat.png">
                 </v-avatar>
                 <p>FCAT</p>
               </v-col>
               <v-col>
                 <v-avatar
-                  color="white"
+                  size="62"
                   class="v-avatar--link"
                   @click="updateCore('Armfield', startdate, enddate)"
                 >
-                  <img
-                    src="https://pbs.twimg.com/profile_images/918818978935353344/reyYBvky_400x400.jpg"
-                    alt="A"
-                  >
+                <img src="/images/icons/armfield.png">
                 </v-avatar>
                 <p>Armfield</p>
               </v-col>
               <v-col>
                 <v-avatar
-                  color="white"
+                  size="62"
                   class="v-avatar--link"
                   @click="updateCore('Aspire', startdate, enddate)"
                 >
-                  <img
-                    src="https://pbs.twimg.com/profile_images/503284274032701440/YdTlOg_G_400x400.jpeg"
-                    alt="A"
-                  >
+                <img src="/images/icons/aspire.png">
                 </v-avatar>
                 <p>Aspire</p>
               </v-col>
@@ -143,34 +137,31 @@
             >
               <v-col>
                 <v-avatar
-                  color="blue"
+                  size="62"
                   class="v-avatar--link"
                   v-on:click.native="updateCore('Garstang', startdate, enddate)"
                 >
-                  <span class="white--text headline">GCA</span>
+                <img src="/images/icons/garstang.png">
                 </v-avatar>
                 <p>Garstang</p>
               </v-col>
               <v-col>
                 <v-avatar
-                  color="white"
+                  size="62"
                   class="v-avatar--link"
                   @click="updateCore('Gateway', startdate, enddate)"
                 >
-                  <img
-                    src="https://pbs.twimg.com/profile_images/1043178044511461376/iPCRKUZk_400x400.jpg"
-                    alt="G"
-                  >
+                <img src="/images/icons/gateway.png">
                 </v-avatar>
                 <p>Gateway</p>
               </v-col>
               <v-col>
                 <v-avatar
-                  color="red darken-1"
+                  size="62"
                   class="v-avatar--link"
                   @click="updateCore('Hambleton', startdate, enddate)"
                 >
-                  <span class="white--text headline">H</span>
+                <img src="/images/icons/hambleton.png">
                 </v-avatar>
                 <p>Hambleton</p>
               </v-col>
@@ -181,34 +172,31 @@
             >
               <v-col>
                 <v-avatar
-                  color="red"
+                  size="62"
                   class="v-avatar--link"
                   @click="updateCore('Mereside', startdate, enddate)"
                 >
-                  <span class="white--text headline">M</span>
+                <img src="/images/icons/mereside.png">
                 </v-avatar>
                 <p>Mereside</p>
               </v-col>
               <v-col>
                 <v-avatar
-                  color="white"
+                  size="62"
                   class="v-avatar--link"
                   @click="updateCore('Montgomery', startdate, enddate)"
                 >
-                  <img
-                    src="https://pbs.twimg.com/profile_images/1106213524244783106/lFDjZrEd_400x400.png"
-                    alt="M"
-                  >
+                <img src="/images/icons/montgomery.png">
                 </v-avatar>
                 <p>Montgomery</p>
               </v-col>
               <v-col>
                 <v-avatar
-                  color="grey darken-4"
+                  size="62"
                   class="v-avatar--link"
                   @click="updateCore('Unity', startdate, enddate)"
                 >
-                  <span class="white--text headline">U</span>
+                <img src="/images/icons/Unity.png">
                 </v-avatar>
                 <p>Unity</p>
               </v-col>
@@ -219,27 +207,26 @@
             >
               <v-col>
                 <v-avatar
-                  color="red"
+                  size="62"
                   class="v-avatar--link"
                   @click="updateCore('Westcliff', startdate, enddate)"
                 >
-                  <span class="white--text headline">WC</span>
+                <img src="/images/icons/westcliff.png">
                 </v-avatar>
                 <p>Westcliff</p>
               </v-col>
               <v-col>
                 <v-avatar
-                  color="teal"
+                  size="62"
                   class="v-avatar--link"
                   @click="updateCore('Westminster', startdate, enddate)"
                 >
-                  <span class="white--text headline">WM</span>
+                <img src="/images/icons/westminster.png">
                 </v-avatar>
                 <p>Westminster</p>
               </v-col>
               <v-col>
                 <v-avatar color="white">
-                  <span class="white--text headline"></span>
                 </v-avatar>
                 <p></p>
               </v-col>
