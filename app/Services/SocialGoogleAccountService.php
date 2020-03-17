@@ -1,5 +1,7 @@
 <?php
 namespace App\Services;
+
+use App\Register;
 use App\SocialGoogleAccount;
 use App\User;
 use Laravel\Socialite\Contracts\User as ProviderUser;
@@ -32,8 +34,16 @@ class SocialGoogleAccountService
             $user->password = md5(rand(1,10000));
             $user->touch();
             $user->save();
+
+            $register = Register::create([
+              'name' => $providerUser->getName(),
+              'email' => $providerUser->getEmail(),
+            ]);
+
             $account->user()->associate($user);
             $account->save();
+
+
             return $user;
             // $user = User::create([
                 //     'email' => $providerUser->getEmail(),

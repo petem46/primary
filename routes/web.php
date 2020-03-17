@@ -32,6 +32,11 @@ Route::get('/notapproved', function () {
     return view('notapproved');
 });
 
+Route::get('/logout', function () {
+  Auth::logout();
+  return "FUCK";
+});
+
 
 Auth::routes();
 
@@ -64,8 +69,10 @@ Route::group(['middleware' => ['auth']], function () {
 
     // Route::resource('students', 'StudentsController');
     // Route::resource('schools', 'SchoolsController');
+    Route::resource('register', 'RegisterController');
 
     Route::get('/{any}', 'SpaController@index')->where('any', '.*');
+
 
 });
 
